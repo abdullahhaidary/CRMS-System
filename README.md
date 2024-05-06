@@ -4,7 +4,7 @@ Welcome to our project repository! This project is led by Abdullah Haidary, Abdu
 
 ## Overview
 
-Here, the description of our project will be placed. Our project aims to [briefly describe the project's purpose or goal].
+Here, the description of our project will be placed. Our project aims to (When the project is accepted i will place the descriptions here).
 
 ## Contributors
 
