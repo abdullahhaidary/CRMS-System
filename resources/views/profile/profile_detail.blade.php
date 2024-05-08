@@ -28,7 +28,7 @@ Profile Details
             </div>
         </div>
         <div class="information">
-            <h3>Personal Information</h3>
+            <h3 class="header ">Personal Information</h3>
                 @if(session()->has('success'))
                     <div class="alert alert-success">
                         {{session('success')}}

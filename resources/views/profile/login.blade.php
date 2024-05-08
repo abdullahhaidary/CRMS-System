@@ -71,6 +71,43 @@
             margin-bottom: 10px;
         }
 
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 800%;
+            overflow: hidden;
+            z-index:-1;
+            animation: float 80s linear infinite;
+        }
+
+        .number {
+            position: absolute;
+            display:flex;
+            font-size: 18px;
+            font-weight: bold;
+            opacity: 0.3; /* Semi-transparent text */
+            user-select: none; /* Prevent text selection */
+            z-index:-1;
+        }
+
+        /* Additional styles for text animation */
+        @keyframes float {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+}
+
+
+
     </style>
 </head>
 <body>
@@ -91,5 +128,34 @@
         <a href="{{route('password.request')}}">Forgot Password?</a>
         <p>Don't have an account? <a href="{{route('register')}}">Register here</a></p>
     </div>
+
+    <div class="background"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const numNumbers = 1600; // Number of numbers (0s and 1s) to display
+            const container = document.querySelector('.background');
+            const numberPool = ['1111','0000', '10','0011']; // Array of characters to randomly choose from
+
+            for (let i = 0; i < numNumbers; i++) {
+                const randomNumber = numberPool[Math.floor(Math.random() * numberPool.length)];
+
+                const numberElement = document.createElement('span');
+                numberElement.textContent = randomNumber;
+                numberElement.classList.add('number');
+
+                // Randomize position and styles
+                const x = Math.random() * 100; // Random horizontal position (0-100%)
+                const y = Math.random() * 100; // Random vertical position (0-100%)
+                const animationDelay = Math.random() * 5; // Random animation delay (0-5s)
+
+                numberElement.style.left = `${x}%`;
+                numberElement.style.top = `${y}%`;
+                numberElement.style.animationDelay = `${animationDelay}s`;
+
+                container.appendChild(numberElement);
+            }
+        });
+    </script>
 </body>
 </html>

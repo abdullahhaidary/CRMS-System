@@ -17,6 +17,7 @@ function openProfileImageDialog() {
 function closeProfileImageDialog() {
     document.getElementById('profile-image-dialog').style.display = 'none';
 }
+editForm();
 function editForm(){
     document.getElementById('profile-edit-dialog').style.display='block';
 }
