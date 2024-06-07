@@ -151,29 +151,34 @@ class AuthController extends Controller
 
         $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
         $currenDate=Carbon::now();
-        if($dob->diffInYears($currenDate)){
-            return redirect()->back()->with(['age_error',"You are Below the Minumum Age Requirements"]);
-        }
+        // if($dob->diffInYears($currenDate)<14){
+        //     return redirect()->back()->with(['age_error',"You are Below the Minumum Age Requirements"]);
+        // }
 
         $validate = $request->validate([
             'country'=>'required',
             'dob'=>'required|date',
             'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        $image=$request->file('profile_image');
-        $user_id=Auth::id();
-        $user=User::find($user_id)->first();
-        $image_name=$image->hashName();
-        $user->picture=$image_name;
-        $user->dob = $validate['dob'];
-        $user->country=$validate['country'];
+        $user = User::updateOrCreate(
+            ['id' => Auth::user()->id],
+            ['country' => $validate['country'], 'dob' => $validate['dob']]
+        );
 
-        if($user->save()){
-            $image->storeAs('public/profiles',$image_name);
-        }else{
-            return redirect()->back()->with(['error',"An Error Occurred, Please Try Again or Contact your admin"]);
+        // Handle profile image upload if provided
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $image_name = $image->hashName(); // Generate a unique name for the image
+            $user->picture = $image_name; // Update the user's profile picture attribute
+
+            // Store the image in the storage
+            $image->storeAs('public/profiles', $image_name);
         }
-        return redirect('/');
+
+        // Save the changes to the user model
+        $user->save();
+
+        return redirect('/profile');
     }
 
     public function profile_change(Request $request){
@@ -187,7 +192,7 @@ class AuthController extends Controller
         if(Storage::exists($filePath)){
             if(Storage::delete($filePath)){
             $image->storeAs('public/profiles', $image_name);
-            $user->picture=$image_name;
+            $user = User::updateOrCreate(['id'=> Auth::user()->id],['picture'=> $image_name]);
             $user->save();
             }
         }
@@ -208,10 +213,8 @@ class AuthController extends Controller
             'email'=>'email|required',
             'dob'=>'date|required',
         ]);
-        $user=User::find(Auth::user()->id)->first();
-        $user->name=$validate['name'];
-        $user->email=$validate['email'];
-        $user->dob=carbon::parse($validate['dob'])->format('Y-m-d');
+        $user=User::updateOrCreate(['id'=>Auth::user()->id],
+                ['name'=>$validate['name'] , 'email'=>$validate['email'] , 'dob'=>carbon::parse($validate['dob'])->format('y-m-d')]);
         $user->save();
         return redirect()->back()->with('success','Profile Information Has Been Updated');
     }
