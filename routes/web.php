@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 Route::middleware('auth')->get('/',function(){
 
-    return view('home');
+    return view('layout.home');
 });
 Route::get('/login',[AuthController::class,'login_page'])->name('login');
 Route::get('register',[AuthController::class,'register_page'])->name('register');
@@ -28,5 +28,19 @@ Route::post('/reset-password',[AuthController::class,'forget_password'])->middle
 Route::post('logout',[AuthController::class,'logout'])->name('logout');
 Route::post('profile-complete',[AuthController::class,'complete_profile'])->name('profile.complete');
 Route::fallback(function(){
-    return view('profile.profile_detail');
+    return view('massage');
 })->middleware('auth');
+
+// admin Route
+//Route::group(['middleware'=>'adminmidleware'],function (){
+
+    Route::get('crimnal-list',[\App\Http\Controllers\adminconroller::class, 'index'])->middleware('admin-middleware')->name('crimnal');
+
+//});
+
+
+
+
+
+
+

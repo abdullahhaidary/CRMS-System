@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><img src="asit/img/RK.jpg" style="height: 30px; width: 30px;" alt=""></td>
+                    <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" alt=""></td>
                     <td class="text-bold-500">احمد</td>
                     <td class="text-bold-500">عبدالولی</td>
                     <td>کابل خوشحال خان</td>
@@ -34,7 +34,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="asit/img/RK.jpg" style="height: 30px; width: 30px;" alt=""></td>
+                    <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" alt=""></td>
                     <td class="text-bold-500">احمد</td>
                     <td class="text-bold-500">عبدالولی</td>
                     <td>کابل خوشحال خان</td>
@@ -43,7 +43,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="asit/img/RK.jpg" style="height: 30px; width: 30px;" alt=""></td>
+                    <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" alt=""></td>
                     <td class="text-bold-500">احمد</td>
                     <td class="text-bold-500">عبدالولی</td>
                     <td>کابل خوشحال خان</td>
@@ -52,7 +52,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="asit/img/RK.jpg" style="height: 30px; width: 30px;" alt=""></td>
+                    <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" alt=""></td>
                     <td class="text-bold-500">احمد</td>
                     <td class="text-bold-500">عبدالولی</td>
                     <td>کابل خوشحال خان</td>
@@ -61,7 +61,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="asit/img/RK.jpg" style="height: 30px; width: 30px;" alt=""></td>
+                    <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" alt=""></td>
                     <td class="text-bold-500">احمد</td>
                     <td class="text-bold-500">عبدالولی</td>
                     <td>کابل خوشحال خان</td>
@@ -70,7 +70,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="asit/img/RK.jpg" style="height: 30px; width: 30px;" alt=""></td>
+                    <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" alt=""></td>
                     <td class="text-bold-500">احمد</td>
                     <td class="text-bold-500">عبدالولی</td>
                     <td>کابل خوشحال خان</td>
