@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -12,6 +13,8 @@ Route::middleware('auth')->get('/',function(){
 
     return view('layout.home');
 });
+
+
 Route::get('/login',[AuthController::class,'login_page'])->name('login');
 Route::get('register',[AuthController::class,'register_page'])->name('register');
 Route::get('/forgot-password', [AuthController::class, 'forget_page'])->name('password.request');
@@ -34,7 +37,7 @@ Route::fallback(function(){
 // admin Route
 //Route::group(['middleware'=>'adminmidleware'],function (){
 
-    Route::get('crimnal-list',[\App\Http\Controllers\adminconroller::class, 'index'])->middleware('admin-middleware')->name('crimnal');
+    Route::middleware([isAdmin::class])->get('crimnal-list',[\App\Http\Controllers\adminconroller::class, 'index'])->name('crimnal');
 
 //});
 
