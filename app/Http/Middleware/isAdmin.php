@@ -16,9 +16,10 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->type==1) {
+        if (Auth::check() && Auth::User()->user_type==1) {
             return $next($request);
         }
         abort(403, 'Unauthorized action.');
     }
+    /**/
 }

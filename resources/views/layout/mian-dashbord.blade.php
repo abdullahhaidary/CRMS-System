@@ -73,7 +73,7 @@
                     <li class="sidebar-title font-extrabold">سیستم مدیریتی </li>
                     <li
                         class="sidebar-item active">
-                        <a href="layout.html" class='sidebar-link'>
+                        <a href="{{url('/')}}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>داشبورد</span>
                         </a>
@@ -135,7 +135,7 @@
                     </li>
                     <li
                         class="sidebar-item">
-                        <a href="complient-form.html" class='sidebar-link'>
+                        <a href="{{route('complint')}}" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
                             <span> ثبت شکایت  </span>
                         </a>
@@ -156,7 +156,7 @@
                     </li>
                     <li
                         class="sidebar-item  ">
-                        <a href="users.html" class='sidebar-link'>
+                        <a href="{{route('user')}}" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
                             <span>Users </span>
                         </a>

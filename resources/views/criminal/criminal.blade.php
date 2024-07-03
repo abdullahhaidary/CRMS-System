@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading">
-        <a href="criminal-form.html" class="btn btn-outline-primary btn-light">ایجاد مجریم جدید</a>
+        <a href="{{route('criminalcontroller-form')}}" class="btn btn-outline-primary btn-light">ایجاد مجریم جدید</a>
     </div>
     <!--  Inverse table start -->
     <section class="section p-2">
