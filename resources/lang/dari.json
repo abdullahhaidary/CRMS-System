@@ -1,5 +1,7 @@
 {
     "Dashboard": "داشبورد",
     "User Profile": "تنظیمات کاربر",
-    "user_setting": "د تنظیمات کاربر"
+    "user_setting": "د تنظیمات کاربر",
+    "database_statistics":"احصایه دیتابیس"
+
 }

@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading">
-        <h3>احصایه دیتابیس</h3>
+        <h3>{{__('database_statistics')}}</h3>
     </div>
     <div class="page-content">
         <section class="row">

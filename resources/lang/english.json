@@ -1,5 +1,7 @@
 {
     "Dashboard": "Dashboard",
     "User Profile": "User Profile",
-    "user_setting": "User setting"
+    "user_setting": "User setting",
+    "database_statistics":"Database Statistics"
+
 }
