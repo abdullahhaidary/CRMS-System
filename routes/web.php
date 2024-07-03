@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LanguageController;
 use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -9,12 +10,17 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-Route::middleware('auth')->get('/',function(){
+Route::middleware(['auth', 'lang'])->get('/',function(){
 
     return view('layout.home');
 });
 
-
+Route::get('language/{local}',function($local){
+    app()->setLocale($local);
+    session()->put('locale',$local);
+    return redirect()->back();
+});
+Route::get('lang/{locale}', [LanguageController::class, 'switchLang'])->name('lang.switch');
 Route::get('/login',[AuthController::class,'login_page'])->name('login');
 Route::get('register',[AuthController::class,'register_page'])->name('register');
 Route::get('/forgot-password', [AuthController::class, 'forget_page'])->name('password.request');

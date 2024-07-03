@@ -78,12 +78,16 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('dari'),
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'english'),
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
-
+    'available_locals'=>[
+        'English'=>'english',
+        'dari'=>'dari',
+        'pashto'=>'pashto'
+    ],
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
