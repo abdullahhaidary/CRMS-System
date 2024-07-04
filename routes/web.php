@@ -61,3 +61,15 @@ Route::post('/complint-form', [\App\Http\Controllers\complient::class, 'store'])
 
 //url user
 Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user');
+
+
+//url people
+Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people');
+Route::get('/people from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form');
+Route::post('/people from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store');
+
+
+//url crime record information
+Route::get('crime info', [\App\Http\Controllers\crime_register_record_information::class, 'create'])->name('crime_info');
+Route::post('crime info form', [\App\Http\Controllers\crime_register_record_information::class, 'store'])->name('crime_from');
+

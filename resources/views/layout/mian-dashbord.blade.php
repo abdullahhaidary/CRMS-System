@@ -141,6 +141,13 @@
                         </a>
                     </li>
                     <li
+                        class="sidebar-item">
+                        <a href="{{route('people')}}" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span> معلومات شکایت کننده  </span>
+                        </a>
+                    </li>
+                    <li
                         class="sidebar-item  ">
                         <a href="my-profile.html" class='sidebar-link'>
                             <i class="bi bi-file-profile-fill"></i>
