@@ -4,6 +4,8 @@
     <h3>جدول تمام شکایت های ثبت شده در سیستم</h3>
     @include('massage')
 </div>
+{{-- {{$people}} --}}
+
 <!--  Inverse table start -->
 <section class="section">
     <div class="table-responsive">
@@ -27,13 +29,13 @@
             @foreach($data as $item)
                 <tr>
                     <td>{{$item->id}}</td>
-                    <td class="text-bold-500">{{$item->com_name. " ". $item->lname}}</td>
+                    <td class="text-bold-500">{{$item->name. " ". $item->last_name}}</td>
                     <td>{{$item->phone}}</td>
-                    <td>{{$item->number_of_tazkira}}</td>
-                    <td>{{$item->address}}</td>
-                    <td> {{$item->complient_subject}}</td>
+                    <td>{{$item->tazkira_number}}</td>
+                    <td>{{$item->current_address}}</td>
+                    <td> {{$item->subject_crim}}</td>
                     <td>{{$item->complinet_reson}}</td>
-                    <td>{{$item->complinet_date}}</td>
+                    <td>{{$item->crim_date}}</td>
                     <td><a href="">{{$item->complinet_date}}</a></td>
 
                     <td><a href="">{{   $item->name_criminal. " ". $item->lname_criminal}}</a></td>

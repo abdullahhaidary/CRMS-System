@@ -17,10 +17,8 @@ class complient extends Controller
      */
     public function index()
     {
-        $data = DB::table('complients')
-            ->select('complients.*')
-            ->get();
-        return view('complint.complint_list', compact('data'));
+        $data = People::paginate(10);
+        return view('complint.complint_list',compact('data'));
 
     }
 
