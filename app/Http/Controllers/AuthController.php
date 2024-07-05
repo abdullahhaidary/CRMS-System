@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -63,15 +64,19 @@ class AuthController extends Controller
 
 
     public function register(Request $request){
+//        dd($request->all());
         $validate = $request->validate([
             'name'=>'required|min:3|max:35',
             'email'=>'required|email|unique:users,email',
             'password'=>'required|min:6',
+
         ]);
 
         $user = new User;
+
         $user->name=$validate['name'];
         $user->email=$validate['email'];
+        $user->type=$request->postion;
         $user->password=Hash::make($validate['password']);
         $user->save();
         return redirect()->route('login');
@@ -156,13 +161,10 @@ class AuthController extends Controller
         // }
 
         $validate = $request->validate([
-            'country'=>'required',
-            'dob'=>'required|date',
             'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $user = User::updateOrCreate(
             ['id' => Auth::user()->id],
-            ['country' => $validate['country'], 'dob' => $validate['dob']]
         );
 
         // Handle profile image upload if provided
@@ -178,8 +180,9 @@ class AuthController extends Controller
         // Save the changes to the user model
         $user->save();
 
-        return redirect('/profile');
+        return redirect('/admin');
     }
+
 
     public function profile_change(Request $request){
         $validate= $request->validate([
@@ -217,5 +220,15 @@ class AuthController extends Controller
                 ['name'=>$validate['name'] , 'email'=>$validate['email'] , 'dob'=>carbon::parse($validate['dob'])->format('y-m-d')]);
         $user->save();
         return redirect()->back()->with('success','Profile Information Has Been Updated');
+    }
+    public function profile_info()
+    {
+//        $user = User::getSingle(Auth::user()->id);
+        $data=DB::table('users')
+            ->select('users.*')
+            ->where('id', '=', auth::user()->id)
+            ->get();
+        return view('profile.profile', compact('data'));
+
     }
 }

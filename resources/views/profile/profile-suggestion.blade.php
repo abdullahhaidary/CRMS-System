@@ -84,14 +84,6 @@
             <!-- Date of Birth -->
             <input type="date" name="dob" id="dob" placeholder="Date of Birth" required>
             <!-- Country Selection -->
-            <select name="country" id="country" required>
-                <option value="" disabled selected>Select Country</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-                <option value="Canada">Canada</option>
-                <option value="Australia">Australia</option>
-                <!-- Add more countries as needed -->
-            </select>
             <hr>
             <!-- Upload Profile Picture -->
             <input type="file" id="profile-image" name="profile_image" accept="image/*" onchange="previewProfileImage(event)" required>

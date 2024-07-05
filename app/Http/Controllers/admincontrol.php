@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class admincontrol extends Controller
 {
@@ -31,7 +33,22 @@ class admincontrol extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $save= new User();
+        if (!empty($request->picture)) {
+            $exe = $request->file('picture')->getClientOriginalExtension();
+//            dd($exe);
+            $file = $request->file('picture');
+            $rename = str::random(20);
+            $filename = $rename . '.' . $exe;
+            $file->move('/user_photo', $filename);
+            $save->	picture = $filename;
+        }
+        $save->name= $request->name;
+        $save->email= $request->email;
+        $save->type= $request->name;
+        $save->password= $request->name;
+        $save->save();
+
     }
 
     /**

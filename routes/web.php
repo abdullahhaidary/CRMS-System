@@ -31,6 +31,9 @@ Route::get('/reset-password/{token}',[AuthController::class,'forget_token'])->mi
 Route::post('/profile_change',[AuthController::class,'profile_change'])->middleware('auth')->name('profile_change');
 Route::post('/profile-info-edit',[AuthController::class,'profile_info_edit'])->middleware('auth')->name('profile_info_edit');
 
+Route::get('/profile', [AuthController::class, 'profile_info'])->middleware('auth')->name('profile_info');
+
+
 Route::post('/reset-password',[AuthController::class,'forget_password'])->middleware('guest')->name('password.update');
 Route::post('logout',[AuthController::class,'logout'])->name('logout');
 Route::post('profile-complete',[AuthController::class,'complete_profile'])->name('profile.complete');
@@ -61,6 +64,8 @@ Route::post('/complint-form', [\App\Http\Controllers\complient::class, 'store'])
 
 //url user
 Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user');
+Route::get('/admin form', [\App\Http\Controllers\admincontrol::class, 'create'])->name('user.form');
+Route::post('admin form', [\App\Http\Controllers\admincontrol::class, 'store'])->name('user.form');
 
 
 //url people

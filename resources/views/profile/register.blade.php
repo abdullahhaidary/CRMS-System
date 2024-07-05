@@ -77,13 +77,21 @@
                 <div style="color:red">{{$message}}</div>
             @enderror
             <input type="text" name="email" placeholder="Email" required>
+
+                <select class="form-select" name="postion" id="disabledSelect">
+                    <option value="0">انتیخاب پوزیشن</option>
+                    <option value="1">super admin</option>
+                    <option value="2">admin</option>
+                    <option value="3">moder</option>
+                </select>
+
             @error('password')
                 <div style="color:red">{{$message}}</div>
             @enderror
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Register</button>
         </form>
-        <p>Already have an account? <a href="{{route('login')}}">Login here</a></p>
+        <p> لیست تمام ادمین های در سیستم.  <a href="{{route('user')}}">اینجا کلیک کنید </a></p>
     </div>
 </body>
 </html>

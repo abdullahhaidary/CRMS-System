@@ -149,7 +149,7 @@
                     </li>
                     <li
                         class="sidebar-item  ">
-                        <a href="my-profile.html" class='sidebar-link'>
+                        <a href="{{route('profile_info')}}" class='sidebar-link'>
                             <i class="bi bi-file-profile-fill"></i>
                             <span>فروفایل من </span>
                         </a>
@@ -163,7 +163,7 @@
                     </li>
                     <li
                         class="sidebar-item  ">
-                        <a href="{{route('user')}}" class='sidebar-link'>
+                        <a href="{{route('register')}}" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
                             <span>Users </span>
                         </a>
