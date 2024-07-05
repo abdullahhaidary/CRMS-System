@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\crime_register_record_information;
+use App\Models\People;
 use App\Models\r;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,14 +32,24 @@ class complient extends Controller
         return view('complint.complint');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-//        dd($request->all());
-        $save = new \App\Models\complient();
 
+    public function store(Request $request){
+        // $validatedData = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'last_name' => 'required|string|max:255',
+        //     'father_name' => 'required|string|max:255',
+        //     'email' => 'nullable|string|email|max:255',
+        //     'phone' => 'required|string|max:255',
+        //     'tazkira_number' => 'required|string|max:255',
+        //     'actual_address' => 'required|string|max:255',
+        //     'current_address' => 'required|string|max:255',
+        //     'crime_case' => 'nullable|string|max:255',
+        //     'ariza' => 'nullable|string|max:255',
+        //     'subject_crim' => 'required|string|max:255',
+        //     'crim_date' => 'required|string|max:255',
+        // ]);
+
+        $people = new People();
         if (!empty($request->ariza)) {
             $exe = $request->file('ariza')->getClientOriginalExtension();
 //            dd($exe);/
@@ -45,24 +57,24 @@ class complient extends Controller
             $rename = str::random(20);
             $filename = $rename . '.' . $exe;
             $file->move('ariza-of-compleint/', $filename);
-            $save->arza_file = $filename;
+            $people->ariza = $filename;
         }
-        $save->com_name=$request->comname;
-        $save->lname=$request->comlname;
-        $save->number_of_tazkira=$request->tazkira;
-        $save->	phone=$request->phone;
-        $save->address=$request->address;
-        $save->complient_subject=$request->com_subject;
-        $save->complinet_reson=$request->com_rison;
-        $save->complinet_date=$request->com_date;
-//        $save->arza_file=$request->ariza;
-        $save->complinet_description=$request->discription;
-        $save->name_criminal=$request->criminal_name;
-        $save->	lname_criminal=$request->criminal_lname;
-        $save->address_criminal=$request->criminal_address;
-        $save->phone_criminal=$request->cphone;
-        $save->save();
-
+        $people->name=$request->comname;
+        $people->last_name=$request->comlname;
+        $people->tazkira_number=$request->tazkira;
+        $people->father_name=$request->father_name;
+        $people->phone=$request->phone;
+        $people->current_address=$request->current_address;
+        $people->actual_address=$request->actual_address;
+        $people->subject_crim=$request->com_subject;
+        $people->crim_date=$request->com_date;
+        $people->email=$request->email;
+        $savedPeople = People::where('name', $people->name)->where('phone', $people->phone)->first();
+        $people->save();
+        $description = new crime_register_record_information();
+        $description->people_id = $savedPeople->id;
+        $description->description = $request->discription;
+        $description->save();
         return redirect(url('/complint_list'))->with('success', "ستاسو شکایت په موفقیت سره ذخیره شو!");
     }
 

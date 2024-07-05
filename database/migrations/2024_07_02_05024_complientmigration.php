@@ -15,12 +15,14 @@ return new class extends Migration
             $table->id()->primary();
             $table->string('com_name');
             $table->string('lname');
+            $table->string('com_father_name');
             $table->string('number_of_tazkira');
             $table->string('phone');
             $table->string('address');
             $table->string('complient_subject');
-            $table->string('complinet-reson');
-            $table->string('complinet-_date');
+            $table->string('email');
+            $table->string('complinet_reson');
+            $table->string('complinet_date');
             $table->string('arza_file');
             $table->string('complinet_description');
             $table->string('name_criminal');

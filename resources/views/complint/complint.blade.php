@@ -48,6 +48,21 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
+                                            <label for="last-name-column" class="form-label"
+                                            > اسم پدر شکایت کننده </label
+                                            >
+                                            <input
+                                                type="text"
+                                                id="father_name"
+                                                class="form-control"
+                                                placeholder="اسم پدر"
+                                                name="father_name"
+                                                data-parsley-required="true"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
                                             <label for="city-column" class="form-label"> نمبر تذکره</label>
                                             <input
                                                 type="text"
@@ -77,15 +92,45 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
+                                            <label for="country-floating" class="form-label"
+                                            >ایمیل آدرس</label
+                                            >
+                                            <input
+                                                type="text"
+                                                id="email"
+                                                class="form-control"
+                                                name="email"
+                                                placeholder="ایمیل آدرس"
+                                                data-parsley-required="true"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
                                             <label for="company-column" class="form-label"
-                                            > آدرس</label
+                                            >آدرس فعلی</label
                                             >
                                             <input
                                                 type="text"
                                                 id="company-column"
                                                 class="form-control"
-                                                name="address"
-                                                placeholder=" ادرس"
+                                                name="current_address"
+                                                placeholder="آدرس فعلی"
+                                                data-parsley-required="true"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="company-column" class="form-label"
+                                            >آدرس اصلی</label
+                                            >
+                                            <input
+                                                type="text"
+                                                id="actual_address"
+                                                class="form-control"
+                                                name="actual_address"
+                                                placeholder=" آدرس اصلی"
                                                 data-parsley-required="true"
                                             />
                                         </div>

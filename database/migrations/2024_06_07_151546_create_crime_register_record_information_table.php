@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('crime_register_record_information', function (Blueprint $table) {
             $table->id();
-            $table->string('people_id');
+            $table->unsignedBigInteger('people_id');
             $table->text('description');
             $table->timestamps();
 
