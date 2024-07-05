@@ -20,14 +20,14 @@ class isAdmin
         {
             if (Auth::user()->type==1)
             {
-                return redirect('');
+                return $next($request);
             }
             else if (Auth::user()->type==2)
             {
                 return redirect('');
             }
 
-            return redirect('admin/dashbord');
+            return redirect()->back();
         }
 
         abort(403, 'Unauthorized action.');

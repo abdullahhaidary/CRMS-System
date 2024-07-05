@@ -30,8 +30,7 @@ use Illuminate\Support\Facades\Http;
 
     public function store(Request $request, $people_id)
     {
-      $save= new \App\Models\crime_register_record_information();
-      $save->description= $request->discription;
+
     }
 
     /**

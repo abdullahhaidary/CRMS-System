@@ -156,7 +156,7 @@
                     </li>
                     <li
                         class="sidebar-item  ">
-                        <a href="department.html" class='sidebar-link'>
+                        <a href="{{route('department')}}" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
                             <span>دیپارتمنت </span>
                         </a>

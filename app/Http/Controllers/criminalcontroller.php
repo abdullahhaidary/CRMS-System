@@ -16,7 +16,7 @@ class criminalcontroller extends Controller
     }
     public function inset(Request $request)
     {
-        $save=new complient();
+
 
     }
 }

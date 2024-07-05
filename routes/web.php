@@ -24,7 +24,7 @@ Route::get('register',[AuthController::class,'register_page'])->name('register')
 Route::get('/forgot-password', [AuthController::class, 'forget_page'])->name('password.request');
 Route::post('/forgot-password', [AuthController::class, 'forget']);
 Route::post('/login',[AuthController::class,'login'])->name('login');
-Route::post('/register',[AuthController::class,'register'])->name('register');
+Route::post('/register',[AuthController::class,'register'])->middleware('isAdmin')->name('register');
 
 Route::post('/forgot-password',[AuthController::class,'forget'])->middleware('guest')->name('password.email');
 Route::get('/reset-password/{token}',[AuthController::class,'forget_token'])->middleware('guest')->name('password.reset');
@@ -64,8 +64,7 @@ Route::post('/complint-form', [\App\Http\Controllers\complient::class, 'store'])
 
 //url user
 Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user');
-Route::get('/admin form', [\App\Http\Controllers\admincontrol::class, 'create'])->name('user.form');
-Route::post('admin form', [\App\Http\Controllers\admincontrol::class, 'store'])->name('user.form');
+
 
 
 //url people
@@ -78,3 +77,7 @@ Route::post('/people from', [\App\Http\Controllers\pepolecontroller::class, 'sto
 Route::get('crime info', [\App\Http\Controllers\crime_register_record_information::class, 'create'])->name('crime_info');
 Route::post('crime info form', [\App\Http\Controllers\crime_register_record_information::class, 'store'])->name('crime_from');
 
+
+//url department
+Route::get('/department', [\App\Http\Controllers\departmentContoller::class, 'index'])->name('department');
+Route::get('/department form', [\App\Http\Controllers\departmentContoller::class, 'create'])->name('department_form');

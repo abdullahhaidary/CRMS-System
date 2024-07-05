@@ -79,7 +79,7 @@ class AuthController extends Controller
         $user->type=$request->postion;
         $user->password=Hash::make($validate['password']);
         $user->save();
-        return redirect()->route('login');
+        return redirect()->route('user');
     }
 
      public function forget(Request $request)
@@ -180,7 +180,7 @@ class AuthController extends Controller
         // Save the changes to the user model
         $user->save();
 
-        return redirect('/admin');
+        return redirect('/profile');
     }
 
 

@@ -2,32 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
-class admincontrol extends Controller
+class departmentContoller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $data=DB::table('users')
-            ->select('users.*')
-            ->get();
-        return view('admin.user', compact('data'));
+        return view('department.department_view');
     }
 
     /**
      * Show the form for creating a new resource.
      */
+    public function create()
+    {
+        return view('department.department_form');
+    }
 
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function store(Request $request, $people_id)
+    {
+
+    }
 
     /**
      * Display the specified resource.
@@ -42,7 +38,7 @@ class admincontrol extends Controller
      */
     public function edit(string $id)
     {
-        //
+
     }
 
     /**
@@ -59,9 +55,5 @@ class admincontrol extends Controller
     public function destroy(string $id)
     {
         //
-    }
-    public function uperadmin()
-    {
-
     }
 }
