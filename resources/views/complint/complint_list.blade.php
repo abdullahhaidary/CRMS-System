@@ -18,7 +18,7 @@
                 <th> نمبر تذکره</th>
                 <th>آدرس</th>
                 <th>موضوع شکایت</th>
-                <th>دلیل شکایت</th>
+                <th>نوعیت شکایت</th>
                 <th>تاریخ شکایت</th>
                 <th>عریضه</th>
                 <th>معلومات متهم</th>
@@ -34,11 +34,18 @@
                     <td>{{$item->tazkira_number}}</td>
                     <td>{{$item->current_address}}</td>
                     <td> {{$item->subject_crim}}</td>
-                    <td>{{$item->complinet_reson}}</td>
+                    <td>{{$item->subject_crim}}</td>
                     <td>{{$item->crim_date}}</td>
-                    <td><a href="">{{$item->complinet_date}}</a></td>
+                    <td>asdf</td>
 
-                    <td><a href="">{{   $item->name_criminal. " ". $item->lname_criminal}}</a></td>
+                    <td>
+                        @php
+                            $description = optional($item->details)->description;
+                            $words = explode(' ', $description);
+                            $trimmedDescription = count($words) > 2 ? implode(' ', array_slice($words, 0, 2)) . '...' : $description;
+                        @endphp
+                    {{ $trimmedDescription }}
+                    </td>
                     <td>
                         <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
                         <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
