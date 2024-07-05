@@ -6,7 +6,6 @@ use App\Models\crime_register_record_information;
 use App\Models\People;
 use App\Models\r;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 
@@ -17,7 +16,8 @@ class complient extends Controller
      */
     public function index()
     {
-        $data = People::paginate(10);
+        $data = People::with('details')->paginate(10);
+
         return view('complint.complint_list',compact('data'));
 
     }

@@ -27,4 +27,9 @@ class People extends Model
         'subject_crim',
         'crim_date',
     ];
+
+    public function details()
+    {
+        return $this->hasOne(crime_register_record_information::class, 'people_id');
+    }
 }
