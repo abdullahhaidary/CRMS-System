@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use AllowDynamicProperties;
-use App\Models\peoplemolde;
+use App\Models\people;
 //use App\Models\crime_register_record_information;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 #[AllowDynamicProperties] class crime_register_record_information extends Controller
@@ -14,9 +15,17 @@ use Illuminate\Support\Facades\Http;
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-
+//        $data=\App\Models\crime_register_record_information::getSingle($id);
+//        dd($id);
+        $data=DB::table('crime_register_record_information')
+            ->join('people', 'people.id', '=', 'crime_register_record_information.people_id')
+            ->select('crime_register_record_information.*', 'people.name')
+            ->where('people_id', '=', $id)
+            ->get();
+//        dd($data);
+        return view('crime_record_inf.description', compact('data'));
     }
 
     /**
@@ -24,7 +33,6 @@ use Illuminate\Support\Facades\Http;
      */
     public function create()
     {
-        return view('crime_record_inf.crime_record_infor');
     }
 
 

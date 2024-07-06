@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\departmentModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class departmentContoller extends Controller
 {
     public function index()
     {
-        return view('department.department_view');
+        $data=DB::table('departments')
+            ->select('departments.*')
+            ->get();
+        return view('department.department_view', compact('data'));
     }
 
     /**
@@ -20,9 +25,15 @@ class departmentContoller extends Controller
     }
 
 
-    public function store(Request $request, $people_id)
+    public function store(Request $request)
     {
-
+        $save= new departmentModel();
+        $save->name= $request->d_name;
+        $save->head= $request->d_title;
+        $save->	short_description=$request->d_description;
+        $save->save();
+//        dd($request->all());
+        return redirect(route('department'))->with('success', "دیپارمنت په موفقیت سره اضافی شو!");
     }
 
     /**

@@ -18,19 +18,20 @@ class isAdmin
     {
         if (!empty(Auth::check()))
         {
-            if (Auth::user()->type==1)
+            if (Auth::user()->user_type==1)
             {
                 return $next($request);
             }
-            else if (Auth::user()->type==2)
-            {
-                return redirect('');
+            else{
+                Auth::logout();
+                return redirect(url('/'));
             }
-
-            return redirect()->back();
         }
-
-        abort(403, 'Unauthorized action.');
+        else
+        {
+            Auth::logout();
+            return redirect(url('/'));
+        }
     }
     /**/
 }

@@ -193,7 +193,7 @@
                                         <label for="email-id-column" class="form-label"
                                         > توضیحات</label
                                         >
-                                        <textarea name="discription" id="discription" class="form-control"  data-parsley-required="true"></textarea>
+                                        <textarea name="description" id="discription" class="form-control"  data-parsley-required="true"></textarea>
                                     </div>
                                 </div>
 

@@ -135,16 +135,9 @@
                     </li>
                     <li
                         class="sidebar-item">
-                        <a href="{{route('complint')}}" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
-                            <span> ثبت شکایت  </span>
-                        </a>
-                    </li>
-                    <li
-                        class="sidebar-item">
                         <a href="{{route('people')}}" class='sidebar-link'>
                             <i class="bi bi-file-earmark-medical-fill"></i>
-                            <span> معلومات شکایت کننده  </span>
+                            <span>  ثبت شکایت   </span>
                         </a>
                     </li>
                     <li

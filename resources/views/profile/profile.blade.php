@@ -91,7 +91,7 @@
         </div>
         <div class="user-details-item">
             <span class="user-details-label">Picture:</span>
-            <img src="{{@asset('profiles/').$item->picture}}" width="20px" class="user-profile-picture">
+            <img src="{{asset('profiles/').$item->picture}}" width="20px" class="user-profile-picture">
         </div>
         <div class="user-details-item">
             <span class="user-details-label">Email:</span>

@@ -15,6 +15,7 @@ class AuthController extends Controller
 {
 
 
+
     public function login_page(){
         if(Auth::user()){
             return redirect('/');
@@ -42,26 +43,22 @@ class AuthController extends Controller
         //     $user->password = Hash::make($user->password);
         //     $user->save();
         // }
-
+        $a=hash::make('123456');
+//        dd($a);
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
-            if(Auth::user()->picture==null){
+    if (Auth::attempt($credentials)) {
+        if (Auth::user()->picture == null) {
             return view('profile.profile-suggestion');
-            }
-            return redirect()->intended('/');
-
-        } else {
-            return back()->withErrors(['email' => 'Invalid credentials']);
         }
     }
-
-
-
-
+    else {
+        return back()->withErrors(['email' => 'Invalid credentials']);
+    }
+    }
 
     public function register(Request $request){
 //        dd($request->all());

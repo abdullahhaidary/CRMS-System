@@ -56,10 +56,7 @@ Route::get('/criminalcontroller-from', [\App\Http\Controllers\criminalcontroller
 Route::post('/crminal-from', [\App\Http\Controllers\criminalcontroller::class, 'inset'])->name('criminal-from');
 
 
- // url  complient
-Route::get('/complint_list', [\App\Http\Controllers\complient::class, 'index'])->name('complint_list');
-Route::get('/complint', [\App\Http\Controllers\complient::class, 'create'])->name('complint');
-Route::post('/complint-form', [\App\Http\Controllers\complient::class, 'store'])->name('complint-from');
+
 
 
 //url user
@@ -74,10 +71,12 @@ Route::post('/people from', [\App\Http\Controllers\pepolecontroller::class, 'sto
 
 
 //url crime record information
-Route::get('crime info', [\App\Http\Controllers\crime_register_record_information::class, 'create'])->name('crime_info');
-Route::post('crime info form', [\App\Http\Controllers\crime_register_record_information::class, 'store'])->name('crime_from');
+
+Route::get('crime/info/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'index'])->name('crime_info');
 
 
 //url department
+//Route::group(['middleware'=>'isAmin'], function (){
 Route::get('/department', [\App\Http\Controllers\departmentContoller::class, 'index'])->name('department');
 Route::get('/department form', [\App\Http\Controllers\departmentContoller::class, 'create'])->name('department_form');
+Route::post('/department form', [\App\Http\Controllers\departmentContoller::class, 'store'])->name('department_form');

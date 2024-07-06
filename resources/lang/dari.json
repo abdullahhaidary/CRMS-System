@@ -1,7 +1,7 @@
 {
-    "Dashboard": "داشبورد",
-    "User Profile": "تنظیمات کاربر",
-    "user_setting": "د تنظیمات کاربر",
-    "database_statistics":"احصایه دیتابیس"
-
+  "Dashboard": "داشبورد",
+  "Save": "ثبت",
+  "User Profile": "تنظیمات کاربر",
+  "database_statistics": "احصایه دیتابیس",
+  "user_setting": "د تنظیمات کاربر"
 }
