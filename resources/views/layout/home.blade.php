@@ -80,7 +80,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>راپور روزانه</h4>
+                                <h4>قضیه های ثبت شده</h4>
                             </div>
                             <div class="card-body">
                                 <div id="chart-profile-visit"></div>
@@ -155,15 +155,16 @@
                     <div class="col-12 col-xl-8">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Latest Comments</h4>
+                                <h4>تازه ترین قضیه ها</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-hover table-lg">
                                         <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Comment</th>
+                                            <th>اسم مجرم</th>
+                                            <th>نوعیت قضیه</th>
+                                            <th>توضیحات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -171,27 +172,32 @@
                                             <td class="col-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar avatar-md">
-                                                        <img src="./asit/css/img/5.jpg">
+                                                        <img src="{{asset('dist2/img/RK.jpg')}}">
                                                     </div>
-                                                    <p class="font-bold ms-3 mb-0">Si Cantik</p>
+                                                    <p class="font-bold ms-3 mb-0">احمد</p>
                                                 </div>
                                             </td>
+                                            <td class="col-3">
+                                                <p class=" mb-0">دزدی</p>
+                                            </td>
                                             <td class="col-auto">
-                                                <p class=" mb-0">Congratulations on your graduation!</p>
+                                                <p class=" mb-0">این شخص در کابل دزدی انجام ....</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="col-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar avatar-md">
-                                                        <img src="./asit/css/img/2.jpg">
+                                                        <img src="{{asset('dist2/img/RK.jpg')}}">
                                                     </div>
-                                                    <p class="font-bold ms-3 mb-0">Si Ganteng</p>
+                                                    <p class="font-bold ms-3 mb-0">فواد</p>
                                                 </div>
                                             </td>
+                                            <td class="col-3">
+                                                <p class=" mb-0">اختطاف</p>
+                                            </td>
                                             <td class="col-auto">
-                                                <p class=" mb-0">Wow amazing design! Can you make another tutorial for
-                                                    this design?</p>
+                                                <p class=" mb-0">یک طفل 8 ساله را اخطتاف کرده بود</p>
                                             </td>
                                         </tr>
                                         </tbody>
