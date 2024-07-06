@@ -80,7 +80,6 @@
     <body>
     <div class="user-details-container">
         @foreach($data as $item)
-
         <div class="user-details-item">
             <span class="user-details-label">ID:</span>
             <span class="user-details-value">{{$item->id}}</span>
@@ -91,7 +90,7 @@
         </div>
         <div class="user-details-item">
             <span class="user-details-label">Picture:</span>
-            <img src="{{asset('profiles/').$item->picture}}" width="20px" class="user-profile-picture">
+            <img src="{{asset('storage/profiles/'.$item->picture)}}" width="20px" class="user-profile-picture">
         </div>
         <div class="user-details-item">
             <span class="user-details-label">Email:</span>
