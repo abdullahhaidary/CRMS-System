@@ -24,7 +24,7 @@ Route::get('register',[AuthController::class,'register_page'])->name('register')
 Route::get('/forgot-password', [AuthController::class, 'forget_page'])->name('password.request');
 Route::post('/forgot-password', [AuthController::class, 'forget']);
 Route::post('/login',[AuthController::class,'login'])->name('login');
-Route::post('/register',[AuthController::class,'register'])->middleware('isAdmin')->name('register');
+Route::post('/register',[AuthController::class,'register'])->name('register');
 
 Route::post('/forgot-password',[AuthController::class,'forget'])->middleware('guest')->name('password.email');
 Route::get('/reset-password/{token}',[AuthController::class,'forget_token'])->middleware('guest')->name('password.reset');

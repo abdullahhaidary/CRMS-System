@@ -24,8 +24,8 @@
                     <th> case</th>
                     <th>تاریخ شکایت</th>
                     <th>موضوع شکایت</th>
-                    <th>توضیحات</th>
                     <th>عریضه</th>
+                    <th>توضیحات</th>
                     <th>ACTION</th>
                 </tr>
                 </thead>
@@ -43,7 +43,7 @@
                         <td>{{$item->crime_case}}</td>
                         <td>{{$item->crim_date}}</td>
                         <td>{{$item->subject_crim}}</td>
-                        <td><a href="">{{$item->ariza}}</a></td>
+                        <td><a href="{{$item->ariza}}">عریضه</a></td>
                         <td><a href="{{url('crime/info/'.$item->id)}}">توضیحات</a></td>
                         <td>
                             <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
