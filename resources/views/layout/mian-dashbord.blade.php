@@ -72,7 +72,7 @@
                 <ul class="menu">
                     <li class="sidebar-title font-extrabold">سیستم مدیریتی </li>
                     <li
-                        class="sidebar-item active">
+                        class="sidebar-item {{ request()->is('/') ? 'active' : '' }}">
                         <a href="{{url('/')}}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>داشبورد</span>
@@ -141,7 +141,7 @@
                         </a>
                     </li>
                     <li
-                        class="sidebar-item  ">
+                        class="sidebar-item {{ Route::currentRouteName() == 'profile_info' ? 'active' : '' }} ">
                         <a href="{{route('profile_info')}}" class='sidebar-link'>
                             <i class="bi bi-file-profile-fill"></i>
                             <span>فروفایل من </span>
