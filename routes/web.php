@@ -80,3 +80,8 @@ Route::get('crime/info/{id}', [\App\Http\Controllers\crime_register_record_infor
 Route::get('/department', [\App\Http\Controllers\departmentContoller::class, 'index'])->name('department');
 Route::get('/department form', [\App\Http\Controllers\departmentContoller::class, 'create'])->name('department_form');
 Route::post('/department form', [\App\Http\Controllers\departmentContoller::class, 'store'])->name('department_form');
+
+//ulr cases
+Route::get('/case', [\App\Http\Controllers\casecontroller::class, 'index'])->name('case');
+Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'create'])->name('case-from');
+Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');

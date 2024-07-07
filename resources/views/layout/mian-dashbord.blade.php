@@ -118,7 +118,7 @@
                             </li>
 
                             <li class="submenu-item  ">
-                                <a href="component-breadcrumb.html" class="submenu-link">Breadcrumb</a>
+                                <a href="" class="submenu-link">cases</a>
 
                             </li>
 
@@ -166,7 +166,7 @@
                         <a href="login.html" class='sidebar-link'>
                             <i class="bi bi-logout"></i>
                         <form action="{{route('logout')}}" method="post">
-        @csrf()
+                            @csrf
         <button class="btn btn-danger" type="submit">Log Out</button>
     </form>
 {{--0765470099--}}

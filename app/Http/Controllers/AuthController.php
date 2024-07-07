@@ -43,8 +43,7 @@ class AuthController extends Controller
         //     $user->password = Hash::make($user->password);
         //     $user->save();
         // }
-        $a=hash::make('123456');
-//        dd($a);
+
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -54,9 +53,10 @@ class AuthController extends Controller
         if (Auth::user()->picture == null) {
             return view('profile.profile-suggestion');
         }
-    }
+
     else {
         return back()->withErrors(['email' => 'Invalid credentials']);
+    }
     }
     }
 
