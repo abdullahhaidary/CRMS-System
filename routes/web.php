@@ -19,6 +19,8 @@ Route::get('language/{local}',function($local){
     return redirect()->back();
 });
 
+
+
 Route::get('/login',[AuthController::class,'login_page'])->name('login');
 Route::get('register',[AuthController::class,'register_page'])->name('register');
 Route::get('/forgot-password', [AuthController::class, 'forget_page'])->name('password.request');
