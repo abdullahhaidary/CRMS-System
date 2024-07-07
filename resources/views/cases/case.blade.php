@@ -9,23 +9,22 @@
                     <th scope="col">#</th>
                     <th scope="col">اسم</th>
                     <th scope="col">توضیحات</th>
-                    <th scope="col">case</th>
                     <th scope="col">تاریخ ثبت</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($data as $item)
-                <tr>
-                    <th scope="row">{{$item->id}}</th>
-                    <td style="width: 10%">{{$item->name}}</td>
-                    <td style="width: 60%">{{$item->description}}</td>
-                    <td><a href="{{url('case/form/'.$item->id)}}">case</a></td>
-                    <td>{{$item->created_at}}</td>
-                </tr>
-                @endforeach
+{{--                @foreach($data as $item)--}}
+                    <tr>
+{{--                        <th scope="row">{{$item->id}}</th>--}}
+{{--                        <td>{{$item->name}}</td>--}}
+{{--                        <td>{{$item->description}}</td>--}}
+{{--                        <td>{{$item->created_at}}</td>--}}
+                    </tr>
+{{--                @endforeach--}}
                 </tbody>
             </table>
         </div>
     </div>
 
 @endsection
+

@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form method="post" action="{{route('criminal-from')}}" class="form" data-parsley-validate>
+                            <form method="post" action="{{route('criminal-from')}}" enctype="multipart/form-data" class="form" data-parsley-validate>
                                 @csrf()
                                 <div class="row">
                                     <div class="col-md-6 col-12">
