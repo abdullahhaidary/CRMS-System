@@ -84,7 +84,7 @@
                     <option value="2">admin</option>
                     <option value="3">moder</option>
                 </select>
-
+            <input type="hidden" name="action" value="1">
             @error('password')
                 <div style="color:red">{{$message}}</div>
             @enderror

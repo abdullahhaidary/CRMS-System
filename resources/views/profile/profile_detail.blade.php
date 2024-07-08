@@ -7,7 +7,7 @@ Profile Details
         <div class="menu">
             <div class="profile_img">
                 <div class="upper_profile">
-                    <a href="{{ url()->previous() }}" class="back-button">
+                    <a href="{{route('login') }}" class="back-button">
                         <i class="fas fa-arrow-left"></i>
                     </a>
 
@@ -18,9 +18,15 @@ Profile Details
                     {{Auth::user()->name}}
                 </div>
 
+{{--                <div class="nav flex-column">--}}
+{{--                    <a href="#"><i class="bi bi-person-circle"></i> Profile</a>--}}
+{{--                    <a href="#"><i class="bi bi-gear-fill"></i> Settings</a>--}}
+{{--                    <a href="#"><i class="bi bi-bell-fill"></i> Notifications</a>--}}
+{{--                    <a href="{{route('logout')}}"><i class="bi bi-box-arrow-right"></i> Logout</a>--}}
+{{--                </div>--}}
                 <div class="profile_links">
                     <ul>
-                        <li class="menu_active_link"><a href="">Home</a></li>
+                        <li class="menu_active_link"><a href="#"><i class="bi bi-person-circle"></i> Profile</a></li>
                         <li><a href="">Your Posts</a></li>
                         <li><a href="">Friends</a></li>
                     </ul>
@@ -50,12 +56,12 @@ Profile Details
                         <div>{{Auth::user()->email}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>Date of birth:</div>
-                        <div>{{Auth::user()->dob}}</div>
+                        <div>Type:</div>
+                        <div>{{Auth::user()->type=1 ? 'SUPER Admin' : 'Admin'}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>Country:</div>
-                        <div>{{Auth::user()->country}}</div>
+                            <div>ACTION:</div>
+                        <div>{{Auth::user()->action==1 ? 'Active' : 'InActive'}}</div>
                     </div>
                     <div class="personal_information_single">
                         <div>Date Created:</div>
@@ -77,7 +83,7 @@ Profile Details
                     {{-- <br><br> --}}
                     <h3 class="text-2xl mb-5">Edit Profile</h3>
                     <div class="">
-                        <label for="name"  for="grid-first-name" style="text-align:start;">Name: </label>
+                        <label for="name" style="text-align:start;">Name: </label>
                         <input type="text" value="{{Auth::user()->name}}" class="form" name="name" id="name">
                     </div>
                     <div class="form-group d-flex flex-column">

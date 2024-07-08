@@ -21,9 +21,9 @@ class criminalcontroller extends Controller
     }
     public function inset(Request $request)
     {
-<<<<<<< HEAD
-//.;
-=======
+
+
+
         // $request->validate([
         //     'name' => 'required|string|max:255',
         //     'lname' => 'required|string|max:255',
@@ -66,7 +66,6 @@ class criminalcontroller extends Controller
         $criminal->save();
 
         return redirect()->route('criminal.index')->with('success', 'Criminal record created successfully.');
->>>>>>> 2b3c675870871a2112dfcf5a815cb5388d388b9c
 
     }
 }
