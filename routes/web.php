@@ -82,6 +82,6 @@ Route::get('/department form', [\App\Http\Controllers\departmentContoller::class
 Route::post('/department form', [\App\Http\Controllers\departmentContoller::class, 'store'])->name('department_form');
 
 //ulr cases
-Route::get('/case', [\App\Http\Controllers\casecontroller::class, 'index'])->name('case');
+Route::get('/case/{id}', [\App\Http\Controllers\casecontroller::class, 'index'])->name('case');
 Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'create'])->name('case-from');
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');

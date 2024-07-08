@@ -1,5 +1,8 @@
 @extends('layout.mian-dashbord')
 @section('content')
+    <div class="">
+        <a class="btn btn-primary" href="{{url('case/'. $id)}}">case موجود</a>
+    </div>
     <div class="page-heading text-center">
         <h3>فورم ثبت case جدید</h3>
     </div>

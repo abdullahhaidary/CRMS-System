@@ -129,45 +129,45 @@
                     <li
                         class="sidebar-item">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
+                            <i class="bi bi-shield-lock"></i>
                             <span>بخش ادمین </span>
                         </a>
                     </li>
                     <li
                         class="sidebar-item">
                         <a href="{{route('people')}}" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <i class="bi-file-earmark-text"></i>
                             <span>  ثبت شکایت   </span>
                         </a>
                     </li>
                     <li
                         class="sidebar-item {{ Route::currentRouteName() == 'profile_info' ? 'active' : '' }} ">
                         <a href="{{route('profile_info')}}" class='sidebar-link'>
-                            <i class="bi bi-file-profile-fill"></i>
+                            <i class="bi bi-person-fill"></i>
                             <span>فروفایل من </span>
                         </a>
                     </li>
                     <li
                         class="sidebar-item  ">
                         <a href="{{route('department')}}" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <i class="bi bi-building"></i>
                             <span>دیپارتمنت </span>
                         </a>
                     </li>
                     <li
                         class="sidebar-item  ">
                         <a href="{{route('register')}}" class='sidebar-link'>
-                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <i class="bi bi-people-fill"></i>
                             <span>Users </span>
                         </a>
                     </li>
                     <li
-                        class="sidebar-item  ">
-                        <a href="login.html" class='sidebar-link'>
-                            <i class="bi bi-logout"></i>
+                        class="sidebar-item">
+                        <a href="" class='sidebar-link'>
+{{--                            <i class="bi bi-door-open"></i>--}}
                         <form action="{{route('logout')}}" method="post">
                             @csrf
-        <button class="btn btn-danger" type="submit">Log Out</button>
+        <button class="btn " style="background-color: #6c3b3b; color: #ffffff" type="submit">log out</button>
     </form>
 {{--0765470099--}}
                         </a>

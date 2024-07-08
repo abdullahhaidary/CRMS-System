@@ -10,13 +10,17 @@ class criminalcontroller extends Controller
     {
         return view('criminal.criminal');
     }
+    public function more()
+    {
+        return view('criminal.criminal_all');
+    }
     public function add()
     {
         return view('criminal.crimnal-form');
     }
     public function inset(Request $request)
     {
-
+//.;
 
     }
 }
