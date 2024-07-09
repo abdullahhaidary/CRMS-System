@@ -15,10 +15,9 @@
                     <th>ID</th>
                     <th>تصویر</th>
                     <th>نوم</th>
-{{--                    <th>تخلص</th>--}}
-{{--                    <th>UserName</th>--}}
                     <th>ایمیل</th>
                     <th>پوزیشن</th>
+                    <th>عمل</th>
                     <th>اریخ ثبت</th>
                     <th>ACTION</th>
                 </tr>
@@ -31,7 +30,8 @@
                         <td class="text-bold-500">{{$item->name}}</td>
                         <td class="text-bold-500">{{$item->email}}</td>
 {{--                        <td></td>--}}
-                        <td>{{$item->type}}</td>
+                        <td>{{$item->type}}
+                        <td>{{$item->action}} @if($item->action==1 ? 'فعال' :'غیر فعال') @endif</td>
                         <td>{{$item->created_at}}</td>
                         <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
 {{--                            <a href="criminal-view.html" class="btn btn-info">view</a>--}}

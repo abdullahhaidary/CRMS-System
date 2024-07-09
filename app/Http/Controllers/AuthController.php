@@ -17,7 +17,7 @@ class AuthController extends Controller
 
 
     public function login_page(){
-        if(Auth::user()){
+        if(Auth::user() && Auth::user()->action==1){
             return redirect('/');
         }
         return view('profile.login');
@@ -50,7 +50,7 @@ class AuthController extends Controller
         ]);
 
     if (Auth::attempt($credentials)) {
-        if (Auth::user()->picture == null) {
+        if (Auth::user()->picture == null && Auth::user()->action==1) {
             return view('profile.profile-suggestion');
         }
 
@@ -67,6 +67,7 @@ class AuthController extends Controller
             'email'=>'required|email|unique:users,email',
             'password'=>'required|min:6',
 
+
         ]);
 
         $user = new User;
@@ -74,6 +75,7 @@ class AuthController extends Controller
         $user->name=$validate['name'];
         $user->email=$validate['email'];
         $user->type=$request->postion;
+        $user->action=$request->action;
         $user->password=Hash::make($validate['password']);
         $user->save();
         return redirect()->route('user');
@@ -150,7 +152,6 @@ class AuthController extends Controller
 
 
     public function complete_profile(Request $request){
-
         $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
         $currenDate=Carbon::now();
         // if($dob->diffInYears($currenDate)<14){
@@ -159,6 +160,7 @@ class AuthController extends Controller
 
         $validate = $request->validate([
             'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'action'=>'required|max:1'
         ]);
         $user = User::updateOrCreate(
             ['id' => Auth::user()->id],
@@ -172,6 +174,7 @@ class AuthController extends Controller
 
             // Store the image in the storage
             $image->storeAs('public/profiles', $image_name);
+            $validate->action=$request->action;
         }
 
         // Save the changes to the user model
@@ -211,10 +214,9 @@ class AuthController extends Controller
         $validate= $request->validate([
             'name'=>'required',
             'email'=>'email|required',
-            'dob'=>'date|required',
         ]);
         $user=User::updateOrCreate(['id'=>Auth::user()->id],
-                ['name'=>$validate['name'] , 'email'=>$validate['email'] , 'dob'=>carbon::parse($validate['dob'])->format('y-m-d')]);
+                ['name'=>$validate['name'] , 'email'=>$validate['email'] ]);
         $user->save();
         return redirect()->back()->with('success','Profile Information Has Been Updated');
     }
@@ -225,7 +227,7 @@ class AuthController extends Controller
             ->select('users.*')
             ->where('id', '=', auth::user()->id)
             ->get();
-        return view('profile.profile', compact('data'));
+        return view('profile.profile_detail', compact('data'));
 
     }
 }

@@ -15,12 +15,12 @@ class casecontroller extends Controller
      */
     public function index($id)
     {
-//        $data=DB::table('cases')
-//            ->join('crime_register_record_information', 'id','=', 'crime_record_id')
-//            ->select('cases.*', 'crime_register_record_information.people_id')
-//            ->where('crime_record_id', '=', $id)
-//            ->get();
-//        return view('cases.case');
+        $data=DB::table('cases')
+            ->join('crime_register_record_information', 'crime_register_record_information.id','=', 'cases.crime_record_id')
+            ->select('cases.*', 'crime_register_record_information.people_id')
+            ->where('crime_record_id', '=', $id)
+            ->get();
+        return view('cases.case', compact('data'));
     }
 
     /**
@@ -50,7 +50,7 @@ class casecontroller extends Controller
 //            'description'=>'required',
 //        ]);
 //       $id= new \App\Models\crime_register_record_information();
-//       dd($id->id);
+//       dd($request->all());
 
         $save= new casemodel();
         $save->crime_record_id=$request->crime_record_id;
@@ -63,14 +63,8 @@ class casecontroller extends Controller
         $save->crime_location= $request->crime_type;
         $save->description= $request->description;
         $save->save();
-        return redirect()->route('case');
-
-
-
-
-
-
-
+        $id=$request->crime_record_id;
+        return redirect()->url('case/'. $id);
 
     }
 

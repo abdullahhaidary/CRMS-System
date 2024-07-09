@@ -31,7 +31,7 @@
                         <td class="m-0 p-0">
                             <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
                             <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
-                            <a href="criminal-view.html" class="btn btn-primary btn-sm">معلومات مکمل</a>
+                            <a href="{{route('criminal_all')}}" class="btn btn-primary btn-sm">معلومات مکمل</a>
                         </td>
                     </tr>
                     <tr class="mb-1">
@@ -43,7 +43,7 @@
                         <td class="m-0 p-0">
                             <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
                             <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
-                            <a href="criminal-view.html" class="btn btn-primary btn-sm">معلومات مکمل</a>
+                            <a href="{{route('criminal_all')}}" class="btn btn-primary btn-sm">معلومات مکمل</a>
                         </td>
                     </tr>
 
