@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('father_name');
             $table->timestamps();
 
-            $table->foreign('crime_record_id')->references('id')->on('cases')->onDelete('cascade');
+            $table->foreign('crime_record_id')->references('id')->on('crime_register_record_information')->onDelete('cascade');
         });
     }
 

@@ -53,16 +53,20 @@ class pepolecontroller extends Controller
 
 //dd($savedPeople->id);
         $save->save();
+
+
         $savedPeople = People::where('name', $save->name)->where('phone', $save->phone)->first();
 //        dd($savedPeople);
         $description = new crime_register_record_information();
         $description->people_id = $savedPeople->id;
         $description->description = $request->description;
         $description->save();
+
+
         $suspect= new suspectmodel();
 //        dd($request->all());
         $savedesc = crime_register_record_information::where('people_id', $savedPeople->id)->where('description', $description->description)->first();
-        $suspect->crime_record_id=$savedesc;
+        $suspect->crime_record_id=$savedesc->id;
         $suspect->name=$request->suspect_name;
 
         $suspect->last_name=$request->last_name;
