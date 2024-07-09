@@ -16,14 +16,14 @@ return new class extends Migration
             $table->unsignedBigInteger('crime_record_id');
             $table->string('name');
             $table->string('last_name');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('actual_address');
-            $table->string('current_address');
-            $table->string('father_name');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('actual_address')->nullable();
+            $table->string('current_address')->nullable();
+            $table->string('father_name')->nullable();
             $table->timestamps();
 
-            $table->foreign('crime_record_id')->references('id')->on('cases')->onDelete('cascade');
+            $table->foreign('crime_record_id')->references('id')->on('crime_register_record_information')->onDelete('cascade');
         });
     }
 

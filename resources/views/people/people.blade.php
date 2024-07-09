@@ -26,6 +26,7 @@
                     <th>موضوع شکایت</th>
                     <th>عریضه</th>
                     <th>توضیحات</th>
+                    <th>دیدن مظنونین</th>
                     <th>ACTION</th>
                 </tr>
                 </thead>
@@ -45,6 +46,7 @@
                         <td>{{$item->subject_crim}}</td>
                         <td><a href="{{url('ariza/arizafile')}}">عریضه</a></td>
                         <td><a href="{{url('crime/info/'.$item->id)}}">توضیحات</a></td>
+                        <td><a href="{{url('suspect_list/'.$item->id)}}">لیست مظنونین</a></td>
                         <td>
                             <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
                             <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
