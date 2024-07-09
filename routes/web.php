@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\suspectController;
 use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -58,9 +59,6 @@ Route::get('/criminalcontroller-from', [\App\Http\Controllers\criminalcontroller
 Route::post('/crminal-from', [\App\Http\Controllers\criminalcontroller::class, 'inset'])->name('criminal-from');
 
 
-Route::get('/fingerprint',function(){
-    return view('fingerprint');
-});
 
 
 //url user
@@ -72,6 +70,7 @@ Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name
 Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people');
 Route::get('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form');
 Route::post('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store');
+
 
 
 //url crime record information
@@ -89,3 +88,5 @@ Route::post('/department form', [\App\Http\Controllers\departmentContoller::clas
 Route::get('/case/{id}', [\App\Http\Controllers\casecontroller::class, 'index'])->name('case');
 Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'create'])->name('case-from');
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
+Route::get('/suspect_list/{id}',[suspectController::class,'index'])->name('suspect_list');
+Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');

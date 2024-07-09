@@ -11,6 +11,7 @@
                     <th scope="col">توضیحات</th>
                     <th scope="col">case</th>
                     <th scope="col">تاریخ ثبت</th>
+                    <th>ثبت فنگر</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,6 +22,7 @@
                     <td style="width: 60%">{{$item->description}}</td>
                     <td><a href="{{url('case/form/'.$item->id)}}">case</a></td>
                     <td>{{$item->created_at}}</td>
+                    {{-- <td><a href="{{route('finger_add')}}"></a></td> --}}
                 </tr>
                 @endforeach
                 </tbody>
