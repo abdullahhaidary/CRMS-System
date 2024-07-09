@@ -70,8 +70,8 @@ Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name
 
 //url people
 Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people');
-Route::get('/people from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form');
-Route::post('/people from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store');
+Route::get('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form');
+Route::post('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store');
 
 
 //url crime record information

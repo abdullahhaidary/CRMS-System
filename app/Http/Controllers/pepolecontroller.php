@@ -61,15 +61,18 @@ class pepolecontroller extends Controller
         $description->save();
         $suspect= new suspectmodel();
 //        dd($request->all());
-        $savedesc = crime_register_record_information::where('people_id ', $savedPeople->id)->where('description', $description->description)->first();
-        dd($savedesc);
+        $savedesc = crime_register_record_information::where('people_id', $savedPeople->id)->where('description', $description->description)->first();
         $suspect->crime_record_id=$savedesc;
         $suspect->name=$request->suspect_name;
+
         $suspect->last_name=$request->last_name;
+        // $suspect->father_name=>$request->
         $suspect->phone=$request->phone_number;
         $suspect->email=$request->email;
-        $suspect->address=$request->main_address;
-        $suspect->number_tezkra=$request->tazkera_number;
+        $suspect->actual_address=$request->main_address;
+        $suspect->current_address=$request->curent_address;
+
+        // $suspect->number_tezkra=$request->tazkera_number;
         $suspect->save();
 
         return redirect(route('people'))->with('success',"د شکایت کونکی معلومات ذخیره شول اوس معلومات اضافی داخل کړی");
