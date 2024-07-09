@@ -58,7 +58,9 @@ Route::get('/criminalcontroller-from', [\App\Http\Controllers\criminalcontroller
 Route::post('/crminal-from', [\App\Http\Controllers\criminalcontroller::class, 'inset'])->name('criminal-from');
 
 
-
+Route::get('/fingerprint',function(){
+    return view('fingerprint');
+});
 
 
 //url user
