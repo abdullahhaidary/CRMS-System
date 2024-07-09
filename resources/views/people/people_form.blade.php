@@ -78,7 +78,7 @@
                                         >تلفن</label
                                         >
                                         <input
-                                            type="text"
+                                            type="number"
                                             id="country-floating"
                                             class="form-control"
                                             name="phone"
@@ -111,7 +111,7 @@
                                             type="text"
                                             id="company-column"
                                             class="form-control"
-                                            name="main_address"
+                                            name="address"
                                             placeholder=" ادرس"
                                             data-parsley-required="true"
                                         />
@@ -186,8 +186,8 @@
                                     </div>
                                 </div>
 
-
                                 <hr class="mt-0 mb-3">
+
                                 <div class="col-md-12 col-12">
                                     <div class="form-group mandatory">
                                         <label for="email-id-column" class="form-label"
@@ -196,8 +196,97 @@
                                         <textarea name="description" id="discription" class="form-control"  data-parsley-required="true"></textarea>
                                     </div>
                                 </div>
-
-
+                                <hr>
+                                <h3 class="mb-2">فورم ثبت مضنون</h3>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group mandatory">
+                                        <label for="email-id-column" class="form-label"
+                                        > اسم متهم</label
+                                        >
+                                        <input
+                                            type="text"
+                                            id="email-id-column"
+                                            class="form-control"
+                                            name="suspect_name"
+                                            placeholder="اسم متهم "
+                                            data-parsley-required="true"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group mandatory">
+                                        <label for="suspect_last_name" class="form-label"
+                                        > تخلص متهم</label
+                                        >
+                                        <input
+                                            type="text"
+                                            id="email-id-column"
+                                            class="form-control"
+                                            name="last_name"
+                                            placeholder="تخلص متهم "
+                                            data-parsley-required="true"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group mandatory">
+                                        <label for="email-id-column" class="form-label"
+                                        >  ادرس </label
+                                        >
+                                        <input
+                                            type="text"
+                                            id="email-id-column"
+                                            class="form-control"
+                                            name="main_address"
+                                            placeholder=" ادرس متهم"
+                                            data-parsley-required="true"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city-column" class="form-label"> نمبر تذکره</label>
+                                        <input
+                                            type="number"
+                                            id="city-column"
+                                            class="form-control"
+                                            placeholder=" نمبر تذکره"
+                                            name="tazkera_number"
+                                            data-parsley-restricted-city="Jakarta"
+                                            data-parsley-required="true"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating" class="form-label"
+                                        >تلفن</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="country-floating"
+                                            class="form-control"
+                                            name="phone_number"
+                                            placeholder="شماره تماس"
+                                            data-parsley-required="true"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column" class="form-label"
+                                        > email</label
+                                        >
+                                        <input
+                                            type="text"
+                                            id="company-column"
+                                            class="form-control"
+                                            name="email"
+                                            placeholder=" email"
+                                            data-parsley-required="true"
+                                        />
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
