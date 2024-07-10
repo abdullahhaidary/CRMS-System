@@ -51,7 +51,7 @@
                                                 id="city-column"
                                                 class="form-control"
                                                 placeholder="پلار نوم"
-                                                name="city-column"
+                                                name="father_name"
                                                 data-parsley-restricted-city="Jakarta"
                                                 data-parsley-required="true"
                                             />
@@ -63,7 +63,7 @@
                                             >تلفن</label
                                             >
                                             <input
-                                                type="text"
+                                                type="number"
                                                 id="country-floating"
                                                 class="form-control"
                                                 name="phone"
@@ -111,7 +111,7 @@
                                                 type="text"
                                                 id="email-id-column"
                                                 class="form-control"
-                                                name="email-id-column"
+                                                name="current_address"
                                                 placeholder="آدرس فعلی"
                                                 data-parsley-required="true"
                                             />
@@ -129,7 +129,7 @@
                                         <label for="email-id-column mandatory" class="form-label"
                                         >جنسیت</label>
                                         <fieldset class="form-group">
-                                            <select class="form-select"  id="disabledSelect">
+                                            <select class="form-select" name="gender" id="disabledSelect">
                                                 <option>جنسیت</option>
                                                 <option value="1">نر</option>
                                                 <option value="0">زن</option>
@@ -147,13 +147,13 @@
                                             </select>
                                         </fieldset> -->
                                         <div class="form-check form-check-info">
-                                            <input class="form-check-input" type="radio" name="info" id="info" checked="">
+                                            <input class="form-check-input" type="radio" name="gender" id="info" checked="">
                                             <label class="form-check-label" for="info">
                                                 مجرد
                                             </label>
                                         </div>
                                         <div class="form-check form-check-info">
-                                            <input class="form-check-input" type="radio" name="info" id="info" checked="">
+                                            <input class="form-check-input" type="radio" name="gender" id="info" checked="">
                                             <label class="form-check-label" for="info">
                                                 متاهل
                                             </label>
@@ -170,6 +170,21 @@
                                                 class="form-control"
                                                 name="dateofbirth"
                                                 placeholder=" تاریخ تولد"
+                                                data-parsley-required="true"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group mandatory">
+                                            <label for="email-id-column" class="form-label"
+                                            >  تاریخ بازداشت</label
+                                            >
+                                            <input
+                                                type="date"
+                                                id="email-id-column"
+                                                class="form-control"
+                                                name="arrest_date"
+                                                placeholder=" تاریخ بازداشت"
                                                 data-parsley-required="true"
                                             />
                                         </div>
@@ -204,7 +219,31 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="email-id-column mandatory" class="form-label"
+                                        >مظنون</label>
+                                        <fieldset class="form-group">
+                                            <select class="form-select"  name="suspect" id="disabledSelect">
+                                                @foreach($data as $item)
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+{{--                                                <option value="0">زن</option>--}}
+                                                @endforeach
+                                            </select>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="email-id-column mandatory" class="form-label"
+                                        >case</label>
+                                        <fieldset class="form-group">
+                                            <select class="form-select" name="case"  id="disabledSelect">
+                                                @foreach($case as $item)
+                                                    <option value="{{$item->id}}">{{$item->case_number}}</option>
+                                                    {{--                                                <option value="0">زن</option>--}}
+                                                @endforeach
+                                            </select>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-12 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
                                             > توضیحات</label

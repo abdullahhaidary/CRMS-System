@@ -16,36 +16,38 @@
                         <th>تصویر</th>
                         <th>نوم</th>
                         <th>پلارن نوم</th>
-                        <th>آدرس</th>
+                        <th> فعلی آدرس</th>
                         <th>شماره موبایل</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($data as $item)
                     <tr class="mb-1">
                         <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">احمد</td>
-                        <td class="text-bold-500">عبدالولی</td>
-                        <td>کابل خوشحال خان</td>
-                        <td>۰۷۷۳۷۶۷۵۷۵۰</td>
+                        <td class="text-bold-500">{{$item->name}}</td>
+                        <td class="text-bold-500">{{$item->father_name}}</td>
+                        <td>{{$item->current_address}}</td>
+                        <td>{{$item->phone}}</td>
                         <td class="m-0 p-0">
                             <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
                             <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
-                            <a href="{{route('criminal_all')}}" class="btn btn-primary btn-sm">معلومات مکمل</a>
+                            <a href="{{url('/criminal/all/'. $item->id)}}" class="btn btn-primary btn-sm">معلومات مکمل</a>
                         </td>
                     </tr>
-                    <tr class="mb-1">
-                        <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">احمد</td>
-                        <td class="text-bold-500">عبدالولی</td>
-                        <td>کابل خوشحال خان</td>
-                        <td>۰۷۷۳۷۶۷۵۷۵۰</td>
-                        <td class="m-0 p-0">
-                            <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                            <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
-                            <a href="{{route('criminal_all')}}" class="btn btn-primary btn-sm">معلومات مکمل</a>
-                        </td>
-                    </tr>
+                    @endforeach
+{{--                    <tr class="mb-1">--}}
+{{--                        <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>--}}
+{{--                        <td class="text-bold-500">احمد</td>--}}
+{{--                        <td class="text-bold-500">عبدالولی</td>--}}
+{{--                        <td>کابل خوشحال خان</td>--}}
+{{--                        <td>۰۷۷۳۷۶۷۵۷۵۰</td>--}}
+{{--                        <td class="m-0 p-0">--}}
+{{--                            <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>--}}
+{{--                            <!-- <a href="#"><i class="fas fa-edit"></i></a> -->--}}
+{{--                            <a href="{{route('criminal_all')}}" class="btn btn-primary btn-sm">معلومات مکمل</a>--}}
+{{--                        </td>--}}
+{{--                    </tr>--}}
 
                     {{-- <tr>
                         <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>

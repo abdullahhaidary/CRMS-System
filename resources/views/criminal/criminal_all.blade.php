@@ -54,17 +54,17 @@
     <div class="text-center page-heading">
         <h1>معلومات مکمل یک مجریم </h1>
     </div>
-
+@foreach($data as $item)
     <div class="row details-card">
         <div class="col-lg-4 col-md-6 mb-4">
             <img src="https://via.placeholder.com/300" alt="Profile Picture" class="img-fluid">
             <div class="details-item">
                 <span class="details-label">اسم:</span>
-                <span class="details-value">Abdulwali Arian</span>
+                <span class="details-value">{{$item->name ." ".$item->last_name}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">اسم پدر:</span>
-                <span class="details-value">Abdulwali</span>
+                <span class="details-value">{{$item->father_name}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">حالت مدنی:</span>
@@ -206,6 +206,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     </div>
 
 {{--    <style>--}}

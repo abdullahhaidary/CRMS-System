@@ -17,6 +17,7 @@ class AuthController extends Controller
 
 
     public function login_page(){
+//        dd(hash::make(123456));
         if(Auth::user() && Auth::user()->action==1){
             return redirect('/');
         }

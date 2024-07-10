@@ -54,7 +54,7 @@ class casecontroller extends Controller
 
         $save= new casemodel();
         $save->crime_record_id=$request->crime_record_id;
-        $save->case_name= $request->case_name;
+//        $save->case_name= $request->case_name;
         $save->case_number= $request->case_number;
         $save->start_date= $request->start_date;
         $save->end_date= $request->end_date;

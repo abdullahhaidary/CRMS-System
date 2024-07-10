@@ -54,7 +54,7 @@ Route::fallback(function(){
 
 //crimnal url
 Route::get('/crimnal-list', [\App\Http\Controllers\criminalcontroller::class, 'index'])->name('crimnal');
-Route::get('/criminal all information', [\App\Http\Controllers\criminalcontroller::class, 'more'])->name('criminal_all');
+Route::get('/criminal/all/{id}', [\App\Http\Controllers\criminalcontroller::class, 'more'])->name('criminal_all');
 Route::get('/criminalcontroller-from', [\App\Http\Controllers\criminalcontroller::class, 'add'])->name('criminalcontroller-form');
 Route::post('/crminal-from', [\App\Http\Controllers\criminalcontroller::class, 'inset'])->name('criminal-from');
 
@@ -90,3 +90,9 @@ Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'cre
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
 Route::get('/suspect_list/{id}',[suspectController::class,'index'])->name('suspect_list');
 Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');
+
+
+
+// url suspect
+Route::get('/suspect/form/{id}', [suspectController::class, 'create'])->name('suspect_form');
+Route::post('/suspect/form', [suspectController::class, 'store'])->name('suspect_form_store');

@@ -7,7 +7,7 @@
                 <thead class="thead-dark">
                 <tr class="bg-info">
                     <th scope="col">#</th>
-                    <th scope="col">case name</th>
+{{--                    <th scope="col">case name</th>--}}
                     <th scope="col">crime Type</th>
                     <th scope="col">status</th>
                     <th scope="col">crime location </th>
@@ -21,7 +21,7 @@
                 @foreach($data as $item)
                     <tr>
                         <th scope="row">{{$item->id}}</th>
-                        <td>{{$item->case_name}}</td>
+{{--                        <td>{{$item->case_name}}</td>--}}
                         <td>{{$item->crime_type}}</td>
                         <td>{{$item->status}}</td>
                         <td>{{$item->crime_location}}</td>
