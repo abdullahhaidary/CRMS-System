@@ -22,7 +22,9 @@ Route::get('language/{local}',function($local){
 
 
 //Route::group(['middleware'=>'auth'],function (){
-
+Route::get('/search',function(){
+    return view('search');
+});
 
 Route::get('/login',[AuthController::class,'login_page'])->name('login');
 Route::get('register',[AuthController::class,'register_page'])->name('register');
