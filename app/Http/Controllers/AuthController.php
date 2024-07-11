@@ -55,9 +55,8 @@ class AuthController extends Controller
             return view('profile.profile-suggestion');
         }
 
-    else {
+    }else {
         return back()->withErrors(['email' => 'Invalid credentials']);
-    }
     }
     }
 
