@@ -24,13 +24,13 @@ class isAdmin
             }
             else{
                 Auth::logout();
-                return redirect(url('/'));
+                return redirect(url('/login'));
             }
         }
         else
         {
             Auth::logout();
-            return redirect(url('/'));
+            return redirect(url('/login'));
         }
     }
     /**/

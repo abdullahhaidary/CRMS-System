@@ -2,7 +2,7 @@
 @section('content')
 @foreach($suspects as $suspect)
 <div class="page-heading">
-    <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت مظنون جدید  </a>
+    <a href="{{url('/suspect/form/'. $suspect->id)}}" class="btn btn-outline-primary btn-light"> ثبت مظنون جدید  </a>
 </div>
 <div class="page-heading">
     <h3>افراد مظنون</h3>

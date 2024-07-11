@@ -21,6 +21,8 @@ Route::get('language/{local}',function($local){
 });
 
 
+//Route::group(['middleware'=>'auth'],function (){
+
 
 Route::get('/login',[AuthController::class,'login_page'])->name('login');
 Route::get('register',[AuthController::class,'register_page'])->name('register');
@@ -28,7 +30,7 @@ Route::get('/forgot-password', [AuthController::class, 'forget_page'])->name('pa
 Route::post('/forgot-password', [AuthController::class, 'forget']);
 Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::post('/register',[AuthController::class,'register'])->name('register');
-
+//});
 Route::post('/forgot-password',[AuthController::class,'forget'])->middleware('guest')->name('password.email');
 Route::get('/reset-password/{token}',[AuthController::class,'forget_token'])->middleware('guest')->name('password.reset');
 Route::post('/profile_change',[AuthController::class,'profile_change'])->middleware('auth')->name('profile_change');
@@ -54,15 +56,16 @@ Route::fallback(function(){
 
 //crimnal url
 Route::get('/crimnal-list', [\App\Http\Controllers\criminalcontroller::class, 'index'])->name('crimnal');
-Route::get('/criminal all information', [\App\Http\Controllers\criminalcontroller::class, 'more'])->name('criminal_all');
+Route::get('/criminal/all/{id}', [\App\Http\Controllers\criminalcontroller::class, 'more'])->name('criminal_all');
 Route::get('/criminalcontroller-from', [\App\Http\Controllers\criminalcontroller::class, 'add'])->name('criminalcontroller-form');
 Route::post('/crminal-from', [\App\Http\Controllers\criminalcontroller::class, 'inset'])->name('criminal-from');
-
+Route::get('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_edit');
+Route::post('criminal/edit', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_update');
 
 
 
 //url user
-Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user');
+Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user')->middleware('auth');
 
 
 
@@ -90,4 +93,9 @@ Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'cre
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
 Route::get('/suspect_list/{id}',[suspectController::class,'index'])->name('suspect_list');
 Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');
-Route::post('/fingerprints_store',[suspectController::class,'store_finger_print'])->name('store_finger_print');
+
+
+
+// url suspect
+Route::get('/suspect/form/{id}', [suspectController::class, 'create'])->name('suspect_form');
+Route::post('/suspect/form', [suspectController::class, 'store'])->name('suspect_form_store');

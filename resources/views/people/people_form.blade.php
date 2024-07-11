@@ -97,7 +97,7 @@
                                             id="country-floating"
                                             class="form-control"
                                             name="email"
-                                            placeholder=" ایمیل"
+                                            placeholder="ایمیل"
                                             data-parsley-required="true"
                                         />
                                     </div>
@@ -275,13 +275,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-column" class="form-label"
-                                        > email</label
+                                        > ادرس فعلی</label
                                         >
                                         <input
                                             type="text"
                                             id="company-column"
                                             class="form-control"
-                                            name="email"
+                                            name="suspect_email"
                                             placeholder=" email"
                                             data-parsley-required="true"
                                         />

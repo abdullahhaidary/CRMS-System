@@ -24,9 +24,9 @@ class pepolecontroller extends Controller
     }
     public function store(Request $request)
     {
+//        dd($request->all());
         $save= new people();
-//dd($request->all());
-//
+
         if (!empty($request->ariza_file)) {
             $exe = $request->file('ariza_file')->getClientOriginalExtension();
 //            dd($exe);
@@ -66,13 +66,19 @@ class pepolecontroller extends Controller
         $suspect= new suspectmodel();
 //        dd($request->all());
         $savedesc = crime_register_record_information::where('people_id', $savedPeople->id)->where('description', $description->description)->first();
+//<<<<<<< HEAD
+//        dd($savedesc);
+//        $suspect->crime_record_id=$savedesc;
+//=======
+
         $suspect->crime_record_id=$savedesc->id;
+//>>>>>>> refs/remotes/origin/main
         $suspect->name=$request->suspect_name;
 
         $suspect->last_name=$request->last_name;
         // $suspect->father_name=>$request->
         $suspect->phone=$request->phone_number;
-        $suspect->email=$request->email;
+        $suspect->email=$request->suspect_email;
         $suspect->actual_address=$request->main_address;
         $suspect->current_address=$request->curent_address;
 
