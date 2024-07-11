@@ -6,6 +6,67 @@
     <title>Complete Profile</title>
     <style>
         body {
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .form-title {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-group label {
+            font-weight: 600;
+        }
+        .form-control {
+            border-radius: 8px;
+        }
+        .custom-file-label::after {
+            content: "Browse";
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-success {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        .profile-image-preview {
+            margin-top: 15px;
+        }
+        .profile-image-preview img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 50%;
+        }
+
+
+
+
+
+
+        body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             display: flex;
@@ -32,40 +93,14 @@
         input[type="file"] {
             display: none;
         }
-        label.upload-btn {
-            display: inline-block;
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        label.upload-btn:hover {
-            background-color: #0056b3;
-        }
-        button.submit-btn {
-            background-color: #28a745;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button.submit-btn:hover {
-            background-color: #218838;
-        }
-        /* Additional styling for form elements */
-        input[type="date"],
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
     </style>
     <link rel="stylesheet" href="{{asset('dist/css/font-awesome.css')}}">
+
+    <link rel="stylesheet" href="{{@asset('dist2/css/app-dark.rtl.css')}}">
+    <link rel="stylesheet" href="{{@asset('dist2/css/app.rtl.css')}}">
+    <link rel="stylesheet" href="{{@asset('dist2/css/iconly.css')}}">
+
+    <link rel="stylesheet" href="{{@asset('dist2/css/style.css')}}">
 </head>
 <body>
     <div class="profile-container">
@@ -79,20 +114,27 @@
                 @endforeach
             </div>
         @endif
-        <form action="{{route('profile.complete')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <!-- Date of Birth -->
-            <input type="date" name="dob" id="dob" placeholder="Date of Birth" required>
-            <!-- Country Selection -->
-            <hr>
-            <!-- Upload Profile Picture -->
-            <input type="file" id="profile-image" name="profile_image" accept="image/*" onchange="previewProfileImage(event)" required>
-            <label for="profile-image" class="upload-btn">Upload Image</label>
-            <!-- Submit Button -->
-            <button type="submit" class="submit-btn">Complete</button>
-        </form>
-    </div>
 
+                <form action="{{route('profile.complete')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <!-- Old Password -->
+                    <div class="form-group">
+                        <label for="old_password">پخوانی فاسورد:</label>
+                        <input type="password" name="old_password" required class="form-control" id="old_password" placeholder="پخوانی فاسورد...">
+                    </div>
+                    <!-- New Password -->
+                    <div class="form-group">
+                        <label for="new_password">نوی فاسورد:</label>
+                        <input type="password" name="new_password" required class="form-control" id="new_password" placeholder="نوی فاسورد...">
+                    </div>
+                    <!-- Date of Birth -->
+                    <div class="form-group">
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Complete</button>
+                </form>
+            </div>
     <script>
         function previewProfileImage(event) {
             const input = event.target;
