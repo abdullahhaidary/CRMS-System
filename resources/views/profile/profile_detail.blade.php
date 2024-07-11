@@ -11,7 +11,7 @@ Profile Details
                         <i class="fas fa-arrow-left"></i>
                     </a>
 
-                    <img src="{{asset('storage/app/public/profiles/'.Auth::user()->picture)}}" alt="">
+                    <img src="{{ Storage::url('profiles/' . Auth::user()->picture) }}" alt="">
                     <div class="plus" onclick="openProfileImageDialog()">+</div>
                 </div>
                 <div class="d-flex justify-content-center" style="font-size:25pt;">

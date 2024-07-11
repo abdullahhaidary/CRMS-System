@@ -90,6 +90,10 @@
             object-fit: cover;
             margin-bottom: 20px;
         }
+
+        .profile-image:hover{
+            cursor:pointer;
+        }
         input[type="file"] {
             display: none;
         }
@@ -106,7 +110,7 @@
     <div class="profile-container">
         <i class="fa fa-user-circle fa-3x"></i>
         <h2>Complete Your Profile</h2>
-        <img src="{{ asset('images/profile_avatar.png') }}" alt="Profile Picture" class="profile-image" id="profile-preview">
+        <img src="{{ asset('images/profile_avatar.png') }}" onclick="triggerFileInput()" alt="Profile Picture" class="profile-image" id="profile-preview">
         @if($errors->any())
             <div>
                 @foreach($errors->all() as $error)
@@ -118,6 +122,8 @@
                 <form action="{{route('profile.complete')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <!-- Old Password -->
+                    <input type="file" id="profile-image" name="profile_image" accept="image/*" onchange="previewProfileImage(event)" required>
+
                     <div class="form-group">
                         <label for="old_password">پخوانی فاسورد:</label>
                         <input type="password" name="old_password" required class="form-control" id="old_password" placeholder="پخوانی فاسورد...">
@@ -136,7 +142,11 @@
                 </form>
             </div>
     <script>
+                function triggerFileInput() {
+            document.getElementById('profile-image').click();
+        }
         function previewProfileImage(event) {
+
             const input = event.target;
             if (input.files && input.files[0]) {
                 const reader = new FileReader();

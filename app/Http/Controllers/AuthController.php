@@ -153,34 +153,42 @@ class AuthController extends Controller
 
 
     public function complete_profile(Request $request){
-        $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
-        $currenDate=Carbon::now();
+        // $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
+        // $currenDate=Carbon::now();
         // if($dob->diffInYears($currenDate)<14){
         //     return redirect()->back()->with(['age_error',"You are Below the Minumum Age Requirements"]);
         // }
 
         $validate = $request->validate([
             'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'action'=>'required|max:1'
+            'old_password' => 'required',
+            'new_password' => 'required|min:8', // Optionally, you can add more validation rules for the new password
+            'dob' => 'required|date'
         ]);
-        $user = User::updateOrCreate(
-            ['id' => Auth::user()->id],
-        );
 
-        // Handle profile image upload if provided
-        if ($request->hasFile('profile_image')) {
-            $image = $request->file('profile_image');
-            $image_name = $image->hashName(); // Generate a unique name for the image
-            $user->picture = $image_name; // Update the user's profile picture attribute
-            // Store the image in the storage
-            $image->storeAs('profiles/', $image_name);
-            $validate->action=$request->action;
+        $user = Auth::user();
+
+        // Check if the old password matches
+        if (Hash::check($request->old_password, $user->password)) {
+            // Update the password
+            $user->password = Hash::make($request->new_password);
+            // $user->dob = $request->dob;
+
+            // Handle the profile image upload if necessary
+            if ($request->hasFile('profile_image')) {
+                $image = $request->file('profile_image');
+                $image_name = $image->hashName(); // Generate a unique name for the image
+                $user->picture = $image_name; // Update the user's profile picture attribute
+                // Store the image in the storage
+                $image->storeAs('public/profiles/', $image_name);
+            }
+
+            $user->save();
+            return redirect('/profile');
+        } else {
+            return back()->withErrors(['old_password' => 'The provided old password does not match our records.']);
         }
 
-        // Save the changes to the user model
-        $user->save();
-
-        return redirect('/profile');
     }
 
 
