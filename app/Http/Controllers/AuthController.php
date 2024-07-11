@@ -53,6 +53,8 @@ class AuthController extends Controller
     if (Auth::attempt($credentials)) {
         if (Auth::user()->picture == null && Auth::user()->action==1) {
             return view('profile.profile-suggestion');
+        }else{
+            return redirect()->route('home');
         }
 
     }else {
