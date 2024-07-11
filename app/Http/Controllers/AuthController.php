@@ -170,20 +170,24 @@ class AuthController extends Controller
 
         // Check if the old password matches
         if (Hash::check($request->old_password, $user->password)) {
-            // Update the password
-            $user->password = Hash::make($request->new_password);
-            // $user->dob = $request->dob;
+            if (!Hash::check($request->new_password, $user->password)) {
+                // Update the password
+                $user->password = Hash::make($request->new_password);
 
-            // Handle the profile image upload if necessary
-            if ($request->hasFile('profile_image')) {
-                $image = $request->file('profile_image');
-                $image_name = $image->hashName(); // Generate a unique name for the image
-                $user->picture = $image_name; // Update the user's profile picture attribute
-                // Store the image in the storage
-                $image->storeAs('public/profiles/', $image_name);
+                // Handle the profile image upload if necessary
+                if ($request->hasFile('profile_image')) {
+                    $image = $request->file('profile_image');
+                    $image_name = $image->hashName(); // Generate a unique name for the image
+                    $user->picture = $image_name; // Update the user's profile picture attribute
+
+                    // Store the image in the 'public/profiles' directory
+                    $image->storeAs('public/profiles', $image_name);
+                }
+                $user->save();
+            }else{
+                return back()->withErrors(['new_password' => 'The new password cannot be the same as the old password.']);
             }
 
-            $user->save();
             return redirect('/profile');
         } else {
             return back()->withErrors(['old_password' => 'The provided old password does not match our records.']);
