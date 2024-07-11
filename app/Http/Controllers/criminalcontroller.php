@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\criminal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use function Laravel\Prompts\select;
 
 class criminalcontroller extends Controller
@@ -59,9 +60,20 @@ class criminalcontroller extends Controller
         // ]);
 //        dd($request->all());
         $save= new criminal();
+
+        if (!empty($request->photo)) {
+            $exe = $request->file('photo')->getClientOriginalExtension();
+//            dd($exe);
+            $file = $request->file('photo');
+            $rename = str::random(20);
+            $filename = $rename . '.' . $exe;
+            $file->move('criminal/', $filename);
+            $save->photo = $filename;
+        }
+
         $save->suspect_id= $request->suspect;
         $save->case_id= $request->case;
-        $save->name= $request->name;
+        $save->criminal_name= $request->name;
         $save->last_name= $request->lname;
         $save->father_name= $request->father_name;
         $save->phone= $request->phone;
@@ -77,34 +89,28 @@ class criminalcontroller extends Controller
         $save->save();
 
         return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
-
-
-
-//        $criminal = new criminal([
-//            'name' => $request->input('name'),
-//            'last_name' => $request->input('lname'),
-//            'father_name' => $request->input('father_name'),
-//            'phone' => $request->input('phone'),
-//            'email' => $request->input('email'),
-//            'current_address' => $request->input('current_address'),
-//            'actual_address' => $request->input('actual_address'),
-//            'date_of_birth' => $request->input('dateofbirth'),
-//            'gender' => $request->input('gender'),
-//            'job' => $request->input('job'),
-//            'marital_status' => $request->input('marital_status'),
-//            'family_members' => $request->input('familymember'),
-//            'description' => $request->input('discription'),
-//        ]);
-
-//        if ($request->hasFile('photo')) {
-//            $file = $request->file('photo');
-//            $path = $file->store('photos', 'public');
-//            $criminal->photo_path = $path;
-//        }
-
-//        $criminal->save();
-
-//        return redirect()->route('criminal.index')->with('success', 'Criminal record created successfully.');
-
+    }
+    public function edit($id)
+    {
+//        dd($id);
+        $data=DB::table('suspect')
+            ->select('suspect.*')
+//            ->where('id', '=', $id)
+            ->get();
+        $case=DB::table('cases')
+            ->select('cases.*')
+//            ->where('id', '=', $id)
+            ->get();
+        $criminal=DB::table('criminals')
+            ->join('suspect', 'suspect.id', '=', 'criminals.suspect_id')
+            ->join('cases','cases.id','=', 'criminals.case_id')
+            ->select('criminals.*', 'suspect.name', 'cases.case_number')
+            ->where('criminals.id','=', $id)
+        ->get();
+        return view('criminal.edit', compact('case','data','criminal'));
+    }
+    public function update(Request $request)
+    {
+        dd($request->all());
     }
 }

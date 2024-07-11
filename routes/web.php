@@ -21,6 +21,8 @@ Route::get('language/{local}',function($local){
 });
 
 
+//Route::group(['middleware'=>'auth'],function (){
+
 
 Route::get('/login',[AuthController::class,'login_page'])->name('login');
 Route::get('register',[AuthController::class,'register_page'])->name('register');
@@ -28,7 +30,7 @@ Route::get('/forgot-password', [AuthController::class, 'forget_page'])->name('pa
 Route::post('/forgot-password', [AuthController::class, 'forget']);
 Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::post('/register',[AuthController::class,'register'])->name('register');
-
+//});
 Route::post('/forgot-password',[AuthController::class,'forget'])->middleware('guest')->name('password.email');
 Route::get('/reset-password/{token}',[AuthController::class,'forget_token'])->middleware('guest')->name('password.reset');
 Route::post('/profile_change',[AuthController::class,'profile_change'])->middleware('auth')->name('profile_change');
@@ -57,12 +59,13 @@ Route::get('/crimnal-list', [\App\Http\Controllers\criminalcontroller::class, 'i
 Route::get('/criminal/all/{id}', [\App\Http\Controllers\criminalcontroller::class, 'more'])->name('criminal_all');
 Route::get('/criminalcontroller-from', [\App\Http\Controllers\criminalcontroller::class, 'add'])->name('criminalcontroller-form');
 Route::post('/crminal-from', [\App\Http\Controllers\criminalcontroller::class, 'inset'])->name('criminal-from');
-
+Route::get('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_edit');
+Route::post('criminal/edit', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_update');
 
 
 
 //url user
-Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user');
+Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user')->middleware('auth');
 
 
 

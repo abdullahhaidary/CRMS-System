@@ -51,68 +51,74 @@
     </style>
 
 <div class="container">
+    @foreach($data as $item)
     <div class="text-center page-heading">
+        <div class="nav text-right">
+            <a class="link-item mx-2 btn btn-info" href="{{url('criminal/edit/'.$item->id)}}">Edit</a>
+            <a class="link-item btn btn-danger" href="{{url('criminal/delete/'.$item->id)}}">Delete</a>
+{{--            <a class="link-item" href="">back</a>--}}
+        </div>
         <h1>معلومات مکمل یک مجریم </h1>
     </div>
-@foreach($data as $item)
     <div class="row details-card">
         <div class="col-lg-4 col-md-6 mb-4">
-            <img src="https://via.placeholder.com/300" alt="Profile Picture" class="img-fluid">
+            <img src="{{asset('criminal/'. $item->photo)}}" alt="Profile Picture" class="img-fluid">
             <div class="details-item">
                 <span class="details-label">اسم:</span>
-                <span class="details-value">{{$item->name ." ".$item->last_name}}</span>
+                <span class="details-value">{{$item->criminal_name ." ".$item->last_name}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">اسم پدر:</span>
                 <span class="details-value">{{$item->father_name}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">حالت مدنی:</span>
-                <span class="details-value">Male</span>
+                <span class="details-label">جنسیت</span>
+                <span class="details-value">{{$item->gender}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">سن:</span>
-                <span class="details-value">23</span>
+                <span class="details-value">{{$item->date_of_birth}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">شغل:</span>
-                <span class="details-value">Student</span>
+                <span class="details-value">{{$item->job}}</span>
             </div>
         </div>
         <div class="col-lg-8 col-md-6">
             <h4 class="section-title">معلومات شخصی </h4>
+
             <div class="details-item">
                 <span class="details-label">ایدی:</span>
-                <span class="details-value">1</span>
+                <span class="details-value">{{$item->id}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">ایمیل:</span>
-                <span class="details-value">abdulwaliaryan@gmail.com</span>
+                <span class="details-value">{{$item->email}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">تماس:</span>
-                <span class="details-value">0773767570</span>
+                <span class="details-value">{{$item->phone}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">ادرس اصلی :</span>
-                <span class="details-value">Kabul, Afghanistan, Shahr-e-Naw</span>
+                <span class="details-value">{{$item->actual_address}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">ادرس فعلی :</span>
-                <span class="details-value">Ghazni, Gilan</span>
+                <span class="details-value">{{$item->current_address}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">عضو فامیل :</span>
-                <span class="details-value">Arian</span>
+                <span class="details-value">{{$item->family_members}}</span>
             </div>
             <h4 class="section-title mt-4">مشخصات جرم </h4>
             <div class="details-item">
                 <span class="details-label"> تاریخ ثبت:</span>
-                <span class="details-value">2024-05-02 08:45 PM</span>
+                <span class="details-value">{{$item->created_at}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">تاریخ جرم :</span>
-                <span class="details-value">2024-05-02 08:45 PM</span>
+                <span class="details-value">{{$item->arrest_date}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">Created At:</span>
@@ -124,9 +130,7 @@
             </div>
             <div class="details-item">
                 <span class="details-label">توضیحات:</span>
-                <span class="details-value">Rashid Khan is a notorious criminal known for
-                    stealing the hearts of many Afghans Rashid Khan
-                    is a notorious criminal known for stealing the hearts of many Afghans.</span>
+                <span class="details-value">{{$item->marital_status}}</span>
             </div>
         </div>
     </div>

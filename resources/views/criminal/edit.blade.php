@@ -10,9 +10,10 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form method="post" action="{{route('criminal-from')}}" enctype="multipart/form-data" class="form" data-parsley-validate>
+                            <form method="post" action="{{route('criminal_update')}}" enctype="multipart/form-data" class="form" data-parsley-validate>
                                 @csrf()
                                 <div class="row">
+                                    @foreach($criminal as $value)
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="first-name-column" class="form-label"
@@ -24,6 +25,7 @@
                                                 class="form-control"
                                                 placeholder="نوم"
                                                 name="name"
+                                                value="{{$value->criminal_name}}"
                                                 data-parsley-required="true"
                                             />
                                         </div>
@@ -39,6 +41,7 @@
                                                 class="form-control"
                                                 placeholder="تخلص"
                                                 name="lname"
+                                                value="{{$value->last_name}}"
                                                 data-parsley-required="true"
                                             />
                                         </div>
@@ -52,6 +55,7 @@
                                                 class="form-control"
                                                 placeholder="پلار نوم"
                                                 name="father_name"
+                                                value="{{$value->father_name}}"
                                                 data-parsley-restricted-city="Jakarta"
                                                 data-parsley-required="true"
                                             />
@@ -67,6 +71,7 @@
                                                 id="country-floating"
                                                 class="form-control"
                                                 name="phone"
+                                                value="{{$value->phone}}"
                                                 placeholder="شماره تماس"
                                                 data-parsley-required="true"
                                             />
@@ -82,6 +87,7 @@
                                                 id="company-column"
                                                 class="form-control"
                                                 name="email"
+                                                value="{{$value->email}}"
                                                 placeholder="ایمیل ادرس"
                                                 data-parsley-required="true"
                                             />
@@ -97,6 +103,7 @@
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="address"
+                                                value="{{$value->name}}"
                                                 placeholder="آدرس اصلی"
                                                 data-parsley-required="true"
                                             />
@@ -112,6 +119,7 @@
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="current_address"
+                                                value="{{$value->current_address}}"
                                                 placeholder="آدرس فعلی"
                                                 data-parsley-required="true"
                                             />
@@ -130,9 +138,14 @@
                                         >جنسیت</label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="gender" id="disabledSelect">
-                                                <option>جنسیت</option>
+                                                @if($value->gender=="male")
                                                 <option value="male">نر</option>
+
+                                                @elseif($value->gender=="female")
                                                 <option value="female">زن</option>
+                                                @endif
+                                                        <option value="male">نر</option>
+                                                     <option value="female">زن</option>
                                             </select>
                                         </fieldset>
                                     </div>
@@ -169,6 +182,7 @@
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="dateofbirth"
+                                                value="{{$value->date_of_birth}}"
                                                 placeholder=" تاریخ تولد"
                                                 data-parsley-required="true"
                                             />
@@ -184,6 +198,7 @@
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="arrest_date"
+                                                value="{{$value->arrest_date}}"
                                                 placeholder=" تاریخ جرم"
                                                 data-parsley-required="true"
                                             />
@@ -199,6 +214,7 @@
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="familymember"
+                                                value="{{$value->family_members}}"
                                                 placeholder=" عضو فامیل"
                                                 data-parsley-required="true"
                                             />
@@ -214,6 +230,7 @@
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="job"
+                                                value="{{$value->job}}"
                                                 placeholder=" وظیفه"
                                                 data-parsley-required="true"
                                             />
@@ -224,10 +241,9 @@
                                         >مظنون</label>
                                         <fieldset class="form-group">
                                             <select class="form-select"  name="suspect" id="disabledSelect">
-                                                <option>اتیخاب مضنون</option>
-                                            @foreach($data as $item)
-                                                    <option value="{{$item->id}}">{{$item->name}}</option>
-{{--                                                <option value="0">زن</option>--}}
+                                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                             @foreach($data as $item)
+                                                 <option value="{{$item->id}}">{{$item->name}}</option>
                                                 @endforeach
                                             </select>
                                         </fieldset>
@@ -237,10 +253,9 @@
                                         >case</label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="case"  id="disabledSelect">
-                                                <option>اتیخاب case</option>
+                                                <option value="{{$value->id}}">{{$value->case_number}}</option>
                                             @foreach($case as $item)
                                                     <option value="{{$item->id}}">{{$item->case_number}}</option>
-                                                    {{--                                                <option value="0">زن</option>--}}
                                                 @endforeach
                                             </select>
                                         </fieldset>
@@ -248,13 +263,18 @@
                                     <div class="col-md-12 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > توضیحات</label
-                                            >
-                                            <textarea name="discription" id="discription" class="form-control"  data-parsley-required="true"></textarea>
+                                            > توضیحات</label>
+                                            <textarea
+                                                name="discription"
+                                                      id="discription"
+                                                      class="form-control"
+                                                      data-parsley-required="true">
+
+                                            </textarea>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
-
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
@@ -277,3 +297,4 @@
     </section>
     <!-- criminalcontroller from end -->
 @endsection
+

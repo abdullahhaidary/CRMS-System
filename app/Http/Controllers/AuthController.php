@@ -172,9 +172,8 @@ class AuthController extends Controller
             $image = $request->file('profile_image');
             $image_name = $image->hashName(); // Generate a unique name for the image
             $user->picture = $image_name; // Update the user's profile picture attribute
-
             // Store the image in the storage
-            $image->storeAs('public/profiles', $image_name);
+            $image->storeAs('profiles/', $image_name);
             $validate->action=$request->action;
         }
 
