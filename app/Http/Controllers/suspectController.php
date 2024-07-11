@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FingerprintModel;
 use App\Models\suspectmodel;
 use Illuminate\Http\Request;
 
@@ -15,5 +16,15 @@ class suspectController extends Controller
     public function finger_print_add($id){
         $suspect = suspectmodel::find($id)->first();
         return view('suspect.suspect_finger_add',compact('suspect'));
+    }
+
+    public function store_finger_print(Request $request){
+        $fingerprints = new FingerprintModel();
+        $fingerprints->suspect_id = $request->id;
+        $fingerprints->right_thumb = $request->RightThumb;
+        $fingerprints->left_thumb = $request->LeftThumb;
+        $fingerprints->right_index = $request->RightIndex;
+        $fingerprints->left_index = $request->LeftIndex;
+        $fingerprints->save();
     }
 }

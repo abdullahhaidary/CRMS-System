@@ -90,3 +90,4 @@ Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'cre
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
 Route::get('/suspect_list/{id}',[suspectController::class,'index'])->name('suspect_list');
 Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');
+Route::post('/fingerprints_store',[suspectController::class,'store_finger_print'])->name('store_finger_print');
