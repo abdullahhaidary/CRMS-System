@@ -47,8 +47,9 @@ class AuthController extends Controller
 
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|min:2',
         ]);
+        // test message added for another commit
 
     if (Auth::attempt($credentials)) {
         if (Auth::user()->picture == null && Auth::user()->action==1) {
