@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 Route::middleware(['auth', 'lang'])->get('/',function(){
 
     return view('layout.home');
-});
+})->name('home');
 Route::get('language/{local}',function($local){
     app()->setLocale($local);
     session()->put('locale',$local);

@@ -1,8 +1,14 @@
 @extends('layout.mian-dashbord')
+
 @section('content')
-<link rel="stylesheet" href="{{asset('dist/css/font-awsome.css')}}">
+<link rel="stylesheet" href="{{ asset('dist/css/font-awsome.css') }}">
 <div class="container">
-    <form action="post" action="{{}}">
+    <form id="finger_form" method="POST" action="{{ route('store_finger_print') }}">
+        @csrf
+        <div class="form-group">
+            <label hidden for="id">id</label>
+            <input hidden type="text" class="form-control" name="id" id="id">
+        </div>
         <div class="form-group">
             <label hidden for="LeftThumb">Left Thumb</label>
             <input hidden type="text" class="form-control" name="LeftThumb" id="LeftThumb">
@@ -11,12 +17,10 @@
             <label hidden for="RightThumb">Right Thumb</label>
             <input hidden type="text" class="form-control" name="RightThumb" id="RightThumb">
         </div>
-
         <div class="form-group">
             <label hidden for="LeftIndex">Left Index</label>
             <input hidden type="text" class="form-control" name="LeftIndex" id="LeftIndex">
         </div>
-
         <div class="form-group">
             <label hidden for="RightIndex">Right Index</label>
             <input hidden type="text" class="form-control" name="RightIndex" id="RightIndex">
@@ -28,61 +32,43 @@
         <div class="row">
             <div class="col-md-10">
                 <p>Criminal Fingerprint</p>
-                <div class="d-flex flex-row">
-                    <div class="p-5 d-flex flex-column">
-                        <div>
-                            <i onclick="captureFP(1)" class="fa-solid fa-fingerprint" style="font-size:40pt;cursor:pointer"></i>
-                        </div>
-                        <div>
-                            <p>Left Thumb</p>
-                        </div>
-                    </div>
-                    <div class="p-5 d-flex flex-column">
-                        <div>
-                            <i onclick="captureFP(2)" class="fa-solid fa-fingerprint" style="font-size:40pt;cursor:pointer"></i>
-                        </div>
-                        <div>
-                            <p>Left Index</p>
-                        </div>
-                    </div>
-                    <div class="p-5 d-flex flex-column">
-                        <div>
-                            <i onclick="captureFP(3)" class="fa-solid fa-fingerprint" style="font-size:40pt;cursor:pointer"></i>
-                        </div>
-                        <div>
-                            <p>Right Thumb</p>
-                        </div>
-                    </div>
-                    <div class="p-5 d-flex flex-column">
-                        <div>
-                            <i onclick="captureFP(4)" class="fa-solid fa-fingerprint" style="font-size:40pt;cursor:pointer"></i>
-                        </div>
-                        <div>
-                            <p>Right Index</p>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
-                    <table width="1012" border="0" align="center" cellpadding="0" cellspacing="0">
-                        <tr align="center">
-                            <td class="auto-style2" align="right" valign="top">&nbsp;</td>
-                            <td class="style3">
-                                <span class="download_href">
-                                    <img id="FPImage1" alt="Fingerpint Image" height="300" width="210" align="center" src="Image/PlaceFinger.bmp"> <br>
-                                    <input type="submit" value="Click to Scan" onclick="captureFP()"><br>
-                                    <br>
-                                    <p id="result"></p>
-                                </span>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="style2">&nbsp;</td>
-                            <td class="style3">&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                    </table>
+                    <div class="col-12 justify-content-between d-flex flex-row">
+                        <div class="p-5 d-flex flex-column">
+                            <div>
+                                <i onclick="captureFP(1)" id="1" class="fas fa-fingerprint" style="font-size:40pt;cursor:pointer"></i>
+                            </div>
+                            <div>
+                                <p>Left Thumb</p>
+                            </div>
+                        </div>
+                        <div class="p-5 d-flex flex-column">
+                            <div>
+                                <i onclick="captureFP(2)" id="2" class="fas fa-fingerprint" style="font-size:40pt;cursor:pointer"></i>
+                            </div>
+                            <div>
+                                <p>Left Index</p>
+                            </div>
+                        </div>
+                        <div class="p-5 d-flex flex-column">
+                            <div>
+                                <i onclick="captureFP(3)" id="3" class="fas fa-fingerprint" style="font-size:40pt;cursor:pointer"></i>
+                            </div>
+                            <div>
+                                <p>Right Thumb</p>
+                            </div>
+                        </div>
+                        <div class="p-5 d-flex flex-column">
+                            <div>
+                                <i onclick="captureFP(4)" id="4" class="fas fa-fingerprint" style="font-size:40pt;cursor:pointer"></i>
+                            </div>
+                            <div>
+                                <p>Right Index</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <button type="submit" onclick="document.getElementById('finger_form').submit()" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </main>
@@ -142,57 +128,22 @@
 
     function SuccessFunc(result, index) {
         if (result.ErrorCode == 0) {
-            if (result != null && result.BMPBase64.length > 0) {
-                document.getElementById("FPImage1").src = "data:image/bmp;base64," + result.BMPBase64;
-            }
-            // var tbl = "<table style=\"border: 1px solid black\">";
-            // tbl += "<tr>";
-            // tbl += "<td style=\"border: 1px solid black\"> Serial Number of Device</td>";
-            // tbl += "<td style=\"border: 1px solid black\"> <b>" + result.SerialNumber + "</b> </td>";
-            // tbl += "</tr>";
-            // tbl += "<tr>";
-            // tbl += "<td style=\"border: 1px solid black\"> Image Height</td>";
-            // tbl += "<td style=\"border: 1px solid black\"> <b>" + result.ImageHeight + "</b> </td>";
-            // tbl += "</tr>";
-            // tbl += "<tr>";
-            // tbl += "<td style=\"border: 1px solid black\"> Image Width</td>";
-            // tbl += "<td style=\"border: 1px solid black\"> <b>" + result.ImageWidth + "</b> </td>";
-            // tbl += "</tr>";
-            // tbl += "<tr>";
-            // tbl += "<td style=\"border: 1px solid black\"> Image Resolution</td>";
-            // tbl += "<td style=\"border: 1px solid black\"> <b>" + result.ImageDPI + "</b> </td>";
-            // tbl += "</tr>";
-            // tbl += "<tr>";
-            // tbl += "<td style=\"border: 1px solid black\"> Image Quality (1-100)</td>";
-            // tbl += "<td style=\"border: 1px solid black\"> <b>" + result.ImageQuality + "</b> </td>";
-            // tbl += "</tr>";
-            // tbl += "<tr>";
-            // tbl += "<td style=\"border: 1px solid black\"> NFIQ (1-5)</td>";
-            // tbl += "<td style=\"border: 1px solid black\"> <b>" + result.NFIQ + "</b> </td>";
-            // tbl += "</tr>";
-            // tbl += "<tr style=\"border: 1px solid black\">";
-            // tbl += "<td style=\"border: 1px solid black\"> Template(base64)</td>";
-            // tbl += "<td style=\"border: 1px solid black\"> <b> <textarea rows=8 cols=50>" + result.TemplateBase64 + "</textarea></b> </td>";
-            // tbl += "</tr>";
-            // tbl += "<tr>";
-            // tbl += "<td style=\"border: 1px solid black\"> Image WSQ Size</td>";
-            // tbl += "<td style=\"border: 1px solid black\"> <b>" + result.WSQImageSize + "</b> </td>";
-            // tbl += "</tr>";
-            // tbl += "<tr>";
-            // tbl += "<td style=\"border: 1px solid black\"> EncodeWSQ(base64)</td>";
-            // tbl += "<td style=\"border: 1px solid black\"> <b> <textarea rows=8 cols=50>" + result.WSQImage + "</textarea></b> </td>";
-            // tbl += "</tr>";
-            // tbl += "</table>";
-
             if (index == 1) {
+                console.log('added');
                 document.getElementById('LeftThumb').value = result.TemplateBase64;
-                document.getElementById('')
+                document.getElementById('1').style.color = "green";
             } else if (index == 2) {
+                console.log('added');
                 document.getElementById('LeftIndex').value = result.TemplateBase64;
+                document.getElementById('2').style.color = "green";
             } else if (index == 3) {
+                console.log('added');
                 document.getElementById('RightThumb').value = result.TemplateBase64;
+                document.getElementById('3').style.color = "green";
             } else if (index == 4) {
+                console.log('added');
                 document.getElementById('RightIndex').value = result.TemplateBase64;
+                document.getElementById('4').style.color = "green";
             }
         } else {
             alert("Fingerprint Capture Error Code:  " + result.ErrorCode + ".\nDescription:  " + ErrorCodeToString(result.ErrorCode) + ".");
@@ -226,5 +177,5 @@
             failCall(xmlhttp.statusText);
         }
     }
-    </script>
+</script>
 @endsection

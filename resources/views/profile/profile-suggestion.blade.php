@@ -118,6 +118,8 @@
                 <form action="{{route('profile.complete')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <!-- Old Password -->
+                    <input type="file" id="profile-image" name="profile_image" accept="image/*" onchange="previewProfileImage(event)" required>
+
                     <div class="form-group">
                         <label for="old_password">پخوانی فاسورد:</label>
                         <input type="password" name="old_password" required class="form-control" id="old_password" placeholder="پخوانی فاسورد...">
