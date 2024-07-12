@@ -155,7 +155,6 @@ class AuthController extends Controller
 
 
     public function complete_profile(Request $request){
-          dd($request->all());
         // $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
         // $currenDate=Carbon::now();
         // if($dob->diffInYears($currenDate)<14){
