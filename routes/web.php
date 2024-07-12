@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\suspectController;
 use App\Http\Middleware\isAdmin;
+use App\Models\suspectmodel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Models\FingerprintModel;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
@@ -101,3 +103,21 @@ Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add
 // url suspect
 Route::get('/suspect/form/{id}', [suspectController::class, 'create'])->name('suspect_form');
 Route::post('/suspect/form', [suspectController::class, 'store'])->name('suspect_form_store');
+Route::post('/fingerprints_store',[suspectController::class,'store_finger_print'])->name('store_finger_print');
+
+
+Route::post('/search_fingerprint', function(Request $request){
+    $searchFingerprint=$request->LeftThumb;
+    $users = FingerprintModel::where('right_thumb', $searchFingerprint)
+    ->orWhere('right_index', $searchFingerprint)
+    ->orWhere('right_middle', $searchFingerprint)
+    ->orWhere('right_ring', $searchFingerprint)
+    ->orWhere('right_pinky', $searchFingerprint)
+    ->orWhere('left_thumb', $searchFingerprint)
+    ->orWhere('left_index', $searchFingerprint)
+    ->orWhere('left_middle', $searchFingerprint)
+    ->orWhere('left_ring', $searchFingerprint)
+    ->orWhere('left_pinky', $searchFingerprint)
+    ->get();
+    dd($users);
+})->name('search_fingerprint');
