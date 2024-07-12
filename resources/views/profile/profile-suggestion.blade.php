@@ -8,7 +8,7 @@
         body {
             background-color: #f7f7f7;
             font-family: Arial, sans-serif;
-            }
+        }
         .form-container {
             max-width: 600px;
             margin: 50px auto;
@@ -90,6 +90,10 @@
             object-fit: cover;
             margin-bottom: 20px;
         }
+
+        .profile-image:hover{
+            cursor:pointer;
+        }
         input[type="file"] {
             display: none;
         }
@@ -106,8 +110,7 @@
     <div class="profile-container">
         <i class="fa fa-user-circle fa-3x"></i>
         <h2>Complete Your Profile</h2>
-            <img src="{{ asset('images/profile_avatar.png') }}" alt="Profile Picture" class="profile-image" id="profile-preview">
-        @csrf
+        <img src="{{ asset('images/profile_avatar.png') }}" onclick="triggerFileInput()" alt="Profile Picture" class="profile-image" id="profile-preview">
         @if($errors->any())
             <div>
                 @foreach($errors->all() as $error)
@@ -139,7 +142,11 @@
                 </form>
             </div>
     <script>
+                function triggerFileInput() {
+            document.getElementById('profile-image').click();
+        }
         function previewProfileImage(event) {
+
             const input = event.target;
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
