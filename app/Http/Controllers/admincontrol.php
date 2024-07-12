@@ -46,8 +46,8 @@ class admincontrol extends Controller
             ->select('users.*')
             ->where('users.id', '=', $id)
             ->get();
-        dd($data);
-//        return view('admin/user_edit');
+//        dd($data);
+        return view('admin/user_edit', compact('data'));
     }
 
     /**
@@ -55,7 +55,38 @@ class admincontrol extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+//        dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'type' => 'required',
+            // Add more validation rules as needed
+        ]);
+
+        // Find the resource by ID
+        $resource = user::findOrFail($id);
+
+
+        if ($request->hasFile('picture')) {
+            $image = $request->file('picture');
+            $image_name = $image->hashName(); // Generate a unique name for the image
+           // $user->picture = $image_name; // Update the user's profile picture attribute
+//dd($image_name);
+            // Store the image in the 'public/profiles' directory
+            $image->storeAs('public/profiles', $image_name);
+        }
+        // Update the resource with validated data
+        $resource->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'type' => $request->type,
+            'photo'=>$image_name,
+            // Add more fields as needed
+        ]);
+
+        // Optionally, you can return a response indicating success
+        return redirect()->route('user')
+            ->with('success', 'Resource updated successfully');
     }
 
     /**

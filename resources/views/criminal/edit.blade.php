@@ -139,13 +139,14 @@
                                         <fieldset class="form-group">
                                             <select class="form-select" name="gender" id="disabledSelect">
                                                 @if($value->gender=="male")
-                                                <option value="male">نر</option>
-
+                                                <option selected value="male">نر</option>
+                                                <option value="female">زن</option
                                                 @elseif($value->gender=="female")
-                                                <option value="female">زن</option>
+                                                    <option value="male">نر</option>
+                                                <option selected value="female">زن</option>
                                                 @endif
-                                                        <option value="male">نر</option>
-                                                     <option value="female">زن</option>
+
+                                                     >
                                             </select>
                                         </fieldset>
                                     </div>
@@ -253,9 +254,11 @@
                                         >case</label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="case"  id="disabledSelect">
-                                                <option value="{{$value->id}}">{{$value->case_number}}</option>
                                             @foreach($case as $item)
-                                                    <option value="{{$item->id}}">{{$item->case_number}}</option>
+                                                    @if($value->id=$item->id)
+                                                        <option selected value="{{$value->id}}">{{$value->case_number}}</option>
+{{--                                                        <option value="{{$item->id}}">{{$item->case_number}}</option>--}}
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </fieldset>

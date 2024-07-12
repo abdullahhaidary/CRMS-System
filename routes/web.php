@@ -74,7 +74,7 @@ Route::post('criminal/edit', [\App\Http\Controllers\criminalcontroller::class, '
 //url user
 Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user')->middleware('auth');
 Route::get('/admin/edit/{id}', [\App\Http\Controllers\admincontrol::class, 'edit'])->name('user_edit')->middleware('auth');
-
+Route::post('admin/update/{id}', [\App\Http\Controllers\admincontrol::class, 'update'])->name('user_update')->middleware('auth');
 
 //url people
 Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people');
