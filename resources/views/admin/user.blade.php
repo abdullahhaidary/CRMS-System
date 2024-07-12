@@ -26,14 +26,15 @@
                 @foreach($data as $item)
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td><img src="{{@asset('$item->picture')}}" alt=""></td>
+                        <td><img src="{{asset('images/profile_avatar.png')}}" width="40px" height="40px" style="border-radius: 50%" alt=""></td>
                         <td class="text-bold-500">{{$item->name}}</td>
                         <td class="text-bold-500">{{$item->email}}</td>
 {{--                        <td></td>--}}
                         <td>{{$item->type}}
                         <td>{{$item->action}} @if($item->action==1 ? 'فعال' :'غیر فعال') @endif</td>
                         <td>{{$item->created_at}}</td>
-                        <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
+                        <td><a href="{{url('/admin/edit/'. $item->id)}}"><i class="bi bi-pencil"></i>
+                            </a>
 {{--                            <a href="criminal-view.html" class="btn btn-info">view</a>--}}
                         </td>
                     </tr>

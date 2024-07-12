@@ -2,32 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
-class admincontrol extends Controller
+class searchcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data=DB::table('users')
-            ->select('users.*')
-            ->get();
-        return view('admin.user', compact('data'));
+        return view('search.search');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
      */
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -42,12 +43,7 @@ class admincontrol extends Controller
      */
     public function edit(string $id)
     {
-        $data=DB::table('users')
-            ->select('users.*')
-            ->where('users.id', '=', $id)
-            ->get();
-        dd($data);
-//        return view('admin/user_edit');
+        //
     }
 
     /**
@@ -64,9 +60,5 @@ class admincontrol extends Controller
     public function destroy(string $id)
     {
         //
-    }
-    public function uperadmin()
-    {
-
     }
 }

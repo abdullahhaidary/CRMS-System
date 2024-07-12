@@ -25,6 +25,7 @@
                                                 placeholder="نوم"
                                                 name="name"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -40,6 +41,7 @@
                                                 placeholder="تخلص"
                                                 name="lname"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -54,6 +56,7 @@
                                                 name="father_name"
                                                 data-parsley-restricted-city="Jakarta"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -69,6 +72,7 @@
                                                 name="phone"
                                                 placeholder="شماره تماس"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -84,6 +88,7 @@
                                                 name="email"
                                                 placeholder="ایمیل ادرس"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -99,6 +104,7 @@
                                                 name="address"
                                                 placeholder="آدرس اصلی"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -114,6 +120,7 @@
                                                 name="current_address"
                                                 placeholder="آدرس فعلی"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -122,7 +129,7 @@
                                             <label for="email-id-column" class="form-label"
                                             >تصویر</label
                                             >
-                                            <input type="file" class="form-control" id="inputGroupFile01" name="photo">
+                                            <input type="file" class="form-control" required id="inputGroupFile01" name="photo">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
@@ -171,6 +178,7 @@
                                                 name="dateofbirth"
                                                 placeholder=" تاریخ تولد"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -186,6 +194,7 @@
                                                 name="arrest_date"
                                                 placeholder=" تاریخ جرم"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -201,6 +210,7 @@
                                                 name="familymember"
                                                 placeholder=" عضو فامیل"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -216,6 +226,7 @@
                                                 name="job"
                                                 placeholder=" وظیفه"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -250,7 +261,7 @@
                                             <label for="email-id-column" class="form-label"
                                             > توضیحات</label
                                             >
-                                            <textarea name="discription" id="discription" class="form-control"  data-parsley-required="true"></textarea>
+                                            <textarea name="discription" required id="discription" class="form-control"  data-parsley-required="true"></textarea>
                                         </div>
                                     </div>
                                 </div>

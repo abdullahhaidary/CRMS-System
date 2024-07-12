@@ -7,11 +7,11 @@ Profile Details
         <div class="menu">
             <div class="profile_img">
                 <div class="upper_profile">
-                    <a href="{{route('login') }}" class="back-button">
+                    <a href="{{route('login')}}" class="back-button">
                         <i class="fas fa-arrow-left"></i>
                     </a>
+                    <img src="{{ Storage::url('public/profiles/'. Auth::user()->picture) }}" alt="">
 
-                    <img src="{{ Storage::url('profiles/' . Auth::user()->picture) }}" alt="">
                     <div class="plus" onclick="openProfileImageDialog()">+</div>
                 </div>
                 <div class="d-flex justify-content-center" style="font-size:25pt;">
@@ -26,9 +26,9 @@ Profile Details
 {{--                </div>--}}
                 <div class="profile_links">
                     <ul>
-                        <li class="menu_active_link"><a href="#"><i class="bi bi-person-circle"></i> Profile</a></li>
-                        <li><a href="">Your Posts</a></li>
-                        <li><a href="">Friends</a></li>
+                        <li class="menu_active_link"><a href="{{route('home')}}"><i class="bi bi-person-circle"></i> صفحه اصلی</a></li>
+{{--                        <li><a href="">Your Posts</a></li>--}}
+{{--                        <li><a href="">Friends</a></li>--}}
                     </ul>
                 </div>
             </div>

@@ -24,10 +24,13 @@ Route::get('language/{local}',function($local){
 
 
 //Route::group(['middleware'=>'auth'],function (){
+//url search
 Route::get('/search',function(){
     return view('search');
-});
+})->name('bio_search');
+Route::get('search/search', [\App\Http\Controllers\searchcontroller::class, 'index'])->name('search');
 
+//url Auth
 Route::get('/login',[AuthController::class,'login_page'])->name('login');
 Route::get('register',[AuthController::class,'register_page'])->name('register');
 Route::get('/forgot-password', [AuthController::class, 'forget_page'])->name('password.request');
@@ -70,7 +73,7 @@ Route::post('criminal/edit', [\App\Http\Controllers\criminalcontroller::class, '
 
 //url user
 Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user')->middleware('auth');
-
+Route::get('/admin/edit/{id}', [\App\Http\Controllers\admincontrol::class, 'edit'])->name('user_edit')->middleware('auth');
 
 
 //url people

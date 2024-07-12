@@ -124,10 +124,14 @@
                             <li class="submenu-item  ">
                                 <a href="" class="submenu-link">cases</a>
                             </li>
-
                         </ul>
-
-
+                    </li>
+                    <li
+                        class="sidebar-item  ">
+                        <a href="{{route('search')}}" class='sidebar-link'>
+                            <i class="bi bi-search"></i>
+                            <span>سرچ عمومی </span>
+                        </a>
                     </li>
                     <li
                         class="sidebar-item">
@@ -155,6 +159,13 @@
                         <a href="{{route('department')}}" class='sidebar-link'>
                             <i class="bi bi-building"></i>
                             <span>دیپارتمنت </span>
+                        </a>
+                    </li>
+                    <li
+                        class="sidebar-item  ">
+                        <a href="{{url('/search')}}" class='sidebar-link'>
+                            <i class="bi bi-building"></i>
+                            <span>بیومترک سرچ </span>
                         </a>
                     </li>
                     <li

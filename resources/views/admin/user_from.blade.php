@@ -25,6 +25,7 @@
                                                 placeholder="نوم"
                                                 name="name"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -40,6 +41,7 @@
                                                 name="email"
                                                 placeholder="ایمیل ادرس"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -48,7 +50,7 @@
                                             <label for="email-id-column" class="form-label"
                                             >تصویر</label
                                             >
-                                            <input type="file" name="picture" class="form-control" id="inputGroupFile01">
+                                            <input type="file" name="picture" class="form-control" required id="inputGroupFile01">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
@@ -74,6 +76,7 @@
                                                 name="password"
                                                 placeholder="فاسورد "
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -89,6 +92,7 @@
                                                 name="password"
                                                 placeholder=" تکرار فاسورد"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>

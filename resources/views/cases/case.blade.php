@@ -2,6 +2,7 @@
 @section('content')
     <div class="container mt-5">
         <h2>  لسیت Cases یک فرد مشخص</h2>
+        @include('massage')
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">

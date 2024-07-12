@@ -64,7 +64,8 @@ class casecontroller extends Controller
         $save->description= $request->description;
         $save->save();
         $id=$request->crime_record_id;
-        return redirect()->url('case/'. $id);
+//        return redirect()->url('case/'. $id);
+        return redirect(url('case/'.$id))->with('success',"کیس په موفقیت سره ذخیره شو!");
 
     }
 

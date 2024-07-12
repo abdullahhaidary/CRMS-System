@@ -61,6 +61,17 @@
         a:hover {
             text-decoration: underline;
         }
+        .form-select{
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            width: 400px;
+            margin-bottom: 10px;
+        }
+        .form-option-list{
+            font-size: 16px;
+            padding: 8px;
+        }
     </style>
 </head>
 <body>
@@ -79,10 +90,10 @@
             <input type="text" name="email" placeholder="Email" required>
 
                 <select class="form-select" name="postion" id="disabledSelect">
-                    <option value="0">انتیخاب پوزیشن</option>
-                    <option value="1">super admin</option>
-                    <option value="2">admin</option>
-                    <option value="3">moder</option>
+                    <option class="form-option-list" value="0">انتیخاب پوزیشن</option>
+                    <option class="form-option-list" value="1">super admin</option>
+                    <option class="form-option-list" value="2">admin</option>
+                    <option class="form-option-list" value="3">moder</option>
                 </select>
             <input type="hidden" name="action" value="1">
             @error('password')
