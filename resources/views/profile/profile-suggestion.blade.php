@@ -107,6 +107,7 @@
         <i class="fa fa-user-circle fa-3x"></i>
         <h2>Complete Your Profile</h2>
             <img src="{{ asset('images/profile_avatar.png') }}" alt="Profile Picture" class="profile-image" id="profile-preview">
+        @csrf
         @if($errors->any())
             <div>
                 @foreach($errors->all() as $error)

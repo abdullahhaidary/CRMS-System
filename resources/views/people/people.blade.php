@@ -3,6 +3,7 @@
     <div class="page-heading">
         <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
     </div>
+    @include('search')
     <div class="page-heading text-center">
         <h3>جدول تمام افراد شکایت کننده ها</h3>
     </div>
