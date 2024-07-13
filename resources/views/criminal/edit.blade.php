@@ -8,12 +8,12 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
+                    @foreach($criminal as $value)
                     <div class="card-content">
                         <div class="card-body">
-                            <form method="post" action="{{route('criminal_update')}}" enctype="multipart/form-data" class="form" data-parsley-validate>
+                            <form method="post" action="{{url('criminal/edit/'. $value->id)}}" enctype="multipart/form-data" class="form" data-parsley-validate>
                                 @csrf()
                                 <div class="row">
-                                    @foreach($criminal as $value)
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="first-name-column" class="form-label"
@@ -254,11 +254,8 @@
                                         >case</label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="case"  id="disabledSelect">
-                                            @foreach($case as $item)
-                                                    @if($value->id=$item->id)
-                                                        <option selected value="{{$value->id}}">{{$value->case_number}}</option>
-{{--                                                        <option value="{{$item->id}}">{{$item->case_number}}</option>--}}
-                                                    @endif
+                                            @foreach($case as $items)
+                                                        <option value="{{$items->id}}">{{$items->case_number}}</option>
                                                 @endforeach
                                             </select>
                                         </fieldset>

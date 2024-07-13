@@ -67,7 +67,7 @@ Route::get('/criminal/all/{id}', [\App\Http\Controllers\criminalcontroller::clas
 Route::get('/criminalcontroller-from', [\App\Http\Controllers\criminalcontroller::class, 'add'])->name('criminalcontroller-form');
 Route::post('/crminal-from', [\App\Http\Controllers\criminalcontroller::class, 'inset'])->name('criminal-from');
 Route::get('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_edit');
-Route::post('criminal/edit', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_update');
+Route::post('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'update'])->name('criminal_update');
 
 
 
