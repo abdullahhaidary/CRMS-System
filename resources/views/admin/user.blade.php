@@ -26,7 +26,7 @@
                 @foreach($data as $item)
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td><img src="{{asset('images/profile_avatar.png')}}" width="40px" height="40px" style="border-radius: 50%" alt=""></td>
+                        <td><img src="{{Storage::url('profiles/'.$item->picture)}}" width="40px" height="40px" style="border-radius: 50%" alt=""></td>
                         <td class="text-bold-500">{{$item->name}}</td>
                         <td class="text-bold-500">{{$item->email}}</td>
 {{--                        <td></td>--}}

@@ -10,7 +10,7 @@ Profile Details
                     <a href="{{route('login')}}" class="back-button">
                         <i class="fas fa-arrow-left"></i>
                     </a>
-                    <img src="{{ Storage::url('public/profiles/'. Auth::user()->picture) }}" alt="">
+                    <img src="{{ Storage::url('profiles/'. Auth::user()->picture) }}" alt="">
 
                     <div class="plus" onclick="openProfileImageDialog()">+</div>
                 </div>

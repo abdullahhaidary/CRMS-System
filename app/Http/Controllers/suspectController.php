@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FingerprintModel;
 use App\Models\suspectmodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class suspectController extends Controller
 {
@@ -14,8 +15,9 @@ class suspectController extends Controller
     }
 
     public function finger_print_add($id){
+        $data=DB::table('suspect')->select('suspect.*')->where('suspect.id','=', $id)->get();
         $suspect = suspectmodel::find($id)->first();
-        return view('suspect.suspect_finger_add',compact('suspect'));
+        return view('suspect.suspect_finger_add',compact('suspect','data'));
     }
 
     public function store_finger_print(Request $request){

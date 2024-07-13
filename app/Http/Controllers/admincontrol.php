@@ -67,20 +67,29 @@ class admincontrol extends Controller
         $resource = user::findOrFail($id);
 
 
-        if ($request->hasFile('picture')) {
-            $image = $request->file('picture');
-            $image_name = $image->hashName(); // Generate a unique name for the image
+//        if ($request->hasFile('picture')) {
+//            $image = $request->file('picture');
+//            $image_name = $image->hashName(); // Generate a unique name for the image
            // $user->picture = $image_name; // Update the user's profile picture attribute
 //dd($image_name);
             // Store the image in the 'public/profiles' directory
-            $image->storeAs('public/profiles', $image_name);
+//            $image->storeAs('public/profiles', $image_name);
+//        }
+        if (!empty($request->picture)) {
+            $exe = $request->file('picture')->getClientOriginalExtension();
+//            dd($exe);
+            $file = $request->file('picture');
+            $rename = str::random(20);
+            $filename = $rename . '.' . $exe;
+            $file->storeAs('public/profiles', $filename);
         }
         // Update the resource with validated data
         $resource->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'type' => $request->type,
-            'photo'=>$image_name,
+            'picture'=>$filename,
+
             // Add more fields as needed
         ]);
 
