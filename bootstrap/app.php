@@ -15,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware){
         $middleware->alias(['isAdmin'=>isAdmin::class]);
-        $middleware->alias(['lang'=>SetLocale::class]);
+        $middleware->append([setlocale::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

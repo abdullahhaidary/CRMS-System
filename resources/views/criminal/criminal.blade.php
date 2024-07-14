@@ -25,8 +25,8 @@
                     <tbody>
                     @foreach($data as $item)
                     <tr class="mb-1">
-                        <td><img src="{{asset('criminal/'. $item->photo)}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">{{$item->criminal_name}}</td>
+                        <td><img src="{{asset('criminal/'. $item->path)}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
+                        <td class="text-bold-500">{{$item->name}}</td>
                         <td class="text-bold-500">{{$item->father_name}}</td>
                         <td>{{$item->current_address}}</td>
                         <td>{{$item->phone}}</td>

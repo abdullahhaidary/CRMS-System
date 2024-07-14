@@ -181,7 +181,7 @@
 {{--                            <i class="bi bi-door-open"></i>--}}
                         <form action="{{route('logout')}}" method="post">
                             @csrf
-        <button class="btn " style="background-color: #6c3b3b; color: #ffffff" type="submit">log out</button>
+        <button class="btn " style="background-color: #6c3b3b; color: #ffffff" type="submit">{{__('logout')}}</button>
     </form>
 {{--0765470099--}}
                         </a>
