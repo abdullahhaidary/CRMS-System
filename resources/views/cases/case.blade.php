@@ -6,7 +6,7 @@
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
-                <tr class="bg-info">
+                <tr class="" style="background-color: rgba(136,180,156,0.28)">
                     <th scope="col">#</th>
 {{--                    <th scope="col">case name</th>--}}
                     <th scope="col">crime Type</th>

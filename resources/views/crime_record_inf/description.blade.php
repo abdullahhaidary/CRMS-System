@@ -2,6 +2,7 @@
 @section('content')
     <div class="container mt-5">
         <h2>Responsive Table Example</h2>
+        @include('massage')
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
@@ -19,10 +20,17 @@
                 <tr>
                     <th scope="row">{{$item->id}}</th>
                     <td style="width: 10%">{{$item->name}}</td>
-                    <td style="width: 60%">{{$item->description}}</td>
+                    <td style="width: 50%">{{$item->description}}</td>
                     <td><a href="{{url('case/form/'.$item->id)}}">case</a></td>
                     <td>{{$item->created_at}}</td>
-                    {{-- <td><a href="{{route('finger_add')}}"></a></td> --}}
+                    <td></td>
+{{--                     <td><a href="{{route('finger_add')}}"></a></td>--}}
+                    <td>
+                    @can('super_admin')
+                            <a href="{{url('crime/info/edit/'.$item->id)}}" class="p-2 ml-1"><i class="bi bi-pencil"></i></a>
+                            <a href="{{url('crime/info/delete/'.$item->id)}}" class="p-2"><i class="bi bi-recycle"></i></a>
+                        @endcan
+                    </td>
                 </tr>
                 @endforeach
                 </tbody>

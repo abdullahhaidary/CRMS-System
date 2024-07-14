@@ -1,6 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
-@foreach($suspects as $suspect)
+
+    @foreach($suspects as $suspect)
 <div class="page-heading">
     <a href="{{url('/suspect/form/'. $suspect->id)}}" class="btn btn-outline-primary btn-light"> ثبت مظنون جدید  </a>
 </div>
@@ -10,7 +11,7 @@
 <!--  Inverse table start -->
 <section class="section">
     <div class="table-responsive">
-        <table class="table table-dark mb-0">
+        <table class="table mb-0">
             <thead>
 
             <tr>
@@ -33,8 +34,11 @@
                     <td>{{$suspect->actual_address}}</td>
                     <td>{{$suspect->current_address}}</td>
                     <th></th>
-                    <th><a class="btn btn-sm btn-primary" href="{{url('finger_print_add/'.$suspect->id)}}">اثر انگشت</a>    <a class="btn btn-info btn-sm" href="#">تصحیح</a>   <a class="btn btn-danger btn-sm" href="#">حذف</a></th>
-
+                    <th><a class="btn btn-sm btn-primary" href="{{url('finger_print_add/'.$suspect->id)}}">اثر انگشت</a>
+                        @can('super_admin')
+                        <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">تصحیح</a>
+                        <a class="btn btn-danger btn-sm" href="#">حذف</a></th>
+                    @endcan
                 </tr>
             @endforeach
             </tbody>

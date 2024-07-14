@@ -34,12 +34,6 @@ asd
                               <div class="col-md-8">{{$item->actual_address}}</div>
                           </div>
               </div>
-{{--              <div class="col col-md-3 col-ms-12">--}}
-{{--                  <div class="col-md-8">--}}
-{{--                      <h3 class="card-title">{{$item->name}}</h3>--}}
-{{--                      <p class="text-muted">Age: 35</p>--}}
-{{--                  </div>--}}
-{{--              </div>--}}
               @endforeach
           </div>
         </div>

@@ -42,8 +42,6 @@ class criminalcontroller extends Controller
     public function inset(Request $request)
     {
 
-
-
         // $request->validate([
         //     'name' => 'required|string|max:255',
         //     'lname' => 'required|string|max:255',

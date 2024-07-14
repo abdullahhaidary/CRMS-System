@@ -13,7 +13,22 @@ class suspectController extends Controller
         $suspects = suspectmodel::where('crime_record_id',$id)->get();
         return view('suspect.index',compact('suspects'));
     }
+public function edit($id)
+{
+    $data=DB::table('suspect')
+        ->select('suspect.*')
+        ->where('suspect.id','=',$id)
+        ->get();
+    return view('suspect.edit',compact('data'));
+}
+public function update(Request $request, string $id)
+{
 
+}
+public function destroy($id)
+{
+
+}
     public function finger_print_add($id){
         $data=DB::table('suspect')->select('suspect.*')->where('suspect.id','=', $id)->get();
         $suspect = suspectmodel::find($id)->first();

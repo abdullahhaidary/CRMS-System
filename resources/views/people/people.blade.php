@@ -3,18 +3,18 @@
     <div class="page-heading">
         <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
     </div>
-{{--    @include('search')--}}
+    @include('massage')
     <div class="page-heading text-center">
         <h3>جدول تمام افراد شکایت کننده ها</h3>
     </div>
     <!--  Inverse table start -->
     <section class="section">
         <div class="table-responsive">
-            <table class="table table-dark mb-0">
+            <table class="table mb-0">
                 <thead>
 
                 <tr>
-                    <th>شماره</th>
+                    <th>#</th>
                     <th>نوم</th>
                     <th> پلار نوم</th>
                     <th>ایمیل</th>
@@ -49,9 +49,11 @@
                         <td><a href="{{url('crime/info/'.$item->id)}}">توضیحات</a></td>
                         <td><a href="{{url('suspect_list/'.$item->id)}}">لیست مظنونین</a></td>
                         <td>
-                            <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                            <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
+                            @can('super_admin')
+                            <a href="{{url('people/edit/'.$item->id)}}"><i class="bi bi-pencil text-success"></i></a>
+                            <a href="{{url('people/delete/'. $item->id)}}" class=""><i class="bi bi-delete">Delete</i></a>
                             <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

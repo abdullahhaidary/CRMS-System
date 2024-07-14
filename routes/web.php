@@ -88,12 +88,17 @@ Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])-
 Route::get('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form');
 Route::post('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store');
 Route::get('/ariza/arizafile/{id}', [\App\Http\Controllers\pepolecontroller::class, 'ariza'])->name('artiza_file');
+Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, 'edit'])->name('people_edit');
+Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update');
+Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete');
 
 
 //url crime record information
 
 Route::get('crime/info/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'index'])->name('crime_info');
-
+Route::get('crime/info/edit/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'edit'])->name('info_edit');
+Route::post('crime/info/update/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'update'])->name('info_update');
+Route::get('crime/info/delete/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'destroy'])->name('info_delete');
 
 //url department
 //Route::group(['middleware'=>'isAmin'], function (){
@@ -113,6 +118,9 @@ Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add
 // url suspect
 Route::get('/suspect/form/{id}', [suspectController::class, 'create'])->name('suspect_form');
 Route::post('/suspect/form', [suspectController::class, 'store'])->name('suspect_form_store');
+Route::get('/suspect/edit/{id}', [suspectController::class, 'edit'])->name('suspect_edit');
+Route::post('/suspect/update/{id}', [suspectController::class, 'update'])->name('suspect_update');
+Route::get('/suspect/delete/{id}', [suspectController::class, 'destroy'])->name('suspect_delete');
 Route::post('/fingerprints_store',[suspectController::class,'store_finger_print'])->name('store_finger_print');
 
 
