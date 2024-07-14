@@ -12,7 +12,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-Route::middleware(['auth', 'lang'])->get('/',function(){
+Route::middleware(['auth'])->get('/',function(){
 
     return view('layout.home');
 })->name('home');
@@ -143,5 +143,5 @@ Route::post('/search_fingerprint', function(Request $request){
 Route::post('/fingerprint/match', [suspectController::class, 'match']);
 Route::get('/tests/fingerprint_client',function(){
     return view('fingerprint_tests(abdullah_tests_on_fingerprint).client_side');
-});
+})->middleware('can:admin');
 

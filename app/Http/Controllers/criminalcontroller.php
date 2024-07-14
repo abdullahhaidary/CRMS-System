@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\criminal;
+use App\Models\CriminalPicture;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -12,9 +14,10 @@ class criminalcontroller extends Controller
 {
     public function index()
     {
-        $data=DB::table('criminals')
-            ->select('criminals.*')
-            ->get();
+        $data = DB::table('criminal_pictures')
+        ->join('criminals', 'criminal_pictures.criminal_id', '=', 'criminals.id')
+        ->get();
+
         return view('criminal.criminal', compact('data'));
     }
     public function more($id)
@@ -61,6 +64,25 @@ class criminalcontroller extends Controller
 //        dd($request->all());
         $save= new criminal();
 
+
+        $save->suspect_id= $request->suspect;
+        $save->case_id= $request->case;
+        $save->name= $request->name;
+        $save->last_name= $request->lname;
+        $save->father_name= $request->father_name;
+        $save->phone= $request->phone;
+        $save->email= $request->email;
+        $save->current_address= $request->current_address;
+        $save->actual_address= $request->address;
+        $save->arrest_date = Carbon::parse($request->arrest_date)->format('Y-m-d H:i:s');
+        $save->date_of_birth = Carbon::parse($request->dateofbirth)->format('Y-m-d H:i:s');
+
+        $save->gender= $request->gender;
+        $save->job= $request->job;
+        $save->marital_status= $request->discription;
+        $save->family_members= $request->familymember;
+        $save->save();
+
         if (!empty($request->photo)) {
             $exe = $request->file('photo')->getClientOriginalExtension();
 //            dd($exe);
@@ -68,26 +90,11 @@ class criminalcontroller extends Controller
             $rename = str::random(20);
             $filename = $rename . '.' . $exe;
             $file->move('criminal/', $filename);
-            $save->photo = $filename;
+            $criminal_picture = new CriminalPicture();
+            $criminal_picture->criminal_id=$save->id;
+            $criminal_picture->path=$filename;
+            $criminal_picture->save();
         }
-
-        $save->suspect_id= $request->suspect;
-        $save->case_id= $request->case;
-        $save->criminal_name= $request->name;
-        $save->last_name= $request->lname;
-        $save->father_name= $request->father_name;
-        $save->phone= $request->phone;
-        $save->email= $request->email;
-        $save->current_address= $request->current_address;
-        $save->actual_address= $request->address;
-        $save->arrest_date= $request->arrest_date;
-        $save->date_of_birth= $request->dateofbirth;
-        $save->gender= $request->gender;
-        $save->job= $request->job;
-        $save->marital_status= $request->discription;
-        $save->family_members= $request->familymember;
-        $save->save();
-
         return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
     }
     public function edit($id)
