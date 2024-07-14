@@ -21,8 +21,10 @@ class criminalcontroller extends Controller
     {
 //        dd($id);
         $data=DB::table('criminals')
-            ->select('criminals.*')
-            ->where('id', '=', $id)
+            ->join('cases', 'cases.id','=', 'criminals.case_id')
+            ->join('suspect', 'suspect.id' ,'=', 'criminals.suspect_id')
+            ->select('criminals.*', 'cases.case_number', 'suspect.name', 'suspect.last_name')
+            ->where('criminals.id', '=', $id)
             ->get();
 
         return view('criminal.criminal_all', compact('data'));
@@ -99,7 +101,7 @@ class criminalcontroller extends Controller
             ->get();
         $case=DB::table('cases')
             ->select('cases.*')
-//            ->where('id', '=', $id)
+            ->where('cases.id', '=', $id)
             ->get();
         $criminal=DB::table('criminals')
             ->join('suspect', 'suspect.id', '=', 'criminals.suspect_id')
@@ -109,8 +111,9 @@ class criminalcontroller extends Controller
         ->get();
         return view('criminal.edit', compact('case','data','criminal'));
     }
-    public function update(Request $request)
+    public function update(Request $request , string $id)
     {
+        
         dd($request->all());
     }
 }

@@ -80,7 +80,7 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            /*text-align: center;*/
             width: 400px;
         }
         .profile-image {
@@ -106,11 +106,14 @@
 
     <link rel="stylesheet" href="{{@asset('dist2/css/style.css')}}">
 </head>
-<body>
+<body dir="rtl">
     <div class="profile-container">
         <i class="fa fa-user-circle fa-3x"></i>
         <h2>Complete Your Profile</h2>
+        <div class="text-center">
         <img src="{{ asset('images/profile_avatar.png') }}" onclick="triggerFileInput()" alt="Profile Picture" class="profile-image" id="profile-preview">
+        </div>
+        @include('massage')
         @if($errors->any())
             <div>
                 @foreach($errors->all() as $error)
@@ -123,7 +126,6 @@
                     @csrf
                     <!-- Old Password -->
                     <input type="file" id="profile-image" name="profile_image" accept="image/*" onchange="previewProfileImage(event)" required>
-
                     <div class="form-group">
                         <label for="old_password">پخوانی فاسورد:</label>
                         <input type="password" name="old_password" required class="form-control" id="old_password" placeholder="پخوانی فاسورد...">
@@ -132,6 +134,7 @@
                     <div class="form-group">
                         <label for="new_password">نوی فاسورد:</label>
                         <input type="password" name="new_password" required class="form-control" id="new_password" placeholder="نوی فاسورد...">
+                        <p class="text-red">پاسورد باید له اتو عددونو کم نه وی!</p>
                     </div>
                     <!-- Date of Birth -->
                     <div class="form-group">
@@ -141,6 +144,7 @@
                     <button type="submit" class="btn btn-success">Complete</button>
                 </form>
             </div>
+
     <script>
                 function triggerFileInput() {
             document.getElementById('profile-image').click();

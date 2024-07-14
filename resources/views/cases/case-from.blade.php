@@ -28,6 +28,7 @@
                                                 placeholder="case_name"
                                                 name="case_name"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -43,6 +44,7 @@
                                                 placeholder="Enter case number"
                                                 name="case_number"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -58,6 +60,7 @@
                                                 name="start_date"
                                                 placeholder=" start date"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -73,6 +76,7 @@
                                                 name="end_date"
                                                 placeholder="end date"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -88,6 +92,7 @@
                                                 name="crime_location"
                                                 placeholder=" crime location"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -103,6 +108,7 @@
                                                 name="case_status"
                                                 placeholder=" case status"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -118,6 +124,7 @@
                                                 name="crime_type"
                                                 placeholder="crime type"
                                                 data-parsley-required="true"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -134,6 +141,7 @@
                                                 name="crime_record_id"
                                                 placeholder="crime name"
                                                 data-parsley-required="true"
+
                                             />
                                         </div>
                                     </div>
@@ -143,7 +151,7 @@
                                             <label for="email-id-column" class="form-label"
                                             > توضیحات</label
                                             >
-                                            <textarea name="description" id="discription" class="form-control"  data-parsley-required="true"></textarea>
+                                            <textarea name="description" required id="discription" class="form-control"  data-parsley-required="true"></textarea>
                                         </div>
                                     </div>
 

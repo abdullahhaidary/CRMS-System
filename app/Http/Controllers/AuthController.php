@@ -81,7 +81,7 @@ class AuthController extends Controller
         $user->action=$request->action;
         $user->password=Hash::make($validate['password']);
         $user->save();
-        return redirect()->route('user');
+        return redirect()->route('user')->with('success', "نوی یوزر په موفقیت ذخیره شو!");
     }
 
      public function forget(Request $request)
@@ -155,6 +155,7 @@ class AuthController extends Controller
 
 
     public function complete_profile(Request $request){
+        
         // $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
         // $currenDate=Carbon::now();
         // if($dob->diffInYears($currenDate)<14){

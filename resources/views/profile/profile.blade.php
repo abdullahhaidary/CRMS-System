@@ -58,14 +58,14 @@
                 <h4>{{$item->name}}</h4>
                 <p class="text-muted">Administrator</p>
             </div>
-            <div class="nav flex-column">
+
+        </nav>
+        <!-- Main Content --> <div class="nav flex-column">
                 <a href="#"><i class="bi bi-person-circle"></i> Profile</a>
                 <a href="#"><i class="bi bi-gear-fill"></i> Settings</a>
                 <a href="#"><i class="bi bi-bell-fill"></i> Notifications</a>
                 <a href="{{route('logout')}}"><i class="bi bi-box-arrow-right"></i> Logout</a>
             </div>
-        </nav>
-        <!-- Main Content -->
         <main class="col-md-9 profile-content">
             <h2 class="mb-4">Admin Profile</h2>
             <div class="row">

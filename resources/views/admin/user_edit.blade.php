@@ -8,9 +8,10 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
+                    @foreach($data as $item)
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" action="{{route('user.form')}}" method="post" enctype="multipart/form-data" data-parsley-validate>
+                            <form class="form" action="{{url('admin/update/'.$item->id)}}" method="post" enctype="multipart/form-data" data-parsley-validate>
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 col-12">
@@ -24,6 +25,7 @@
                                                 class="form-control"
                                                 placeholder="نوم"
                                                 name="name"
+                                                value="{{$item->name}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -39,6 +41,7 @@
                                                 id="company-column"
                                                 class="form-control"
                                                 name="email"
+                                                value="{{$item->email}}"
                                                 placeholder="ایمیل ادرس"
                                                 data-parsley-required="true"
                                                 required
@@ -50,51 +53,33 @@
                                             <label for="email-id-column" class="form-label"
                                             >تصویر</label
                                             >
-                                            <input type="file" name="picture" class="form-control" required id="inputGroupFile01">
+                                            <input type="file" name="picture" class="form-control"  id="inputGroupFile01">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
                                         >Position</label>
                                         <fieldset class="form-group">
-                                            <select class="form-select"  id="disabledSelect">
-                                                <option value="1">super admin</option>
-                                                <option value="2">admin</option>
-                                                <option value="3">moder</option>
+                                            <select class="form-select" name="type" id="disabledSelect">
+                                                @if($item->type==1)
+                                                    <option selected value="1">super Admin</option>
+                                                    <option value="2">admin</option>
+                                                    <option value="3">moder</option>
+                                                    @elseif($item->type==2)
+                                                <option value="1">super Admin</option>
+                                                    <option selected value="2">admin</option>
+                                                    <option value="3">moder</option>
+                                                @elseif($item->type==3)
+                                                <option value="3">Super Admin</option>
+                                                    <option value="2">admin</option>
+                                                    <option selected value="3">moder</option>
+                                                @endif
+
+{{--                                                    <option value="1">super admin</option>--}}
+{{--                                                    <option value="2">admin</option>--}}
+{{--                                                    <option value="3">moder</option>--}}
                                             </select>
                                         </fieldset>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="company-column" class="form-label"
-                                            > فاسورد</label
-                                            >
-                                            <input
-                                                type="password"
-                                                id="company-column"
-                                                class="form-control"
-                                                name="password"
-                                                placeholder="فاسورد "
-                                                data-parsley-required="true"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="company-column" class="form-label"
-                                            > تکرار فاسورد</label
-                                            >
-                                            <input
-                                                type="password"
-                                                id="company-column"
-                                                class="form-control"
-                                                name="password"
-                                                placeholder=" تکرار فاسورد"
-                                                data-parsley-required="true"
-                                                required
-                                            />
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -114,6 +99,7 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </section>

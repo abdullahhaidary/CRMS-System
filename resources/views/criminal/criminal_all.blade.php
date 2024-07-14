@@ -76,12 +76,20 @@
                 <span class="details-value">{{$item->gender}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">سن:</span>
+                <span class="details-label ">سن:</span>
                 <span class="details-value">{{$item->date_of_birth}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">شغل:</span>
+                <span class="details-label">شغل: </span>
                 <span class="details-value">{{$item->job}}</span>
+            </div>
+            <div class="details-item">
+                <span class="details-label">caseنمبر: </span>
+                <span class="details-value">{{$item->case_number}}</span>
+            </div>
+            <div class="details-item"><a href="{{url('suspect_list/'.$item->suspect_id)}}">
+                <span class="details-label">دیدن معلومات در جدول مضنونی: </span>
+                <span class="details-value">{{$item->name}}</span></a>
             </div>
         </div>
         <div class="col-lg-8 col-md-6">
