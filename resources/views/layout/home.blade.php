@@ -210,7 +210,9 @@
             </div>
         </section>
     </div>
-
+    @can('admin')
+        <h1>Yup I am an admin</h1>
+    @endcan
     <footer>
         <div class="footer clearfix mb-0 text-muted">
             <div class="float-end">
