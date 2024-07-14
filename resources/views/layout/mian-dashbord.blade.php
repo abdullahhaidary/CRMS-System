@@ -164,7 +164,7 @@
                     <li
                         class="sidebar-item  ">
                         <a href="{{url('/search')}}" class='sidebar-link'>
-                            <i class="bi bi-building"></i>
+                            <i class="bi bi-search"></i>
                             <span>بیومترک سرچ </span>
                         </a>
                     </li>

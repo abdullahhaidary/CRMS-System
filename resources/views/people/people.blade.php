@@ -45,7 +45,7 @@
                         <td>{{$item->crime_case}}</td>
                         <td>{{$item->crim_date}}</td>
                         <td>{{$item->subject_crim}}</td>
-                        <td><a href="{{url('ariza/arizafile')}}">عریضه</a></td>
+                        <td><a href="{{url('ariza/arizafile/'.$item->id)}}">عریضه</a></td>
                         <td><a href="{{url('crime/info/'.$item->id)}}">توضیحات</a></td>
                         <td><a href="{{url('suspect_list/'.$item->id)}}">لیست مظنونین</a></td>
                         <td>

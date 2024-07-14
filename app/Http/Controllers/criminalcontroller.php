@@ -97,11 +97,11 @@ class criminalcontroller extends Controller
 //        dd($id);
         $data=DB::table('suspect')
             ->select('suspect.*')
-//            ->where('id', '=', $id)
+//            ->where('suspect.id', '=', $id)
             ->get();
         $case=DB::table('cases')
             ->select('cases.*')
-            ->where('cases.id', '=', $id)
+//            ->where('cases.id', '=', $id)
             ->get();
         $criminal=DB::table('criminals')
             ->join('suspect', 'suspect.id', '=', 'criminals.suspect_id')
@@ -113,7 +113,60 @@ class criminalcontroller extends Controller
     }
     public function update(Request $request , string $id)
     {
-        
-        dd($request->all());
-    }
+//        dd($request->all());
+                // Validate the incoming request data
+                $request->validate([
+//                    'criminal_name' => 'required',
+//                    'last_name' => 'required|string|max:255',
+//                    'father_name' => 'required|string|max:255',
+//                    'email' => 'required|email|unique:users,email,' . $id,
+//                    'phone' => 'required|string|max:255',
+//                    'arrest_date' => 'required',
+//                    'actual_address' => 'required|string|max:255',
+//                    'current_address' => 'required|string|max:255',
+//                    'date_of_birth' => 'required|date',
+//                    'gender' => 'required|string',
+//                    'job' => 'required|string|max:255',
+//                    'marital_status' => 'required|string',
+//                    'family_members' => 'required|integer|min:1',
+                    // Add other fields as necessary
+                ]);
+
+                // Find the user by ID
+                $criminal = criminal::findOrFail($id);
+        if (!empty($request->photo)) {
+            $exe = $request->file('photo')->getClientOriginalExtension();
+//            dd($exe);
+            $file = $request->file('photo');
+            $rename = str::random(20);
+            $filename = $rename . '.' . $exe;
+            $file->move('criminal/', $filename);
+            $criminal->photo = $filename;
+        }
+                // Update the user's data suspect
+                $criminal->suspect_id = $request->input('suspect');
+                $criminal->case_id = $request->input('case');
+                $criminal->criminal_name = $request->input('name');
+                $criminal->last_name = $request->input('lname');
+                $criminal->father_name = $request->input('father_name');
+                $criminal->email = $request->input('email');
+                $criminal->phone = $request->input('phone');
+                $criminal->arrest_date = $request->input('arrest_date');
+                $criminal->actual_address = $request->input('address');
+                $criminal->current_address = $request->input('current_address');
+                $criminal->date_of_birth = $request->input('dateofbirth');
+                $criminal->gender = $request->input('gender');
+                $criminal->job = $request->input('job');
+                if (!empty($request->discription)){
+                $criminal->marital_status = $request->input('discription');
+                }
+                $criminal->family_members = $request->input('familymember');
+
+
+        // Update other fields as necessary
+                $criminal->save();
+
+                // Redirect or return a response
+                return redirect(url('/criminal/all/'.$id))->with('success', 'User updated successfully');
+            }
 }

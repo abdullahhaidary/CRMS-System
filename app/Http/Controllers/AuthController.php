@@ -155,7 +155,7 @@ class AuthController extends Controller
 
 
     public function complete_profile(Request $request){
-        
+
         // $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
         // $currenDate=Carbon::now();
         // if($dob->diffInYears($currenDate)<14){
@@ -243,6 +243,33 @@ class AuthController extends Controller
             ->where('id', '=', auth::user()->id)
             ->get();
         return view('profile.profile_detail', compact('data'));
+
+    }
+    public function update_password(Request $request){
+
+
+        $validate = $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8', // Optionally, you can add more validation rules for the new password
+        ]);
+
+        $user = Auth::user();
+
+        // Check if the old password matches
+        if (Hash::check($request->old_password, $user->password)) {
+            if (!Hash::check($request->new_password, $user->password)) {
+                // Update the password
+                $user->password = Hash::make($request->new_password);
+
+                $user->save();
+            }else{
+                return back()->withErrors(['new_password' => 'The new password cannot be the same as the old password.']);
+            }
+
+            return redirect('/profile');
+        } else {
+            return back()->withErrors(['old_password' => 'The provided old password does not match our records.']);
+        }
 
     }
 }
