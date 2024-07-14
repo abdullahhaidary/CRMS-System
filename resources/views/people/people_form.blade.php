@@ -25,6 +25,7 @@
                                             placeholder="نوم"
                                             name="name"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -40,6 +41,7 @@
                                             placeholder="تخلص شکایت کننده"
                                             name="lname"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -55,6 +57,7 @@
                                             placeholder="پلارنوم شکایت کننده"
                                             name="fname"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -69,6 +72,7 @@
                                             name="tazcira_number"
                                             data-parsley-restricted-city="Jakarta"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -84,6 +88,7 @@
                                             name="phone"
                                             placeholder="شماره تماس"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -99,6 +104,7 @@
                                             name="email"
                                             placeholder="ایمیل"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -114,6 +120,7 @@
                                             name="address"
                                             placeholder=" ادرس"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -129,6 +136,7 @@
                                             name="curent_address"
                                             placeholder="  ادرس فعلی"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -144,6 +152,7 @@
                                             name="creime_subject"
                                             placeholder=" موضوع شکایت"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -159,6 +168,7 @@
                                             name="crime_case"
                                             placeholder="کیس جرمی"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -174,6 +184,7 @@
                                             name="crime_date"
                                             placeholder=" تاریخ شکایت"
                                             data-parsley-required="true"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -182,7 +193,7 @@
                                         <label for="email-id-column" class="form-label"
                                         >عریضه</label
                                         >
-                                        <input type="file" name="ariza_file" class="form-control" id="inputGroupFile01">
+                                        <input type="file" name="ariza_file" required class="form-control" id="inputGroupFile01">
                                     </div>
                                 </div>
 

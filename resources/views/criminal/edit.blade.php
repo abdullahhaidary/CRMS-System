@@ -135,7 +135,7 @@
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
-                                        >جنسیت</label>
+                                        >جنسیت </label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="gender" id="disabledSelect">
                                                 @if($value->gender=="male")
@@ -242,19 +242,25 @@
                                         >مظنون</label>
                                         <fieldset class="form-group">
                                             <select class="form-select"  name="suspect" id="disabledSelect">
-                                                    <option value="{{$value->id}}">{{$value->name}}</option>
                                              @foreach($data as $item)
-                                                 <option value="{{$item->id}}">{{$item->name}}</option>
+                                                 @if($item->id==$value->suspect_id)
+                                                 <option selected value="{{$item->id}}">{{$item->name}}</option>
+                                                    @endif
+                                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                                 @endforeach
                                             </select>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
-                                        >case</label>
+                                        >cas </label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="case"  id="disabledSelect">
                                             @foreach($case as $items)
+
+                                               @if($items->id== $value->case_id)
+                                                        <option selected value="{{$items->id}}">{{$items->case_number}}</option>
+                                               @endif
                                                         <option value="{{$items->id}}">{{$items->case_number}}</option>
                                                 @endforeach
                                             </select>
@@ -273,20 +279,20 @@
                                             </textarea>
                                         </div>
                                     </div>
-                                    @endforeach
                                 </div>
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
                                             Submit
                                         </button>
-                                        <button
-                                            type="reset"
+                                        <a
+                                            href="{{url('/criminal/all/'.$value->id)}}"
                                             class="btn btn-light-secondary me-1 mb-1"
                                         >
                                             Reset
-                                        </button>
+                                        </a>
                                     </div>
+                                    @endforeach
                                 </div>
                             </form>
                         </div>

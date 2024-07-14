@@ -27,7 +27,7 @@ Profile Details
                 <div class="profile_links">
                     <ul>
                         <li class="menu_active_link"><a href="{{route('home')}}"><i class="bi bi-person-circle"></i> صفحه اصلی</a></li>
-{{--                        <li><a href="">Your Posts</a></li>--}}
+                        <li><a href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}">تغیر فاسورد</a></li>
 {{--                        <li><a href="">Friends</a></li>--}}
                     </ul>
                 </div>

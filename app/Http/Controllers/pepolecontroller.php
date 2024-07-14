@@ -90,4 +90,13 @@ class pepolecontroller extends Controller
 
 //        dd($request->all());
     }
+    public function ariza($id)
+    {
+//        dd($id);
+        $ariza=DB::table('people')
+            ->select('people.*')
+            ->where('people.id', '=', $id)
+            ->get();
+        return view('files.people_ariza', compact('ariza'));
+    }
 }

@@ -30,6 +30,8 @@ Route::get('/search',function(){
 })->name('bio_search');
 Route::get('search/search', [\App\Http\Controllers\searchcontroller::class, 'index'])->name('search');
 
+
+
 //url Auth
 Route::get('/login',[AuthController::class,'login_page'])->name('login');
 Route::get('register',[AuthController::class,'register_page'])->name('register');
@@ -49,9 +51,14 @@ Route::get('/profile', [AuthController::class, 'profile_info'])->middleware('aut
 Route::post('/reset-password',[AuthController::class,'forget_password'])->middleware('guest')->name('password.update');
 Route::post('logout',[AuthController::class,'logout'])->name('logout');
 Route::post('profile-complete',[AuthController::class,'complete_profile'])->name('profile.complete');
+Route::get('change/password/{id}', function (){
+    return view('profile.change_password');
+});
+Route::post('password/change', [AuthController::class, 'update_password'])->name('change_password');
 Route::fallback(function(){
     return view('massage');
 })->middleware('auth');
+
 
 // admin Route
 //Route::group(['middleware'=>'adminmidleware'],function (){
@@ -80,7 +87,7 @@ Route::post('admin/update/{id}', [\App\Http\Controllers\admincontrol::class, 'up
 Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people');
 Route::get('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form');
 Route::post('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store');
-
+Route::get('/ariza/arizafile/{id}', [\App\Http\Controllers\pepolecontroller::class, 'ariza'])->name('artiza_file');
 
 
 //url crime record information

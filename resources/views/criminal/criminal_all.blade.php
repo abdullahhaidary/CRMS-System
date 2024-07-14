@@ -59,6 +59,7 @@
 {{--            <a class="link-item" href="">back</a>--}}
         </div>
         <h1>معلومات مکمل یک مجریم </h1>
+        @include('massage')
     </div>
     <div class="row details-card">
         <div class="col-lg-4 col-md-6 mb-4">
@@ -130,11 +131,11 @@
             </div>
             <div class="details-item">
                 <span class="details-label">Created At:</span>
-                <span class="details-value">2024-05-01 10:30 AM</span>
+                <span class="details-value">{{$item->created_at}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">Updated At:</span>
-                <span class="details-value">2024-05-02 08:45 PM</span>
+                <span class="details-value">{{$item->updated_at}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">توضیحات:</span>
