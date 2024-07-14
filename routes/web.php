@@ -131,3 +131,9 @@ Route::post('/search_fingerprint', function(Request $request){
     ->get();
     dd($users);
 })->name('search_fingerprint');
+
+Route::post('/fingerprint/match', [suspectController::class, 'match']);
+Route::get('/tests/fingerprint_client',function(){
+    return view('fingerprint_tests(abdullah_tests_on_fingerprint).client_side');
+});
+

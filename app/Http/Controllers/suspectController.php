@@ -23,10 +23,25 @@ class suspectController extends Controller
     public function store_finger_print(Request $request){
         $fingerprints = new FingerprintModel();
         $fingerprints->suspect_id = $request->id;
+        $fingerprints->Leftbmpbase64image = $request->Leftbmpbase64image;
+        $fingerprints->right_thumb = $request->RightThumb;
         $fingerprints->right_thumb = $request->RightThumb;
         $fingerprints->left_thumb = $request->LeftThumb;
         $fingerprints->right_index = $request->RightIndex;
         $fingerprints->left_index = $request->LeftIndex;
         $fingerprints->save();
+        return redirect()->back();
+    }
+    public function match(Request $request)
+    {
+        return response($request);
+        $templateBase64 = $request->template_base64;
+        $fingerprint = FingerprintModel::where('left_thumb', $templateBase64)->first();
+        return response($fingerprint);
+        if ($fingerprint) {
+            return response()->json(['found' => true, 'match' => $fingerprint]);
+        } else {
+            return response()->json(['found' => false, 'message' => 'No match found.']);
+        }
     }
 }

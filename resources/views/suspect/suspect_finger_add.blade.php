@@ -1,5 +1,5 @@
 @extends('layout.mian-dashbord')
-
+asd
 @section('content')
 <link rel="stylesheet" href="{{ asset('dist/css/font-awsome.css') }}">
 <div class="container">
@@ -53,8 +53,9 @@
             <input hidden type="text" class="form-control" name="id" id="id">
         </div>
         <div class="form-group">
-            <label hidden for="LeftThumb">Left Thumb</label>
-            <input hidden type="text" class="form-control" name="LeftThumb" id="LeftThumb">
+            <label  for="LeftThumb">Left Thumb</label>
+            <input  type="text" class="form-control" name="LeftThumb" id="LeftThumb">
+            <textarea  type="text" class="form-control" name="Leftbmpbase64image" id="Leftbmpbase64image"></textarea>
         </div>
         <div class="form-group">
             <label hidden for="RightThumb">Right Thumb</label>
@@ -174,6 +175,7 @@
             if (index == 1) {
                 console.log('added');
                 document.getElementById('LeftThumb').value = result.TemplateBase64;
+                document.getElementById('Leftbmpbase64image').value = result.BMPBase64;
                 document.getElementById('1').style.color = "green";
             } else if (index == 2) {
                 console.log('added');
