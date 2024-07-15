@@ -1,9 +1,24 @@
 {
+  "Action": "حالت",
+  "Case": "جرمونه",
+  "Case_name": "د قضیه نوم",
+  "Case_number": "ده قضیه شمیره",
+  "Coming_back": "بیرته راتلل",
+  "Crime_location": "د جرم ځای",
+  "Crime_type": "د جرم بڼه",
   "Dashboard": "داشبورد",
+  "Date_of_Registration": "ده ثبتولو نیټه",
+  "Email": " ایمیل پته",
+  "End_date": "د پای نیټه",
+  "ID": "آی ډی",
+  "Name": "نوم",
+  "New_case_registration_form": "د نوی قضیه ثبتولو فورم",
+  "Position": "پوزیشن",
   "Save": "ذخیره",
+  "Start_date": "د پیل نیـه",
+  "Table_of_all_system_users": "د ټول سیسټم کاروونکو جدول",
   "User Profile": "د کارونکي پروفایل",
   "database_statistics": "د دیتابیس احصایه",
-  "logout": "وتل",
-  "name": "نوم",
+ 
   "user_setting": "د کارونکي تنظیمات"
 }

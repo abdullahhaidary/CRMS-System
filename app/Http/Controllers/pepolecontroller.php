@@ -57,12 +57,13 @@ class pepolecontroller extends Controller
 
         $savedPeople = People::where('name', $save->name)->where('phone', $save->phone)->first();
 //        dd($savedPeople);
+
         $description = new crime_register_record_information();
         $description->people_id = $savedPeople->id;
         $description->description = $request->description;
         $description->save();
 
-
+        if(false){
         $suspect= new suspectmodel();
 //        dd($request->all());
         $savedesc = crime_register_record_information::where('people_id', $savedPeople->id)->where('description', $description->description)->first();
@@ -83,7 +84,7 @@ class pepolecontroller extends Controller
         $suspect->current_address=$request->curent_address;
          $suspect->tazcira_number=$request->tazkera_number;
         $suspect->save();
-
+        }
         return redirect(route('people'))->with('success',"د شکایت کونکی معلومات ذخیره شول اوس معلومات اضافی داخل کړی");
 
 

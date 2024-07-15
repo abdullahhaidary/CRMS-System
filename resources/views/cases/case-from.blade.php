@@ -1,10 +1,10 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="">
-        <a class="btn btn-primary" href="{{url('case/'. $id)}}">case موجود</a>
+        <a class="btn btn-primary" href="{{url('case/'. $id)}}">{{__('Case')}}</a>
     </div>
     <div class="page-heading text-center">
-        <h3>فورم ثبت case جدید</h3>
+        <h3>{{__('New_case_registration_form')}}</h3>
     </div>
     <!-- criminal from start -->
     <section id="multiple-column-form">
@@ -35,13 +35,13 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last-name-column" class="form-label"
-                                            > case Number </label
+                                            >{{__('Case_number')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="last-name-column"
                                                 class="form-control"
-                                                placeholder="Enter case number"
+                                                placeholder="{{__('Case_number')}}"
                                                 name="case_number"
                                                 data-parsley-required="true"
                                                 required
@@ -51,14 +51,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="company-column" class="form-label"
-                                            > StartDate</label
+                                            >"{{__('Start_date')}}</label
                                             >
                                             <input
                                                 type="date"
                                                 id="company-column"
                                                 class="form-control"
                                                 name="start_date"
-                                                placeholder=" start date"
+                                                placeholder="{{__('Start_date')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -67,14 +67,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >  End Date</label
+                                            >{{__('End_date')}}</label
                                             >
                                             <input
                                                 type="date"
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="end_date"
-                                                placeholder="end date"
+                                                placeholder="{{__('End_date')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -83,14 +83,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > crime location </label
+                                            >{{__('Crime_location')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="crime_location"
-                                                placeholder=" crime location"
+                                                placeholder="{{__('Crime_location')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -99,14 +99,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >case status</label
+                                            >{{__('Case_status')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="case_status"
-                                                placeholder=" case status"
+                                                placeholder="{{__('Case_status')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -115,24 +115,20 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > crime type </label
+                                            >{{__('Crime_type')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="crime_type"
-                                                placeholder="crime type"
+                                                placeholder="{{__('Crime_type')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-{{--                                        <div class="form-group mandatory">--}}
-{{--                                            <label for="email-id-column" class="form-label"--}}
-{{--                                            > crime name </label--}}
-{{--                                            >--}}
                                             <input
                                                 type="hidden"
                                                 value="{{$id}}"
@@ -149,7 +145,7 @@
                                     <div class="col-md-12 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > توضیحات</label
+                                            >{{__('Description')}}</label
                                             >
                                             <textarea name="description" required id="discription" class="form-control"  data-parsley-required="true"></textarea>
                                         </div>
@@ -161,13 +157,13 @@
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
-                                            ثبت شکایت
+                                        {{__('Save')}}
                                         </button>
                                         <a href=""
                                            type="reset"
                                            class="btn btn-light-secondary me-1 mb-1"
                                         >
-                                            بازګشت
+                                        {{__('Coming_back')}}
                                         </a>
                                     </div>
                                 </div>
