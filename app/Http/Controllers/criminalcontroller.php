@@ -67,7 +67,7 @@ class criminalcontroller extends Controller
 
         $save->suspect_id= $request->suspect;
         $save->case_id= $request->case;
-        $save->name= $request->name;
+        $save->criminal_name= $request->name;
         $save->last_name= $request->lname;
         $save->father_name= $request->father_name;
         $save->phone= $request->phone;
@@ -76,12 +76,11 @@ class criminalcontroller extends Controller
         $save->actual_address= $request->address;
         $save->arrest_date = Carbon::parse($request->arrest_date)->format('Y-m-d H:i:s');
         $save->date_of_birth = Carbon::parse($request->dateofbirth)->format('Y-m-d H:i:s');
-
         $save->gender= $request->gender;
         $save->job= $request->job;
         $save->marital_status= $request->discription;
         $save->family_members= $request->familymember;
-        $save->save();
+
 
         if (!empty($request->photo)) {
             $exe = $request->file('photo')->getClientOriginalExtension();
@@ -94,6 +93,8 @@ class criminalcontroller extends Controller
             $criminal_picture->criminal_id=$save->id;
             $criminal_picture->path=$filename;
             $criminal_picture->save();
+            $save->photo=$filename;
+            $save->save();
         }
         return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
     }

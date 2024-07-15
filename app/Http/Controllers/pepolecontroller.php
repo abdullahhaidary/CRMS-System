@@ -78,11 +78,10 @@ class pepolecontroller extends Controller
         $suspect->last_name=$request->last_name;
         // $suspect->father_name=>$request->
         $suspect->phone=$request->phone_number;
-        $suspect->email=$request->suspect_email;
+//        $suspect->email=$request->suspect_email;
         $suspect->actual_address=$request->main_address;
         $suspect->current_address=$request->curent_address;
-
-        // $suspect->number_tezkra=$request->tazkera_number;
+         $suspect->tazcira_number=$request->tazkera_number;
         $suspect->save();
 
         return redirect(route('people'))->with('success',"د شکایت کونکی معلومات ذخیره شول اوس معلومات اضافی داخل کړی");

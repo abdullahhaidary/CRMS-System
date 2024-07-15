@@ -18,8 +18,8 @@ asd
               </div>
                   <div class="col col-md-3 col-sm-12">
                       <div class="mb-3">
-                          <div class="col-md-4 font-weight-bold">یمیل:</div>
-                          <div class="col-md-8">{{$item->email}}</div>
+                          <div class="col-md-4 font-weight-bold">تذکره نمبر:</div>
+                          <div class="col-md-8">{{$item->tazcira_number}}</div>
                       </div>
                   </div>
                <div class="col col-md-3 col-sm-12">

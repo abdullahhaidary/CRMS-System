@@ -51,7 +51,7 @@
                         <td>
                             @can('super_admin')
                             <a href="{{url('people/edit/'.$item->id)}}"><i class="bi bi-pencil text-success"></i></a>
-                            <a href="{{url('people/delete/'. $item->id)}}" class=""><i class="bi bi-delete">Delete</i></a>
+                            <a href="{{url('people/delete/'. $item->id)}}" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
                             <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->
                             @endcan
                         </td>
