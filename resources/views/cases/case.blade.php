@@ -1,21 +1,20 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="container mt-5">
-        <h2>  لسیت Cases یک فرد مشخص</h2>
-        @include('massage')
+        <h2>{{__('Cases_of_a_persons_history')}}</h2>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                 <tr class="" style="background-color: rgba(136,180,156,0.28)">
                     <th scope="col">#</th>
-{{--                    <th scope="col">case name</th>--}}
-                    <th scope="col">crime Type</th>
-                    <th scope="col">status</th>
-                    <th scope="col">crime location </th>
-                    <th scope="col">case Number</th>
-                    <th scope="col">Start date</th>
-                    <th scope="col">end date</th>
-                    <th scope="col">Description</th>
+{{--                    <th scope="col">{{__('Case_name')}}</th>--}}
+                    <th scope="col">{{__('Crime_type')}}</th>
+                    <th scope="col">{{__('Status')}}</th>
+                    <th scope="col">{{__('Crime_location')}}</th>
+                    <th scope="col">{{__('Case_number')}}</th>
+                    <th scope="col">{{__('Start_date')}}</th>
+                    <th scope="col">{{__('End_date')}}</th>
+                    <th scope="col">{{__('Description')}}</th>
                 </tr>
                 </thead>
                 <tbody>

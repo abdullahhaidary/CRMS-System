@@ -60,30 +60,29 @@
             <a class="link-item btn btn-danger" href="{{url('criminal/delete/'.$item->id)}}">Delete</a>
 {{--            <a class="link-item" href="">back</a>--}}
         </div>
-        <h1>معلومات مکمل یک مجریم </h1>
-        @include('massage')
+        <h1>{{__('Additional_information_of_a_criminal')}}</h1>
     </div>
     <div class="row details-card">
         <div class="col-lg-4 col-md-6 mb-4">
             <img src="{{asset('criminal/'.$item->path)}}" alt="Profile Picture" class="img-fluid">
             <div class="details-item">
-                <span class="details-label">اسم:</span>
+                <span class="details-label">{{__('Name')}}:</span>
                 <span class="details-value">{{$item->criminal_name ." ".$item->last_name}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">اسم پدر:</span>
+                <span class="details-label">{{__('Father_name')}}:</span>
                 <span class="details-value">{{$item->father_name}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">جنسیت</span>
-                <span class="details-value">{{$item->gender=1 ? 'male': 'female'}}</span>
+                <span class="details-label">{{__('Gender')}}</span>
+                <span class="details-value">{{$item->gender}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label ">سن:</span>
+                <span class="details-label">{{__('Age')}}:</span>
                 <span class="details-value">{{$item->date_of_birth}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">شغل: </span>
+                <span class="details-label">{{__('Job')}}:</span>
                 <span class="details-value">{{$item->job}}</span>
             </div>
             <div class="details-item">
@@ -96,39 +95,39 @@
             </div>
         </div>
         <div class="col-lg-8 col-md-6">
-            <h4 class="section-title">معلومات شخصی </h4>
+            <h4 class="section-title">{{__('Personal_information')}}</h4>
 
             <div class="details-item">
-                <span class="details-label">ایدی:</span>
+                <span class="details-label">{{__('ID')}}:</span>
                 <span class="details-value">{{$item->id}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">ایمیل:</span>
+                <span class="details-label">{{__('Email')}}:</span>
                 <span class="details-value">{{$item->email}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">تماس:</span>
+                <span class="details-label">{{__('Contact_number')}}:</span>
                 <span class="details-value">{{$item->phone}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">ادرس اصلی :</span>
+                <span class="details-label">{{__('Main_address')}}:</span>
                 <span class="details-value">{{$item->actual_address}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">ادرس فعلی :</span>
+                <span class="details-label">{{__('Current_address')}}:</span>
                 <span class="details-value">{{$item->current_address}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">عضو فامیل :</span>
+                <span class="details-label">{{__('Family_member')}}:</span>
                 <span class="details-value">{{$item->family_members}}</span>
             </div>
-            <h4 class="section-title mt-4">مشخصات جرم </h4>
+            <h4 class="section-title mt-4">{{__('Crime_profile')}}</h4>
             <div class="details-item">
-                <span class="details-label"> تاریخ ثبت:</span>
+                <span class="details-label">{{__('Date_of_Registration')}}:</span>
                 <span class="details-value">{{$item->created_at}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">تاریخ جرم :</span>
+                <span class="details-label">{{__('History_of_crime')}}:</span>
                 <span class="details-value">{{$item->arrest_date}}</span>
             </div>
             <div class="details-item">
@@ -140,7 +139,7 @@
                 <span class="details-value">{{$item->updated_at}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">توضیحات:</span>
+                <span class="details-label">{{__('Discription')}}:</span>
                 <span class="details-value">{{$item->marital_status}}</span>
             </div>
         </div>
@@ -222,5 +221,6 @@
         </div>
     </div>
     @endforeach
-    </div>
+    </div>  
 @endsection
+
