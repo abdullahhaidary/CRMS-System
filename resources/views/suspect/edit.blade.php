@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="" enctype="multipart/form-data" data-parsley-validate>
+                            <form class="form" method="post" action="{{url('/suspect/update/'.$item->id)}}" enctype="multipart/form-data" data-parsley-validate>
                                 @csrf
                                 <div class="row">
                                     <h3 class="mb-2">فورم ثبت مضنون</h3>
@@ -48,13 +48,28 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
+                                        <div class="form-group mandatory">
+                                            <label for="suspect_last_name" class="form-label"
+                                            > نام پدر متهم</label
+                                            >
+                                            <input
+                                                type="text"
+                                                id="email-id-column"
+                                                class="form-control"
+                                                name="father_name"
+                                                value="{{$item->father_name}}"
+                                                placeholder="تخلص متهم "
+                                                data-parsley-required="true"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="city-column" class="form-label">Email</label>
                                             <input
                                                 type="email"
                                                 id="city-column"
                                                 class="form-control"
-                                                placeholder=" نمبر تذکره"
                                                 name="email"
                                                 value="{{$item->email}}"
                                                 data-parsley-restricted-city="Jakarta"
@@ -103,7 +118,7 @@
                                                 type="text"
                                                 id="company-column"
                                                 class="form-control"
-                                                name="suspect_email"
+                                                name="current_address"
                                                 value="{{$item->current_address}}"
                                                 placeholder=""
                                                 data-parsley-required="true"

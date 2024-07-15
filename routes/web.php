@@ -117,7 +117,7 @@ Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add
 
 // url suspect
 Route::get('/suspect/form/{id}', [suspectController::class, 'create'])->name('suspect_form');
-Route::post('/suspect/form', [suspectController::class, 'store'])->name('suspect_form_store');
+Route::post('/suspect/form/save/{id}', [suspectController::class, 'store'])->name('suspect_form_store');
 Route::get('/suspect/edit/{id}', [suspectController::class, 'edit'])->name('suspect_edit');
 Route::post('/suspect/update/{id}', [suspectController::class, 'update'])->name('suspect_update');
 Route::get('/suspect/delete/{id}', [suspectController::class, 'destroy'])->name('suspect_delete');

@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route('suspect_form_store')}}" enctype="multipart/form-data" data-parsley-validate>
+                            <form class="form" method="post" action="{{url('/suspect/form/save/'.$id)}}" enctype="multipart/form-data" data-parsley-validate>
                                 @csrf
                                 <div class="row">
                                     <h3 class="mb-2">فورم ثبت مضنون</h3>
@@ -46,8 +46,23 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
+                                            <label for="suspect_last_name" class="form-label"
+                                            >نام پدر متهم</label
+                                            >
+                                            <input
+                                                type="text"
+                                                id="email-id-column"
+                                                class="form-control"
+                                                name="father_name"
+                                                placeholder="نام پدر متهم "
+                                                data-parsley-required="true"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >  ادرس </label
+                                            > اصلی ادرس </label
                                             >
                                             <input
                                                 type="text"
@@ -97,8 +112,8 @@
                                                 type="text"
                                                 id="company-column"
                                                 class="form-control"
-                                                name="suspect_email"
-                                                placeholder=" email"
+                                                name="current_address"
+                                                placeholder=" ادرس فعلی"
                                                 data-parsley-required="true"
                                             />
                                         </div>
