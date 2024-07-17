@@ -15,7 +15,7 @@ class pepolecontroller extends Controller
     {
         $data=DB::table('people')
             ->select('people.*')
-            ->get();
+            ->paginate(1);
         return view('people.people', compact('data'));
     }
     public function create()

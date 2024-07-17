@@ -16,7 +16,8 @@ class criminalcontroller extends Controller
     {
         $data = DB::table('criminal_pictures')
         ->join('criminals', 'criminal_pictures.criminal_id', '=', 'criminals.id')
-        ->get();
+            ->paginate(2);
+//        ->get();
 
         return view('criminal.criminal', compact('data'));
     }
@@ -26,7 +27,8 @@ class criminalcontroller extends Controller
         $data=DB::table('criminals')
             ->join('cases', 'cases.id','=', 'criminals.case_id')
             ->join('suspect', 'suspect.id' ,'=', 'criminals.suspect_id')
-            ->select('criminals.*', 'cases.case_number', 'suspect.name', 'suspect.last_name')
+            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id')
+            ->select('criminals.*', 'cases.case_number', 'suspect.name', 'suspect.last_name','criminal_pictures.path')
             ->where('criminals.id', '=', $id)
             ->get();
 
@@ -89,12 +91,12 @@ class criminalcontroller extends Controller
             $rename = str::random(20);
             $filename = $rename . '.' . $exe;
             $file->move('criminal/', $filename);
+            $save->photo=$filename;
+            $save->save();
             $criminal_picture = new CriminalPicture();
             $criminal_picture->criminal_id=$save->id;
             $criminal_picture->path=$filename;
             $criminal_picture->save();
-            $save->photo=$filename;
-            $save->save();
         }
         return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
     }
@@ -174,5 +176,17 @@ class criminalcontroller extends Controller
 
                 // Redirect or return a response
                 return redirect(url('/criminal/all/'.$id))->with('success', 'User updated successfully');
+            }
+            public function destroy($id)
+            {
+//                dd($id);
+                // Find the resource by ID
+                $resource = criminal::findOrFail($id);
+
+                // Delete the resource
+                $resource->delete();
+
+                // Redirect or return a response
+                return redirect()->route('crimnal')->with('success', 'ریکارد په موافقیت دیلبت شود !');
             }
 }

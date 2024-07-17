@@ -2,7 +2,16 @@
 @section('content')
     <div class="page-heading">
         <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
+{{--        <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شواهد  </a>--}}
+        <select class="btn btn-outline-primary btn-light ml-5">
+            <option>انتقال قضیه به ارګان مربوط</option>
+            @foreach($data as $items)
+            <a href=""> <option value="{{$items->id}}">{{$items->name. " ". $items->last_name}}</option></a>
+            @endforeach
+        </select>
+
     </div>
+
     @include('massage')
     <div class="page-heading text-center">
         <h3>جدول تمام افراد شکایت کننده ها</h3>
@@ -10,10 +19,10 @@
     <!--  Inverse table start -->
     <section class="section">
         <div class="table-responsive">
-            <table class="table mb-0">
+            <table class="table table-hover mb-0">
                 <thead>
 
-                <tr>
+                <tr class="table-active">
                     <th>#</th>
                     <th>نوم</th>
                     <th> پلار نوم</th>
@@ -50,99 +59,13 @@
                         <td><a href="{{url('suspect_list/'.$item->id)}}">لیست مظنونین</a></td>
                         <td>
                             @can('super_admin')
-                            <a href="{{url('people/edit/'.$item->id)}}"><i class="bi bi-pencil text-success"></i></a>
+                            <a href="{{url('people/edit/'.$item->id)}}"><i class="bi bi-pencil" style="color:#4b4cff;"></i></a>
                             <a href="{{url('people/delete/'. $item->id)}}" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
                             <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->
                             @endcan
                         </td>
                     </tr>
                 @endforeach
-
-{{--                <tr>--}}
-{{--                    <td>۱</td>--}}
-{{--                    <td class="text-bold-500">احمد ارین</td>--}}
-{{--                    <td>۰۷۷۳۷۶۷۵۷۵۰</td>--}}
-{{--                    <td>0547392</td>--}}
-{{--                    <td>کابل خوشحال خان</td>--}}
-{{--                    <td>دذی موبایل</td>--}}
-{{--                    <td>بخاطر پیدا کردن موبایل</td>--}}
-{{--                    <td>۲۰۲۴/۵/۴</td>--}}
-{{--                    <td><a href="">عرضه</a></td>--}}
-{{--                    <td><a href="">عبدالوارث ارین</a></td>--}}
-{{--                    <td>--}}
-{{--                        <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>--}}
-{{--                        <!-- <a href="#"><i class="fas fa-edit"></i></a> -->--}}
-{{--                        <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
-{{--                <tr>--}}
-{{--                    <td>۱</td>--}}
-{{--                    <td class="text-bold-500">احمد ارین</td>--}}
-{{--                    <td>۰۷۷۳۷۶۷۵۷۵۰</td>--}}
-{{--                    <td>0547392</td>--}}
-{{--                    <td>کابل خوشحال خان</td>--}}
-{{--                    <td>دذی موبایل</td>--}}
-{{--                    <td>بخاطر پیدا کردن موبایل</td>--}}
-{{--                    <td>۲۰۲۴/۵/۴</td>--}}
-{{--                    <td><a href="">عرضه</a></td>--}}
-{{--                    <td><a href="">عبدالوارث ارین</a></td>--}}
-{{--                    <td>--}}
-{{--                        <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>--}}
-{{--                        <!-- <a href="#"><i class="fas fa-edit"></i></a> -->--}}
-{{--                        <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
-{{--                <tr>--}}
-{{--                    <td>۱</td>--}}
-{{--                    <td class="text-bold-500">احمد ارین</td>--}}
-{{--                    <td>۰۷۷۳۷۶۷۵۷۵۰</td>--}}
-{{--                    <td>0547392</td>--}}
-{{--                    <td>کابل خوشحال خان</td>--}}
-{{--                    <td>دذی موبایل</td>--}}
-{{--                    <td>بخاطر پیدا کردن موبایل</td>--}}
-{{--                    <td>۲۰۲۴/۵/۴</td>--}}
-{{--                    <td><a href="">عرضه</a></td>--}}
-{{--                    <td><a href="">عبدالوارث ارین</a></td>--}}
-{{--                    <td>--}}
-{{--                        <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>--}}
-{{--                        <!-- <a href="#"><i class="fas fa-edit"></i></a> -->--}}
-{{--                        <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
-{{--                <tr>--}}
-{{--                    <td>۱</td>--}}
-{{--                    <td class="text-bold-500">احمد ارین</td>--}}
-{{--                    <td>۰۷۷۳۷۶۷۵۷۵۰</td>--}}
-{{--                    <td>0547392</td>--}}
-{{--                    <td>کابل خوشحال خان</td>--}}
-{{--                    <td>دذی موبایل</td>--}}
-{{--                    <td>بخاطر پیدا کردن موبایل</td>--}}
-{{--                    <td>۲۰۲۴/۵/۴</td>--}}
-{{--                    <td><a href="">عرضه</a></td>--}}
-{{--                    <td><a href="">عبدالوارث ارین</a></td>--}}
-{{--                    <td>--}}
-{{--                        <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>--}}
-{{--                        <!-- <a href="#"><i class="fas fa-edit"></i></a> -->--}}
-{{--                        <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
-{{--                <tr>--}}
-{{--                    <td>۱</td>--}}
-{{--                    <td class="text-bold-500">احمد ارین</td>--}}
-{{--                    <td>۰۷۷۳۷۶۷۵۷۵۰</td>--}}
-{{--                    <td>0547392</td>--}}
-{{--                    <td>کابل خوشحال خان</td>--}}
-{{--                    <td>دذی موبایل</td>--}}
-{{--                    <td>بخاطر پیدا کردن موبایل</td>--}}
-{{--                    <td>۲۰۲۴/۵/۴</td>--}}
-{{--                    <td><a href="">عرضه</a></td>--}}
-{{--                    <td><a href="">عبدالوارث ارین</a></td>--}}
-{{--                    <td>--}}
-{{--                        <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>--}}
-{{--                        <!-- <a href="#"><i class="fas fa-edit"></i></a> -->--}}
-{{--                        <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
                 </tbody>
             </table>
         </div>
@@ -151,14 +74,11 @@
     <!--  Inverse table end -->
     <div class="mt-3">
         <nav aria-label="Page navigation example">
-            <ul class="pagination pagination-primary">
-                <li class="page-item"><a class="page-link" href="#">قبلی</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item "><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">بعدی</a></li>
-            </ul>
+            <div class="mt-3">
+                <nav aria-label="Page navigation example">
+                    {{$data->links()}}
+                </nav>
+            </div>
         </nav>
     </div>
 @endsection
