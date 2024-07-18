@@ -1,5 +1,6 @@
 @extends('layout.mian-dashbord')
 @section('content')
+    <link rel="stylesheet" href="{{asset('dist/css/font-awsome.css')}}">
     <div class="page-heading">
         <h3>{{__('database_statistics')}}</h3>
     </div>
@@ -13,7 +14,7 @@
                                 <div class="row">
                                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                         <div class="stats-icon purple mb-2">
-                                            <i class="iconly-boldShow"></i>
+                                            <i class="fa fa-floppy-disk"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
@@ -30,7 +31,7 @@
                                 <div class="row">
                                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                         <div class="stats-icon blue mb-2">
-                                            <i class="iconly-boldProfile"></i>
+                                            <i class="fa fa-receipt"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
@@ -47,7 +48,7 @@
                                 <div class="row">
                                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                         <div class="stats-icon green mb-2">
-                                            <i class="iconly-boldAdd-User"></i>
+                                            <i class="fa fa-mask"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
@@ -64,7 +65,7 @@
                                 <div class="row">
                                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                         <div class="stats-icon red mb-2">
-                                            <i class="iconly-boldBookmark"></i>
+                                            <i class="fa fa-file"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">

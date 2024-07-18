@@ -2,7 +2,6 @@
 @section('content')
 <div class="page-heading">
     <a href="{{url('/suspect/form/'.$id)}}" class="btn btn-outline-primary btn-light"> ثبت مظنون جدید  </a>
-
 </div>
 <div class="page-heading">
     <h3>افراد مظنون</h3>
