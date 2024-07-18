@@ -12,7 +12,7 @@ class suspectController extends Controller
 {
     public function index($id){
         $suspects = suspectmodel::where('crime_record_id',$id)->get();
-        return view('suspect.index',compact('suspects'));
+        return view('suspect.index',compact('suspects','id'));
     }
 public function edit($id)
 {

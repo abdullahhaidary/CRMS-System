@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
 <div class="page-heading">
-    <a href="{{url('/suspect/form/')}}" class="btn btn-outline-primary btn-light"> ثبت مظنون جدید  </a>
+    <a href="{{url('/suspect/form/'.$id)}}" class="btn btn-outline-primary btn-light"> ثبت مظنون جدید  </a>
 
 </div>
 <div class="page-heading">
