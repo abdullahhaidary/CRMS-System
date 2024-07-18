@@ -16,7 +16,8 @@ class criminalcontroller extends Controller
     {
         $data = DB::table('criminal_pictures')
         ->join('criminals', 'criminal_pictures.criminal_id', '=', 'criminals.id')
-        ->get();
+            ->paginate(2);
+//        ->get();
 
         return view('criminal.criminal', compact('data'));
     }
@@ -26,7 +27,8 @@ class criminalcontroller extends Controller
         $data=DB::table('criminals')
             ->join('cases', 'cases.id','=', 'criminals.case_id')
             ->join('suspect', 'suspect.id' ,'=', 'criminals.suspect_id')
-            ->select('criminals.*', 'cases.case_number', 'suspect.name', 'suspect.last_name')
+            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id')
+            ->select('criminals.*', 'cases.case_number', 'suspect.name', 'suspect.last_name','criminal_pictures.path')
             ->where('criminals.id', '=', $id)
             ->get();
 
@@ -67,7 +69,7 @@ class criminalcontroller extends Controller
 
         $save->suspect_id= $request->suspect;
         $save->case_id= $request->case;
-        $save->name= $request->name;
+        $save->criminal_name= $request->name;
         $save->last_name= $request->lname;
         $save->father_name= $request->father_name;
         $save->phone= $request->phone;
@@ -76,12 +78,11 @@ class criminalcontroller extends Controller
         $save->actual_address= $request->address;
         $save->arrest_date = Carbon::parse($request->arrest_date)->format('Y-m-d H:i:s');
         $save->date_of_birth = Carbon::parse($request->dateofbirth)->format('Y-m-d H:i:s');
-
         $save->gender= $request->gender;
         $save->job= $request->job;
         $save->marital_status= $request->discription;
         $save->family_members= $request->familymember;
-        $save->save();
+
 
         if (!empty($request->photo)) {
             $exe = $request->file('photo')->getClientOriginalExtension();
@@ -90,6 +91,8 @@ class criminalcontroller extends Controller
             $rename = str::random(20);
             $filename = $rename . '.' . $exe;
             $file->move('criminal/', $filename);
+            $save->photo=$filename;
+            $save->save();
             $criminal_picture = new CriminalPicture();
             $criminal_picture->criminal_id=$save->id;
             $criminal_picture->path=$filename;
@@ -173,5 +176,17 @@ class criminalcontroller extends Controller
 
                 // Redirect or return a response
                 return redirect(url('/criminal/all/'.$id))->with('success', 'User updated successfully');
+            }
+            public function destroy($id)
+            {
+//                dd($id);
+                // Find the resource by ID
+                $resource = criminal::findOrFail($id);
+
+                // Delete the resource
+                $resource->delete();
+
+                // Redirect or return a response
+                return redirect()->route('crimnal')->with('success', 'ریکارد په موافقیت دیلبت شود !');
             }
 }

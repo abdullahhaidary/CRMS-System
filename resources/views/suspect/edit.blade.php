@@ -65,13 +65,13 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="city-column" class="form-label">Email</label>
+                                            <label for="city-column" class="form-label">نمبر تذکره</label>
                                             <input
-                                                type="email"
+                                                type="text"
                                                 id="city-column"
                                                 class="form-control"
-                                                name="email"
-                                                value="{{$item->email}}"
+                                                name="tazcira_number"
+                                                value="{{$item->tazcira_number}}"
                                                 data-parsley-restricted-city="Jakarta"
                                                 data-parsley-required="true"
                                             />

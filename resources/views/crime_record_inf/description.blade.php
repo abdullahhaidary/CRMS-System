@@ -28,7 +28,7 @@
                     <td>
                     @can('super_admin')
                             <a href="{{url('crime/info/edit/'.$item->id)}}" class="p-2 ml-1"><i class="bi bi-pencil"></i></a>
-                            <a href="{{url('crime/info/delete/'.$item->id)}}" class="p-2"><i class="bi bi-recycle"></i></a>
+                            <a href="{{url('crime/info/delete/'.$item->id)}}" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
                         @endcan
                     </td>
                 </tr>

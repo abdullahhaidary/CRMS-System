@@ -138,8 +138,8 @@
                                         <fieldset class="form-group">
                                             <select class="form-select" name="gender" id="disabledSelect">
                                                 <option>جنسیت</option>
-                                                <option value="male">نر</option>
-                                                <option value="female">زن</option>
+                                                <option value="1">نر</option>
+                                                <option value="2">زن</option>
                                             </select>
                                         </fieldset>
                                     </div>

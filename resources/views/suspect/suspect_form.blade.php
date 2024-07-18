@@ -82,7 +82,7 @@
                                                 id="city-column"
                                                 class="form-control"
                                                 placeholder=" نمبر تذکره"
-                                                name="tazkera_number"
+                                                name="tazcira_number"
                                                 data-parsley-restricted-city="Jakarta"
                                                 data-parsley-required="true"
                                             />

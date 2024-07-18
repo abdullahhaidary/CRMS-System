@@ -75,6 +75,7 @@ Route::get('/criminalcontroller-from', [\App\Http\Controllers\criminalcontroller
 Route::post('/crminal-from', [\App\Http\Controllers\criminalcontroller::class, 'inset'])->name('criminal-from');
 Route::get('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_edit');
 Route::post('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'update'])->name('criminal_update');
+Route::get('criminal/delete/{id}', [\App\Http\Controllers\criminalcontroller::class, 'destroy'])->name('criminal-delete');
 
 
 
@@ -123,6 +124,7 @@ Route::post('/suspect/update/{id}', [suspectController::class, 'update'])->name(
 Route::get('/suspect/delete/{id}', [suspectController::class, 'destroy'])->name('suspect_delete');
 Route::post('/fingerprints_store',[suspectController::class,'store_finger_print'])->name('store_finger_print');
 
+//url evidence
 
 Route::post('/search_fingerprint', function(Request $request){
     $searchFingerprint=$request->LeftThumb;

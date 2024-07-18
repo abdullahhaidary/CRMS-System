@@ -138,12 +138,12 @@
                                         >جنسیت </label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="gender" id="disabledSelect">
-                                                @if($value->gender=="male")
-                                                <option selected value="male">نر</option>
-                                                <option value="female">زن</option
-                                                @elseif($value->gender=="female")
-                                                    <option value="male">نر</option>
-                                                <option selected value="female">زن</option>
+                                                @if($value->gender=="1")
+                                                <option selected value="1">نر</option>
+                                                <option value="0">زن</option
+                                                @elseif($value->gender=="0")
+                                                    <option value="1">نر</option>
+                                                <option selected value="0">زن</option>
                                                 @endif
 
                                                      >

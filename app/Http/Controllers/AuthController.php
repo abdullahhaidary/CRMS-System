@@ -148,7 +148,7 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken(); // Regenerate the CSRF token
 
-        return redirect()->route('login')->with('success', 'You have been logged out.'); // Redirect to login page with success message
+        return redirect()->route('login')->with('success', "You have been logged out."); // Redirect to login page with success message
     }
 
 
@@ -233,7 +233,7 @@ class AuthController extends Controller
         $user=User::updateOrCreate(['id'=>Auth::user()->id],
                 ['name'=>$validate['name'] , 'email'=>$validate['email'] ]);
         $user->save();
-        return redirect()->back()->with('success','Profile Information Has Been Updated');
+        return redirect()->back()->with('success',"پروفایل په موفقیت سره تغیر شو !");
     }
     public function profile_info()
     {

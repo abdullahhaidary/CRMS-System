@@ -18,7 +18,7 @@ public function edit($id)
 {
     $data=DB::table('suspect')
         ->select('suspect.*')
-        ->where('suspect.id','=',$id)
+        ->where('suspect.crime_record_id','=',$id)
         ->get();
     return view('suspect.edit',compact('data'));
 }
@@ -34,7 +34,7 @@ public function store(Request $request ,$id)
     $save->last_name=$request->last_name;
     $save->father_name=$request->father_name;
     $save->phone=$request->phone;
-    $save->email=$request->tazkera_number;
+    $save->tazcira_number=$request->tazkera_number;
     $save->actual_address=$request->main_address;
     $save->current_address=$request->current_address;
 $save->save();
@@ -64,8 +64,8 @@ public function update(Request $request, string $id)
     $criminal->name = $request->input('suspect_name');
     $criminal->last_name = $request->input('last_name');
     $criminal->father_name = $request->input('father_name');
-    $criminal->email = $request->input('email');
-    $criminal->phone = $request->input('phone');
+    $criminal->tazcira_number = $request->input('tazcira_number');
+    $criminal->phone = $request->input('phone_number');
     $criminal->actual_address = $request->input('main_address');
     $criminal->current_address = $request->input('current_address');
 
@@ -74,7 +74,7 @@ public function update(Request $request, string $id)
     $criminal->save();
 
     // Redirect or return a response
-    return redirect(url('/suspect_list/'.$id))->with('success', 'User updated successfully');
+    return redirect(url('/suspect_list/'.$id))->with('success', 'تغیرات په موافقیت انجام شد!');
 }
 public function destroy($id)
 {
@@ -84,7 +84,7 @@ public function destroy($id)
     $resource->delete();
 
     // Redirect or return a response
-    return redirect()->route('/suspect_list/'.$id)->with('success', 'Resource deleted successfully.');
+    return redirect()->back()->with('success', 'دیتا په موافقیت ذخیره شوه !');
 }
     public function finger_print_add($id){
         $data=DB::table('suspect')->select('suspect.*')->where('suspect.id','=', $id)->get();

@@ -26,8 +26,8 @@ Profile Details
 {{--                </div>--}}
                 <div class="profile_links">
                     <ul>
-                        <li class="menu_active_link"><a href="{{route('home')}}"><i class="bi bi-person-circle"></i> صفحه اصلی</a></li>
-                        <li><a href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}">تغیر فاسورد</a></li>
+                        <li><a href="{{route('home')}}"> <i class="fas fa-home" style="color: #0a53be;font-size: 20px"></i> صفحه اصلی </a></li>
+                        <li><a href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> <i class="fas fa-key" style="color: #e14439;font-size: 20px"></i>تغیر فاسورد </a></li>
 {{--                        <li><a href="">Friends</a></li>--}}
                     </ul>
                 </div>
@@ -36,7 +36,7 @@ Profile Details
         <div class="information">
             <h3 class="header ">Personal Information</h3>
                 @if(session()->has('success'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-success" style="background-color: #22ec8f; height: 30px; align-content: center;">
                         {{session('success')}}
                         {{-- yup --}}
                     </div>

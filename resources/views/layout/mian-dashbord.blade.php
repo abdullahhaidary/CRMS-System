@@ -121,9 +121,6 @@
                             <li class="submenu-item  ">
                                 <a href="suspet-people.html" class="submenu-link">افراد مشکوک</a>
                             </li>
-                            <li class="submenu-item  ">
-                                <a href="" class="submenu-link">cases</a>
-                            </li>
                         </ul>
                     </li>
                     <li
