@@ -145,3 +145,15 @@ Route::get('/tests/fingerprint_client',function(){
     return view('fingerprint_tests(abdullah_tests_on_fingerprint).client_side');
 })->middleware('can:admin');
 
+Route::get('/fetchFingerprint',function(){
+    $fingerprint = FingerprintModel::get();
+    return response()->json(['fingerprint' => $fingerprint]);
+})->name('fetchFingerprint');
+
+Route::get('/find_person_from_fingerprint', function (Request $request) {
+    $fingerprintId = $request->query('id');
+
+    $person = suspectmodel::where('id', $fingerprintId)->first();
+    return response()->json(['person' => $person]);
+})->name('findPersonFromFingerprint');
+

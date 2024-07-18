@@ -5,9 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search - WebAPI1toN</title>
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/site.css?v=boBscZWmSLQe9ieEeOMLzkfT5nmP5Y2ak4N9hiwfaNs" />
     <link rel="stylesheet" href="/WebAPI1toN.styles.css?v=mbcQeS2QCoSFGR9cI2BD0hJyoIppbWpaEm_R-krL6sg" />
+    <link rel="stylesheet" href="{{asset('dist/css/bootstrap.css')}}" />
+
 </head>
 <body>
     <header>
@@ -130,10 +131,29 @@
             </div>
         </div>
     </body>
+    <script src="{{asset('dist/js/jquery .js')}}"></script>
 
     <script type-"text/javascript">
     var imageCount = 0;
+    fetchFingerprint()
+    let templateData = ""
+    function fetchFingerprint(){
+        $.ajax({
+                method: 'GET',
+                url: '{{route('fetchFingerprint')}}',
+                success: function(response) {
+                    console.log(response.fingerprint.Leftbmpbase64image)
 
+                    registerFingerprint(response)
+                },
+                failure: function (response) {
+                   alert("FAILURE...." + response.error);
+                },
+                error: function (response) {
+                   alert("ERROR...." + response.error);
+                }
+            });
+    }
     function SuccessFuncIdentify(result) {
         if (result.ErrorCode == 0) {
             /* 	Display BMP data in image tag
@@ -149,18 +169,18 @@
                 , 'sessionid': document.getElementById("sessioninfo").value
             };
 
-            // View data, must use JSON.stringify(...)
-            // alert("Fingerprint Template:" + JSON.stringify(templatedata));
-
             $.ajax({
                 method: 'POST',
-                url: '/WebAPI1toN/IdentifyPersonMatch',
+                url: 'https://webapi-1-n.secugen.com/WebAPI1toN/IdentifyPersonMatch/',
                 data: templatedata,
                 success: function(response) {
                     if (response.found == "true") {
+                        console.log('success');
                         document.getElementById("IdentifyUser").value = "Identify User = [" + response.match + "]";
                     }
                     else {
+                        console.log('error');
+
                         document.getElementById("IdentifyUser").value = response.error;
                     }
                 },
@@ -197,13 +217,16 @@
 
             $.ajax({
                 method: 'POST',
-                url: '/WebAPI1toN/SearchMatches',
+                url: 'https://webapi-1-n.secugen.com/WebAPI1toN/SearchMatches',
                 data: templatedata,
                 success: function(response) {
                     if (response.found == "true") {
+                        console.log('yup success');
+
                         document.getElementById("CandidateList").value = response.match;
                     }
                     else {
+                        console.log('error');
                         document.getElementById("CandidateList").value = response.error;
                     }
                 },
@@ -237,6 +260,8 @@
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 fpobject = JSON.parse(xmlhttp.responseText);
                 successCall(fpobject);
+                // SuccessFuncCandidateList(fpobject)
+                // console.log(fpobject)
             }
             else if (xmlhttp.status == 404) {
                 failCall(xmlhttp.status)
@@ -285,6 +310,47 @@
     }
 
 
+
+    let templateCount=0
+
+    function registerFingerprint(result){
+
+        var templatedata = {
+                 'userid': (templateCount + 1)      // We want results to be 1 based; easy for user to understand
+                 , 'isotemplatebase64':result.fingerprint.Leftbmpbase64image
+                 , 'bmpbase64image':result.fingerprint.left_thumb
+                 , 'sessionid':document.getElementById("sessioninfo").value
+               };
+
+               console.log(
+                //  'isotemplatebase64' , result.fingerprint.Leftbmpbase64image
+                  'bmpbase64image',result.fingerprint.left_thumb
+                 , 'sessionid',document.getElementById("sessioninfo").value
+               )
+
+            // View data, must use JSON.stringify(...)
+            // alert("Fingerprint Template:" + JSON.stringify(templatedata));
+
+            $.ajax({
+                method: 'POST',
+                url: 'https://localhost:8443/WebAPI1toN/Register',
+                data: templatedata,
+                success: function(response) {
+                    document.getElementById("sessioninfo").value = response.strSessionID;
+                    if (response.bRegister == "false")
+                    {
+                        document.getElementById("template" + templateCount).value = response.error;
+                    }
+                },
+                failure: function (response) {
+                   alert("FAILURE...." + response.error);
+                },
+                error: function (response) {
+                   alert("ERROR...." + response.error);
+                }
+            });
+    }
+
     </script>
 </html>
 
@@ -296,7 +362,7 @@
             @ 2024 - SecuGen Corporation - WebAPI1:N
         </div>
     </footer>
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="{{asset('dist/js/jquery .js')}}"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
 
