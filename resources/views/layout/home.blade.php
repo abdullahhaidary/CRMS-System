@@ -13,7 +13,7 @@
                                 <div class="row">
                                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                         <div class="stats-icon purple mb-2">
-                                            <i class="iconly-boldShow"></i>
+                                            <i class="fa fa-floppy-disk"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
@@ -30,7 +30,7 @@
                                 <div class="row">
                                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                         <div class="stats-icon blue mb-2">
-                                            <i class="iconly-boldProfile"></i>
+                                            <i class="fa fa-receipt"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
@@ -47,7 +47,7 @@
                                 <div class="row">
                                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                         <div class="stats-icon green mb-2">
-                                            <i class="iconly-boldAdd-User"></i>
+                                            <i class="fa fa-mask"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
@@ -64,7 +64,7 @@
                                 <div class="row">
                                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                         <div class="stats-icon red mb-2">
-                                            <i class="iconly-boldBookmark"></i>
+                                            <i class="fa fa-file"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
@@ -89,10 +89,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-xl-4">
+                    <div class="col-12 col-xl-4 h-100">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Profile Visit</h4>
+                                <h4>قضیه ها</h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -103,7 +103,7 @@
                                                 <use
                                                     xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
                                             </svg>
-                                            <h5 class="mb-0 ms-3">Europe</h5>
+                                            <h5 class="mb-0 ms-3">جرم ها</h5>
                                         </div>
                                     </div>
                                     <div class="col-5">
@@ -113,24 +113,7 @@
                                         <div id="chart-europe"></div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-7">
-                                        <div class="d-flex align-items-center">
-                                            <svg class="bi text-success" width="32" height="32" fill="blue"
-                                                 style="width:10px">
-                                                <use
-                                                    xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
-                                            </svg>
-                                            <h5 class="mb-0 ms-3">America</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-5">
-                                        <h5 class="mb-0 text-end">375</h5>
-                                    </div>
-                                    <div class="col-12">
-                                        <div id="chart-america"></div>
-                                    </div>
-                                </div>
+
                                 <div class="row">
                                     <div class="col-7">
                                         <div class="d-flex align-items-center">
@@ -152,7 +135,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-xl-8">
+                    <div class="col-12 col-xl-8 h-100">
                         <div class="card">
                             <div class="card-header">
                                 <h4>تازه ترین قضیه ها</h4>

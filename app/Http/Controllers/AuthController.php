@@ -156,8 +156,14 @@ class AuthController extends Controller
 
     public function complete_profile(Request $request){
 
+
         // $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
         // $currenDate=Carbon::now();
+
+        // dd($request);
+        $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
+        $currenDate=Carbon::now();
+
         // if($dob->diffInYears($currenDate)<14){
         //     return redirect()->back()->with(['age_error',"You are Below the Minumum Age Requirements"]);
         // }

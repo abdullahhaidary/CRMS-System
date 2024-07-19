@@ -12,7 +12,6 @@
 
     </div>
 
-    @include('massage')
     <div class="page-heading text-center">
         <h3>جدول تمام افراد شکایت کننده ها</h3>
     </div>
