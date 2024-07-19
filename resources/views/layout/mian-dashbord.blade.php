@@ -29,7 +29,7 @@
                         <div class="">
                             <div class="">
 {{--                                <img src="asit/img/RK.jpg" width="70px" height="60px" alt="">--}}
-                                <h4><a href="">Aryan</a></h4>
+                                <h4><a href="{{route('home')}}">{{Auth::user()->name}}</a></h4>
                             </div>
 
                         </div>
@@ -84,7 +84,7 @@
             </div>
             <div class="sidebar-menu">
                 <ul class="menu">
-                    <li class="sidebar-title font-extrabold">سیستم مدیریتی </li>
+                    <li class="sidebar-title font-extrabold" style="user-select: none;" >سیستم مدیریتی </li>
                     <li
                         class="sidebar-item {{ request()->is('/') ? 'active' : '' }}">
                         <a href="{{url('/')}}" class='sidebar-link'>
