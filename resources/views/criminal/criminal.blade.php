@@ -23,20 +23,32 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($data as $item)
-                    <tr class="mb-1">
-                        <td><img src="{{asset('criminal/'. $item->path)}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">{{$item->criminal_name}}</td>
-                        <td class="text-bold-500">{{$item->father_name}}</td>
-                        <td>{{$item->current_address}}</td>
-                        <td>{{$item->phone}}</td>
-                        <td class="m-0 p-0">
-                            <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                            <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
-                            <a href="{{url('/criminal/all/'. $item->id)}}" class="btn btn-primary btn-sm">معلومات مکمل</a>
-                        </td>
-                    </tr>
-                    @endforeach
+                        {{-- Accessing specific properties of the $item object --}}
+                        {{-- Uncomment the following lines to display the data in a table --}}
+                        @foreach($data as $item)
+                            <tr class="mb-1">
+                                @php
+                                $firstPicture = !empty($item->picture) ? $item->picture[0] : null;
+                                @endphp
+
+                                @if($firstPicture)
+                                    <td><img src="{{ asset('criminal/' . $firstPicture->path) }}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
+                                @else
+                                    <td>No picture available</td>
+                                @endif
+                                <td class="text-bold-500">{{ $item->name }}</td>
+                                <td class="text-bold-500">{{ $item->father_name }}</td>
+                                <td>{{ $item->current_address }}</td>
+                                <td>{{ $item->phone }}</td>
+                                <td class="m-0 p-0">
+                                    <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
+                                    <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
+                                    <a href="{{ url('/criminal/all/' . $item->id) }}" class="btn btn-primary btn-sm">معلومات مکمل</a>
+                                </td>
+                            </tr>
+                        @endforeach
+
+
                     </tbody>
                 </table>
             </div>
@@ -46,7 +58,7 @@
     <!--  Inverse table end -->
     <div class="mt-3">
         <nav aria-label="Page navigation example">
-            {{$data->links()}}
+            {{-- {{$data->links()}} --}}
         </nav>
     </div>
 @endsection

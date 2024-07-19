@@ -10,6 +10,6 @@ class criminal extends Model
     use HasFactory;
     protected $table ='criminals';
     public function picture(){
-       return $this->hasMany(CriminalPicture::class,'criminal_id','id');
+       return $this->hasMany(CriminalPicture::class,'criminal_id');
     }
 }

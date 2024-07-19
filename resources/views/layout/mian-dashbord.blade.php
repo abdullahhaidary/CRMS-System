@@ -107,9 +107,9 @@
                             <i class="bi bi-stack"></i>
                             <span>بخش های سیستم</span>
                         </a>
-                        <ul class="submenu ">
-                            <li class="submenu-item  ">
-                                <a href="{{route('crimnal')}}" class="submenu-link">بخش مجریمین</a>
+                        <ul class="submenu {{ Route::currentRouteName() == 'crimnal' ? 'active' : '' }}">
+                            <li class="submenu-item  {{ Route::currentRouteName() == 'crimnal' ? 'active' : '' }}">
+                                <a href="{{route('crimnal')}}" class="submenu-link ">بخش مجریمین</a>
                             </li>
                             <li class="submenu-item  ">
                                 <a href="component-alert.html" class="submenu-link">اسناد ها</a>
@@ -120,13 +120,13 @@
                             <li class="submenu-item  ">
                                 <a href="component-badge.html" class="submenu-link">زندان</a>
                             </li>
-                            <li class="submenu-item  ">
-                                <a href="suspet-people.html" class="submenu-link">افراد مشکوک</a>
+                            <li class="submenu-item ">
+                                <a href="suspet-people.html" class="submenu-link ">افراد مشکوک</a>
                             </li>
                         </ul>
                     </li>
                     <li
-                        class="sidebar-item  ">
+                        class="sidebar-item   {{ Route::currentRouteName() == 'search' ? 'active' : '' }}">
                         <a href="{{route('search')}}" class='sidebar-link'>
                             <i class="bi bi-search"></i>
                             <span>سرچ عمومی </span>
@@ -140,8 +140,8 @@
                         </a>
                     </li>
                     <li
-                        class="sidebar-item">
-                        <a href="{{route('people')}}" class='sidebar-link'>
+                        class="sidebar-item {{ Route::currentRouteName() == 'people' ? 'active' : '' }}">
+                        <a href="{{route('people')}}" class='sidebar-link '>
                             <i class="bi-file-earmark-text"></i>
                             <span>  ثبت شکایت   </span>
                         </a>
@@ -154,21 +154,21 @@
                         </a>
                     </li>
                     <li
-                        class="sidebar-item  ">
+                        class="sidebar-item   {{ Route::currentRouteName() == 'department' ? 'active' : '' }}">
                         <a href="{{route('department')}}" class='sidebar-link'>
                             <i class="bi bi-building"></i>
                             <span>دیپارتمنت </span>
                         </a>
                     </li>
                     <li
-                        class="sidebar-item  ">
-                        <a href="{{url('/search')}}" class='sidebar-link'>
+                        class="sidebar-item {{ Route::currentRouteName() == 'bio_search' ? 'active' : '' }} ">
+                        <a href="{{route('bio_search')}}" class='sidebar-link '>
                             <i class="bi bi-search"></i>
                             <span>بیومترک سرچ </span>
                         </a>
                     </li>
                     <li
-                        class="sidebar-item  ">
+                        class="sidebar-item  {{ Route::currentRouteName() == 'register' ? 'active' : '' }} ">
                         <a href="{{route('register')}}" class='sidebar-link'>
                             <i class="bi bi-people-fill"></i>
                             <span>Users </span>

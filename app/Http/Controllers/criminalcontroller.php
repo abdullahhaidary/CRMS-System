@@ -14,11 +14,7 @@ class criminalcontroller extends Controller
 {
     public function index()
     {
-        $data = DB::table('criminal_pictures')
-        ->join('criminals', 'criminal_pictures.criminal_id', '=', 'criminals.id')
-            ->paginate(2);
-//        ->get();
-
+        $data=criminal::with('picture')->get();
         return view('criminal.criminal', compact('data'));
     }
     public function more($id)
@@ -69,7 +65,7 @@ class criminalcontroller extends Controller
 
         $save->suspect_id= $request->suspect;
         $save->case_id= $request->case;
-        $save->criminal_name= $request->name;
+        $save->name= $request->name;
         $save->last_name= $request->lname;
         $save->father_name= $request->father_name;
         $save->phone= $request->phone;
@@ -82,6 +78,7 @@ class criminalcontroller extends Controller
         $save->job= $request->job;
         $save->marital_status= $request->discription;
         $save->family_members= $request->familymember;
+        $save->save();
 
 
         if (!empty($request->photo)) {
@@ -91,8 +88,6 @@ class criminalcontroller extends Controller
             $rename = str::random(20);
             $filename = $rename . '.' . $exe;
             $file->move('criminal/', $filename);
-            $save->photo=$filename;
-            $save->save();
             $criminal_picture = new CriminalPicture();
             $criminal_picture->criminal_id=$save->id;
             $criminal_picture->path=$filename;
