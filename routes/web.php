@@ -12,10 +12,14 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
+
+
 Route::middleware(['auth'])->get('/',function(){
 
     return view('layout.home');
 })->name('home');
+
+
 Route::get('language/{local}',function($local){
     app()->setLocale($local);
     session()->put('locale',$local);
