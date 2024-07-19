@@ -11,17 +11,14 @@ use Illuminate\Support\Str;
 class suspectController extends Controller
 {
     public function index($id){
-        $suspects = suspectmodel::where('crime_record_id',$id)->get();
+//        $suspects = suspectmodel::where('suspect.id',$id)->get();
+        $suspects=DB::table('suspect')
+            ->select('suspect.*')
+            ->where('suspect.crime_record_id', '=',$id)
+            ->get();
         return view('suspect.index',compact('suspects'));
     }
-public function edit($id)
-{
-    $data=DB::table('suspect')
-        ->select('suspect.*')
-        ->where('suspect.crime_record_id','=',$id)
-        ->get();
-    return view('suspect.edit',compact('data'));
-}
+
 public function create($id)
 {
     return view('suspect.suspect_form',compact('id'));
@@ -41,6 +38,14 @@ $save->save();
 return redirect(url('/suspect_list/'.$id));
 
 }
+    public function edit($id)
+    {
+        $data=DB::table('suspect')
+            ->select('suspect.*')
+            ->where('suspect.id','=',$id)
+            ->get();
+        return view('suspect.edit',compact('data'));
+    }
 public function update(Request $request, string $id)
 {
     $request->validate([

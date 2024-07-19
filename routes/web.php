@@ -111,12 +111,12 @@ Route::post('/department form', [\App\Http\Controllers\departmentContoller::clas
 Route::get('/case/{id}', [\App\Http\Controllers\casecontroller::class, 'index'])->name('case');
 Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'create'])->name('case-from');
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
-Route::get('/suspect_list/{id}',[suspectController::class,'index'])->name('suspect_list');
 Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');
 
 
 
 // url suspect
+Route::get('/suspect_list/{id}',[suspectController::class,'index'])->name('suspect_list');
 Route::get('/suspect/form/{id}', [suspectController::class, 'create'])->name('suspect_form');
 Route::post('/suspect/form/save/{id}', [suspectController::class, 'store'])->name('suspect_form_store');
 Route::get('/suspect/edit/{id}', [suspectController::class, 'edit'])->name('suspect_edit');

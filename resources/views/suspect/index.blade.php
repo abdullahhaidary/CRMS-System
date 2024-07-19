@@ -1,10 +1,6 @@
 @extends('layout.mian-dashbord')
 @section('content')
-<div class="page-heading">
-    <a href="{{url('/suspect/form/')}}" class="btn btn-outline-primary btn-light"> ثبت مظنون جدید  </a>
-
-</div>
-<div class="page-heading">
+<div class="page-heading mt-5 text-center">
     <h3>افراد مظنون</h3>
 </div>
 @include('massage')
@@ -35,13 +31,17 @@
                     <th></th>
                     <th><a class="btn btn-sm btn-primary" href="{{url('finger_print_add/'.$suspect->id)}}">اثر انگشت</a>
                         @can('super_admin')
-                        <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->crime_record_id)}}">تصحیح</a>
+                        <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">تصحیح</a>
                         <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">حذف</a></th>
                     @endcan
                 </tr>
-                @endforeach
+            @endforeach
             </tbody>
         </table>
+        <div class="page-heading mt-5 text-end">
+            <a href="{{route('people')}}" class="btn btn-outline-primary btn-light"> رفتن صفحه افراد  </a>
+
+        </div>
     </div>
 </section>
 
