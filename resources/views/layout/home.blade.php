@@ -1,6 +1,5 @@
 @extends('layout.mian-dashbord')
 @section('content')
-    <link rel="stylesheet" href="{{asset('dist/css/font-awsome.css')}}">
     <div class="page-heading">
         <h3>{{__('database_statistics')}}</h3>
     </div>
@@ -90,10 +89,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-xl-4">
+                    <div class="col-12 col-xl-4 h-100">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Profile Visit</h4>
+                                <h4>قضیه ها</h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -104,7 +103,7 @@
                                                 <use
                                                     xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
                                             </svg>
-                                            <h5 class="mb-0 ms-3">Europe</h5>
+                                            <h5 class="mb-0 ms-3">جرم ها</h5>
                                         </div>
                                     </div>
                                     <div class="col-5">
@@ -114,24 +113,7 @@
                                         <div id="chart-europe"></div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-7">
-                                        <div class="d-flex align-items-center">
-                                            <svg class="bi text-success" width="32" height="32" fill="blue"
-                                                 style="width:10px">
-                                                <use
-                                                    xlink:href="assets/static/images/bootstrap-icons.svg#circle-fill" />
-                                            </svg>
-                                            <h5 class="mb-0 ms-3">America</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-5">
-                                        <h5 class="mb-0 text-end">375</h5>
-                                    </div>
-                                    <div class="col-12">
-                                        <div id="chart-america"></div>
-                                    </div>
-                                </div>
+
                                 <div class="row">
                                     <div class="col-7">
                                         <div class="d-flex align-items-center">
@@ -153,7 +135,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-xl-8">
+                    <div class="col-12 col-xl-8 h-100">
                         <div class="card">
                             <div class="card-header">
                                 <h4>تازه ترین قضیه ها</h4>
