@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-xl-4 h-100">
+                    <div class="col-12 col-xl-6 h-100">
                         <div class="card">
                             <div class="card-header">
                                 <h4>قضیه ها</h4>
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-xl-8 h-100">
+                    <div class="col-12 col-xl-6 h-100">
                         <div class="card">
                             <div class="card-header">
                                 <h4>تازه ترین قضیه ها</h4>
@@ -193,9 +193,9 @@
             </div>
         </section>
     </div>
-    @can('admin')
-        <h1>Yup I am an admin</h1>
-    @endcan
+{{--    @can('admin')--}}
+{{--        <h1>Yup I am an admin</h1>--}}
+{{--    @endcan--}}
 
 {{--    <footer>--}}
 {{--        <div class="footer clearfix mb-0 text-muted">--}}

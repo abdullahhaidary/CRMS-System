@@ -16,9 +16,8 @@ class pepolecontroller extends Controller
 {
     public function index()
     {
-        $data=DB::table('people')
-            ->select('people.*')
-            ->paginate(1);
+
+        $data=people::paginate(5);
         return view('people.people', compact('data'));
     }
     public function create()
@@ -66,23 +65,16 @@ class pepolecontroller extends Controller
         $description->description = $request->description;
         $description->save();
 
-        if(false){
+        if(true){
         $suspect= new suspectmodel();
-//        dd($request->all());
         $savedesc = crime_register_record_information::where('people_id', $savedPeople->id)->where('description', $description->description)->first();
-//<<<<<<< HEAD
-//        dd($savedesc);
-//        $suspect->crime_record_id=$savedesc;
-//=======
+
 
         $suspect->crime_record_id=$savedesc->id;
-//>>>>>>> refs/remotes/origin/main
         $suspect->name=$request->suspect_name;
 
         $suspect->last_name=$request->last_name;
-        // $suspect->father_name=>$request->
         $suspect->phone=$request->phone_number;
-//        $suspect->email=$request->suspect_email;
         $suspect->actual_address=$request->main_address;
         $suspect->current_address=$request->curent_address;
          $suspect->tazcira_number=$request->tazkera_number;
@@ -95,11 +87,7 @@ class pepolecontroller extends Controller
     }
     public function ariza($id)
     {
-//        dd($id);
-        $ariza=DB::table('people')
-            ->select('people.*')
-            ->where('people.id', '=', $id)
-            ->get();
+        $ariza=people::where('people.id', '=', $id)->get();
         return view('files.people_ariza', compact('ariza'));
     }
     public function edit($id)

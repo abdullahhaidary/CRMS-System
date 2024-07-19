@@ -36,7 +36,7 @@
                                 @else
                                     <td>No picture available</td>
                                 @endif
-                                <td class="text-bold-500">{{ $item->name }}</td>
+                                <td class="text-bold-500">{{ $item->criminal_name }}</td>
                                 <td class="text-bold-500">{{ $item->father_name }}</td>
                                 <td>{{ $item->current_address }}</td>
                                 <td>{{ $item->phone }}</td>

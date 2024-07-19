@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\casemodel;
 use App\Models\criminal;
 use App\Models\CriminalPicture;
+use App\Models\suspectmodel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,18 +29,23 @@ class criminalcontroller extends Controller
             ->select('criminals.*', 'cases.case_number', 'suspect.name', 'suspect.last_name','criminal_pictures.path')
             ->where('criminals.id', '=', $id)
             ->get();
+//
+//        $data=criminal::where('criminals.id', '=', $id)->get();
 
         return view('criminal.criminal_all', compact('data'));
     }
     public function add()
     {
-       $data=DB::table('suspect')
-       ->select('suspect.*')
-       ->get();
-       $case=DB::table('cases')
-           ->select('cases.*')
-           ->get();
-        return view('criminal.crimnal-form',compact('data'), compact('case'));
+//       $data=DB::table('suspect')
+//       ->select('suspect.*')
+//       ->get();
+//       $case=DB::table('cases')
+//           ->select('cases.*')
+//           ->get();
+       $data=suspectmodel::get();
+       $case=casemodel::get();
+       $crime=criminal::get();
+        return view('criminal.crimnal-form',compact('data', 'case', 'crime'));
     }
     public function inset(Request $request)
     {
@@ -65,7 +72,7 @@ class criminalcontroller extends Controller
 
         $save->suspect_id= $request->suspect;
         $save->case_id= $request->case;
-        $save->name= $request->name;
+        $save->criminal_name= $request->name;
         $save->last_name= $request->lname;
         $save->father_name= $request->father_name;
         $save->phone= $request->phone;
@@ -78,7 +85,6 @@ class criminalcontroller extends Controller
         $save->job= $request->job;
         $save->marital_status= $request->discription;
         $save->family_members= $request->familymember;
-        $save->save();
 
 
         if (!empty($request->photo)) {
@@ -88,6 +94,10 @@ class criminalcontroller extends Controller
             $rename = str::random(20);
             $filename = $rename . '.' . $exe;
             $file->move('criminal/', $filename);
+            $save->photo=$filename;
+
+            $save->save();
+
             $criminal_picture = new CriminalPicture();
             $criminal_picture->criminal_id=$save->id;
             $criminal_picture->path=$filename;

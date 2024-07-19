@@ -14,9 +14,8 @@ class admincontrol extends Controller
      */
     public function index()
     {
-        $data=DB::table('users')
-            ->select('users.*')
-            ->get();
+
+        $data=User::paginate(5);
         return view('admin.user', compact('data'));
     }
 
@@ -42,11 +41,8 @@ class admincontrol extends Controller
      */
         public function edit(string $id)
     {
-        $data=DB::table('users')
-            ->select('users.*')
-            ->where('users.id', '=', $id)
-            ->get();
-//        dd($data);
+
+            $data=User::where('users.id', '=', $id)->paginate(5);
         return view('admin/user_edit', compact('data'));
     }
 

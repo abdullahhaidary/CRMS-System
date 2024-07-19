@@ -15,11 +15,8 @@ class casecontroller extends Controller
      */
     public function index($id)
     {
-        $data=DB::table('cases')
-            ->join('crime_register_record_information', 'crime_register_record_information.id','=', 'cases.crime_record_id')
-            ->select('cases.*', 'crime_register_record_information.people_id')
-            ->where('crime_record_id', '=', $id)
-            ->get();
+
+        $data=casemodel::where('crime_record_id', '=', $id)->paginate(3);
         return view('cases.case', compact('data'));
     }
 

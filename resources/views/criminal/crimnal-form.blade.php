@@ -127,7 +127,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >تصویر</label
+                                            >مکتوب</label
                                             >
                                             <input type="file" class="form-control" required id="inputGroupFile01" name="photo">
                                         </div>
@@ -139,32 +139,9 @@
                                             <select class="form-select" name="gender" id="disabledSelect">
                                                 <option>جنسیت</option>
                                                 <option value="1">نر</option>
-                                                <option value="2">زن</option>
+                                                <option value="0">زن</option>
                                             </select>
                                         </fieldset>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <label for="email-id-column mandatory" class="form-label"
-                                        >حالت مدنی</label>
-                                        <!-- <fieldset class="form-group">
-                                            <select class="form-select"  id="disabledSelect">
-                                                <option>حالت مدنی</option>
-                                                <option>مجرد</option>
-                                                <option>متاهل</option>
-                                            </select>
-                                        </fieldset> -->
-                                        <div class="form-check form-check-info">
-                                            <input class="form-check-input" type="radio" name="gender" id="info" checked="">
-                                            <label class="form-check-label" for="info">
-                                                مجرد
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-info">
-                                            <input class="form-check-input" type="radio" name="gender" id="info" checked="">
-                                            <label class="form-check-label" for="info">
-                                                متاهل
-                                            </label>
-                                        </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
@@ -237,8 +214,13 @@
                                             <select class="form-select"  name="suspect" id="disabledSelect">
                                                 <option>اتیخاب مضنون</option>
                                             @foreach($data as $item)
-                                                    <option value="{{$item->id}}">{{$item->name}}</option>
-{{--                                                <option value="0">زن</option>--}}
+{{--                                                @foreach($crime as $criminal)--}}
+{{--                                                    @if($criminal->suspect_id==$item->id)--}}
+{{--                                                            <option value="">{{ "name: ".$item->name."- last_name: ". $item->last_name."- number tazkera: ".$item->tazcira_number}}</option>--}}
+
+{{--                                                        @else--}}
+                                                    <option value="">{{ "name: ".$item->name."- last_name: ". $item->last_name."- number tazkera: ".$item->tazcira_number}}</option>{{--                                                        @endif--}}
+
                                                 @endforeach
                                             </select>
                                         </fieldset>

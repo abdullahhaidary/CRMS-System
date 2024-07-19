@@ -17,6 +17,12 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('super_admin', function (User $user) {
             return $user->type == 1;
         });
+        Gate::define('admin', function (User $user) {
+            return $user->type == 2;
+        });
+        Gate::define('moder', function (User $user) {
+            return $user->type == 3;
+        });
     }
 
     /**

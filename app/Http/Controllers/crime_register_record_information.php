@@ -18,14 +18,8 @@ use Illuminate\Support\Str;
      */
     public function index($id)
     {
-//        $data=\App\Models\crime_register_record_information::getSingle($id);
-//        dd($id);
-        $data=DB::table('crime_register_record_information')
-            ->join('people', 'people.id', '=', 'crime_register_record_information.people_id')
-            ->select('crime_register_record_information.*', 'people.name')
-            ->where('people_id', '=', $id)
-            ->get();
 //        dd($data);
+        $data=\App\Models\crime_register_record_information::where('people_id', '=', $id)->paginate(5);
         return view('crime_record_inf.description', compact('data'));
     }
 
@@ -56,10 +50,12 @@ use Illuminate\Support\Str;
     public function edit(string $id)
     {
 //        dd($id);
-        $data=DB::table('crime_register_record_information')
-            ->select('crime_register_record_information.*')
-            ->where('crime_register_record_information.id','=',$id)
-            ->get();
+//        $data=DB::table('crime_register_record_information')
+//            ->select('crime_register_record_information.*')
+//            ->where('crime_register_record_information.id','=',$id)
+//            ->get();
+        $data=\App\Models\crime_register_record_information::where('crime_register_record_information.id','=',$id)->paginate(5);
+
         return view('crime_record_inf.edit',compact('data'));
     }
 

@@ -56,9 +56,9 @@
         <div class="nav text-right">
             @can('super_admin')
             <a class="link-item mx-2 btn btn-info" href="{{url('criminal/edit/'.$item->id)}}">Edit</a>
-            @endcan
+
             <a class="link-item btn btn-danger" href="{{url('criminal/delete/'.$item->id)}}">Delete</a>
-{{--            <a class="link-item" href="">back</a>--}}
+            @endcan
         </div>
         <h1>{{__('Additional_information_of_a_criminal')}}</h1>
     </div>
@@ -74,8 +74,8 @@
                 <span class="details-value">{{$item->father_name}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Gender')}}</span>
-                <span class="details-value">{{$item->gender}}</span>
+                <span class="details-label">{{__('Gender')}}:</span>
+                <span class="details-value">{{$item->gender==1 ?  'male' : 'female'}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">{{__('Age')}}:</span>
@@ -221,6 +221,6 @@
         </div>
     </div>
     @endforeach
-    </div>  
+    </div>
 @endsection
 
