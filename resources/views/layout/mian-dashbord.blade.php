@@ -70,7 +70,7 @@
             <div class="sidebar-menu">
 
                 <ul class="menu">
-                    <li class="sidebar-title font-extrabold" style="user-select: none;" >سیستم مدیریتی </li>
+                    <li class="sidebar-title font-extrabold" style="user-select: none;" >{{__('management_system')}} </li>
                     <li
                         class="sidebar-item {{ request()->is('/') ? 'active' : '' }}">
                         <a href="{{url('/')}}" class='sidebar-link'>

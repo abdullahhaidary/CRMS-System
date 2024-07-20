@@ -34,6 +34,8 @@
   "Table_of_all_system_users": "د ټول سیسټم کاروونکو جدول",
   "User Profile": "د کارونکي پروفایل",
   "database_statistics": "د دیتابیس احصایه",
- 
-  "user_setting": "د کارونکي تنظیمات"
+
+  "user_setting": "د کارونکي تنظیمات",
+  "management_system":"مدیریتی سیستم"
+
 }

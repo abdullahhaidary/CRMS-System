@@ -14,5 +14,6 @@
   "database_statistics": "احصایه دیتابیس",
   "logout": "خروج",
   "name": "اسم",
-  "user_setting": "د تنظیمات کاربر"
+  "user_setting": "د تنظیمات کاربر",
+  "management_system":"سیستم مدیریتی"
 }
