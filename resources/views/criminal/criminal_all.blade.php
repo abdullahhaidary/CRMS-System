@@ -54,11 +54,14 @@
     @foreach($data as $item)
     <div class="text-center page-heading">
         <div class="nav text-right">
-            @can('super_admin')
+{{--            @can('super_admin')--}}
+                @if(Gate::any(['admin', 'super_admin']))
+
             <a class="link-item mx-2 btn btn-info" href="{{url('criminal/edit/'.$item->id)}}">Edit</a>
 
             <a class="link-item btn btn-danger" href="{{url('criminal/delete/'.$item->id)}}">Delete</a>
-            @endcan
+                @endif
+{{--            @endcan--}}
         </div>
         <h1>{{__('Additional_information_of_a_criminal')}}</h1>
     </div>
