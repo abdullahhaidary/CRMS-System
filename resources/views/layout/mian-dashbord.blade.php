@@ -78,7 +78,7 @@
                             <span>داشبورد</span>
                         </a>
                     </li>
-
+                    @if(Gate::any(['admin', 'super_admin']))
 
                     <li
                         class="sidebar-item has-sub">
@@ -136,7 +136,7 @@
                             <span>بیومترک سرچ </span>
                         </a>
                     </li>
-
+                    @endif
 
                     @can('super_admin')
                     <li
