@@ -79,7 +79,13 @@
                         </a>
                     </li>
                     @if(Gate::any(['admin', 'super_admin']))
-
+                        <li
+                            class="sidebar-item {{ Route::currentRouteName() == 'people' ? 'active' : '' }}">
+                            <a href="{{route('people')}}" class='sidebar-link '>
+                                <i class="bi-file-earmark-text"></i>
+                                <span>  ثبت شکایت   </span>
+                            </a>
+                        </li>
                     <li
                         class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
@@ -116,13 +122,6 @@
                         </a>
                     </li>
                     <li
-                        class="sidebar-item {{ Route::currentRouteName() == 'people' ? 'active' : '' }}">
-                        <a href="{{route('people')}}" class='sidebar-link '>
-                            <i class="bi-file-earmark-text"></i>
-                            <span>  ثبت شکایت   </span>
-                        </a>
-                    </li>
-                    <li
                         class="sidebar-item   {{ Route::currentRouteName() == 'department' ? 'active' : '' }}">
                         <a href="{{route('department')}}" class='sidebar-link'>
                             <i class="bi bi-building"></i>
@@ -137,7 +136,15 @@
                         </a>
                     </li>
                     @endif
-
+                    @can('moder')
+                        <li
+                            class="sidebar-item {{ Route::currentRouteName() == 'bio_search' ? 'active' : '' }} ">
+                            <a href="" class='sidebar-link '>
+                                <i class="bi bi-search"></i>
+                                <span> شکایت </span>
+                            </a>
+                        </li>
+                    @endcan
                     @can('super_admin')
                     <li
                         class="sidebar-item  {{ Route::currentRouteName() == 'register' ? 'active' : '' }} ">
