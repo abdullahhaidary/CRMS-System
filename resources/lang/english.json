@@ -36,5 +36,7 @@
   "database_statistics": "Database Statistics",
   "logout": "Logout",
   "name": "Name",
-  "user_setting": "User setting"
+  "user_setting": "User setting",
+  "management_system":"Management System"
+
 }

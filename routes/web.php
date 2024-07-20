@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\suspectController;
 use App\Http\Middleware\isAdmin;
+use App\Http\Middleware\SetLocale;
 use App\Models\suspectmodel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -12,6 +13,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\App;
 
 
 Route::middleware(['auth'])->get('/',function(){
@@ -20,11 +22,14 @@ Route::middleware(['auth'])->get('/',function(){
 })->name('home');
 
 
-Route::get('language/{local}',function($local){
+Route::get('language/{local}', function ($local) {
     app()->setLocale($local);
-    session()->put('locale',$local);
+    session()->put('locale', $local);
+    App::setLocale($local);
+    session()->save();
     return redirect()->back();
-});
+})->withoutMiddleware([SetLocale::class]);
+
 
 
 //Route::group(['middleware'=>'auth'],function (){
