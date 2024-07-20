@@ -30,6 +30,7 @@ Route::get('language/{local}',function($local){
 //Route::group(['middleware'=>'auth'],function (){
 //url search
 Route::get('/search',function(){
+    dd(session()->get('local'));
     return view('search');
 })->name('bio_search');
 Route::get('search/search', [\App\Http\Controllers\searchcontroller::class, 'index'])->name('search');

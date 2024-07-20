@@ -45,9 +45,9 @@
                             زبان
                         </button>
                         <ul class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="#" data-lang="en">پښتو</a></li>
-                            <li><a class="dropdown-item" href="#" data-lang="es">فارسی</a></li>
-                            <li><a class="dropdown-item" href="#" data-lang="fr">English</a></li>
+                            <li><a class="dropdown-item" href="{{url('language/pashto')}}" data-lang="en">پښتو</a></li>
+                            <li><a class="dropdown-item" href="{{url('language/dari')}}" data-lang="es">فارسی</a></li>
+                            <li><a class="dropdown-item" href="{{url('language/english')}}" data-lang="fr">English</a></li>
                             <!-- Add more languages as needed -->
                         </ul>
                         <div class="form-check form-switch fs-6">
