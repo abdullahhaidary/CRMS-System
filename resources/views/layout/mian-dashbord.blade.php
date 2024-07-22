@@ -75,26 +75,19 @@
                         class="sidebar-item {{ request()->is('/') ? 'active' : '' }}">
                         <a href="{{url('/')}}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
-                            <span>داشبورد</span>
+                            <span>{{__('Dashboard')}}</span>
                         </a>
                     </li>
                     @if(Gate::any(['admin', 'super_admin']))
-                        <li
-                            class="sidebar-item {{ Route::currentRouteName() == 'people' ? 'active' : '' }}">
-                            <a href="{{route('people')}}" class='sidebar-link '>
-                                <i class="bi-file-earmark-text"></i>
-                                <span>  ثبت شکایت   </span>
-                            </a>
-                        </li>
                     <li
                         class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
-                            <span>بخش های سیستم</span>
+                            <span>{{__('part_of_system')}}</span>
                         </a>
                         <ul class="submenu {{ Route::currentRouteName() == 'crimnal' ? 'active' : '' }}">
                             <li class="submenu-item  {{ Route::currentRouteName() == 'crimnal' ? 'active' : '' }}">
-                                <a href="{{route('crimnal')}}" class="submenu-link ">بخش مجریمین</a>
+                                <a href="{{route('crimnal')}}" class="submenu-link ">{{__('crime_part')}}</a>
                             </li>
                             <li class="submenu-item  ">
                                 <a href="component-alert.html" class="submenu-link">اسناد ها</a>
@@ -111,46 +104,44 @@
                         class="sidebar-item   {{ Route::currentRouteName() == 'search' ? 'active' : '' }}">
                         <a href="{{route('search')}}" class='sidebar-link'>
                             <i class="bi bi-search"></i>
-                            <span>سرچ عمومی </span>
+                            <span>{{__('public_search')}}</span>
                         </a>
                     </li>
+                    <li
+                            class="sidebar-item {{ Route::currentRouteName() == 'people' ? 'active' : '' }}">
+                            <a href="{{route('people')}}" class='sidebar-link '>
+                                <i class="bi-file-earmark-text"></i>
+                                <span>{{__('save_compelint')}}</span>
+                            </a>
+                        </li>
                     <li
                         class="sidebar-item">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-shield-lock"></i>
-                            <span>بخش ادمین </span>
+                            <span>{{__('admin_part')}}</span>
                         </a>
                     </li>
                     <li
                         class="sidebar-item   {{ Route::currentRouteName() == 'department' ? 'active' : '' }}">
                         <a href="{{route('department')}}" class='sidebar-link'>
                             <i class="bi bi-building"></i>
-                            <span>دیپارتمنت </span>
+                            <span>{{__('department')}} </span>
                         </a>
                     </li>
                     <li
                         class="sidebar-item {{ Route::currentRouteName() == 'bio_search' ? 'active' : '' }} ">
                         <a href="{{route('bio_search')}}" class='sidebar-link '>
                             <i class="bi bi-search"></i>
-                            <span>بیومترک سرچ </span>
+                            <span>{{__('biemitrec_search')}} </span>
                         </a>
                     </li>
                     @endif
-                    @can('moder')
-                        <li
-                            class="sidebar-item {{ Route::currentRouteName() == 'bio_search' ? 'active' : '' }} ">
-                            <a href="" class='sidebar-link '>
-                                <i class="bi bi-search"></i>
-                                <span> شکایت </span>
-                            </a>
-                        </li>
-                    @endcan
                     @can('super_admin')
                     <li
                         class="sidebar-item  {{ Route::currentRouteName() == 'register' ? 'active' : '' }} ">
                         <a href="{{route('register')}}" class='sidebar-link'>
                             <i class="bi bi-people-fill"></i>
-                            <span>Users </span>
+                            <span>{{__('users')}}  </span>
                         </a>
                     </li>
                         @endcan
@@ -158,7 +149,7 @@
                         class="sidebar-item {{ Route::currentRouteName() == 'profile_info' ? 'active' : '' }} ">
                         <a href="{{route('profile_info')}}" class='sidebar-link'>
                             <i class="bi bi-person-fill"></i>
-                            <span>فروفایل من </span>
+                            <span>{{__('my_profile')}} </span>
                         </a>
                     </li>
                     <li

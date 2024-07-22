@@ -69,7 +69,7 @@
         <div class="col-lg-4 col-md-6 mb-4">
             <img src="{{asset('criminal/'.$item->path)}}" alt="Profile Picture" class="img-fluid">
             <div class="details-item">
-                <span class="details-label">{{__('Name')}}:</span>
+                <span class="details-label">{{__('name')}}:</span>
                 <span class="details-value">{{$item->criminal_name ." ".$item->last_name}}</span>
             </div>
             <div class="details-item">
@@ -89,7 +89,7 @@
                 <span class="details-value">{{$item->job}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">caseنمبر: </span>
+                <span class="details-label">{{__('case_number')}}: </span>
                 <span class="details-value">{{$item->case_number}}</span>
             </div>
             <div class="details-item"><a href="{{url('suspect_list/'.$item->suspect_id)}}">
