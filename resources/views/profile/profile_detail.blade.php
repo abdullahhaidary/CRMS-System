@@ -57,7 +57,7 @@ Profile Details
                     </div>
                     <div class="personal_information_single">
                         <div>Type:</div>
-                        <div>{{ Auth::user()->type=1 ? 'SUPER Admin' : 'admin'  }}</div>
+                        <div>{{ Auth::user()->type }}</div>
                     </div>
                     <div class="personal_information_single">
                             <div>ACTION:</div>

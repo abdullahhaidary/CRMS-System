@@ -9,36 +9,22 @@ use Illuminate\Support\Str;
 
 class admincontrol extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
 
         $data=User::paginate(5);
+//        $data=DB::table('users')
+//            ->join('province_account','province_account.user_id', '=', 'users.id')
+//            ->select('users.*', 'province_account.province')
+//            ->get();
         return view('admin.user', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-
-
-    /**
-     * Store a newly created resource in storage.
-     */
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
         public function edit(string $id)
     {
 
@@ -46,9 +32,6 @@ class admincontrol extends Controller
         return view('admin/user_edit', compact('data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
 //        dd($request->all());
@@ -71,20 +54,22 @@ class admincontrol extends Controller
             // Store the image in the 'public/profiles' directory
 //            $image->storeAs('public/profiles', $image_name);
 //        }
-        if (!empty($request->picture)) {
-            $exe = $request->file('picture')->getClientOriginalExtension();
-//            dd($exe);
-            $file = $request->file('picture');
-            $rename = str::random(20);
-            $filename = $rename . '.' . $exe;
-            $file->storeAs('public/profiles', $filename);
-        }
+//        if (!empty($request->picture)) {
+//            $exe = $request->file('picture')->getClientOriginalExtension();
+////            dd($exe);
+//            $file = $request->file('picture');
+//            $rename = str::random(20);
+//            $filename = $rename . '.' . $exe;
+//            $file->storeAs('public/profiles', $filename);
+//        }
+//        dd($request->action);
         // Update the resource with validated data
         $resource->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'type' => $request->type,
-            'picture'=>$filename,
+            'action' => $request->action,
+//            'picture'=>$filename,
 
             // Add more fields as needed
         ]);

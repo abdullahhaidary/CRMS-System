@@ -101,7 +101,7 @@ Route::get('/ariza/arizafile/{id}', [\App\Http\Controllers\pepolecontroller::cla
 Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, 'edit'])->name('people_edit');
 Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update');
 Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete');
-
+Route::get('/province/people', [\App\Http\Controllers\provinceComplintcontroller::class, 'index'])->name('province_list');
 
 //url crime record information
 
@@ -122,6 +122,10 @@ Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'cre
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
 Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');
 
+// url province account
+Route::get('/province/account', [\App\Http\Controllers\provincecontroller::class, 'create'])->name('province_account');
+Route::post('/province/add', [\App\Http\Controllers\provincecontroller::class, 'store'])->name('province_register');
+Route::get('/province/list', [\App\Http\Controllers\provincecontroller::class, 'index'])->name('province_liat');
 
 
 // url suspect

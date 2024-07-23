@@ -48,14 +48,6 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
-                                            <label for="email-id-column" class="form-label"
-                                            >تصویر</label
-                                            >
-                                            <input type="file" name="picture" class="form-control"  id="inputGroupFile01">
-                                        </div>
-                                    </div>
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
                                         >Position</label>
@@ -70,14 +62,25 @@
                                                     <option selected value="2">admin</option>
                                                     <option value="3">moder</option>
                                                 @elseif($item->type==3)
-                                                <option value="3">Super Admin</option>
+                                                <option value="1">Super Admin</option>
                                                     <option value="2">admin</option>
                                                     <option selected value="3">moder</option>
                                                 @endif
-
-{{--                                                    <option value="1">super admin</option>--}}
-{{--                                                    <option value="2">admin</option>--}}
-{{--                                                    <option value="3">moder</option>--}}
+                                            </select>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="email-id-column mandatory" class="form-label"
+                                        >Position</label>
+                                        <fieldset class="form-group">
+                                            <select class="form-select" name="action" id="disabledSelect">
+                                                @if($item->action==1)
+                                                    <option selected value="1">فعال</option>
+                                                    <option value="0">غیر فهال</option>
+                                                @elseif($item->type==0)
+                                                    <option value="1">فعال</option>
+                                                    <option selected value="0">غیر فعال</option>
+                                                @endif
                                             </select>
                                         </fieldset>
                                     </div>

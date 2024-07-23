@@ -34,4 +34,5 @@ class People extends Model
     {
         return $this->hasOne(crime_register_record_information::class, 'people_id');
     }
+
 }

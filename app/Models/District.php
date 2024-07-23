@@ -19,4 +19,5 @@ class District extends Model
     {
         return $this->hasMany(PoliceStation::class);
     }
+
 }

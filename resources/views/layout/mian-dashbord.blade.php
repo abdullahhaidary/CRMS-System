@@ -144,7 +144,24 @@
                             <span>{{__('users')}}  </span>
                         </a>
                     </li>
+                        <li
+                            class="sidebar-item  {{ Route::currentRouteName() == 'register' ? 'active' : '' }} ">
+                            <a href="{{route('province_account')}}" class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
+                                <span>Account province</span>
+                            </a>
+                        </li>
+
                         @endcan
+                    @can('moder')
+                        <li
+                            class="sidebar-item {{ Route::currentRouteName() == 'profile_info' ? 'active' : '' }} ">
+                            <a href="{{route('province_list')}}" class='sidebar-link'>
+                                <i class="bi bi-person-fill"></i>
+                                <span> ثبت شکایت </span>
+                            </a>
+                        </li>
+                    @endcan
                     <li
                         class="sidebar-item {{ Route::currentRouteName() == 'profile_info' ? 'active' : '' }} ">
                         <a href="{{route('profile_info')}}" class='sidebar-link'>

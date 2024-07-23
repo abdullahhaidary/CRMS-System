@@ -138,40 +138,16 @@
                                         >جنسیت </label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="gender" id="disabledSelect">
-                                                @if($value->gender=="1")
-                                                <option selected value="1">نر</option>
+                                                @if($value->gender==1)
+                                                <option  value="1">نر</option>
                                                 <option value="0">زن</option
-                                                @elseif($value->gender=="0")
+                                                @elseif($value->gender==0)
                                                     <option value="1">نر</option>
-                                                <option selected value="0">زن</option>
+                                                <option  value="0">زن</option>
                                                 @endif
-
-                                                     >
+                                                >
                                             </select>
                                         </fieldset>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <label for="email-id-column mandatory" class="form-label"
-                                        >حالت مدنی</label>
-                                        <!-- <fieldset class="form-group">
-                                            <select class="form-select"  id="disabledSelect">
-                                                <option>حالت مدنی</option>
-                                                <option>مجرد</option>
-                                                <option>متاهل</option>
-                                            </select>
-                                        </fieldset> -->
-                                        <div class="form-check form-check-info">
-                                            <input class="form-check-input" type="radio" name="gender" id="info" checked="">
-                                            <label class="form-check-label" for="info">
-                                                مجرد
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-info">
-                                            <input class="form-check-input" type="radio" name="gender" id="info" checked="">
-                                            <label class="form-check-label" for="info">
-                                                متاهل
-                                            </label>
-                                        </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
