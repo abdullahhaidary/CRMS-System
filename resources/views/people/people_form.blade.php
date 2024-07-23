@@ -292,14 +292,8 @@
                                             type="text"
                                             id="company-column"
                                             class="form-control"
-<<<<<<< HEAD
-                                            name="suspect_email"
-=======
-                                            name="email_suspect"
->>>>>>> fcf799e (waris)
-                                            placeholder=" email"
-                                            data-parsley-required="true"
-                                        />
+                                            name="current_address"
+                                        >
                                     </div>
                                 </div>
                             </div>

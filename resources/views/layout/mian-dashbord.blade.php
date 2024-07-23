@@ -156,7 +156,7 @@
                     @can('moder')
                         <li
                             class="sidebar-item {{ Route::currentRouteName() == 'profile_info' ? 'active' : '' }} ">
-                            <a href="{{route('province_list')}}" class='sidebar-link'>
+                            <a href="{{route('people_form')}}" class='sidebar-link'>
                                 <i class="bi bi-person-fill"></i>
                                 <span> ثبت شکایت </span>
                             </a>

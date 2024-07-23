@@ -109,7 +109,7 @@
 <body dir="rtl">
     <div class="profile-container">
         <i class="fa fa-user-circle fa-3x"></i>
-        <h2>Complete Your Profile</h2>
+        <h2 class="text-center">{{__('complit_profile')}}</h2>
         <div class="text-center">
         <img src="{{ asset('images/profile_avatar.png') }}" onclick="triggerFileInput()" alt="Profile Picture" class="profile-image" id="profile-preview">
         </div>
@@ -127,21 +127,21 @@
                     <!-- Old Password -->
                     <input type="file" id="profile-image" name="profile_image" accept="image/*" onchange="previewProfileImage(event)" required>
                     <div class="form-group">
-                        <label for="old_password">پخوانی فاسورد:</label>
-                        <input type="password" name="old_password" required class="form-control" id="old_password" placeholder="پخوانی فاسورد...">
+                        <label for="old_password">{{__('olde_password')}}:</label>
+                        <input type="password" name="old_password" required class="form-control" id="old_password" placeholder=" {{__('olde_password')}}...">
                     </div>
                     <!-- New Password -->
                     <div class="form-group">
-                        <label for="new_password">نوی فاسورد:</label>
-                        <input type="password" name="new_password" required class="form-control" id="new_password" placeholder="نوی فاسورد...">
-                        <p class="text-red">پاسورد باید له اتو عددونو کم نه وی!</p>
+                        <label for="new_password">{{__('new_password')}}:</label>
+                        <input type="password" name="new_password" required class="form-control" id="new_password" placeholder="{{__('new_password')}} ...">
+                        <p style="color:red" >{{__('pass_8')}} !</p>
                     </div>
                     <!-- Date of Birth -->
                     <div class="form-group">
-                        <label for="dob">Date of Birth:</label>
+                        <label for="dob">{{__('date_of_birth')}}:</label>
                         <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" required>
                     </div>
-                    <button type="submit" class="btn btn-success">Complete</button>
+                    <button type="submit" class="btn btn-success">{{__('Complete')}}</button>
                 </form>
             </div>
 
