@@ -27,6 +27,7 @@ public function create($id)
 }
 public function store(Request $request ,$id)
 {
+//    dd($id);
     $save=new suspectmodel();
     $save->crime_record_id=$id;
     $save->name=$request->suspect_name;

@@ -19,7 +19,9 @@ use Illuminate\Support\Str;
     public function index($id)
     {
 //        dd($data);
-        $data=\App\Models\crime_register_record_information::where('people_id', '=', $id)->paginate(5);
+        $data=\App\Models\crime_register_record_information::
+        join('people', 'crime_register_record_information.people_id', '=','people.id')
+            ->where('people_id', '=', $id)->paginate(5);
         return view('crime_record_inf.description', compact('data'));
     }
 

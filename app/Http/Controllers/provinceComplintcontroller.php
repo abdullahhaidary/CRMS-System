@@ -7,7 +7,6 @@ use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
 class provinceComplintcontroller extends Controller
 {
     /**
@@ -15,8 +14,10 @@ class provinceComplintcontroller extends Controller
      */
     public function index()
     {
-//        $data=people::where('province', '=',)->paginate(5);
-
+        $data=people::where('user_id','=',Auth::user()->id)
+            ->where('province_id', '=', 1)
+            ->where('district_id', '=', 1)
+            ->paginate(5);
 
         return view('province.index', compact('data'));
     }

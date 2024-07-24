@@ -2,7 +2,7 @@
 @section('content')
     <div class="page-heading">
         <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
-{{--        <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شواهد  </a>--}}
+{{--        <a href="{{route('people_all')}}" class="btn btn-outline-primary btn-light"> ثبت شواهد  </a>--}}
         <select class="btn btn-outline-primary btn-light ml-5">
             <option>انتقال قضیه به ارګان مربوط</option>
             @foreach($data as $items)
@@ -60,7 +60,9 @@
                             @can('super_admin')
                             <a href="{{url('people/edit/'.$item->id)}}"><i class="bi bi-pencil" style="color:#4b4cff;"></i></a>
                             <a href="{{url('people/delete/'. $item->id)}}" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
-                            <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->
+                                <a href="{{url('people/all/'. $item->id)}}" class="p-2"><i class="bi bi-chevron-down" style="color: red"></i></a>
+
+                                <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->
                             @endcan
                         </td>
                     </tr>

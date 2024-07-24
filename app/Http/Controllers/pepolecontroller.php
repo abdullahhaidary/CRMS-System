@@ -6,6 +6,7 @@ use App\Models\people;
 use App\Models\crime_register_record_information;
 use App\Models\suspectmodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 /**
@@ -26,7 +27,6 @@ class pepolecontroller extends Controller
     }
     public function store(Request $request)
     {
-//        dd($request->all());
         $save= new people();
 
         if (!empty($request->ariza_file)) {
@@ -52,6 +52,9 @@ class pepolecontroller extends Controller
         $save->tazkira_number=$request->tazcira_number;
         $save->	subject_crim=$request->creime_subject;
         $save->	crim_date=$request->crime_date;
+        $save->user_id=Auth::user()->id;
+        $save->province_id=1;
+        $save->district_id=1;
 
 //dd($savedPeople->id);
         $save->save();
@@ -65,21 +68,18 @@ class pepolecontroller extends Controller
         $description->description = $request->description;
         $description->save();
 
-        if(true){
+//        if(false){
         $suspect= new suspectmodel();
         $savedesc = crime_register_record_information::where('people_id', $savedPeople->id)->where('description', $description->description)->first();
-
-
         $suspect->crime_record_id=$savedesc->id;
         $suspect->name=$request->suspect_name;
-
         $suspect->last_name=$request->last_name;
         $suspect->phone=$request->phone_number;
         $suspect->actual_address=$request->main_address;
-        $suspect->current_address=$request->curent_address;
+        $suspect->current_address=$request->current_address;
          $suspect->tazcira_number=$request->tazkera_number;
         $suspect->save();
-        }
+//        }
         return redirect(route('people'))->with('success',"د شکایت کونکی معلومات ذخیره شول اوس معلومات اضافی داخل کړی");
 
 
@@ -157,5 +157,20 @@ class pepolecontroller extends Controller
 
         // Redirect or return a response
         return redirect()->route('people')->with('success', 'Resource deleted successfully.');
+    }
+    public function moreShow($id)
+    {
+
+        $data=DB::table('people')
+//            ->join('crime_register_record_information', 'crime_register_record_information.people_id', '=', 'people.id')
+//            ->join('suspect', 'suspect.crime_record_id', '=','crime_register_record_information.id')
+            ->select('people.*')
+            ->where('people.id','=',$id)
+            ->get();
+        $data=people::where('id','=',$id)->get();
+        $info=crime_register_record_information::where('people_id', '=',$id)->get();
+//            $suspect=suspectmodel::where()
+
+        return view('people.all_about_people', compact('data', 'info'));
     }
 }

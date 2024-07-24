@@ -94,6 +94,7 @@ Route::get('/admin/edit/{id}', [\App\Http\Controllers\admincontrol::class, 'edit
 Route::post('admin/update/{id}', [\App\Http\Controllers\admincontrol::class, 'update'])->name('user_update')->middleware('auth');
 
 //url people
+
 Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people');
 Route::get('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form');
 Route::post('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store');
@@ -101,10 +102,10 @@ Route::get('/ariza/arizafile/{id}', [\App\Http\Controllers\pepolecontroller::cla
 Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, 'edit'])->name('people_edit');
 Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update');
 Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete');
+Route::get('/people/all/{id}', [\App\Http\Controllers\pepolecontroller::class, 'moreShow'])->name('people_all');
 Route::get('/province/people', [\App\Http\Controllers\provinceComplintcontroller::class, 'index'])->name('province_list');
 
 //url crime record information
-
 Route::get('crime/info/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'index'])->name('crime_info');
 Route::get('crime/info/edit/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'edit'])->name('info_edit');
 Route::post('crime/info/update/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'update'])->name('info_update');
