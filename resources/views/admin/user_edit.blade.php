@@ -71,13 +71,13 @@
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
-                                        >Position</label>
+                                        >Action</label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="action" id="disabledSelect">
                                                 @if($item->action==1)
                                                     <option selected value="1">فعال</option>
                                                     <option value="0">غیر فهال</option>
-                                                @elseif($item->type==0)
+                                                @elseif($item->action==0)
                                                     <option value="1">فعال</option>
                                                     <option selected value="0">غیر فعال</option>
                                                 @endif

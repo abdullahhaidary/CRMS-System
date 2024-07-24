@@ -7,7 +7,6 @@
                 <thead class="thead-dark">
                 <tr class="" style="background-color: rgba(136,180,156,0.28)">
                     <th scope="col">#</th>
-{{--                    <th scope="col">{{__('Case_name')}}</th>--}}
                     <th scope="col">{{__('Crime_type')}}</th>
                     <th scope="col">{{__('Status')}}</th>
                     <th scope="col">{{__('Crime_location')}}</th>
@@ -21,7 +20,6 @@
                 @foreach($data as $item)
                     <tr>
                         <th scope="row">{{$item->id}}</th>
-{{--                        <td>{{$item->case_name}}</td>--}}
                         <td>{{$item->crime_type}}</td>
                         <td>{{$item->status}}</td>
                         <td>{{$item->crime_location}}</td>

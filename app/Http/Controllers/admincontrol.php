@@ -75,8 +75,8 @@ class admincontrol extends Controller
 //         ]);
         $resource->name = $request->input('name');
         $resource->email=$request->input('email');
-        $resource->type = $request->input('type');
-        $resource->type = $request->input('action');
+        $resource->type = $request->type;
+        $resource->action = $request->action;
         $resource->save();
         // Optionally, you can return a response indicating success
         return redirect()->route('user')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\casemodel;
 use App\Models\people;
 use App\Models\crime_register_record_information;
 use App\Models\suspectmodel;
@@ -169,7 +170,8 @@ class pepolecontroller extends Controller
             ->get();
         $data=people::where('id','=',$id)->get();
         $info=crime_register_record_information::where('people_id', '=',$id)->get();
-//            $suspect=suspectmodel::where()
+//            $suspect=suspectmodel::where('');
+//        $case=casemodel::where()
 
         return view('people.all_about_people', compact('data', 'info'));
     }

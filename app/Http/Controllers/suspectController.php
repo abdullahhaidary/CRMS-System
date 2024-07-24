@@ -17,7 +17,8 @@ class suspectController extends Controller
 //            ->where('suspect.crime_record_id', '=',$id)
 //            ->get();
 //        return view('suspect.index',compact('suspects'));
-        $suspects = suspectmodel::where('crime_record_id',$id)->get();
+//        dd($id);
+        $suspects=suspectmodel::where('suspect.crime_record_id','=',$id)->get();
         return view('suspect.index',compact('suspects','id'));
     }
 

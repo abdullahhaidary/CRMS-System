@@ -12,18 +12,18 @@
                     <h5 class="card-title mb-0">Complaint Information</h5>
                 </div>
                 <div class="card-body">
-                    <p><strong>Complaint ID:</strong>{{$item->id}}</p>
-                    <p><strong>نوم:</strong>{{$item->name . " ". $item->last_name}}</p>
-                    <p><strong>پلار نوم:</strong>{{ $item->father_name}}</p>
-                    <p><strong>اییمل:</strong>{{ $item->email}}</p>
-                    <p><strong>تلفن:</strong>{{ $item->phone}}</p>
-                    <p><strong>تذکره نمبر:</strong>{{ $item->tazkira_number}}</p>
-                    <p><strong>ادرس اصلی:</strong>{{ $item->actual_address}}</p>
-                    <p><strong>ادرس فعلی:</strong>{{ $item->current_address}}</p>
-                    <p><strong>کیس:</strong>{{ $item->crime_case}}</p>
-                    <p><strong>موضوع جرم:</strong>{{ $item->subject_crim}}</p>
-                    <p><strong> تاریخ جرم:</strong>{{ $item->crim_date}}</p>
-                    <p><strong>تاریخ ثبت:</strong> {{$item->created_at}}</p>
+                    <p><strong>#: </strong>{{$item->id}}</p>
+                    <p><strong>نوم: </strong>{{$item->name . " ". $item->last_name}}</p>
+                    <p><strong>پلار نوم: </strong>{{ $item->father_name}}</p>
+                    <p><strong>اییمل: </strong>{{ $item->email}}</p>
+                    <p><strong>تلفن: </strong>{{ $item->phone}}</p>
+                    <p><strong>تذکره نمبر: </strong>{{ $item->tazkira_number}}</p>
+                    <p><strong> ادرس اصلی: </strong>{{ $item->actual_address}}</p>
+                    <p><strong>ادرس فعلی: </strong>{{ $item->current_address}}</p>
+                    <p><strong>کیس: </strong>{{ $item->crime_case}}</p>
+                    <p><strong>موضوع جرم: </strong>{{ $item->subject_crim}}</p>
+                    <p><strong> تاریخ جرم: </strong>{{ $item->crim_date}}</p>
+                    <p><strong>تاریخ ثبت: </strong> {{$item->created_at}}</p>
                 </div>
             </div>
         </div>
@@ -50,6 +50,7 @@
                 <div class="card-header bg-success text-white">
                     <h5 class="card-title mb-0">Suspect Information</h5>
                 </div>
+
                 <div class="card-body">
                     <p><strong>Name:</strong>{{$item->name}}</p>
                     <p><strong>Age:</strong> 34</p>

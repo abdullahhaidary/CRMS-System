@@ -4,20 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\casemodel;
 use Illuminate\Http\Request;
-use function Ramsey\Uuid\v1;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
-class casecontroller extends Controller
+class province_case_controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index($id)
     {
 
-        $data=casemodel::where('crime_record_id', '=', $id)->paginate(3);
-        return view('cases.case', compact('data'));
+        $data=casemodel::where('crime_record_id','=',$id)->paginate(3);
+        return view('province.case.case', compact('data'));
     }
 
     /**
@@ -26,7 +20,7 @@ class casecontroller extends Controller
     public function create($id)
     {
 
-        return view('cases.case-from',compact('id'));
+        return view('province.case.case-from',compact('id'));
     }
 
     /**
@@ -61,7 +55,7 @@ class casecontroller extends Controller
         $save->save();
         $id=$request->crime_record_id;
 //        return redirect()->url('case/'. $id);
-        return redirect(url('case/'.$id))->with('success',"کیس په موفقیت سره ذخیره شو!");
+        return redirect(url('/province/case/'.$id))->with('success',"کیس په موفقیت سره ذخیره شو!");
 
     }
 

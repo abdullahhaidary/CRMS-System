@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="">
-        <a class="btn btn-primary" href="{{url('case/'. $id)}}">{{__('Case')}}</a>
+        <a class="btn btn-primary" href="{{url('/province/case/'.$id)}}">{{__('Case')}}</a>
     </div>
     <div class="page-heading text-center">
         <h3>{{__('New_case_registration_form')}}</h3>
@@ -113,49 +113,49 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                            <input
-                                                type="hidden"
-                                                value="{{$id}}"
-                                                id="email-id-column"
-                                                class="form-control"
-                                                name="crime_record_id"
-                                                placeholder="crime name"
-                                                data-parsley-required="true"
+                                        <input
+                                            type="hidden"
+                                            value="{{$id}}"
+                                            id="email-id-column"
+                                            class="form-control"
+                                            name="crime_record_id"
+                                            placeholder="crime name"
+                                            data-parsley-required="true"
 
-                                            />
-                                        </div>
+                                        />
                                     </div>
-                                    <hr class="mt-0 mb-3">
-                                    <div class="col-md-12 col-12">
-                                        <div class="form-group mandatory">
-                                            <label for="email-id-column" class="form-label"
-                                            >{{__('Description')}}</label
-                                            >
-                                            <textarea name="description" required id="discription" class="form-control"  data-parsley-required="true"></textarea>
-                                        </div>
-                                    </div>
-
-
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">
-                                        {{__('Save')}}
-                                        </button>
-                                        <a href=""
-                                           type="reset"
-                                           class="btn btn-light-secondary me-1 mb-1"
+                                <hr class="mt-0 mb-3">
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group mandatory">
+                                        <label for="email-id-column" class="form-label"
+                                        >{{__('Description')}}</label
                                         >
-                                        {{__('Coming_back')}}
-                                        </a>
+                                        <textarea name="description" required id="discription" class="form-control"  data-parsley-required="true"></textarea>
                                     </div>
                                 </div>
-                            </form>
+
+
                         </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary me-1 mb-1">
+                                    {{__('Save')}}
+                                </button>
+                                <a href=""
+                                   type="reset"
+                                   class="btn btn-light-secondary me-1 mb-1"
+                                >
+                                    {{__('Coming_back')}}
+                                </a>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 

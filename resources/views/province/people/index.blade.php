@@ -1,19 +1,11 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading">
-        <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
-                <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شواهد  </a>
-        <select class="btn btn-outline-primary btn-light ml-5">
-            <option>انتقال قضیه به ارګان مربوط</option>
-            @foreach($data as $items)
-                <a href=""> <option value="{{$items->id}}">{{$items->name. " ". $items->last_name}}</option></a>
-            @endforeach
-        </select>
-
+        <a href="{{route('province_from')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
     </div>
-
     <div class="page-heading text-center">
         <h3>جدول تمام افراد شکایت کننده ها</h3>
+        @include('massage')
     </div>
     <!--  Inverse table start -->
     <section class="section">
@@ -54,14 +46,14 @@
                         <td>{{$item->crim_date}}</td>
                         <td>{{$item->subject_crim}}</td>
                         <td><a href="{{url('ariza/arizafile/'.$item->id)}}">عریضه</a></td>
-                        <td><a href="{{url('crime/info/'.$item->id)}}">توضیحات</a></td>
+                        <td><a href="{{url('province/crime/info/'.$item->id)}}">توضیحات</a></td>
                         <td><a href="{{url('suspect_list/'.$item->id)}}">لیست مظنونین</a></td>
                         <td>
-                            @can('super_admin')
-                                <a href="{{url('people/edit/'.$item->id)}}"><i class="bi bi-pencil" style="color:#4b4cff;"></i></a>
-                                <a href="{{url('people/delete/'. $item->id)}}" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
+
+                                <a href="{{url('/province/people/edit/'.$item->id)}}"><i class="bi bi-pencil" style="color:#4b4cff;"></i></a>
+                                <a href="{{url('/province/people/delete/'.$item->id)}}" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
                                 <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->
-                            @endcan
+
                         </td>
                     </tr>
                 @endforeach

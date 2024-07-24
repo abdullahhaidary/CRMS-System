@@ -103,13 +103,30 @@ Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, '
 Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update');
 Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete');
 Route::get('/people/all/{id}', [\App\Http\Controllers\pepolecontroller::class, 'moreShow'])->name('people_all');
+
+
+//url province people
 Route::get('/province/people', [\App\Http\Controllers\provinceComplintcontroller::class, 'index'])->name('province_list');
+Route::get('/province/people/form', [\App\Http\Controllers\provinceComplintcontroller::class, 'create'])->name('province_from');
+Route::post('/province/people/form', [\App\Http\Controllers\provinceComplintcontroller::class, 'store'])->name('province_store');
+Route::get('/province/people/edit/{id}', [\App\Http\Controllers\provinceComplintcontroller::class, 'edit'])->name('province_edit');
+Route::post('/province/people/update/{id}', [\App\Http\Controllers\provinceComplintcontroller::class, 'update'])->name('province_people_update');
+Route::get('/province/people/delete/{id}', [\App\Http\Controllers\provinceComplintcontroller::class, 'destroy'])->name('province_people_delete');
+
+//url province crime record information
+Route::get('province/crime/info/{id}', [\App\Http\Controllers\province_crime_info_controller::class, 'index'])->name('province_crime_info');
+Route::get('province/crime/info/edit/{id}', [\App\Http\Controllers\province_crime_info_controller::class, 'edit'])->name('province_info_edit');
+Route::post('province/crime/info/update/{id}', [\App\Http\Controllers\province_crime_info_controller::class, 'update'])->name('province_info_update');
+Route::get('province/crime/info/delete/{id}', [\App\Http\Controllers\province_crime_info_controller::class, 'destroy'])->name('province_info_delete');
+
 
 //url crime record information
 Route::get('crime/info/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'index'])->name('crime_info');
 Route::get('crime/info/edit/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'edit'])->name('info_edit');
 Route::post('crime/info/update/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'update'])->name('info_update');
 Route::get('crime/info/delete/{id}', [\App\Http\Controllers\crime_register_record_information::class, 'destroy'])->name('info_delete');
+
+
 
 //url department
 //Route::group(['middleware'=>'isAmin'], function (){
@@ -122,6 +139,13 @@ Route::get('/case/{id}', [\App\Http\Controllers\casecontroller::class, 'index'])
 Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'create'])->name('case-from');
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
 Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');
+
+//url province cases
+Route::get('/province/case/{id}', [\App\Http\Controllers\province_case_controller::class, 'index'])->name('case');
+Route::get('province/case/form/{id}', [\App\Http\Controllers\province_case_controller::class, 'create'])->name('case-from');
+Route::post('/province/case/form', [\App\Http\Controllers\province_case_controller::class, 'store'])->name('case-store');
+
+
 
 // url province account
 Route::get('/province/account', [\App\Http\Controllers\provincecontroller::class, 'create'])->name('province_account');
