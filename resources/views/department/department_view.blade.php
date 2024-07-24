@@ -1,22 +1,22 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="">
-        <a class="btn btn-primary" href="{{route('department_form')}}">ثبت دیپارتمنت جدید</a>
+        <a class="btn btn-primary" href="{{route('department_form')}}">{{__('New_department_register')}}</a>
     </div>
     <div class="container mt-5">
-        <h2 class="mb-4">Department List</h2>
+        <h2 class="mb-4">{{__('Department_list')}}</h2>
         @include('massage')
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">اسم دیپارتمنت </th>
-                    <th scope="col">عنوان دیپارتمنت</th>
-                    <th scope="col">توضیحات</th>
-                    <th scope="col">ACTION</th>
+                    <th scope="col">{{__('Department_name')}}</th>
+                    <th scope="col">{{__('Department_title')}}</th>
+                    <th scope="col">{{__('Description')}}</th>
+                    <th scope="col">{{__('Action')}}</th>
                 </tr>
-                </thead>
+                </theaD>
                 <tbody>
                 @foreach($data as $item)
                 <tr>

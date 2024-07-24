@@ -13,7 +13,7 @@
     </div>
 
     <div class="page-heading text-center">
-        <h3>جدول تمام افراد شکایت کننده ها</h3>
+        <h3>{{__('list_of_complint_people')}}</h3>
     </div>
     <!--  Inverse table start -->
     <section class="section">

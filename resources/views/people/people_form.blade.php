@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
 <div class="page-heading text-center">
-    <h3>فورم ثبت شکایت جدید</h3>
+    <h3>{{__('New_complaint_registration_form')}}</h3>
 </div>
 <!-- criminal from start -->
 <section id="multiple-column-form">
@@ -16,13 +16,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mandatory">
                                         <label for="first-name-column" class="form-label"
-                                        >اسم شکایت کننده</label
+                                        >{{__('Complainants_name')}}</label
                                         >
                                         <input
                                             type="text"
                                             id="first-name-column"
                                             class="form-control"
-                                            placeholder="نوم"
+                                            placeholder="{{__('Enter_the_name')}}"
                                             name="name"
                                             data-parsley-required="true"
                                             required
@@ -32,13 +32,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="last-name-column" class="form-label"
-                                        > تخلص شکایت کننده </label
+                                        >{{__('Last_name')}}</label
                                         >
                                         <input
                                             type="text"
                                             id="last-name-column"
                                             class="form-control"
-                                            placeholder="تخلص شکایت کننده"
+                                            placeholder=""
                                             name="lname"
                                             data-parsley-required="true"
                                             required

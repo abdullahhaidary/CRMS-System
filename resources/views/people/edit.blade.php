@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading text-center">
-        <h3>فورم ثبت شکایت جدید</h3>
+        <h3>{{__('New_complaint_registration_form')}}</h3>
     </div>
     <!-- criminal from start -->
     <section id="multiple-column-form">
