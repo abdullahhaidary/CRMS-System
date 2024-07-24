@@ -64,16 +64,20 @@ class admincontrol extends Controller
 //        }
 //        dd($request->action);
         // Update the resource with validated data
-        $resource->update([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'type' => $request->type,
-            'action' => $request->action,
-//            'picture'=>$filename,
+//         $resource->update([
+//             'name' => $request->input('name'),
+//             'email' => $request->input('email'),
+//             'type' => $request->input('type'),
+//             'action' => $request->input('action'),
+// //            'picture'=>$filename,
 
-            // Add more fields as needed
-        ]);
-
+//             // Add more fields as needed
+//         ]);
+        $resource->name = $request->input('name');
+        $resource->email=$request->input('email');
+        $resource->type = $request->input('type');
+        $resource->type = $request->input('action');
+        $resource->save();
         // Optionally, you can return a response indicating success
         return redirect()->route('user')
             ->with('success', 'Resource updated successfully');
