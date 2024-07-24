@@ -56,7 +56,7 @@
                             </ul>
                         </div>
                         <button class="btn btn-outline-primary btn-sm mt-1 dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            زبان
+                               {{__('Language')}}
                         </button>
                         <ul class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="languageDropdown">
                             <li><a class="dropdown-item" href="{{url('language/pashto')}}" data-lang="en">پښتو</a></li>
