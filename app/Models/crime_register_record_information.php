@@ -10,7 +10,10 @@ class crime_register_record_information extends Model
 {
     use HasFactory;
     protected $table='crime_register_record_information';
-
+    protected $fillable = [
+        'people_id',
+        'description',
+    ];
     public function people()
     {
         return $this->belongsTo(People::class, 'people_id');
