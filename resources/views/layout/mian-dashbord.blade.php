@@ -128,8 +128,6 @@
                                             <span>Account province</span>
                                         </a>
                                     </li>
-
-
                             </ul>
                         </li>
                         @endcan
@@ -147,13 +145,6 @@
                                 <span>{{__('save_compelint')}}</span>
                             </a>
                         </li>
-                    <li
-                        class="sidebar-item">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-shield-lock"></i>
-                            <span>{{__('admin_part')}}</span>
-                        </a>
-                    </li>
                     <li
                         class="sidebar-item   {{ Route::currentRouteName() == 'department' ? 'active' : '' }}">
                         <a href="{{route('department')}}" class='sidebar-link'>

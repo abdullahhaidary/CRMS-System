@@ -20,7 +20,7 @@ class provincecontroller extends Controller
         $data=DB::table('users')
             ->join('province_account','province_account.user_id', '=', 'users.id')
             ->select('users.*', 'province_account.province')
-            ->get();
+            ->paginate('5');
         return view('province_account.index', compact('data'))->with('success', "کاربر به موافقیت راجستر شو !");
     }
 
@@ -65,7 +65,7 @@ class provincecontroller extends Controller
         $province->district=$request['district'];
         $province->save();
 
-        return redirect()->route('user')->with('success', "نوی یوزر په موفقیت ذخیره شو!");
+        return redirect()->route('province_liat')->with('success', "نوی یوزر په موفقیت ذخیره شو!");
     }
 
     /**

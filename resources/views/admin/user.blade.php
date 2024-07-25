@@ -28,7 +28,7 @@
                         <td class="text-bold-500">{{$item->email}}</td>
 {{--                        <td></td>--}}
                         <td>{{$item->type}}
-                        <td>{{$item->action}} @if($item->action==1 ? 'Active' :'Unactive') @endif</td>
+                        <td>{{$item->action==1 ? 'active' : 'Un Active'}}</td>
                         <td>{{$item->created_at}}</td>
                         @can('super_admin')
                         <td><a href="{{url('/admin/edit/'. $item->id)}}"><i class="bi bi-pencil"></i>
@@ -41,6 +41,11 @@
                 @endforeach
                 </tbody>
             </table>
+            <div class="mt-3">
+                <nav aria-label="Page navigation example">
+                    {{$data->links()}}
+                </nav>
+            </div>
         </div>
     </section>
     <!--  Inverse table end -->

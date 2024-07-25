@@ -58,7 +58,7 @@
     <!--  Inverse table end -->
     <div class="mt-3">
         <nav aria-label="Page navigation example">
-            {{-- {{$data->links()}} --}}
+             {{$data->links()}}
         </nav>
     </div>
 @endsection
