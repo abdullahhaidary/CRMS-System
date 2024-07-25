@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
         'picture',
         'dob',
+        'action',
+        'type',
         'country',
     ];
 

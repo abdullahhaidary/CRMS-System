@@ -28,6 +28,7 @@ class People extends Model
         'ariza',
         'subject_crim',
         'crim_date',
+        'user_id'
     ];
 
     public function details()

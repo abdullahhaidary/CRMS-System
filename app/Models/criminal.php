@@ -9,6 +9,9 @@ class criminal extends Model
 {
     use HasFactory;
     protected $table ='criminals';
+    protected $fillable = [
+
+    ];
     public function picture(){
        return $this->hasMany(CriminalPicture::class,'criminal_id');
     }

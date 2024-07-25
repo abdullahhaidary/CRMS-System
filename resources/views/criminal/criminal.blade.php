@@ -28,7 +28,8 @@
                         @foreach($data as $item)
                             <tr class="mb-1">
                                 @php
-                                $firstPicture = !empty($item->picture) ? $item->picture[0] : null;
+                                $firstPicture = (is_array($item->picture) && isset($item->picture[0])) ? $item->picture[0] : null;
+
                                 @endphp
 
                                 @if($firstPicture)

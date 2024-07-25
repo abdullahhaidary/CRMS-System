@@ -73,46 +73,16 @@
             padding: 8px;
         }
     </style>
+        @livewireStyles
+        @livewireScripts
 </head>
 <body dir="rtl">
 <div class="register-container">
     <img src="{{asset('images/register.png')}}" alt="Logo">
     <h2>Register</h2>
-    <form action="{{route('province_register')}}" method="POST">
-        @csrf()
-        @error('name')
-        <div style="color:red">{{$message}}</div>
-        @enderror
-        <input type="text" name="name" placeholder="اسم مکمل" required>
-        @error('email')
-        <div style="color:red">{{$message}}</div>
-        @enderror
-        <input type="text" name="email" placeholder="ایمیل" required>
-
-        <input type="hidden" value="3" name="postion">
-
-        <select class="form-select" name="province" id="disabledSelect">
-            <option class="form-option-list" value="0">انتیخاب ولایت</option>
-        @foreach($data as $item)
-            <option class="form-option-list" value="{{$item->id}}">{{$item->name}}</option>
-            @endforeach
-        </select>
-        <select class="form-select" name="district" id="disabledSelect">
-            <option class="form-option-list" value="0">انتیخاب والسوالی یا حوزه</option>
-{{--            @foreach($district as $dist)--}}
-            <option class="form-option-list" value="6">gelan</option>
-            <option class="form-option-list" value="6">maqor</option>
-
-            {{--            @endforeach--}}
-        </select>
-        <input type="hidden" name="action" value="1">
-        @error('password')
-        <div style="color:red">{{$message}}</div>
-        @enderror
-        <input type="password" name="password" placeholder="فاسورد" required>
-        <button type="submit">ذخیره</button>
-    </form>
+    @livewire('register-form',['provinces' => $data])
     <p> لیست تمام ادمین های در سیستم.  <a href="{{route('province_liat')}}">اینجا کلیک کنید </a></p>
+
 </div>
 </body>
 </html>
