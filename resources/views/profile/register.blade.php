@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+@extends('layout.mian-dashbord')
+@section('content')
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,7 +12,6 @@
         }
 
         .register-container {
-            background-color: #ffffff;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -73,8 +68,6 @@
             padding: 8px;
         }
     </style>
-</head>
-<body>
     <div class="register-container">
         <img src="{{asset('images/register.png')}}" alt="Logo">
         <h2>Register</h2>
@@ -104,5 +97,4 @@
         </form>
         <p> لیست تمام ادمین های در سیستم.  <a href="{{route('user')}}">اینجا کلیک کنید </a></p>
     </div>
-</body>
-</html>
+@endsection
