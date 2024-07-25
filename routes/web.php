@@ -143,7 +143,7 @@ Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add
 //url province cases
 Route::get('/province/case/{id}', [\App\Http\Controllers\province_case_controller::class, 'index'])->name('case');
 Route::get('province/case/form/{id}', [\App\Http\Controllers\province_case_controller::class, 'create'])->name('case-from');
-Route::post('/province/case/form', [\App\Http\Controllers\province_case_controller::class, 'store'])->name('case-store');
+Route::post('/province/case/form', [\App\Http\Controllers\province_case_controller::class, 'store'])->name('case_store');
 
 
 
@@ -161,6 +161,17 @@ Route::get('/suspect/edit/{id}', [suspectController::class, 'edit'])->name('susp
 Route::post('/suspect/update/{id}', [suspectController::class, 'update'])->name('suspect_update');
 Route::get('/suspect/delete/{id}', [suspectController::class, 'destroy'])->name('suspect_delete');
 Route::post('/fingerprints_store',[suspectController::class,'store_finger_print'])->name('store_finger_print');
+
+
+
+//url province suspect
+Route::get('province/suspect_list/{id}',[\App\Http\Controllers\province_suspect_controller::class,'index'])->name('suspect_list');
+Route::get('province/suspect/form/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'create'])->name('suspect_form');
+Route::post('province/suspect/form/save/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'store'])->name('suspect_form_store');
+Route::get('province/suspect/edit/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'edit'])->name('suspect_edit');
+Route::post('/province/suspect/update/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'update'])->name('suspect_update');
+Route::get('province/suspect/delete/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'destroy'])->name('suspect_delete');
+
 
 //url evidence
 

@@ -1,161 +1,38 @@
 @extends('layout.mian-dashbord')
 @section('content')
-    <div class="">
-        <a class="btn btn-primary" href="{{url('case/'. $id)}}">{{__('Case')}}</a>
-    </div>
-    <div class="page-heading text-center">
-        <h3>{{__('New_case_registration_form')}}</h3>
-    </div>
-    <!-- criminal from start -->
-    <section id="multiple-column-form">
-        <div class="row match-height">
-            <div class="col-12">
-                <div class="card" style="background-color: #edf0f3">
-                    <div class="card-content">
-                        <div class="card-body">
-                            <form class="form" method="post" action="{{route('case-store')}}" enctype="multipart/form-data" data-parsley-validate>
-                                @csrf
-                                <div class="row" >
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="last-name-column" class="form-label"
-                                            >{{__('Case_number')}}</label
-                                            >
-                                            <input
-                                                type="text"
-                                                id="last-name-column"
-                                                class="form-control"
-                                                placeholder="{{__('Case_number')}}"
-                                                name="case_number"
-                                                data-parsley-required="true"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
-                                            <label for="email-id-column" class="form-label"
-                                            >{{__('Crime_location')}}</label
-                                            >
-                                            <input
-                                                type="text"
-                                                id="email-id-column"
-                                                class="form-control"
-                                                name="crime_location"
-                                                placeholder="{{__('Crime_location')}}"
-                                                data-parsley-required="true"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="company-column" class="form-label"
-                                            >{{__('Start_date')}}</label
-                                            >
-                                            <input
-                                                type="date"
-                                                id="company-column"
-                                                class="form-control"
-                                                name="start_date"
-                                                placeholder="{{__('Start_date')}}"
-                                                data-parsley-required="true"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
-                                            <label for="email-id-column" class="form-label"
-                                            >{{__('End_date')}}</label
-                                            >
-                                            <input
-                                                type="date"
-                                                id="email-id-column"
-                                                class="form-control"
-                                                name="end_date"
-                                                placeholder="{{__('End_date')}}"
-                                                data-parsley-required="true"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
-                                            <label for="email-id-column" class="form-label"
-                                            >{{__('Case_status')}}</label
-                                            >
-                                            <input
-                                                type="text"
-                                                id="email-id-column"
-                                                class="form-control"
-                                                name="case_status"
-                                                placeholder="{{__('Case_status')}}"
-                                                data-parsley-required="true"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
-                                            <label for="email-id-column" class="form-label"
-                                            >{{__('Crime_type')}}</label
-                                            >
-                                            <input
-                                                type="text"
-                                                id="email-id-column"
-                                                class="form-control"
-                                                name="crime_type"
-                                                placeholder="{{__('Crime_type')}}"
-                                                data-parsley-required="true"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <input
-                                            type="hidden"
-                                            value="{{$id}}"
-                                            id="email-id-column"
-                                            class="form-control"
-                                            name="crime_record_id"
-                                            placeholder="crime name"
-                                            data-parsley-required="true"
-
-                                        />
-                                    </div>
-                                </div>
-                                <hr class="mt-0 mb-3">
-                                <div class="col-md-12 col-12">
-                                    <div class="form-group mandatory">
-                                        <label for="email-id-column" class="form-label"
-                                        >{{__('Description')}}</label
-                                        >
-                                        <textarea name="description" required id="discription" class="form-control"  data-parsley-required="true"></textarea>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary me-1 mb-1">
-                                    {{__('Save')}}
-                                </button>
-                                <a href=""
-                                   type="reset"
-                                   class="btn btn-light-secondary me-1 mb-1"
-                                >
-                                    {{__('Coming_back')}}
-                                </a>
-                            </div>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    <div class="container mt-5">
+        <h2>{{__('Cases_of_a_persons_history')}}</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                <tr class="" style="background-color: rgba(136,180,156,0.28)">
+                    <th scope="col">#</th>
+                    <th scope="col">{{__('Crime_type')}}</th>
+                    <th scope="col">{{__('Status')}}</th>
+                    <th scope="col">{{__('Crime_location')}}</th>
+                    <th scope="col">{{__('Case_number')}}</th>
+                    <th scope="col">{{__('Start_date')}}</th>
+                    <th scope="col">{{__('End_date')}}</th>
+                    <th scope="col">{{__('Description')}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($data as $item)
+                    <tr>
+                        <th scope="row">{{$item->id}}</th>
+                        <td>{{$item->crime_type}}</td>
+                        <td>{{$item->status}}</td>
+                        <td>{{$item->crime_location}}</td>
+                        <td>{{$item->case_number}}</td>
+                        <td style="width: 95px">{{$item->start_date}}</td>
+                        <td style="width: 95px">{{$item->end_date}}</td>
+                        <td>{{$item->description}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
-        </div>
-    </section>
-
+    </div>
 
 @endsection
 

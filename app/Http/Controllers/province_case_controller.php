@@ -11,7 +11,7 @@ class province_case_controller extends Controller
     {
 
         $data=casemodel::where('crime_record_id','=',$id)->paginate(3);
-        return view('province.case.case', compact('data'));
+        return view('province.case.case', compact('data', 'id'));
     }
 
     /**

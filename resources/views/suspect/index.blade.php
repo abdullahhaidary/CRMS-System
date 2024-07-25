@@ -15,6 +15,7 @@
                 <tr>
                 <th>نوم</th>
                 <th> تخلص</th>
+                <th> پلار نوم</th>
                 <th>نمبر تذکره</th>
                 <th> شماره تماس</th>
                 <th>آدرس اصلی</th>
@@ -27,6 +28,7 @@
                 <tr>
                     <td>{{$suspect->name}}</td>
                     <td>{{$suspect->last_name}}</td>
+                    <td>{{$suspect->father_name}}</td>
                     <td>{{$suspect->tazcira_number}}</td>
                     <td>{{$suspect->phone}}</td>
                     <td>{{$suspect->actual_address}}</td>

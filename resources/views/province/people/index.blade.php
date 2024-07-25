@@ -47,7 +47,7 @@
                         <td>{{$item->subject_crim}}</td>
                         <td><a href="{{url('ariza/arizafile/'.$item->id)}}">عریضه</a></td>
                         <td><a href="{{url('province/crime/info/'.$item->id)}}">توضیحات</a></td>
-                        <td><a href="{{url('suspect_list/'.$item->id)}}">لیست مظنونین</a></td>
+                        <td><a href="{{url('province/suspect_list/'.$item->id)}}">لیست مظنونین</a></td>
                         <td>
 
                                 <a href="{{url('/province/people/edit/'.$item->id)}}"><i class="bi bi-pencil" style="color:#4b4cff;"></i></a>

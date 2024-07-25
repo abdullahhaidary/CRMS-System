@@ -13,7 +13,7 @@
                 <div class="card" style="background-color: #edf0f3">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route('case-store')}}" enctype="multipart/form-data" data-parsley-validate>
+                            <form class="form" method="post" action="{{route('case_store')}}" enctype="multipart/form-data" data-parsley-validate>
                                 @csrf
                                 <div class="row" >
                                     <div class="col-md-6 col-12">

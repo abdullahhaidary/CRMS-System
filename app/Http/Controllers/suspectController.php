@@ -11,13 +11,7 @@ use Illuminate\Support\Str;
 class suspectController extends Controller
 {
     public function index($id){
-//       $suspects = suspectmodel::where('suspect.id',$id)->get();
-//        $suspects=DB::table('suspect')
-//            ->select('suspect.*')
-//            ->where('suspect.crime_record_id', '=',$id)
-//            ->get();
-//        return view('suspect.index',compact('suspects'));
-//        dd($id);
+
         $suspects=suspectmodel::where('suspect.crime_record_id','=',$id)->get();
         return view('suspect.index',compact('suspects','id'));
     }
