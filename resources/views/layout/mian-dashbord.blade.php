@@ -21,7 +21,6 @@
 <div id="app">
     <div id="sidebar">
         <div class="sidebar-wrapper active">
-{{--            <div class="sidebar-header position-relative bg-success">--}}
                 <div class="d-flex justify-content-between align-items-center mt-3">
                     <div class="theme-toggle d-flex  gap-4 align-items-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -67,7 +66,6 @@
                         <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                     </div>
                 </div>
-{{--            </div>--}}
             <div class="sidebar-menu">
                 <ul class="menu">
                     <li class="sidebar-title font-extrabold" style="user-select: none;" >
