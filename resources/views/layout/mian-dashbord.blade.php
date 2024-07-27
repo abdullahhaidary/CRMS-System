@@ -97,7 +97,7 @@
                                 <a href="component-alert.html" class="submenu-link">اسناد ها</a>
                             </li>
                             <li class="submenu-item  ">
-                                <a href="all-emplayee.html" class="submenu-link">کارمندان عمومی</a>
+                                <a href="{{route('all_list')}}" class="submenu-link">مظنون عمومی</a>
                             </li>
                             <li class="submenu-item  ">
                                 <a href="component-badge.html" class="submenu-link">زندان</a>

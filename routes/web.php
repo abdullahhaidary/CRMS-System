@@ -155,6 +155,7 @@ Route::get('/province/list', [\App\Http\Controllers\provincecontroller::class, '
 
 // url suspect
 Route::get('/suspect_list/{id}',[suspectController::class,'index'])->name('suspect_list');
+Route::get('suspect/list', [suspectController::class, 'all_list'])->name('all_list');
 Route::get('/suspect/form/{id}', [suspectController::class, 'create'])->name('suspect_form');
 Route::post('/suspect/form/save/{id}', [suspectController::class, 'store'])->name('suspect_form_store');
 Route::get('/suspect/edit/{id}', [suspectController::class, 'edit'])->name('suspect_edit');

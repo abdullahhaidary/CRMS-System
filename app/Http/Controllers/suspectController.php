@@ -12,8 +12,13 @@ class suspectController extends Controller
 {
     public function index($id){
 
-        $suspects=suspectmodel::where('suspect.crime_record_id','=',$id)->get();
+        $suspects=suspectmodel::where('suspect.crime_record_id','=',$id)->paginate('5');
         return view('suspect.index',compact('suspects','id'));
+    }
+    public function all_list()
+    {
+        $suspects=suspectmodel::paginate('6');
+        return view('suspect.all_list', compact('suspects'));
     }
 
 public function create($id)

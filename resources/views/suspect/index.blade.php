@@ -48,6 +48,15 @@
 
         </div>
     </div>
+    <div class="mt-3">
+        <nav aria-label="Page navigation example">
+            <div class="mt-3">
+                <nav aria-label="Page navigation example">
+                    {{$suspects->links()}}
+                </nav>
+            </div>
+        </nav>
+    </div>
 </section>
 
 @endsection
