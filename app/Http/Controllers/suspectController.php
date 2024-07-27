@@ -46,10 +46,7 @@ return redirect(url('/suspect_list/'.$id));
 }
     public function edit($id)
     {
-        $data=DB::table('suspect')
-            ->select('suspect.*')
-            ->where('suspect.id','=',$id)
-            ->get();
+        $data=suspectmodel::where('suspect.id', '=', $id)->get();
         return view('suspect.edit',compact('data','id'));
     }
 public function update(Request $request, string $id)
@@ -97,6 +94,20 @@ public function destroy($id)
     // Redirect or return a response
     return redirect()->back()->with('success', 'دیتا په موافقیت ذخیره شوه !');
 }
+public function Remove_from_suspect($id)
+{
+    $data=suspectmodel::where('suspect.id','=',$id)
+        ->where('isCriminal', '=',1)
+        ->get();
+    if ($data){
+        return view('suspect.un_suspect_edit',compact('data'));
+    }
+    else{
+        return redirect()->back();
+    }
+}
+
+
     public function finger_print_add($id){
         $data=DB::table('suspect')->select('suspect.*')->where('suspect.id','=', $id)->get();
         $suspect = suspectmodel::find($id)->first();

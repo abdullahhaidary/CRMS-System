@@ -10,7 +10,6 @@
             height: 100vh;
             margin: 0;
         }
-
         .register-container {
             padding: 30px;
             border-radius: 8px;
@@ -18,41 +17,35 @@
             text-align: center;
             width: 400px; /* Set a fixed width for the container */
         }
-
         img {
             width: 100px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
-
         form {
             display: flex;
             flex-direction: column;
             align-items: center; /* Center align form elements */
         }
-
         input[type="text"],
         input[type="password"],
         button {
             width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
             box-sizing: border-box; /* Ensure padding does not affect width */
         }
-
         button {
             background-color: #28a745; /* Use a different color for registration button */
             color: #fff;
             border: none;
             cursor: pointer;
         }
-
         a {
             text-decoration: none;
             color: #007bff;
         }
-
         a:hover {
             text-decoration: underline;
         }
@@ -60,7 +53,7 @@
             background-color: #ffffff;
             padding: 10px;
             border-radius: 5px;
-            width: 400px;
+            width: 342px;
             margin-bottom: 10px;
         }
         .form-option-list{
@@ -68,7 +61,7 @@
             padding: 8px;
         }
     </style>
-    <div class="register-container">
+    <div class="register-container mt-1">
         <img src="{{asset('images/register.png')}}" alt="Logo">
         <h2>Register</h2>
         <form action="{{route('register')}}" method="POST">
@@ -95,6 +88,6 @@
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Register</button>
         </form>
-        <p> لیست تمام ادمین های در سیستم.  <a href="{{route('user')}}">اینجا کلیک کنید </a></p>
+        <p class="mb-0"> لیست تمام ادمین های در سیستم.  <a href="{{route('user')}}">اینجا کلیک کنید </a></p>
     </div>
 @endsection

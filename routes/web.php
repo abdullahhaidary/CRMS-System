@@ -70,22 +70,21 @@ Route::fallback(function(){
 
 
 // admin Route
-//Route::group(['middleware'=>'adminmidleware'],function (){
+Route::group(['middleware'=>'can:super_admin','auth'],function (){
 
 //    Route::middleware([isAdmin::class])->get('crimnal-list',[\App\Http\Controllers\adminconroller::class, 'index'])->name('crimnal');
 //});
 
-
+//Route::prefix('admin')->group(function () {
 
 //crimnal url
-Route::get('/crimnal-list', [\App\Http\Controllers\criminalcontroller::class, 'index'])->name('crimnal');
-Route::get('/criminal/all/{id}', [\App\Http\Controllers\criminalcontroller::class, 'more'])->name('criminal_all');
-Route::get('/criminalcontroller-from', [\App\Http\Controllers\criminalcontroller::class, 'add'])->name('criminalcontroller-form');
-Route::post('/crminal-from', [\App\Http\Controllers\criminalcontroller::class, 'inset'])->name('criminal-from');
-Route::get('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_edit');
-Route::post('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'update'])->name('criminal_update');
-Route::get('criminal/delete/{id}', [\App\Http\Controllers\criminalcontroller::class, 'destroy'])->name('criminal-delete');
-
+    Route::get('/crimnal-list', [\App\Http\Controllers\criminalcontroller::class, 'index'])->name('crimnal');
+    Route::get('/criminal/all/{id}', [\App\Http\Controllers\criminalcontroller::class, 'more'])->name('criminal_all');
+    Route::get('/criminalcontroller-from', [\App\Http\Controllers\criminalcontroller::class, 'add'])->name('criminalcontroller-form');
+    Route::post('/crminal-from', [\App\Http\Controllers\criminalcontroller::class, 'inset'])->name('criminal-from');
+    Route::get('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_edit');
+    Route::post('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'update'])->name('criminal_update');
+    Route::get('criminal/delete/{id}', [\App\Http\Controllers\criminalcontroller::class, 'destroy'])->name('criminal-delete');
 
 
 //url user
@@ -112,6 +111,21 @@ Route::post('/province/people/form', [\App\Http\Controllers\provinceComplintcont
 Route::get('/province/people/edit/{id}', [\App\Http\Controllers\provinceComplintcontroller::class, 'edit'])->name('province_edit');
 Route::post('/province/people/update/{id}', [\App\Http\Controllers\provinceComplintcontroller::class, 'update'])->name('province_people_update');
 Route::get('/province/people/delete/{id}', [\App\Http\Controllers\provinceComplintcontroller::class, 'destroy'])->name('province_people_delete');
+
+
+// url suspect
+    Route::get('/suspect_list/{id}',[suspectController::class,'index'])->name('suspect_list');
+    Route::get('suspect/list', [suspectController::class, 'all_list'])->name('all_list');
+    Route::get('/suspect/form/{id}', [suspectController::class, 'create'])->name('suspect_form');
+    Route::post('/suspect/form/save/{id}', [suspectController::class, 'store'])->name('suspect_form_store');
+    Route::get('/suspect/edit/{id}', [suspectController::class, 'edit'])->name('suspect_edit');
+    Route::post('/suspect/update/{id}', [suspectController::class, 'update'])->name('suspect_update');
+    Route::get('/suspect/delete/{id}', [suspectController::class, 'destroy'])->name('suspect_delete');
+    Route::post('/fingerprints_store',[suspectController::class,'store_finger_print'])->name('store_finger_print');
+    Route::get('/un_suspect/list/{id}', [suspectController::class, 'Remove_from_suspect'])->name('Un_suspect_list');
+
+// end of middleware
+});
 
 //url province crime record information
 Route::get('province/crime/info/{id}', [\App\Http\Controllers\province_crime_info_controller::class, 'index'])->name('province_crime_info');
@@ -152,16 +166,6 @@ Route::get('/province/account', [\App\Http\Controllers\provincecontroller::class
 Route::post('/province/add', [\App\Http\Controllers\provincecontroller::class, 'store'])->name('province_register');
 Route::get('/province/list', [\App\Http\Controllers\provincecontroller::class, 'index'])->name('province_liat');
 
-
-// url suspect
-Route::get('/suspect_list/{id}',[suspectController::class,'index'])->name('suspect_list');
-Route::get('suspect/list', [suspectController::class, 'all_list'])->name('all_list');
-Route::get('/suspect/form/{id}', [suspectController::class, 'create'])->name('suspect_form');
-Route::post('/suspect/form/save/{id}', [suspectController::class, 'store'])->name('suspect_form_store');
-Route::get('/suspect/edit/{id}', [suspectController::class, 'edit'])->name('suspect_edit');
-Route::post('/suspect/update/{id}', [suspectController::class, 'update'])->name('suspect_update');
-Route::get('/suspect/delete/{id}', [suspectController::class, 'destroy'])->name('suspect_delete');
-Route::post('/fingerprints_store',[suspectController::class,'store_finger_print'])->name('store_finger_print');
 
 
 
