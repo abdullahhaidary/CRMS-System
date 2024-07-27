@@ -54,8 +54,7 @@ class pepolecontroller extends Controller
         $save->	subject_crim=$request->creime_subject;
         $save->	crim_date=$request->crime_date;
         $save->user_id=Auth::user()->id;
-        $save->province_id=1;
-        $save->district_id=1;
+        
 
 //dd($savedPeople->id);
         $save->save();

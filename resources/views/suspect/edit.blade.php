@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{url('/suspect/update/'.$item->id)}}" enctype="multipart/form-data" data-parsley-validate>
+                            <form class="form" method="post" action="{{url('/suspect/update/'.$id)}}" enctype="multipart/form-data" data-parsley-validate>
                                 @csrf
                                 <div class="row">
                                     <h3 class="mb-2">فورم ثبت مضنون</h3>

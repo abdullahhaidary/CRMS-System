@@ -40,10 +40,14 @@
                                 {{--                            <a href="criminal-view.html" class="btn btn-info">view</a>--}}
                             </td>
                     </tr>
-
                 @endforeach
                 </tbody>
             </table>
+            <div class="mt-3">
+                <nav aria-label="Page navigation example">
+                    {{$data->links()}}
+                </nav>
+            </div>
         </div>
     </section>
     <!--  Inverse table end -->
