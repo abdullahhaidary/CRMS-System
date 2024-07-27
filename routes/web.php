@@ -209,3 +209,6 @@ Route::get('/find_person_from_fingerprint', function (Request $request) {
     return response()->json(['person' => $person]);
 })->name('findPersonFromFingerprint');
 
+Route::fallback(function(){
+    return view('errors.403');
+});

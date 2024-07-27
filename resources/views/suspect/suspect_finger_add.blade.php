@@ -47,13 +47,13 @@ asd
             <input hidden type="text" class="form-control" name="id" id="id">
         </div>
         <div class="form-group">
-            <label  for="LeftThumb">Left Thumb</label>
-            <input  type="text" class="form-control" name="LeftThumb" id="LeftThumb">
-            <textarea  type="text" class="form-control" name="Leftbmpbase64image" id="Leftbmpbase64image"></textarea>
+            <label hidden  for="LeftThumb">Left Thumb</label>
+            <input hidden  type="text" class="form-control" name="LeftThumb" id="LeftThumb">
+            <textarea  type="text" hidden class="form-control" name="Leftbmpbase64image" id="Leftbmpbase64image"></textarea>
         </div>
         <div class="form-group">
             <label hidden for="RightThumb">Right Thumb</label>
-            <input hidden type="text" class="form-control" name="RightThumb" id="RightThumb">
+            <input hidden type="text"hidden class="form-control" name="RightThumb" id="RightThumb">
         </div>
         <div class="form-group">
             <label hidden for="LeftIndex">Left Index</label>
@@ -61,7 +61,7 @@ asd
         </div>
         <div class="form-group">
             <label hidden for="RightIndex">Right Index</label>
-            <input hidden type="text" class="form-control" name="RightIndex" id="RightIndex">
+            <input hidden type="text"  class="form-control" name="RightIndex" id="RightIndex">
         </div>
     </form>
 </div>

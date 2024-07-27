@@ -102,8 +102,8 @@
                             url: '{{ route('findPersonFromFingerprint') }}',
                             data: { id: element.suspect_id },
                             success: function(a) {
-                                person = a.person;
-                                console.log(a.person.name)
+                                person = a;
+                                console.log(a)
                                 return false;
                             },
                             error: function(xhr, status, error) {
@@ -130,7 +130,7 @@
             url: '{{ route('findPersonFromFingerprint') }}',
             data: { id: element.id },
             success: function(response) {
-                console.log(response.person);
+                console.log(response);
                 callback(response);
             },
             error: function(xhr, status, error) {
