@@ -49,28 +49,28 @@
             color: #495057;
         }
     </style>
-
+@if($data)
 <div class="container">
     @foreach($data as $item)
     <div class="text-center page-heading">
         <div class="nav text-right">
             @can('super_admin')
-{{--                @if(Gate::any(['admin', 'super_admin']))--}}
-
             <a class="link-item mx-2 btn btn-info" href="{{url('criminal/edit/'.$item->id)}}">Edit</a>
-
             <a class="link-item btn btn-danger" href="{{url('criminal/delete/'.$item->id)}}">Delete</a>
-{{--                @endif--}}
             @endcan
         </div>
         <h1>{{__('Additional_information_of_a_criminal')}}</h1>
     </div>
     <div class="row details-card">
         <div class="col-lg-4 col-md-6 mb-4">
-            <img src="{{asset('criminal/'.$item->path)}}" alt="Profile Picture" class="img-fluid">
+            <img src="{{asset('criminal/'.$item->photo)}}" alt="Profile Picture" class="img-fluid">
+            <div class="details-item">
+                <span class="details-label">{{__('Name')}}:</span>
+                <span class="details-value">{{$item->criminal_name}}</span>
+            </div>
             <div class="details-item">
                 <span class="details-label">{{__('name')}}:</span>
-                <span class="details-value">{{$item->criminal_name ." ".$item->last_name}}</span>
+                <span class="details-value">{{$item->last_name}}</span>
             </div>
             <div class="details-item">
                 <span class="details-label">{{__('Father_name')}}:</span>
@@ -225,5 +225,11 @@
     </div>
     @endforeach
     </div>
+
+    @else
+    <div class="text-center">
+        <h3>Not Found Data</h3>
+    </div>
+@endif
 @endsection
 

@@ -70,7 +70,7 @@
                 <ul class="menu">
                     <li class="sidebar-title font-extrabold" style="user-select: none;" >
                         <div class="logo">
-                            <h4><a href="{{route('home')}}">{{Auth::user()->name}}</a></h4>
+{{--                            <h4><a href="{{route('home')}}">{{Auth::user()->name}}</a></h4>--}}
                         </div>
                     </li>
 

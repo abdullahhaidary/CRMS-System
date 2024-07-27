@@ -16,23 +16,21 @@ class criminalcontroller extends Controller
 {
     public function index()
     {
-        $data=criminal::with('picture')->get();
+        $data=criminal::with('picture')->paginate('5');
         return view('criminal.criminal', compact('data'));
     }
     public function more($id)
     {
 //        dd($id);
-        $data=DB::table('criminals')
-            ->join('cases', 'cases.id','=', 'criminals.case_id')
-            ->join('suspect', 'suspect.id' ,'=', 'criminals.suspect_id')
-            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id')
-            ->select('criminals.*', 'cases.case_number', 'suspect.name', 'suspect.last_name','criminal_pictures.path')
-            ->where('criminals.id', '=', $id)
-            ->get();
-//
-//        $data=criminal::where('criminals.id', '=', $id)->get();
-
+        $data=criminal::where('criminals.id', '=', $id)->get();
+//        dd($data);
+        if ($data)
+        {
         return view('criminal.criminal_all', compact('data'));
+        }
+        else{
+           return redirect()->back()->with('error', "Not Found Data");
+        }
     }
     public function add()
     {
