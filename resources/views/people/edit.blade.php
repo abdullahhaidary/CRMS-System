@@ -17,13 +17,13 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="first-name-column" class="form-label"
-                                            >اسم شکایت کننده</label
+                                            >{{__('Complaint_name')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="first-name-column"
                                                 class="form-control"
-                                                placeholder="نوم"
+                                                placeholder="{{__('Enter_yuor_name')}}"
                                                 name="name"
                                                 value="{{$item->name}}"
                                                 data-parsley-required="true"

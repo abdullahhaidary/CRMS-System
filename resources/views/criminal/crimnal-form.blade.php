@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading text-center">
-        <h3>فورم ایجاد مجریم جدید</h3>
+        <h3>{{__('New_criminal_creation_form')}}</h3>
     </div>
     <!-- criminalcontroller from start -->
     <section id="multiple-column-form">
@@ -16,13 +16,13 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="first-name-column" class="form-label"
-                                            >نوم</label
+                                            >{{__('Name')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="first-name-column"
                                                 class="form-control"
-                                                placeholder="نوم"
+                                                placeholder="{{__('Enter_your_name')}}"
                                                 name="name"
                                                 data-parsley-required="true"
                                                 required
@@ -32,13 +32,13 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last-name-column" class="form-label"
-                                            >تخلص </label
+                                            >{{__('Last_name')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="last-name-column"
                                                 class="form-control"
-                                                placeholder="تخلص"
+                                                placeholder="{{__('Enter_last_name')}}"
                                                 name="lname"
                                                 data-parsley-required="true"
                                                 required
@@ -47,12 +47,12 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="city-column" class="form-label">پلار نوم</label>
+                                            <label for="city-column" class="form-label">{{__('Father_name')}}</label>
                                             <input
                                                 type="text"
                                                 id="city-column"
                                                 class="form-control"
-                                                placeholder="پلار نوم"
+                                                placeholder="{{__('Enter_father_name')}}"
                                                 name="father_name"
                                                 data-parsley-restricted-city="Jakarta"
                                                 data-parsley-required="true"
@@ -63,14 +63,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="country-floating" class="form-label"
-                                            >تلفن</label
+                                            >{{__('Phone_number')}}</label
                                             >
                                             <input
                                                 type="number"
                                                 id="country-floating"
                                                 class="form-control"
                                                 name="phone"
-                                                placeholder="شماره تماس"
+                                                placeholder="{{__('Enter_phone_number')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -79,14 +79,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="company-column" class="form-label"
-                                            >ایمیل آدرس</label
+                                            >{{__('Email')}}</label
                                             >
                                             <input
                                                 type="email"
                                                 id="company-column"
                                                 class="form-control"
                                                 name="email"
-                                                placeholder="ایمیل ادرس"
+                                                placeholder="{{__('Enter_email')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -95,14 +95,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > آدرس اصلی</label
+                                            >{{__('Main_address')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="address"
-                                                placeholder="آدرس اصلی"
+                                                placeholder="{{__('Enter_address')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -111,14 +111,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="curent-address" class="form-label"
-                                            > آدرس فعلی</label
+                                            >{{__('Curent_address')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="current_address"
-                                                placeholder="آدرس فعلی"
+                                                placeholder="{{__('Enter_current_address')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -127,26 +127,26 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >مکتوب</label
+                                            >{{__('Letter')}}</label
                                             >
                                             <input type="file" class="form-control" required id="inputGroupFile01" name="photo">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
-                                        >جنسیت</label>
+                                        >{{__('Gender')}}</label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="gender" id="disabledSelect">
-                                                <option>جنسیت</option>
-                                                <option value="1">نر</option>
-                                                <option value="0">زن</option>
+                                                <option>{{__('Select_gender')}}</option>
+                                                <option value="1">{{__('Male')}}</option>
+                                                <option value="0">{{__('Female')}}</option>
                                             </select>
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >  تاریخ تولد</label
+                                            >{{__('Date_of_birth')}}</label
                                             >
                                             <input
                                                 type="date"
@@ -162,7 +162,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >  تاریخ جرم</label
+                                            >{{__('Date_crime')}}</label
                                             >
                                             <input
                                                 type="date"
@@ -178,14 +178,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > عضو فامیل</label
+                                            >{{__('Family_member')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="familymember"
-                                                placeholder=" عضو فامیل"
+                                                placeholder=" {{__('Family_member')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -194,14 +194,14 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > وظیفه</label
+                                            > {{__('Job')}}</label
                                             >
                                             <input
                                                 type="text"
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="job"
-                                                placeholder=" وظیفه"
+                                                placeholder="{{__('Enter_job')}}"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -209,10 +209,10 @@
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
-                                        >مظنون</label>
+                                        >{{__('Suspect_list')}}</label>
                                         <fieldset class="form-group">
                                             <select class="form-select"  name="suspect" id="disabledSelect">
-                                                <option>اتیخاب مضنون</option>
+                                                <option>{{__('Select_suspect')}}</option>
                                             @foreach($data as $item)
 {{--                                                @foreach($crime as $criminal)--}}
 {{--                                                    @if($criminal->suspect_id==$item->id)--}}
@@ -227,10 +227,10 @@
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
-                                        >case</label>
+                                        >{{__('Case')}}</label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="case"  id="disabledSelect">
-                                                <option>اتیخاب case</option>
+                                                <option>{{__('Select_case')}}</option>
                                             @foreach($case as $item)
                                                     <option value="{{$item->id}}">{{$item->case_number}}</option>
                                                     {{--                                                <option value="0">زن</option>--}}
@@ -241,7 +241,7 @@
                                     <div class="col-md-12 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > توضیحات</label
+                                            >{{__('Description')}}</label
                                             >
                                             <textarea name="discription" required id="discription" class="form-control"  data-parsley-required="true"></textarea>
                                         </div>

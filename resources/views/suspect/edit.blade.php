@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading text-center">
-        <h3>فورم تغیر معلومات مضنون</h3>
+        <h3>{{__('Suspect_info_chnge_form')}}</h3>
     </div>
     @foreach($data as $item)
     <!-- criminal from start -->
@@ -18,7 +18,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > اسم متهم</label
+                                            > {{__('Name')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -26,7 +26,7 @@
                                                 class="form-control"
                                                 name="suspect_name"
                                                 value="{{$item->name}}"
-                                                placeholder="اسم متهم "
+                                        
                                                 data-parsley-required="true"
                                             />
                                         </div>
@@ -34,7 +34,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="suspect_last_name" class="form-label"
-                                            > تخلص متهم</label
+                                            > {{__('Last_name')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -42,7 +42,7 @@
                                                 class="form-control"
                                                 name="last_name"
                                                 value="{{$item->last_name}}"
-                                                placeholder="تخلص متهم "
+                                        
                                                 data-parsley-required="true"
                                             />
                                         </div>
@@ -50,7 +50,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="suspect_last_name" class="form-label"
-                                            > نام پدر متهم</label
+                                            > {{__('Father_name')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -58,14 +58,14 @@
                                                 class="form-control"
                                                 name="father_name"
                                                 value="{{$item->father_name}}"
-                                                placeholder="تخلص متهم "
+                                    
                                                 data-parsley-required="true"
                                             />
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="city-column" class="form-label">نمبر تذکره</label>
+                                            <label for="city-column" class="form-label">{{__('ID_number')}}</label>
                                             <input
                                                 type="text"
                                                 id="city-column"
@@ -80,7 +80,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="country-floating" class="form-label"
-                                            >تلفن</label
+                                            >{{__('Phone_number')}}</label
                                             >
                                             <input
                                                 type="number"
@@ -96,7 +96,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >  ادرس </label
+                                            > {{__('Main_address')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -112,7 +112,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="company-column" class="form-label"
-                                            > ادرس فعلی</label
+                                            > {{__('Current_address')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -130,13 +130,13 @@
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
-                                            ثبت شکایت
+                                        {{__('Edit')}}
                                         </button>
                                         <a href="{{route('people')}}"
                                            type="reset"
                                            class="btn btn-light-secondary me-1 mb-1"
                                         >
-                                            بازګشت
+                                        {{__('Coming_back')}}
                                         </a>
                                     </div>
                                 </div>

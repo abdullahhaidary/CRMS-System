@@ -5,32 +5,32 @@ asd
 <div class="container">
     <div class="card">
         <div class="card-header text-white text-center" >
-            <h2>Suspect Information</h2>
+            <h2>{{__('Suspect_information')}}</h2>
         </div>
         <div class="card-body">
           <div class="row">
               @foreach($data as $item)
               <div class="col col-md-3 col-sm-12">
                   <div class="mb-3">
-                      <div class="col-md-4 font-weight-bold">نوم:</div>
+                      <div class="col-md-4 font-weight-bold">{{__('Name')}}:</div>
                       <div class="col-md-8">{{$item->name." ". $item->last_name}}</div>
                   </div>
               </div>
                   <div class="col col-md-3 col-sm-12">
                       <div class="mb-3">
-                          <div class="col-md-4 font-weight-bold">تذکره نمبر:</div>
+                          <div class="col-md-4 font-weight-bold">{{__('ID_number')}}:</div>
                           <div class="col-md-8">{{$item->tazcira_number}}</div>
                       </div>
                   </div>
                <div class="col col-md-3 col-sm-12">
                       <div class="mb-3">
-                          <div class="col-md-4 font-weight-bold">تلفن:</div>
+                          <div class="col-md-4 font-weight-bold">{{__('Phone_number')}}:</div>
                           <div class="col-md-8">{{$item->phone}}</div>
                       </div>
                </div>
                <div class="col col-md-3 col-sm-12">
                           <div class="mb-3">
-                              <div class="col-md-4 font-weight-bold">ادرس اصلی:</div>
+                              <div class="col-md-4 font-weight-bold">{{__('Main_address')}}:</div>
                               <div class="col-md-8">{{$item->actual_address}}</div>
                           </div>
               </div>
@@ -69,7 +69,7 @@ asd
     <main role="main" class="pb-3">
         <div class="row">
             <div class="col-md-10">
-                <p class="text-dark font-bold">ثبت بایو مترک یک مضنون</p>
+                <p class="text-dark font-bold">{{__('Biometic_registration_suspect')}}</p>
                 <div class="row">
                     <div class="col-12 justify-content-between d-flex flex-row">
                         <div class="p-5 d-flex flex-column">
