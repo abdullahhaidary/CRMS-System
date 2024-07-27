@@ -40,7 +40,7 @@
                                 <td class="text-bold-500">{{ $item->criminal_name }}</td>
                                 <td class="text-bold-500">{{ $item->father_name }}</td>
                                 <td>{{ $item->current_address }}</td>
-                                <td>{{ $item->phone }}</td>
+                                <td>{{ $item->phone}}</td>
                                 <td class="m-0 p-0">
                                     <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
                                     <!-- <a href="#"><i class="fas fa-edit"></i></a> -->

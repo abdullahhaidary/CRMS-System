@@ -22,7 +22,15 @@ class criminalcontroller extends Controller
     public function more($id)
     {
 //        dd($id);
-        $data=criminal::where('criminals.id', '=', $id)->get();
+        $data=DB::table('criminals')
+            ->join('cases', 'cases.id','=', 'criminals.case_id')
+            ->join('suspect', 'suspect.id' ,'=', 'criminals.suspect_id')
+//            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id')
+            ->select('criminals.*', 'cases.case_number', 'suspect.name', 'suspect.last_name')
+            ->where('criminals.id', '=', $id)
+            ->get();
+//        $data=criminal::find($id);
+//        $data=criminal::where('criminals.id', '=', $id)->get();
 //        dd($data);
         if ($data)
         {

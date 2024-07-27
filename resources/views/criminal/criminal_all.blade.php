@@ -58,6 +58,8 @@
             <a class="link-item mx-2 btn btn-info" href="{{url('criminal/edit/'.$item->id)}}">Edit</a>
             <a class="link-item btn btn-danger" href="{{url('criminal/delete/'.$item->id)}}">Delete</a>
             @endcan
+                <a class="link-item mx-2 btn btn-light-success" href="{{route('crimnal')}}">دیدن لیست</a>
+
         </div>
         <h1>{{__('Additional_information_of_a_criminal')}}</h1>
     </div>
@@ -69,7 +71,7 @@
                 <span class="details-value">{{$item->criminal_name}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('name')}}:</span>
+                <span class="details-label">{{__('Last_name')}}:</span>
                 <span class="details-value">{{$item->last_name}}</span>
             </div>
             <div class="details-item">
@@ -89,7 +91,7 @@
                 <span class="details-value">{{$item->job}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('case_number')}}: </span>
+                <span class="details-label">{{__('Case_number')}}: </span>
                 <span class="details-value">{{$item->case_number}}</span>
             </div>
             <div class="details-item"><a href="{{url('suspect_list/'.$item->suspect_id)}}">
