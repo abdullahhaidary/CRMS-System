@@ -74,8 +74,6 @@ class criminalcontroller extends Controller
         // ]);
 //        dd($request->all());
         $save= new criminal();
-
-
         $save->suspect_id= $request->suspect;
         $save->case_id= $request->case;
         $save->criminal_name= $request->name;
@@ -91,8 +89,8 @@ class criminalcontroller extends Controller
         $save->job= $request->job;
         $save->marital_status= $request->discription;
         $save->family_members= $request->familymember;
-
-
+        $save->suspect_id=$request->suspect;
+        $save->case_id=$request->case;
         if (!empty($request->photo)) {
             $exe = $request->file('photo')->getClientOriginalExtension();
 //            dd($exe);

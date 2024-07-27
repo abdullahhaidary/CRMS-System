@@ -219,7 +219,7 @@
 {{--                                                            <option value="">{{ "name: ".$item->name."- last_name: ". $item->last_name."- number tazkera: ".$item->tazcira_number}}</option>--}}
 
 {{--                                                        @else--}}
-                                                    <option value="">{{ "name: ".$item->name."- last_name: ". $item->last_name."- number tazkera: ".$item->tazcira_number}}</option>{{--                                                        @endif--}}
+                                                    <option value="{{$item->id}}">{{ "name: ".$item->name."- last_name: ". $item->last_name."- number tazkera: ".$item->tazcira_number}}</option>{{--                                                        @endif--}}
 
                                                 @endforeach
                                             </select>
