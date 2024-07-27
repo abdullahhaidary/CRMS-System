@@ -94,7 +94,7 @@ Route::get('/admin/edit/{id}', [\App\Http\Controllers\admincontrol::class, 'edit
 Route::post('admin/update/{id}', [\App\Http\Controllers\admincontrol::class, 'update'])->name('user_update')->middleware('auth');
 
 //url people
-
+Route::get('people/list', [\App\Http\Controllers\pepolecontroller::class, 'people_list'])->name('list_people');
 Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people');
 Route::get('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form');
 Route::post('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store');

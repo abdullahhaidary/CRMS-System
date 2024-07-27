@@ -22,6 +22,11 @@ class pepolecontroller extends Controller
         $data=people::paginate(5);
         return view('people.people', compact('data'));
     }
+    public function people_list()
+    {
+        $data=people::paginate('5');
+        return view('people.people_list',compact('data'));
+    }
     public function create()
     {
         return view('people.people_form');
@@ -54,7 +59,7 @@ class pepolecontroller extends Controller
         $save->	subject_crim=$request->creime_subject;
         $save->	crim_date=$request->crime_date;
         $save->user_id=Auth::user()->id;
-        
+
 
 //dd($savedPeople->id);
         $save->save();

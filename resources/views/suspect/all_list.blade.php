@@ -32,8 +32,7 @@
                         <td>{{$suspect->phone}}</td>
                         <td>{{$suspect->actual_address}}</td>
                         <td>{{$suspect->current_address}}</td>
-                        <th></th>
-                        <th><a class="btn btn-sm btn-primary" href="{{url('finger_print_add/'.$suspect->id)}}">اثر انگشت</a>
+                        <th>
                             @can('super_admin')
                                 <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">تصحیح</a>
                                 <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">حذف</a></th>

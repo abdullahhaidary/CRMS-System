@@ -97,7 +97,10 @@
                                 <a href="component-alert.html" class="submenu-link">اسناد ها</a>
                             </li>
                             <li class="submenu-item  ">
-                                <a href="{{route('all_list')}}" class="submenu-link">مظنون عمومی</a>
+                                <a href="{{route('all_list')}}" class="submenu-link"> لیست مظنون عمومی</a>
+                            </li>
+                            <li class="submenu-item  ">
+                                <a href="{{route('list_people')}}" class="submenu-link"> لیست شکایت کنندها </a>
                             </li>
                             <li class="submenu-item  ">
                                 <a href="component-badge.html" class="submenu-link">زندان</a>

@@ -187,10 +187,10 @@ class AuthController extends Controller
                 if ($request->hasFile('profile_image')) {
                     $image = $request->file('profile_image');
                     $image_name = $image->hashName(); // Generate a unique name for the image
-                    $user->picture = $image_name; // Update the user's profile picture attribute
+                    $user->picture = $image_name;     // Update the user's profile picture attribute
 
                     // Store the image in the 'public/profiles' directory
-                    $image->storeAs('public/profiles', $image_name);
+                    $image->storeAs('profiles', $image_name);
                 }
                 $user->save();
             }else{

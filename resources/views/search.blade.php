@@ -73,6 +73,37 @@
         </div>
     </main>
 </div>
+
+
+<div class="container mt-5">
+    <h2 class="mb-4">Suspect People Data</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Address</th>
+                <th scope="col">Fingerprint ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>John Doe</td>
+                <td>30</td>
+                <td>Male</td>
+                <td>123 Main St</td>
+                <td>FP123456</td>
+            </tr>
+            <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <script src="{{asset('dist/js/jquery .js')}}"></script>
 <script type="text/javascript">
     var secugen_lic = "";
