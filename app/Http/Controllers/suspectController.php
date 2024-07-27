@@ -42,7 +42,7 @@ return redirect(url('/suspect_list/'.$id));
             ->select('suspect.*')
             ->where('suspect.id','=',$id)
             ->get();
-        return view('suspect.edit',compact('data'));
+        return view('suspect.edit',compact('data','id'));
     }
 public function update(Request $request, string $id)
 {
