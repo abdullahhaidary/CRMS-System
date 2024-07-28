@@ -85,8 +85,8 @@ Route::group(['middleware'=>'can:super_admin','auth'],function (){
     Route::get('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_edit');
     Route::post('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'update'])->name('criminal_update');
     Route::get('criminal/delete/{id}', [\App\Http\Controllers\criminalcontroller::class, 'destroy'])->name('criminal-delete');
-
-
+Route::get('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::class, 'picture'])->name('criminal_picture');
+Route::post('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::class,'picture_save'])->name('picture_save');
 //url user
 Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user')->middleware('auth');
 Route::get('/admin/edit/{id}', [\App\Http\Controllers\admincontrol::class, 'edit'])->name('user_edit')->middleware('auth');

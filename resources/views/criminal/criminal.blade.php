@@ -7,7 +7,7 @@
     <section class="section p-2">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{__('Table_all_criminals_in_system')}}</h3>
+                <h3 class="card-title text-center">{{__('Table_all_criminals_in_system')}}</h3>
                 @include('massage')
             </div>
             <div class="card-content">
@@ -19,7 +19,7 @@
                         <th>{{__('Father_name')}}</th>
                         <th>{{__('Current_address')}}</th>
                         <th>{{__('Phone_number')}}</th>
-                       
+
                     </tr>
                     </thead>
                     <tbody>
@@ -29,11 +29,9 @@
                             <tr class="mb-1">
                                 @php
                                 $firstPicture = (is_array($item->picture) && isset($item->picture[0])) ? $item->picture[0] : null;
-
                                 @endphp
-
                                 @if($firstPicture)
-                                    <td><img src="{{ asset('criminal/' . $firstPicture->path) }}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
+                                    <td><img src="{{ asset('criminal/' . $firstPicture->photo) }}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
                                 @else
                                     <td>{{__('No_picture_available')}}</td>
                                 @endif
@@ -42,7 +40,7 @@
                                 <td>{{ $item->current_address }}</td>
                                 <td>{{ $item->phone}}</td>
                                 <td class="m-0 p-0">
-                                   
+
                                     <a href="{{ url('/criminal/all/' . $item->id) }}" class="btn btn-primary btn-sm">{{__('Full_info')}}</a>
                                 </td>
                             </tr>

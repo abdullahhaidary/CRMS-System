@@ -110,8 +110,8 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
-                                            <label for="curent-address" class="form-label"
-                                            >{{__('Curent_address')}}</label
+                                            <label for="current-address" class="form-label"
+                                            >{{__('Current_address')}}</label
                                             >
                                             <input
                                                 type="text"

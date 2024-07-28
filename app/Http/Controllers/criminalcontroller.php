@@ -99,15 +99,17 @@ class criminalcontroller extends Controller
             $filename = $rename . '.' . $exe;
             $file->move('criminal/', $filename);
             $save->photo=$filename;
-
+        }
             $save->save();
 
             $criminal_picture = new CriminalPicture();
             $criminal_picture->criminal_id=$save->id;
             $criminal_picture->path=$filename;
             $criminal_picture->save();
-        }
-        return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
+
+        $id=$save->id;
+//        return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
+        return redirect()->route('criminal_picture', compact('id'));
     }
     public function edit($id)
     {
@@ -198,4 +200,14 @@ class criminalcontroller extends Controller
                 // Redirect or return a response
                 return redirect()->route('crimnal')->with('success', 'ریکارد په موافقیت دیلبت شود !');
             }
+            public function picture($id)
+            {
+                return view('criminal.picture', compact('id'));
+            }
+    public function picture_save(Request $request, $id)
+    {
+       $save= new CriminalPicture();
+       $save->criminal_id=$id;
+       $save->path=$request->photo1;
+    }
 }
