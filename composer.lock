@@ -5704,13 +5704,10 @@
                 "env",
                 "environment"
             ],
-<<<<<<< HEAD
-=======
             "support": {
                 "issues": "https://github.com/vlucas/phpdotenv/issues",
                 "source": "https://github.com/vlucas/phpdotenv/tree/v5.6.1"
             },
->>>>>>> f47633a (waris)
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
