@@ -2,7 +2,7 @@
 @section('content')
    <div class="row">
        <div class="page-heading mt-5 text-center">
-               <h3>افراد مظنون</h3>
+               <h3>{{__('Suspect_list')}}</h3>
            </div></div>
 
     @include('massage')
@@ -12,13 +12,13 @@
             <table class="table mb-0">
                 <thead>
                 <tr>
-                    <th>نوم</th>
-                    <th> تخلص</th>
-                    <th> پلار نوم</th>
-                    <th>نمبر تذکره</th>
-                    <th> شماره تماس</th>
-                    <th>آدرس اصلی</th>
-                    <th> ادرس فعلی</th>
+                    <th>{{__('Name')}}</th>
+                    <th>{{__('Last_name')}}</th>
+                    <th>{{__('Father_name')}}</th>
+                    <th>{{__('ID_number')}}</th>
+                    <th>{{__('Phone_number')}}</th>
+                    <th>{{__('Main_address')}}</th>
+                    <th>{{__('Current_address')}}</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -34,10 +34,15 @@
                         <td>{{$suspect->current_address}}</td>
                         <th>
                             @can('super_admin')
+<<<<<<< HEAD
                                 <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">تصحیح</a>
                                 <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">حذف</a>
                                <a class="btn btn-secondary btn-sm" href="{{url('/un_suspect/list/'.$suspect->id)}}">انتقال به لیست افراد غیر مظنون</a>
                         </th>
+=======
+                                <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">{{__('Edit')}}</a>
+                                <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">{{__('Delete')}}</a></th>
+>>>>>>> cd538b1 (waris)
                         @endcan
                     </tr>
                 @endforeach

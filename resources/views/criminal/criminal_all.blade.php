@@ -55,8 +55,8 @@
     <div class="text-center page-heading">
         <div class="nav text-right">
             @can('super_admin')
-            <a class="link-item mx-2 btn btn-info" href="{{url('criminal/edit/'.$item->id)}}">Edit</a>
-            <a class="link-item btn btn-danger" href="{{url('criminal/delete/'.$item->id)}}">Delete</a>
+            <a class="link-item mx-2 btn btn-info" href="{{url('criminal/edit/'.$item->id)}}">{{__('Edit')}}</a>
+            <a class="link-item btn btn-danger" href="{{url('criminal/delete/'.$item->id)}}">{{__('Delete')}}</a>
             @endcan
                 <a class="link-item mx-2 btn btn-light-success" href="{{route('crimnal')}}">{{__('View_list')}}</a>
 
@@ -95,7 +95,7 @@
                 <span class="details-value">{{$item->case_number}}</span>
             </div>
             <div class="details-item"><a href="{{url('suspect_list/'.$item->suspect_id)}}">
-                <span class="details-label">دیدن معلومات در جدول مضنونی: </span>
+                <span class="details-label">{{__('View_information_in_suspect_table')}}: </span>
                 <span class="details-value">{{$item->name}}</span></a>
             </div>
         </div>

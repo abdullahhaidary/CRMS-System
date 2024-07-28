@@ -1,10 +1,10 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading">
-        <a href="{{url('/suspect/form/'.$id)}}" class="btn btn-outline-primary btn-light">ثبت مظنون جدید</a>
+        <a href="{{url('/suspect/form/'.$id)}}" class="btn btn-outline-primary btn-light">{{__('New_suspect_registration')}}</a>
     </div>
 <div class="page-heading mt-5 text-center">
-    <h3>افراد مظنون</h3>
+<h3>{{__('Suspect_list')}}</h3>
 </div>
 @include('massage')
 <!--  Inverse table start -->
@@ -13,13 +13,13 @@
         <table class="table mb-0">
             <thead>
                 <tr>
-                <th>نوم</th>
-                <th> تخلص</th>
-                <th> پلار نوم</th>
-                <th>نمبر تذکره</th>
-                <th> شماره تماس</th>
-                <th>آدرس اصلی</th>
-                <th> ادرس فعلی</th>
+                <th>{{__('Name')}}</th>
+                <th>{{__('Last_name')}}</th>
+                <th>{{__('Father_name')}}</th>
+                <th>{{__('ID_number')}}</th>
+                <th>{{__('Phone_number')}}</th>
+                <th>{{__('Main_address')}}</th>
+                <th>{{__('Current_address')}}</th>
                 <th></th>
             </tr>
             </thead>
@@ -34,10 +34,10 @@
                     <td>{{$suspect->actual_address}}</td>
                     <td>{{$suspect->current_address}}</td>
                     <th></th>
-                    <th><a class="btn btn-sm btn-primary" href="{{url('finger_print_add/'.$suspect->id)}}">اثر انگشت</a>
+                    <th><a class="btn btn-sm btn-primary" href="{{url('finger_print_add/'.$suspect->id)}}">{{__('Fingerprint')}}</a>
                         @can('super_admin')
-                        <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">تصحیح</a>
-                        <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">حذف</a></th>
+                        <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">{{__('Edit')}}</a>
+                        <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">{{__('Delete')}}</a></th>
                     @endcan
                 </tr>
             @endforeach

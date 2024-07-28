@@ -1,25 +1,25 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading">
-        <a href="{{route('criminalcontroller-form')}}" class="btn btn-outline-primary btn-light">ایجاد مجریم جدید</a>
+        <a href="{{route('criminalcontroller-form')}}" class="btn btn-outline-primary btn-light">{{__('New_criminal_creation_form')}}</a>
     </div>
     <!--  Inverse table start -->
     <section class="section p-2">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">جدول تمام مجرمین در سیستم</h3>
+                <h3 class="card-title">{{__('Table_all_criminals_in_system')}}</h3>
                 @include('massage')
             </div>
             <div class="card-content">
                 <table class="table  mb-0">
                     <thead>
                     <tr>
-                        <th>تصویر</th>
-                        <th>نوم</th>
-                        <th>پلارن نوم</th>
-                        <th> فعلی آدرس</th>
-                        <th>شماره موبایل</th>
-                        <th></th>
+                        <th>{{__('Picture')}}</th>
+                        <th>{{__('Name')}}</th>
+                        <th>{{__('Father_name')}}</th>
+                        <th>{{__('Current_address')}}</th>
+                        <th>{{__('Phone_number')}}</th>
+                       
                     </tr>
                     </thead>
                     <tbody>
@@ -35,16 +35,15 @@
                                 @if($firstPicture)
                                     <td><img src="{{ asset('criminal/' . $firstPicture->path) }}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
                                 @else
-                                    <td>No picture available</td>
+                                    <td>{{__('No_picture_available')}}</td>
                                 @endif
                                 <td class="text-bold-500">{{ $item->criminal_name }}</td>
                                 <td class="text-bold-500">{{ $item->father_name }}</td>
                                 <td>{{ $item->current_address }}</td>
                                 <td>{{ $item->phone}}</td>
                                 <td class="m-0 p-0">
-                                    <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                                    <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
-                                    <a href="{{ url('/criminal/all/' . $item->id) }}" class="btn btn-primary btn-sm">معلومات مکمل</a>
+                                   
+                                    <a href="{{ url('/criminal/all/' . $item->id) }}" class="btn btn-primary btn-sm">{{__('Full_info')}}</a>
                                 </td>
                             </tr>
                         @endforeach
