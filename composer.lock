@@ -788,12 +788,6 @@
             "keywords": [
                 "promise"
             ],
-
-            "support": {
-                "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.0.3"
-            },
-
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
@@ -2535,12 +2529,6 @@
                 "php",
                 "type"
             ],
-
-          "support": {
-                "issues": "https://github.com/schmittjoh/php-option/issues",
-                "source": "https://github.com/schmittjoh/php-option/tree/1.9.3"
-            },
-
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
