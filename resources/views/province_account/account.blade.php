@@ -61,32 +61,27 @@
 {{--        a:hover {--}}
 {{--            text-decoration: underline;--}}
 {{--        }--}}
-{{--        .form-select{--}}
-{{--            background-color: #ffffff;--}}
-{{--            padding: 10px;--}}
-{{--            border-radius: 5px;--}}
-{{--            width: 400px;--}}
-{{--            margin-bottom: 10px;--}}
-{{--        }--}}
-{{--        .form-option-list{--}}
-{{--            font-size: 16px;--}}
-{{--            padding: 8px;--}}
-{{--        }--}}
-{{--    </style>--}}
-{{--        @livewireStyles--}}
-{{--        @livewireScripts--}}
-{{--</head>--}}
-{{--<body dir="rtl">--}}
-{{--<div class="register-container">--}}
-{{--    <img src="{{asset('images/register.png')}}" alt="Logo">--}}
-{{--    <h2>Register</h2>--}}
-{{--    @livewire('register-form',['provinces' => $data])--}}
-{{--    <p> لیست تمام ادمین های در سیستم.  <a href="{{route('province_liat')}}">اینجا کلیک کنید </a></p>--}}
-
-{{--</div>--}}
-{{--</body>--}}
-{{--</html>--}}
-
+        .form-select
+            background-color: #ffffff
+            padding: 10px;--}}
+            border-radius: 5px
+            width: 400px
+            margin-bottom: 10px
+        }--}}
+        .form-option-list
+            font-size: 16px
+            padding: 8px
+        }--}}
+    </style>--}}
+        @livewireStyle
+        @livewireScript
+</head>--}}
+<body dir="rtl"
+<div class="register-container"
+    <img src="{{asset('images/register.png')}}" alt="Logo"
+    <h2>Register</h2>--}}
+    @livewire('register-form',['provinces' => $data]
+    <p> لیست تمام ادمین های در سیستم.  <a href="{{route('province_liat')}}">اینجا کلیک کنید </a></p
 
     <!DOCTYPE html>
 <html lang="en">
