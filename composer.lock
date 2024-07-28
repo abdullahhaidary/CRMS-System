@@ -788,6 +788,12 @@
             "keywords": [
                 "promise"
             ],
+
+            "support": {
+                "issues": "https://github.com/guzzle/promises/issues",
+                "source": "https://github.com/guzzle/promises/tree/2.0.3"
+            },
+
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
@@ -1198,6 +1204,12 @@
                 "framework",
                 "laravel"
             ],
+
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+
             "time": "2024-07-26T10:39:29+00:00"
         },
         {
@@ -2523,6 +2535,12 @@
                 "php",
                 "type"
             ],
+
+          "support": {
+                "issues": "https://github.com/schmittjoh/php-option/issues",
+                "source": "https://github.com/schmittjoh/php-option/tree/1.9.3"
+            },
+
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
@@ -5662,6 +5680,10 @@
                 "env",
                 "environment"
             ],
+            "support": {
+                "issues": "https://github.com/vlucas/phpdotenv/issues",
+                "source": "https://github.com/vlucas/phpdotenv/tree/v5.6.1"
+            },
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
@@ -6033,6 +6055,12 @@
                 "linter",
                 "php"
             ],
+
+            "support": {
+                "issues": "https://github.com/laravel/pint/issues",
+                "source": "https://github.com/laravel/pint"
+            },
+
             "time": "2024-07-23T16:40:20+00:00"
         },
         {
@@ -6092,6 +6120,12 @@
                 "docker",
                 "laravel"
             ],
+
+            "support": {
+                "issues": "https://github.com/laravel/sail/issues",
+                "source": "https://github.com/laravel/sail"
+            },
+
             "time": "2024-07-22T14:36:50+00:00"
         },
         {
@@ -6806,6 +6840,13 @@
                 "testing",
                 "xunit"
             ],
+
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/phpunit/issues",
+                "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.2.8"
+            },
+
             "funding": [
                 {
                     "url": "https://phpunit.de/sponsors.html",
@@ -7718,6 +7759,10 @@
                 "Backtrace",
                 "spatie"
             ],
+            "support": {
+                "source": "https://github.com/spatie/backtrace/tree/1.6.2"
+            },
+
             "funding": [
                 {
                     "url": "https://github.com/sponsors/spatie",
