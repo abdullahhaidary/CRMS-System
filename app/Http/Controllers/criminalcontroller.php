@@ -25,13 +25,11 @@ class criminalcontroller extends Controller
         $data=DB::table('criminals')
             ->join('cases', 'cases.id','=', 'criminals.case_id')
             ->join('suspect', 'suspect.id' ,'=', 'criminals.suspect_id')
-//            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id')
+//            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id' )
             ->select('criminals.*', 'cases.case_number', 'suspect.name', 'suspect.last_name')
             ->where('criminals.id', '=', $id)
             ->get();
-//        $data=criminal::find($id);
-//        $data=criminal::where('criminals.id', '=', $id)->get();
-//        dd($data);
+
         if ($data)
         {
         return view('criminal.criminal_all', compact('data'));
@@ -109,7 +107,7 @@ class criminalcontroller extends Controller
 
         $id=$save->id;
 //        return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
-        return redirect()->route('criminal_picture', compact('id'));
+        return redirect()->route('criminal_picture', compact('id'))->with('success', "مجریم ادد شو اوس عکس اضافه کړی!");
     }
     public function edit($id)
     {
@@ -207,7 +205,56 @@ class criminalcontroller extends Controller
     public function picture_save(Request $request, $id)
     {
        $save= new CriminalPicture();
+        if (!empty($request->photo1)) {
+            $exe = $request->file('photo1')->getClientOriginalExtension();
+//            dd($exe);
+            $file = $request->file('photo1');
+            $rename = str::random(20);
+            $filename1 = $rename . '.' . $exe;
+            $file->move('criminal/', $filename1);
+        }
        $save->criminal_id=$id;
-       $save->path=$request->photo1;
+       $save->path=$filename1;
+       $save->save();
+
+        $save= new CriminalPicture();
+        if (!empty($request->photo1)) {
+            $exe = $request->file('photo2')->getClientOriginalExtension();
+//            dd($exe);
+            $file = $request->file('photo2');
+            $rename = str::random(20);
+            $filename2 = $rename . '.' . $exe;
+            $file->move('criminal/', $filename2);
+        }
+        $save->criminal_id=$id;
+        $save->path=$filename2;
+        $save->save();
+        $save= new CriminalPicture();
+        if (!empty($request->photo1)) {
+            $exe = $request->file('photo3')->getClientOriginalExtension();
+//            dd($exe);
+            $file = $request->file('photo3');
+            $rename = str::random(20);
+            $filename3 = $rename . '.' . $exe;
+            $file->move('criminal/', $filename3);
+        }
+        $save->criminal_id=$id;
+        $save->path=$filename3;
+        $save->save();
+
+        $save= new CriminalPicture();
+        if (!empty($request->photo1)) {
+            $exe = $request->file('photo4')->getClientOriginalExtension();
+//            dd($exe);
+            $file = $request->file('photo4');
+            $rename = str::random(20);
+            $filename4 = $rename . '.' . $exe;
+            $file->move('criminal/', $filename4);
+        }
+        $save->criminal_id=$id;
+        $save->path=$filename4;
+        $save->save();
+                return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
+
     }
 }

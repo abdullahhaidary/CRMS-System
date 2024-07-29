@@ -149,7 +149,6 @@
             </div>
         </div>
     </div>
-
     <div class="row details-card mt-4">
         <div class="col-lg-12">
             <h4 class="section-title">دست راست</h4>

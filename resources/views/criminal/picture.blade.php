@@ -3,6 +3,7 @@
     <div class="page-heading text-center">
         <h3>{{__('New_criminal_creation_form')}}</h3>
     </div>
+    @include('massage')
     <!-- criminalcontroller from start -->
     <section id="multiple-column-form">
         <div class="row match-height">

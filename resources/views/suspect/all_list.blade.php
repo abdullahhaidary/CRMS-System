@@ -34,15 +34,10 @@
                         <td>{{$suspect->current_address}}</td>
                         <th>
                             @can('super_admin')
-<<<<<<< HEAD
                                 <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">تصحیح</a>
                                 <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">حذف</a>
                                <a class="btn btn-secondary btn-sm" href="{{url('/un_suspect/list/'.$suspect->id)}}">انتقال به لیست افراد غیر مظنون</a>
                         </th>
-=======
-                                <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">{{__('Edit')}}</a>
-                                <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">{{__('Delete')}}</a></th>
->>>>>>> cd538b1 (waris)
                         @endcan
                     </tr>
                 @endforeach
