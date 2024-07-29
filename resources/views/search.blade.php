@@ -73,7 +73,30 @@
         </div>
     </main>
 </div>
-
+<div class="card-body">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Type</th>
+            <th>Action</th>
+            <th>Date Created</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 <script src="{{asset('dist/js/jquery .js')}}"></script>
 <script type="text/javascript">

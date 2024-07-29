@@ -70,7 +70,7 @@ Route::fallback(function(){
 
 
 // admin Route
-Route::group(['middleware'=>'can:super_admin','auth'],function (){
+Route::group(['middleware'=>'can:super_admin','can:admin','auth'],function (){
 
 //    Route::middleware([isAdmin::class])->get('crimnal-list',[\App\Http\Controllers\adminconroller::class, 'index'])->name('crimnal');
 //});
