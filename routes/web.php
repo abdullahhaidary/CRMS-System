@@ -70,7 +70,7 @@ Route::fallback(function(){
 
 
 // admin Route
-Route::group(['middleware'=>'can:super_admin','can:admin','auth'],function (){
+Route::group(['middleware'=>'can:super_admin','auth'],function (){
 
 //    Route::middleware([isAdmin::class])->get('crimnal-list',[\App\Http\Controllers\adminconroller::class, 'index'])->name('crimnal');
 //});
@@ -85,9 +85,12 @@ Route::group(['middleware'=>'can:super_admin','can:admin','auth'],function (){
     Route::get('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'edit'])->name('criminal_edit');
     Route::post('criminal/edit/{id}', [\App\Http\Controllers\criminalcontroller::class, 'update'])->name('criminal_update');
     Route::get('criminal/delete/{id}', [\App\Http\Controllers\criminalcontroller::class, 'destroy'])->name('criminal-delete');
-Route::get('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::class, 'picture'])->name('criminal_picture');
-Route::post('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::class,'picture_save'])->name('picture_save');
-//url user
+    Route::get('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::class, 'picture'])->name('criminal_picture');
+    Route::post('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::class,'picture_save'])->name('picture_save');
+ Route::get('criminal/picture/show/{id}', [\App\Http\Controllers\criminalcontroller::class, 'show_picture'])->name('show_picture');
+
+
+    //url user
 Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])->name('user')->middleware('auth');
 Route::get('/admin/edit/{id}', [\App\Http\Controllers\admincontrol::class, 'edit'])->name('user_edit')->middleware('auth');
 Route::post('admin/update/{id}', [\App\Http\Controllers\admincontrol::class, 'update'])->name('user_update')->middleware('auth');

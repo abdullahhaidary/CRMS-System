@@ -17,8 +17,8 @@ Profile Details
                     </div>
 
                     <div class="profile_links">
-                        <ul class="ul">
-                            <li class=""><a href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> <h3 class="font-bold">تغیر فاسورد</h3> </a></li>
+                        <ul>
+                            <li><a href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> تغیر فاسورد</a></li>
                         </ul>
                     </div>
                 </div>

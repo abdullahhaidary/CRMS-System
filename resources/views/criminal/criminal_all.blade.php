@@ -49,23 +49,25 @@
             color: #495057;
         }
     </style>
-@if($data)
+    @if($data)
 <div class="container">
     @foreach($data as $item)
     <div class="text-center page-heading">
         <div class="nav text-right">
             @can('super_admin')
-            <a class="link-item mx-2 btn btn-info" href="{{url('criminal/edit/'.$item->id)}}">{{__('Edit')}}</a>
-            <a class="link-item btn btn-danger" href="{{url('criminal/delete/'.$item->id)}}">{{__('Delete')}}</a>
+            <a class="link-item mx-2 btn btn-light-info" href="{{url('criminal/edit/'.$item->id)}}">{{__('Edit')}}</a>
+            <a class="link-item btn btn-light-danger" href="{{url('criminal/delete/'.$item->id)}}">{{__('Delete')}}</a>
             @endcan
-                <a class="link-item mx-2 btn btn-light-success" href="{{route('crimnal')}}">{{__('View_list')}}</a>
-
+                <a class="link-item mx-2 btn btn-light-dark" href="{{route('crimnal')}}">{{__('View_list')}}</a>
+                <a class="link-item btn btn-outline-dark" href="{{url('criminal/picture/show/'.$item->id)}}">تصویر های مجریم</a>
         </div>
         <h1>{{__('Additional_information_of_a_criminal')}}</h1>
     </div>
     <div class="row details-card">
         <div class="col-lg-4 col-md-6 mb-4">
-            <img src="{{asset('criminal/'.$item->photo)}}" alt="Profile Picture" class="img-fluid">
+{{--            <img src="{{asset('criminal/'.$item->photo)}}" alt="Profile Picture" class="img-fluid">--}}
+            <embed src="{{asset('criminal/'.$item->photo)}}" type="application/pdf" width="100%" height="300px">
+
             <div class="details-item">
                 <span class="details-label">{{__('Name')}}:</span>
                 <span class="details-value">{{$item->criminal_name}}</span>

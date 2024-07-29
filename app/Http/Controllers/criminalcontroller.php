@@ -178,11 +178,8 @@ class criminalcontroller extends Controller
                 $criminal->marital_status = $request->input('discription');
                 }
                 $criminal->family_members = $request->input('familymember');
-
-
         // Update other fields as necessary
                 $criminal->save();
-
                 // Redirect or return a response
                 return redirect(url('/criminal/all/'.$id))->with('success', 'User updated successfully');
             }
@@ -191,10 +188,8 @@ class criminalcontroller extends Controller
 //                dd($id);
                 // Find the resource by ID
                 $resource = criminal::findOrFail($id);
-
                 // Delete the resource
                 $resource->delete();
-
                 // Redirect or return a response
                 return redirect()->route('crimnal')->with('success', 'ریکارد په موافقیت دیلبت شود !');
             }
@@ -216,7 +211,6 @@ class criminalcontroller extends Controller
        $save->criminal_id=$id;
        $save->path=$filename1;
        $save->save();
-
         $save= new CriminalPicture();
         if (!empty($request->photo1)) {
             $exe = $request->file('photo2')->getClientOriginalExtension();
@@ -256,5 +250,11 @@ class criminalcontroller extends Controller
         $save->save();
                 return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
 
+    }
+    public function show_picture($id)
+    {
+        $pictures=CriminalPicture::where('criminal_id', '=', $id)->
+            get();
+        return view('criminal.picture_show', compact('pictures'));
     }
 }
