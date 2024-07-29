@@ -166,17 +166,13 @@ class pepolecontroller extends Controller
     public function moreShow($id)
     {
 
-        $data=DB::table('people')
-//            ->join('crime_register_record_information', 'crime_register_record_information.people_id', '=', 'people.id')
-//            ->join('suspect', 'suspect.crime_record_id', '=','crime_register_record_information.id')
-            ->select('people.*')
-            ->where('people.id','=',$id)
-            ->get();
-        $data=people::where('id','=',$id)->get();
+        $peoples=people::where('id','=',$id)->get();
         $info=crime_register_record_information::where('people_id', '=',$id)->get();
-//            $suspect=suspectmodel::where('');
-//        $case=casemodel::where()
+        $suspects=suspectmodel::where('crime_record_id', '=', $id)
+            ->where('isCriminal', '=', 1)
+            ->get();
+        $cases=casemodel::where('crime_record_id', '=', $id)->get();
 
-        return view('people.all_about_people', compact('data', 'info'));
+        return view('people.all_about_people', compact('peoples', 'info', 'suspects', 'cases'));
     }
 }

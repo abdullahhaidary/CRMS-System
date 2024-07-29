@@ -4,13 +4,13 @@
     <div class="text-center mb-4">
         <h1>Complaint Details</h1>
     </div>
-@foreach($data as $item)
     <div class="row mb-4">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-white" style="background-color: #c2c2c2">
                     <h5 class="card-title mb-0">Complaint Information</h5>
                 </div>
+                @foreach($peoples as $item)
                 <div class="card-body">
                     <p><strong>#: </strong>{{$item->id}}</p>
                     <p><strong>نوم: </strong>{{$item->name . " ". $item->last_name}}</p>
@@ -25,6 +25,7 @@
                     <p><strong> تاریخ جرم: </strong>{{ $item->crim_date}}</p>
                     <p><strong>تاریخ ثبت: </strong> {{$item->created_at}}</p>
                 </div>
+                @endforeach
             </div>
         </div>
 
@@ -47,27 +48,42 @@
     <div class="row mb-4">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header bg-success text-white">
+                <div class="card-header text-white" style="background-color: #c2c2c2">
                     <h5 class="card-title mb-0">Suspect Information</h5>
                 </div>
-
+@foreach($suspects as $suspect)
                 <div class="card-body">
-                    <p><strong>Name:</strong>{{$item->name}}</p>
-                    <p><strong>Age:</strong> 34</p>
-                    <p><strong>Address:</strong> 123 Main St, Anytown, USA</p>
+                    <p><strong>نام مظنون:</strong>  {{$suspect->name}}</p>
+                    <p><strong>تخلص:</strong>  {{$suspect->last_name}}</p>
+                    <p><strong>نام پدر:</strong>  {{$suspect->father_name}}</p>
+                    <p><strong>تلفن:</strong>  {{$suspect->phone}}</p>
+                    <p><strong>نمبر تذکره:</strong>  {{$suspect->tazcira_number}}</p>
+                    <p><strong>ادرس اصلی:</strong>  {{$suspect->actual_address}}</p>
+                    <p><strong>ادرس فعلی:</strong>  {{$suspect->current_address}}</p>
+                    <p><strong>تاریخ ثبت:</strong>  {{$suspect->created_at}}</p>
                 </div>
+    <hr>
+                @endforeach
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header bg-danger text-white">
+                <div class="card-header text-white" style="background-color: #c2c2c2">
                     <h5 class="card-title mb-0">Case Details</h5>
                 </div>
+                @foreach($cases as $case)
                 <div class="card-body">
-                    <p><strong>Case Number:</strong> 456789</p>
-                    <p><strong>Status:</strong> Under Investigation</p>
+                    <p><strong>نمبر قضیه:</strong> {{$case->case_number}}</p>
+                    <p><strong>حالت قضیه:</strong> {{$case->status}}</p>
+                    <p><strong>نوع جرم:</strong> {{$case->crime_type}}</p>
+                    <p><strong>جرم جای:</strong> {{$case->crime_location}}</p>
+                    <p><strong>تاریخ شروع:</strong> {{$case->start_date}}</p>
+                    <p><strong>تاریخ ختم:</strong> {{$case->end_date}}</p>
+                    <p><strong>توضیحات:</strong> {{$case->description}}</p>
+                    <p><strong>تاریخ ثبت:</strong> {{$case->created_at}}</p>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -75,7 +91,7 @@
     <div class="row mb-4">
         <div class="col-12">
             <div class="card">
-                <div class="card-header bg-info text-white">
+                <div class="card-header text-white" style="background-color: #c2c2c2">
                     <h5 class="card-title mb-0">Description</h5>
                 </div>
                 @foreach($info as $items)
@@ -86,6 +102,5 @@
             </div>
         </div>
     </div>
-    @endforeach
 </div>
 @endsection
