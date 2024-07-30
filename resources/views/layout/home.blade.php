@@ -17,8 +17,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">مجموعه ثبت شده</h6>
-                                        <h6 class="font-extrabold mb-0">112.000</h6>
+                                        <h6 class="text-muted font-semibold">مجموعه شکایات</h6>
+                                        <h6 class="font-extrabold mb-0">{{$total_crime_record}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">مجموعه مجرمین</h6>
-                                        <h6 class="font-extrabold mb-0">183.000</h6>
+                                        <h6 class="font-extrabold mb-0">{{$total_criminal_record}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">دوسیه زیر فروسیس</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="font-extrabold mb-0">{{$total_cases_record}}</h6>
                                     </div>
                                 </div>
                             </div>

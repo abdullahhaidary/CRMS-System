@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\People;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -55,7 +56,7 @@ class AuthController extends Controller
         if (Auth::user()->picture == null && Auth::user()->action==1) {
             return view('profile.profile-suggestion');
         }else{
-            return redirect()->route('home');
+            return redirect()->to('/');
         }
 
     }else {

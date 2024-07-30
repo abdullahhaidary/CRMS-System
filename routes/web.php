@@ -6,7 +6,10 @@ use App\Http\Middleware\SetLocale;
 use App\Models\suspectmodel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Models\casemodel;
+use App\Models\criminal;
 use App\Models\FingerprintModel;
+use App\Models\People;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
@@ -17,8 +20,11 @@ use Illuminate\Support\Facades\App;
 
 
 Route::middleware(['auth'])->get('/',function(){
+    $total_crime_record = People::all()->count();
+    $total_criminal_record = criminal::all()->count();
+    $total_cases_record = casemodel::all()->count();
 
-    return view('layout.home');
+    return view('layout.home',compact('total_crime_record','total_criminal_record','total_cases_record'));
 })->name('home');
 
 
