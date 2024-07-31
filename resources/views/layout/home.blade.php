@@ -1,4 +1,18 @@
 @extends('layout.mian-dashbord')
+@php
+
+if (!function_exists('trim_to_words')) {
+    function trim_to_words($text, $limit = 7)
+    {
+        $words = explode(' ', $text);
+        if (count($words) > $limit) {
+            return implode(' ', array_slice($words, 0, $limit)) . '...';
+        }
+        return $text;
+    }
+}
+
+@endphp
 @section('content')
     <div class="page-heading">
         <h3>{{__('database_statistics')}}</h3>
@@ -151,8 +165,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-
-                                        @foreach($three_latest_criminal as $criminal)
+                                            @foreach($three_criminals as $criminal)
                                         <tr>
                                             <td class="col-3">
                                                 <div class="d-flex align-items-center">
@@ -163,30 +176,14 @@
                                                 </div>
                                             </td>
                                             <td class="col-3">
-                                                <p class=" mb-0">دزدی</p>
+                                                <p class=" mb-0">{{$criminal->case->crime_type}}</p>
                                             </td>
                                             <td class="col-auto">
-                                                <p class=" mb-0">این شخص در کابل دزدی انجام ....</p>
+                                                <p class=" mb-0"> {{trim_to_words($criminal->case->description)}}</p>
                                             </td>
                                         </tr>
                                         @endforeach
 
-                                        <tr>
-                                            <td class="col-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar avatar-md">
-                                                        <img src="{{asset('dist2/img/RK.jpg')}}">
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">فواد</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-3">
-                                                <p class=" mb-0">اختطاف</p>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0">یک طفل 8 ساله را اخطتاف کرده بود</p>
-                                            </td>
-                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
