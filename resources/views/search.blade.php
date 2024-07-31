@@ -77,23 +77,22 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>User ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Type</th>
-            <th>Action</th>
-            <th>Date Created</th>
+            <tr>
+                <th>آیدی</th>
+                <th>اسم</th>
+                <th>تخلص</th>
+                <th>اسم پدر</th>
+                <th>نمبر مبایل</th>
+                <th>آدرس اصلی</th>
+                <th>آدرس فعلی</th>
+                <th>نمبر تذکره</th>
+                <th>آیا مجرم است</th>
+                <th>تاریخ ایجاد</th>
+            </tr>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        <tbody id="criminal">
+
         </tbody>
     </table>
 </div>
@@ -128,7 +127,22 @@
                             data: { id: element.suspect_id },
                             success: function(a) {
                                 person = a;
-                                console.log(a)
+                                console.log(a.person);
+                                $('#criminal').append(`
+                                    <tr>
+                                        <td>${a.person.id}</td>
+                                        <td>${a.person.criminal_name}</td>
+                                        <td>${a.person.last_name}</td>
+                                        <td>${a.person.father_name}</td>
+                                        <td>${a.person.phone}</td>
+                                        <td>${a.person.actual_address}</td>
+                                        <td>${a.person.current_address}</td>
+                                        <td>${a.person.tazcira_number}</td>
+                                        <td>${a.person.isCriminal ? 'Yes' : 'No'}</td>
+                                        <td>${a.person.created_at}</td>
+                                    </tr>
+                                `);
+
                                 return false;
                             },
                             error: function(xhr, status, error) {

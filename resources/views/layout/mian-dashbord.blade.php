@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="{{@asset('./dist2/css/svg/favicon.svg')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{@asset('dist2/css/bootstrap-icons.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/font-awsome.css')}}">
-
+    @yield('styles')
 </head>
 <body dir="rtl">
 <script src="{{@asset('dist2/js/initTheme.js')}}"></script>
@@ -216,7 +216,7 @@
 <!-- Need: Apexcharts -->
 <script src="{{@asset('dist2/js/apexcharts.min.js')}}"></script>
 <script src="{{@asset('dist2/js/dashboard.js')}}"></script>
-
+@yield('scripts')
 </body>
 </html>
 

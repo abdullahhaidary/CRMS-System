@@ -2,7 +2,7 @@
 @php
 
 if (!function_exists('trim_to_words')) {
-    function trim_to_words($text, $limit = 7)
+    function trim_to_words($text, $limit = 20)
     {
         $words = explode(' ', $text);
         if (count($words) > $limit) {
