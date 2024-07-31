@@ -1,97 +1,50 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading">
-        <a href="{{route('criminalcontroller-form')}}" class="btn btn-outline-primary btn-light">ایجاد مجریم جدید</a>
+        <a href="{{route('criminalcontroller-form')}}" class="btn btn-outline-primary btn-light">{{__('New_criminal_creation_form')}}</a>
     </div>
     <!--  Inverse table start -->
     <section class="section p-2">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">جدول تمام مجرمین در سیستم</h3>
+                <h3 class="card-title text-center">{{__('Table_all_criminals_in_system')}}</h3>
+                @include('massage')
             </div>
             <div class="card-content">
                 <table class="table  mb-0">
                     <thead>
                     <tr>
-                        <th>تصویر</th>
-                        <th>نوم</th>
-                        <th>پلارن نوم</th>
-                        <th>آدرس</th>
-                        <th>شماره موبایل</th>
-                        <th></th>
+                        <th>{{__('Picture')}}</th>
+                        <th>{{__('Name')}}</th>
+                        <th>{{__('Father_name')}}</th>
+                        <th>{{__('Current_address')}}</th>
+                        <th>{{__('Phone_number')}}</th>
+
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="mb-1">
-                        <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">احمد</td>
-                        <td class="text-bold-500">عبدالولی</td>
-                        <td>کابل خوشحال خان</td>
-                        <td>۰۷۷۳۷۶۷۵۷۵۰</td>
-                        <td class="m-0 p-0">
-                            <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                            <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
-                            <a href="criminal-view.html" class="btn btn-primary btn-sm">معلومات مکمل</a>
-                        </td>
-                    </tr>
-                    <tr class="mb-1">
-                        <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">احمد</td>
-                        <td class="text-bold-500">عبدالولی</td>
-                        <td>کابل خوشحال خان</td>
-                        <td>۰۷۷۳۷۶۷۵۷۵۰</td>
-                        <td class="m-0 p-0">
-                            <a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                            <!-- <a href="#"><i class="fas fa-edit"></i></a> -->
-                            <a href="criminal-view.html" class="btn btn-primary btn-sm">معلومات مکمل</a>
-                        </td>
-                    </tr>
+                        {{-- Accessing specific properties of the $item object --}}
+                        {{-- Uncomment the following lines to display the data in a table --}}
+                        @foreach($data as $item)
+                            <tr class="mb-1">
+{{--                                @php--}}
+//                                $firstPicture = (is_array($item->picture) && isset($item->picture[0])) ? $item->picture[0] : null;
+{{--                                @endphp--}}
+{{--                                @if($firstPicture)--}}
+                                    <td><img src="{{asset('criminal/'.$item->photo)}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
+{{--                                   --}}
+                                <td class="text-bold-500">{{ $item->criminal_name }}</td>
+                                <td class="text-bold-500">{{ $item->father_name }}</td>
+                                <td>{{ $item->current_address }}</td>
+                                <td>{{ $item->phone}}</td>
+                                <td class="m-0 p-0">
 
-                    {{-- <tr>
-                        <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">احمد</td>
-                        <td class="text-bold-500">عبدالولی</td>
-                        <td>کابل خوشحال خان</td>
-                        <td>۰۷۷۳۷۶۷۵۷۵۰</td>
-                        <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">احمد</td>
-                        <td class="text-bold-500">عبدالولی</td>
-                        <td>کابل خوشحال خان</td>
-                        <td>۰۷۷۳۷۶۷۵۷۵۰</td>
-                        <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">احمد</td>
-                        <td class="text-bold-500">عبدالولی</td>
-                        <td>کابل خوشحال خان</td>
-                        <td>۰۷۷۳۷۶۷۵۷۵۰</td>
-                        <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">احمد</td>
-                        <td class="text-bold-500">عبدالولی</td>
-                        <td>کابل خوشحال خان</td>
-                        <td>۰۷۷۳۷۶۷۵۷۵۰</td>
-                        <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="{{@asset('dist2/img/RK.jpg')}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
-                        <td class="text-bold-500">احمد</td>
-                        <td class="text-bold-500">عبدالولی</td>
-                        <td>کابل خوشحال خان</td>
-                        <td>۰۷۷۳۷۶۷۵۷۵۰</td>
-                        <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                        </td>
-                    </tr> --}}
+                                    <a href="{{ url('/criminal/all/' . $item->id) }}" class="btn btn-primary btn-sm">{{__('Full_info')}}</a>
+                                </td>
+                            </tr>
+                        @endforeach
+
+
                     </tbody>
                 </table>
             </div>
@@ -101,14 +54,7 @@
     <!--  Inverse table end -->
     <div class="mt-3">
         <nav aria-label="Page navigation example">
-            <ul class="pagination pagination-primary">
-                <li class="page-item"><a class="page-link" href="#">قبلی</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item "><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">بعدی</a></li>
-            </ul>
+             {{$data->links()}}
         </nav>
     </div>
 @endsection

@@ -1,10 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
-    <div class="page-heading">
-        <a href="user-add-from.html" class="btn btn-outline-primary btn-light">ایجاد یوزر جدید</a>
-    </div>
     <div class="page-heading text-center">
-        <h3>جدول تمام یوزر های سیستم</h3>
+        <h3>{{__('Table_of_all_system_users')}}</h3>
     </div>
     <!--  Inverse table start -->
     <section class="section">
@@ -12,34 +9,43 @@
             <table class="table table-dark mb-0">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>تصویر</th>
-                    <th>نوم</th>
-{{--                    <th>تخلص</th>--}}
-                    <th>UserName</th>
-                    <th>ایمیل</th>
-                    <th>پوزیشن</th>
+                    <th>{{__('ID')}}</th>
+                    <th>{{__('Picture')}}</th>
+                    <th>{{__('Name')}}</th>
+                    <th>{{__('Email')}}</th>
+                    <th>{{__('Positio')}}</th>
+                    <th>{{__('Action')}}</th>
+                    <th>{{__('Date_of_Registration')}}</th>
                     <th>ACTION</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($data as $item)
                     <tr>
-                        <td>{{$item->id}}</td>
-                        <td><img src="asit/img/RK.jpg" style="height: 30px; width: 30px;" alt=""></td>
+                        <td>{{$item->id}} </td>
+                        <td><img src="{{Storage::url('profiles/'.$item->picture)}}" width="40px" height="40px" style="border-radius: 50%" alt=""></td>
                         <td class="text-bold-500">{{$item->name}}</td>
-
-                        <td class="text-bold-500">{{$item->user_name}}</td>
-                        <td>{{$item->email}}</td>
-                        <td>{{$item->user_type}}</td>
-                        <td><a href="#"><i class="badge-circle font-medium-1" data-feather="mail"></i></a>
-                            <a href="criminal-view.html" class="btn btn-info">view</a>
+                        <td class="text-bold-500">{{$item->email}}</td>
+{{--                        <td></td>--}}
+                        <td>{{$item->type}}
+                        <td>{{$item->action==1 ? 'active' : 'Un Active'}}</td>
+                        <td>{{$item->created_at}}</td>
+                        @can('super_admin')
+                        <td><a href="{{url('/admin/edit/'. $item->id)}}"><i class="bi bi-pencil"></i>
+                            </a>
+                            @endcan
+{{--                            <a href="criminal-view.html" class="btn btn-info">view</a>--}}
                         </td>
                     </tr>
 
                 @endforeach
                 </tbody>
             </table>
+            <div class="mt-3">
+                <nav aria-label="Page navigation example">
+                    {{$data->links()}}
+                </nav>
+            </div>
         </div>
     </section>
     <!--  Inverse table end -->

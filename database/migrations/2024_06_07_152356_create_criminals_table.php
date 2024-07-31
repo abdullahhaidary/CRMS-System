@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('suspect_id');
             $table->unsignedBigInteger('case_id');
-            $table->string('name');
+            $table->string('criminal_name');
             $table->string('last_name');
             $table->string('father_name');
             $table->string('phone');
@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('job');
             $table->string('marital_status');
             $table->string('family_members');
+            $table->string('photo');
+
             $table->timestamps();
 
             $table->foreign('suspect_id')->references('id')->on('suspect')->onDelete('cascade');

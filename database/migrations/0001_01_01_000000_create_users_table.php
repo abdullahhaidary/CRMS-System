@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('picture')->nullable();
-            $table->date('dob')->nullable();
-            $table->string('country')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('type')->default(0);
+            $table->integer('action');
             $table->rememberToken();
             $table->timestamps();
         });

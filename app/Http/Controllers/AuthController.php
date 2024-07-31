@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\People;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,8 +16,10 @@ class AuthController extends Controller
 {
 
 
+
     public function login_page(){
-        if(Auth::user()){
+//        dd(hash::make(123456));
+        if(Auth::user() && Auth::user()->action==1){
             return redirect('/');
         }
         return view('profile.login');
@@ -44,37 +48,41 @@ class AuthController extends Controller
 
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|min:2',
         ]);
+        // test message added for another commit
 
-        if (Auth::attempt($credentials)) {
-            if(Auth::user()->picture==null){
+    if (Auth::attempt($credentials)) {
+        if (Auth::user()->picture == null && Auth::user()->action==1) {
             return view('profile.profile-suggestion');
-            }
-            return redirect()->intended('/');
-
-        } else {
-            return back()->withErrors(['email' => 'Invalid credentials']);
+        }else{
+            return redirect()->to('/');
         }
+
+    }else {
+        return back()->withErrors(['email' => 'Invalid credentials']);
+    }
     }
 
-
-
-
-
     public function register(Request $request){
+//        dd($request->all());
         $validate = $request->validate([
             'name'=>'required|min:3|max:35',
             'email'=>'required|email|unique:users,email',
             'password'=>'required|min:6',
+
+
         ]);
 
         $user = new User;
+
         $user->name=$validate['name'];
         $user->email=$validate['email'];
+        $user->type=$request->postion;
+        $user->action=$request->action;
         $user->password=Hash::make($validate['password']);
         $user->save();
-        return redirect()->route('login');
+        return redirect()->route('user')->with('success', "نوی یوزر په موفقیت ذخیره شو!");
     }
 
      public function forget(Request $request)
@@ -141,7 +149,7 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken(); // Regenerate the CSRF token
 
-        return redirect()->route('login')->with('success', 'You have been logged out.'); // Redirect to login page with success message
+        return redirect()->route('login')->with('success', "You have been logged out."); // Redirect to login page with success message
     }
 
 
@@ -149,37 +157,54 @@ class AuthController extends Controller
 
     public function complete_profile(Request $request){
 
+
+        // $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
+        // $currenDate=Carbon::now();
+
+        // dd($request);
         $dob=Carbon::createFromFormat('Y-m-d',$request->dob);
         $currenDate=Carbon::now();
+
         // if($dob->diffInYears($currenDate)<14){
         //     return redirect()->back()->with(['age_error',"You are Below the Minumum Age Requirements"]);
         // }
 
         $validate = $request->validate([
-            'country'=>'required',
-            'dob'=>'required|date',
             'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'old_password' => 'required',
+            'new_password' => 'required|min:8', // Optionally, you can add more validation rules for the new password
+            'dob' => 'required|date'
         ]);
-        $user = User::updateOrCreate(
-            ['id' => Auth::user()->id],
-            ['country' => $validate['country'], 'dob' => $validate['dob']]
-        );
 
-        // Handle profile image upload if provided
-        if ($request->hasFile('profile_image')) {
-            $image = $request->file('profile_image');
-            $image_name = $image->hashName(); // Generate a unique name for the image
-            $user->picture = $image_name; // Update the user's profile picture attribute
+        $user = Auth::user();
 
-            // Store the image in the storage
-            $image->storeAs('public/profiles', $image_name);
+        // Check if the old password matches
+        if (Hash::check($request->old_password, $user->password)) {
+            if (!Hash::check($request->new_password, $user->password)) {
+                // Update the password
+                $user->password = Hash::make($request->new_password);
+
+                // Handle the profile image upload if necessary
+                if ($request->hasFile('profile_image')) {
+                    $image = $request->file('profile_image');
+                    $image_name = $image->hashName(); // Generate a unique name for the image
+                    $user->picture = $image_name;     // Update the user's profile picture attribute
+
+                    // Store the image in the 'public/profiles' directory
+                    $image->storeAs('profiles', $image_name);
+                }
+                $user->save();
+            }else{
+                return back()->withErrors(['new_password' => 'The new password cannot be the same as the old password.']);
+            }
+
+            return redirect('/profile');
+        } else {
+            return back()->withErrors(['old_password' => 'The provided old password does not match our records.']);
         }
 
-        // Save the changes to the user model
-        $user->save();
-
-        return redirect('/profile');
     }
+
 
     public function profile_change(Request $request){
         $validate= $request->validate([
@@ -211,11 +236,47 @@ class AuthController extends Controller
         $validate= $request->validate([
             'name'=>'required',
             'email'=>'email|required',
-            'dob'=>'date|required',
         ]);
         $user=User::updateOrCreate(['id'=>Auth::user()->id],
-                ['name'=>$validate['name'] , 'email'=>$validate['email'] , 'dob'=>carbon::parse($validate['dob'])->format('y-m-d')]);
+                ['name'=>$validate['name'] , 'email'=>$validate['email'] ]);
         $user->save();
-        return redirect()->back()->with('success','Profile Information Has Been Updated');
+        return redirect()->back()->with('success',"پروفایل په موفقیت سره تغیر شو !");
+    }
+    public function profile_info()
+    {
+//        $user = User::getSingle(Auth::user()->id);
+        $data=DB::table('users')
+            ->select('users.*')
+            ->where('id', '=', auth::user()->id)
+            ->get();
+        return view('profile.profile_detail', compact('data'));
+
+    }
+    public function update_password(Request $request){
+
+
+        $validate = $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8', // Optionally, you can add more validation rules for the new password
+        ]);
+
+        $user = Auth::user();
+
+        // Check if the old password matches
+        if (Hash::check($request->old_password, $user->password)) {
+            if (!Hash::check($request->new_password, $user->password)) {
+                // Update the password
+                $user->password = Hash::make($request->new_password);
+
+                $user->save();
+            }else{
+                return back()->withErrors(['new_password' => 'The new password cannot be the same as the old password.']);
+            }
+
+            return redirect('/profile');
+        } else {
+            return back()->withErrors(['old_password' => 'The provided old password does not match our records.']);
+        }
+
     }
 }

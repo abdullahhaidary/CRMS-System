@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('path');
             $table->timestamps();
         });
+
     }
 
     public function down()

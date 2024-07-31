@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('suspect_fingerprint', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('suspect_id');
-            $table->string('right_thumb');
-            $table->string('right_index');
-            $table->string('right_middle');
-            $table->string('right_ring');
-            $table->string('right_pinky');
-            $table->string('left_thumb');
-            $table->string('left_index');
-            $table->string('left_middle');
-            $table->string('left_ring');
-            $table->string('left_pinky');
+            $table->unsignedBigInteger('suspect_id')->nullable();
+            $table->longText('right_thumb')->nullable();
+            $table->longText('right_index')->nullable();
+            $table->longText('right_middle')->nullable();
+            $table->longText('right_ring')->nullable();
+            $table->longText('right_pinky')->nullable();
+            $table->longText('left_thumb')->nullable();
+            $table->longText('left_index')->nullable();
+            $table->longText('left_middle')->nullable();
+            $table->longText('left_ring')->nullable();
+            $table->longText('left_pinky')->nullable();
             $table->timestamps();
 
             $table->foreign('suspect_id')->references('id')->on('suspect')->onDelete('cascade');

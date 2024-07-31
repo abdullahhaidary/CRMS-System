@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
         'picture',
         'dob',
+        'action',
+        'type',
         'country',
     ];
 
@@ -63,5 +65,9 @@ class User extends Authenticatable
     public function getJWTCustomClaims()
     {
         return [];
+    }
+    static public function getSingle($id)
+    {
+        return self::find($id);
     }
 }
