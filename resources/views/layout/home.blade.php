@@ -151,13 +151,15 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+
+                                        @foreach($three_latest_criminal as $criminal)
                                         <tr>
                                             <td class="col-3">
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar avatar-md">
                                                         <img src="{{asset('dist2/img/RK.jpg')}}">
                                                     </div>
-                                                    <p class="font-bold ms-3 mb-0">احمد</p>
+                                                    <p class="font-bold ms-3 mb-0">{{$criminal->criminal_name}}</p>
                                                 </div>
                                             </td>
                                             <td class="col-3">
@@ -167,6 +169,8 @@
                                                 <p class=" mb-0">این شخص در کابل دزدی انجام ....</p>
                                             </td>
                                         </tr>
+                                        @endforeach
+
                                         <tr>
                                             <td class="col-3">
                                                 <div class="d-flex align-items-center">

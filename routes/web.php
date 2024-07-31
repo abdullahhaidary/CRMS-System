@@ -23,8 +23,11 @@ Route::middleware(['auth'])->get('/',function(){
     $total_crime_record = People::all()->count();
     $total_criminal_record = criminal::all()->count();
     $total_cases_record = casemodel::all()->count();
+    // $three_latest_criminal = criminal::with('case')->orderBy('created_at', 'desc')->take(3)->get();
+    $three_latest_cases = casemodel::with('criminal')->orderBy('created_at', 'desc')->take(3)->get();
 
-    return view('layout.home',compact('total_crime_record','total_criminal_record','total_cases_record'));
+    dd($three_latest_cases);
+    return view('layout.home',compact('total_crime_record','total_criminal_record','total_cases_record','three_latest_cases'));
 })->name('home');
 
 

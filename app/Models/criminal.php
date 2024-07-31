@@ -15,4 +15,7 @@ class criminal extends Model
     public function picture(){
        return $this->hasMany(CriminalPicture::class,'criminal_id');
     }
+    public function case(){
+        return $this->hasMany(casemodel::class, 'case_id');
+    }
 }
