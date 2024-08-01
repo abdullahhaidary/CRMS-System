@@ -123,7 +123,7 @@
                                         </a>
                                     </li>
                                     <li
-                                        class="sidebar-item  {{ Route::currentRouteName() == 'register' ? 'active' : '' }} ">
+                                        class="sidebar-item  {{ Route::currentRouteName() == 'province_account' ? 'active' : '' }} ">
                                         <a href="{{route('province_account')}}" class='sidebar-link'>
                                             <i class="bi bi-people-fill"></i>
                                             <span>Account province</span>
@@ -132,13 +132,27 @@
                             </ul>
                         </li>
                         @endcan
-                    <li
-                        class="sidebar-item   {{ Route::currentRouteName() == 'search' ? 'active' : '' }}">
-                        <a href="{{route('search')}}" class='sidebar-link'>
-                            <i class="bi bi-search"></i>
-                            <span>{{__('public_search')}}</span>
-                        </a>
-                    </li>
+                        <li
+                            class="sidebar-item has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-search"></i>
+                                <span>{{__('Search')}}</span>
+                            </a>
+                            <ul class="submenu {{ Route::currentRouteName() == 'crimnal' ? 'active' : '' }}">
+                                <li
+                                    class="sidebar-item   {{ Route::currentRouteName() == 'search' ? 'active' : '' }}">
+                                    <a href="{{route('search')}}" class='sidebar-link'>
+                                        <span>{{__('public_search')}}</span>
+                                    </a>
+                                </li>
+                                <li
+                                    class="sidebar-item {{ Route::currentRouteName() == 'bio_search' ? 'active' : '' }} ">
+                                    <a href="{{route('bio_search')}}" class='sidebar-link '>
+                                        <span>{{__('biemitrec_search')}} </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li
                             class="sidebar-item has-sub">
                             <a href="#" class='sidebar-link'>
@@ -165,13 +179,6 @@
                         <a href="{{route('department')}}" class='sidebar-link'>
                             <i class="bi bi-building"></i>
                             <span>{{__('department')}} </span>
-                        </a>
-                    </li>
-                    <li
-                        class="sidebar-item {{ Route::currentRouteName() == 'bio_search' ? 'active' : '' }} ">
-                        <a href="{{route('bio_search')}}" class='sidebar-link '>
-                            <i class="bi bi-search"></i>
-                            <span>{{__('biemitrec_search')}} </span>
                         </a>
                     </li>
                     @endif
