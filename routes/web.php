@@ -111,7 +111,7 @@ Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, '
 Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update');
 Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete');
 Route::get('/people/all/{id}', [\App\Http\Controllers\pepolecontroller::class, 'moreShow'])->name('people_all');
-Route::get('people/all/pdf/{id}', [\App\Http\Controllers\pepolecontroller::class, 'dow_pdf'])->name('pdf');
+Route::get('/generate-pdf/{id}', [\App\Http\Controllers\pepolecontroller::class, 'generatePDF'])->name('pdf');
 
 //url province people
 Route::get('/province/people', [\App\Http\Controllers\provinceComplintcontroller::class, 'index'])->name('province_list');
@@ -159,7 +159,6 @@ Route::post('/department form', [\App\Http\Controllers\departmentContoller::clas
 
 //ulr cases
 Route::get('/case/{id}', [\App\Http\Controllers\casecontroller::class, 'index'])->name('case');
-//Route::get('case/list', [\App\Http\Controllers\casecontroller::class, 'case_list'])->name('list_cases');
 Route::get('case/all/list', [\App\Http\Controllers\casecontroller::class, 'list'])->name('list_cases');
 Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'create'])->name('case-from');
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');

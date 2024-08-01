@@ -182,19 +182,27 @@ class pepolecontroller extends Controller
 //
         return view('people.all_about_people', compact('peoples', 'info', 'suspects', 'cases'));
     }
-public function dow_pdf($id)
-{   $peoples=people::where('id','=',$id)->get();
-    $info=crime_register_record_information::where('people_id', '=',$id)->get();
-    $suspects=suspectmodel::where('crime_record_id', '=', $id)
-        ->where('isCriminal', '=', 1)
-        ->get();
-    $cases=casemodel::where('crime_record_id', '=', $id)->get();
+        public function generatePDF(Request $request, $id)
+        {
+            $peoples=people::where('id','=',$id)->get();
+            $info=crime_register_record_information::where('people_id', '=',$id)->get();
+            $suspects=suspectmodel::where('crime_record_id', '=', $id)
+                ->where('isCriminal', '=', 1)
+                ->get();
+            $cases=casemodel::where('crime_record_id', '=', $id)->get();
 
-    $data = compact('peoples', 'suspects', 'cases', 'info');
-//dd($data);
-    $pdf = PDF::loadView('people.all_about_people', $data);
+            $data = [
+                'title'=>'People case',
+                'peoples' => $peoples,
+                'suspects' => $suspects,
+                'cases' => $cases,
+                'info' => $info
+            ];
 
-    return $pdf->download('complaint-details.pdf');
-}
+            $pdf = PDF::loadView('people.all_about_people', $data);
+            return $pdf->download('report.pdf');
+
+        }
+
 
 }

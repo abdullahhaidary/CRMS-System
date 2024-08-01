@@ -17,7 +17,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="first-name-column" class="form-label"
-                                            >نوم</label
+                                            >{{__('Name')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -33,7 +33,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last-name-column" class="form-label"
-                                            >تخلص </label
+                                            >{{__('Last_Name')}} </label
                                             >
                                             <input
                                                 type="text"
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="city-column" class="form-label">پلار نوم</label>
+                                            <label for="city-column" class="form-label">{{__('Father_name')}}</label>
                                             <input
                                                 type="text"
                                                 id="city-column"
@@ -64,7 +64,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="country-floating" class="form-label"
-                                            >تلفن</label
+                                            >{{__('Phone_number')}}</label
                                             >
                                             <input
                                                 type="number"
@@ -80,7 +80,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="company-column" class="form-label"
-                                            >ایمیل آدرس</label
+                                            >{{__('Email')}}</label
                                             >
                                             <input
                                                 type="email"
@@ -96,7 +96,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > آدرس اصلی</label
+                                            > {{__('Main_address')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -112,7 +112,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="curent-address" class="form-label"
-                                            > آدرس فعلی</label
+                                            >  {{__('Current_address')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -128,7 +128,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >تصویر</label
+                                            >{{__('Current_address')}}</label
                                             >
                                             <input type="file" class="form-control" id="inputGroupFile01" name="photo">
                                         </div>
