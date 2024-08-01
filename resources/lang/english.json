@@ -94,6 +94,8 @@
   "View_information_in_suspect_table": "View information in the suspect table",
   "View_list": "View list",
   "admin_part": "Admin part",
+  "complint_part": "Complint Part",
+  "complinte_list": "Complent List",
   "complit_profile": "Complete Your Profile",
   "crime_part": "creminal parts",
   "database_statistics": "Database Statistics",
@@ -111,6 +113,7 @@
   "province_account_list": "List of All Province and Distract Accounts",
   "public_search": "public Search",
   "save_compelint": "Complint part",
+  "save_complent": "Save Complent",
   "user_setting": "User setting",
   "users": "Users"
 }

@@ -111,7 +111,7 @@ Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, '
 Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update');
 Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete');
 Route::get('/people/all/{id}', [\App\Http\Controllers\pepolecontroller::class, 'moreShow'])->name('people_all');
-
+Route::get('people/all/pdf/{id}', [\App\Http\Controllers\pepolecontroller::class, 'dow_pdf'])->name('pdf');
 
 //url province people
 Route::get('/province/people', [\App\Http\Controllers\provinceComplintcontroller::class, 'index'])->name('province_list');

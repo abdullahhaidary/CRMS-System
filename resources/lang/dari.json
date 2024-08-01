@@ -95,6 +95,8 @@
   "View_list": "دیدن لیست",
   "admin_part": "بخش ادمین",
   "biemitrec_search": "سرچ به اساس بایومترک",
+  "complint_part": "      بخش شکایت",
+  "complinte_list": "لیست شکایات",
   "complit_profile": "پروفایل تان تکمیل نماید",
   "crime_part": "بخش مجریم",
   "database_statistics": "احصایه دیتابیس",
@@ -112,6 +114,7 @@
   "province_account_list": "لیست تمام ااااکونت های ولایتی و والسوالی ",
   "public_search": "جسنجو عمومی",
   "save_compelint": "ثبت شکایت",
+  "save_complent": "ثبت شکایت",
   "user_setting": "د تنظیمات کاربر",
   "users": "کاربر"
 }

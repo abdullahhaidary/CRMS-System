@@ -139,12 +139,26 @@
                             <span>{{__('public_search')}}</span>
                         </a>
                     </li>
-                    <li
-                            class="sidebar-item {{ Route::currentRouteName() == 'people' ? 'active' : '' }}">
-                            <a href="{{route('people')}}" class='sidebar-link '>
-                                <i class="bi-file-earmark-text"></i>
-                                <span>{{__('save_compelint')}}</span>
+                        <li
+                            class="sidebar-item has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-clipboard-check"></i>
+                                <span>{{__('complint_part')}}</span>
                             </a>
+                            <ul class="submenu {{ Route::currentRouteName() == 'crimnal' ? 'active' : '' }}">
+                                <li
+                                    class="sidebar-item  {{ Route::currentRouteName() == 'people' ? 'active' : '' }} ">
+                                    <a href="{{route('people')}}" class='sidebar-link'>
+                                        <span>{{__('complinte_list')}} </span>
+                                    </a>
+                                </li>
+                                <li
+                                    class="sidebar-item  {{ Route::currentRouteName() == 'register' ? 'active' : '' }} ">
+                                    <a href="{{route('people_form')}}" class='sidebar-link'>
+                                        <span>{{__('save_complent')}} </span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     <li
                         class="sidebar-item   {{ Route::currentRouteName() == 'department' ? 'active' : '' }}">

@@ -6,6 +6,7 @@ use App\Models\casemodel;
 use App\Models\people;
 use App\Models\crime_register_record_information;
 use App\Models\suspectmodel;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -172,7 +173,27 @@ class pepolecontroller extends Controller
             ->where('isCriminal', '=', 1)
             ->get();
         $cases=casemodel::where('crime_record_id', '=', $id)->get();
+        $data = compact('peoples', 'suspects', 'cases', 'info');
 
-        return view('people.all_about_people', compact('peoples', 'info', 'suspects', 'cases'));
+$pdf = PDF::loadView('people.all_about_people', $data);
+
+return $pdf->download('complaint-details.pdf');
+//
+//        return view('people.all_about_people', compact('peoples', 'info', 'suspects', 'cases'));
     }
+public function dow_pdf($id)
+{   $peoples=people::where('id','=',$id)->get();
+    $info=crime_register_record_information::where('people_id', '=',$id)->get();
+    $suspects=suspectmodel::where('crime_record_id', '=', $id)
+        ->where('isCriminal', '=', 1)
+        ->get();
+    $cases=casemodel::where('crime_record_id', '=', $id)->get();
+
+    $data = compact('peoples', 'suspects', 'cases', 'info');
+//dd($data);
+    $pdf = PDF::loadView('people.all_about_people', $data);
+
+    return $pdf->download('complaint-details.pdf');
+}
+
 }
