@@ -48,8 +48,9 @@
                             </div>
                         </div>
                     </form>
-                    <table class="table mt-4">
-                        <thead>
+                    <div class="container-fluid">
+                        <table class="table mt-4">
+                            <thead>
                             <tr>
                                 <th>{{__('ID')}}</th>
                                 <th>{{__('Name')}}</th>
@@ -61,8 +62,8 @@
                                 <th>{{__('Is_Criminal')}}</th>
                                 <th>{{__('Created_At')}}</th>
                             </tr>
-                        </thead>
-                        <tbody id="criminal">
+                            </thead>
+                            <tbody id="criminal">
                             @foreach($criminals as $criminal)
                                 <tr>
                                     <td>{{ $criminal->id }}</td>
@@ -76,8 +77,10 @@
                                     <td>{{ $criminal->created_at }}</td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+
+                    </div>
                     <div class="mt-4">
                         {{ $criminals->links() }}
                     </div>

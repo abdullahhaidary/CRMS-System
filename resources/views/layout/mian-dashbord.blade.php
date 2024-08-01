@@ -94,16 +94,13 @@
                                 <a href="{{route('crimnal')}}" class="submenu-link ">{{__('crime_part')}}</a>
                             </li>
                             <li class="submenu-item  ">
-                                <a href="component-alert.html" class="submenu-link">اسناد ها</a>
-                            </li>
-                            <li class="submenu-item  ">
                                 <a href="{{route('all_list')}}" class="submenu-link"> لیست مظنون عمومی</a>
                             </li>
                             <li class="submenu-item  ">
                                 <a href="{{route('list_people')}}" class="submenu-link"> لیست شکایت کنندها </a>
                             </li>
-                            <li class="submenu-item  ">
-                                <a href="component-badge.html" class="submenu-link">زندان</a>
+                            <li class="submenu-item ">
+                                <a href="{{route('list_cases')}}" class="submenu-link">قضیه ها</a>
                             </li>
                         </ul>
                     </li>

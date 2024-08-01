@@ -159,6 +159,8 @@ Route::post('/department form', [\App\Http\Controllers\departmentContoller::clas
 
 //ulr cases
 Route::get('/case/{id}', [\App\Http\Controllers\casecontroller::class, 'index'])->name('case');
+//Route::get('case/list', [\App\Http\Controllers\casecontroller::class, 'case_list'])->name('list_cases');
+Route::get('case/all/list', [\App\Http\Controllers\casecontroller::class, 'list'])->name('list_cases');
 Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'create'])->name('case-from');
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
 Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');
@@ -167,7 +169,6 @@ Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add
 Route::get('/province/case/{id}', [\App\Http\Controllers\province_case_controller::class, 'index'])->name('case');
 Route::get('province/case/form/{id}', [\App\Http\Controllers\province_case_controller::class, 'create'])->name('case-from');
 Route::post('/province/case/form', [\App\Http\Controllers\province_case_controller::class, 'store'])->name('case_store');
-
 
 
 // url province account
