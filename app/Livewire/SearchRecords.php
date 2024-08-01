@@ -4,10 +4,11 @@ namespace App\Livewire;
 
 use App\Models\criminal;
 use Livewire\Component;
-
+use Livewire\WithPagination;
 class SearchRecords extends Component
 {
-
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $name;
     public $father_name;
     public $last_name;
@@ -53,7 +54,7 @@ class SearchRecords extends Component
             $query->whereDate('dob', $this->dob);
         }
 
-        $criminals = $query->get();
+        $criminals = $query->paginate(5);
         return view('livewire.search-records', compact('criminals'));
     }
     public function updated($propertyName)
