@@ -3,7 +3,8 @@
 <div class="container mt-5">
     <div class="text-center mb-4">
         <h1>Complaint Details</h1>
-    </div>
+{{--        <a href="{{route('pdf')}}" class="btn">PDF</a>--}}
+            </div>
     <div class="row mb-4">
         <div class="col-md-6">
             <div class="card">
