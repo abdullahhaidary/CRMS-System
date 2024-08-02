@@ -1,5 +1,18 @@
 @extends('layout.mian-dashbord')
 @section('content')
+{{--    @section('styles')--}}
+{{--        @livewireStyles--}}
+{{--    @endsection--}}
+
+    @section('content')
+        @livewire('suspectsearch')
+
+    @endsection
+
+{{--    @section('scripts')--}}
+{{--        @livewireScripts--}}
+{{--        <script src="//unpkg.com/alpinejs" defer></script>--}}
+{{--    @endsection--}}
    <div class="row">
        <div class="page-heading mt-5 text-center">
                <h3>{{__('Suspect_list')}}</h3>

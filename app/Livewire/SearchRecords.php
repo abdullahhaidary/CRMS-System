@@ -55,7 +55,9 @@ class SearchRecords extends Component
         }
 
         $criminals = $query->paginate(5);
+
         return view('livewire.search-records', compact('criminals'));
+
     }
     public function updated($propertyName)
     {

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,13 +25,13 @@ class AppServiceProvider extends ServiceProvider
             return $user->type == 3;
         });
     }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
+    public function boot()
     {
         Paginator::useBootstrapFive();
         Paginator::useBootstrapFour();
+        Livewire::component( \App\Http\Livewire\RegisterForm::class, 'RegisterForm');
+        Livewire::component(\App\Http\Livewire\SearchRecords::class, );
+
     }
+
 }

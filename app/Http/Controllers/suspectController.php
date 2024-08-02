@@ -75,13 +75,13 @@ public function update(Request $request, string $id)
     $criminal->phone = $request->input('phone_number');
     $criminal->actual_address = $request->input('main_address');
     $criminal->current_address = $request->input('current_address');
-
+    $criminal->isCriminal = $request->input('Is_crime');
 
     // Update other fields as necessary
     $criminal->save();
 
     // Redirect or return a response
-    return redirect(url('/suspect_list/'.$id))->with('success', 'تغیرات په موافقیت انجام شد!');
+    return back()->with('success', 'تغیرات په موافقیت انجام شد!');
 }
 public function destroy($id)
 {

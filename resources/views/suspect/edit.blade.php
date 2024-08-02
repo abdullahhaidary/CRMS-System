@@ -26,7 +26,7 @@
                                                 class="form-control"
                                                 name="suspect_name"
                                                 value="{{$item->name}}"
-                                        
+
                                                 data-parsley-required="true"
                                             />
                                         </div>
@@ -42,7 +42,7 @@
                                                 class="form-control"
                                                 name="last_name"
                                                 value="{{$item->last_name}}"
-                                        
+
                                                 data-parsley-required="true"
                                             />
                                         </div>
@@ -58,7 +58,7 @@
                                                 class="form-control"
                                                 name="father_name"
                                                 value="{{$item->father_name}}"
-                                    
+
                                                 data-parsley-required="true"
                                             />
                                         </div>
@@ -123,6 +123,31 @@
                                                 placeholder=""
                                                 data-parsley-required="true"
                                             />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="company-column" class="form-label"
+                                            > {{__('Status')}}</label
+                                            >
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="Is_crime" id="disabledSelect">
+                                                    @if($item->isCriminal==0)
+                                                        <option selected value="0">{{__('Suspect')}}</option>
+                                                        <option value="1">{{__('People')}}</option>
+                                                        <option value="2">{{__('Criminal')}}</option>
+                                                    @elseif($item->isCriminal==1)
+                                                        <option value="0">{{__('Suspect')}}</option>
+                                                        <option selected value="1">{{__('People')}}</option>
+                                                        <option  value="2">{{__('Criminal')}}</option>
+                                                    @elseif($item->isCriminal==2)
+                                                        <option value="0">{{__('Suspect')}}</option>
+                                                        <option  value="1">{{__('People')}}</option>
+                                                        <option selected value="2">{{__('Criminal')}}</option>
+                                                    @endif
+                                                    >
+                                                </select>
+                                            </fieldset>
                                         </div>
                                     </div>
                                 </div>

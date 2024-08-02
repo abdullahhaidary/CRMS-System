@@ -14,9 +14,6 @@ class searchcontroller extends Controller
         return view('search.search');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //

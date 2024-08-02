@@ -139,11 +139,11 @@
                                         <fieldset class="form-group">
                                             <select class="form-select" name="gender" id="disabledSelect">
                                                 @if($value->gender==1)
-                                                <option  value="1">{{__('Male')}}</option>
+                                                <option selected value="1">{{__('Male')}}</option>
                                                 <option value="0">{{__('Female')}}</option
                                                 @elseif($value->gender==0)
                                                     <option value="1">{{__('Male')}}</option>
-                                                <option  value="0">{{__('Female')}}</option>
+                                                <option selected value="0">{{__('Female')}}</option>
                                                 @endif
                                                 >
                                             </select>
