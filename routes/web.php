@@ -186,7 +186,6 @@ Route::get('province/suspect/edit/{id}', [\App\Http\Controllers\province_suspect
 Route::post('/province/suspect/update/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'update'])->name('suspect_update');
 Route::get('province/suspect/delete/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'destroy'])->name('suspect_delete');
 
-
 //url evidence
 
 Route::post('/search_fingerprint', function(Request $request){

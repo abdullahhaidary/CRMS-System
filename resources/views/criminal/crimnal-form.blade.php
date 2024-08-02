@@ -30,7 +30,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group">
+                                        <div class="form-group mandatory">
                                             <label for="last-name-column" class="form-label"
                                             >{{__('Last_name')}}</label
                                             >
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group">
+                                        <div class="form-group mandatory">
                                             <label for="city-column" class="form-label">{{__('Father_name')}}</label>
                                             <input
                                                 type="text"
@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group">
+                                        <div class="form-group mandatory">
                                             <label for="country-floating" class="form-label"
                                             >{{__('Phone_number')}}</label
                                             >
@@ -77,7 +77,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group">
+                                        <div class="form-group mandatory">
                                             <label for="company-column" class="form-label"
                                             >{{__('Email')}}</label
                                             >
@@ -135,7 +135,7 @@
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
                                         >{{__('Gender')}}</label>
-                                        <fieldset class="form-group">
+                                        <fieldset class="form-group mandatory">
                                             <select class="form-select" name="gender" id="disabledSelect">
                                                 <option>{{__('Select_gender')}}</option>
                                                 <option value="1">{{__('Male')}}</option>
@@ -153,7 +153,6 @@
                                                 id="email-id-column"
                                                 class="form-control"
                                                 name="dateofbirth"
-                                                placeholder=" تاریخ تولد"
                                                 data-parsley-required="true"
                                                 required
                                             />
@@ -214,11 +213,6 @@
                                             <select class="form-select"  name="suspect" id="disabledSelect">
                                                 <option>{{__('Select_suspect')}}</option>
                                             @foreach($data as $item)
-{{--                                                @foreach($crime as $criminal)--}}
-{{--                                                    @if($criminal->suspect_id==$item->id)--}}
-{{--                                                            <option value="">{{ "name: ".$item->name."- last_name: ". $item->last_name."- number tazkera: ".$item->tazcira_number}}</option>--}}
-
-{{--                                                        @else--}}
                                                     <option value="{{$item->id}}">{{ "name: ".$item->name."- last_name: ". $item->last_name."- number tazkera: ".$item->tazcira_number}}</option>{{--                                                        @endif--}}
 
                                                 @endforeach
@@ -251,13 +245,13 @@
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
-                                            Submit
+                                          {{__('Save')}}
                                         </button>
                                         <button
                                             type="reset"
                                             class="btn btn-light-secondary me-1 mb-1"
                                         >
-                                            Reset
+                                           {{__('Reset')}}
                                         </button>
                                     </div>
                                 </div>

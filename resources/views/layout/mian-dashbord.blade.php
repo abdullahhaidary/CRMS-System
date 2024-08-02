@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="{{@asset('dist2/css/app-dark.rtl.css')}}">
     <link rel="stylesheet" href="{{@asset('dist2/css/app.rtl.css')}}">
     <link rel="stylesheet" href="{{@asset('dist2/css/iconly.css')}}">
-
     <link rel="stylesheet" href="{{@asset('dist2/css/style.css')}}">
-
     <link rel="shortcut icon" href="{{@asset('./dist2/css/svg/favicon.svg')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{@asset('dist2/css/bootstrap-icons.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/font-awsome.css')}}">
@@ -225,13 +223,7 @@
 
 <script src="{{@asset('dist2/js/component/dark.js')}}"></script>
 <script src="{{@asset('dist2/static/component/perfect-scrollbar.min.js')}}"></script>
-
-
 <script src="{{@asset('dist2/js/app.js')}}"></script>
-
-
-
-<!-- Need: Apexcharts -->
 <script src="{{@asset('dist2/js/apexcharts.min.js')}}"></script>
 <script src="{{@asset('dist2/js/dashboard.js')}}"></script>
 @yield('scripts')

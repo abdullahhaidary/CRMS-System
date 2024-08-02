@@ -34,6 +34,7 @@ class pepolecontroller extends Controller
     }
     public function store(Request $request)
     {
+//        dd($request->all());
         $save= new people();
 
         if (!empty($request->ariza_file)) {
@@ -190,7 +191,6 @@ class pepolecontroller extends Controller
                 ->where('isCriminal', '=', 1)
                 ->get();
             $cases=casemodel::where('crime_record_id', '=', $id)->get();
-
             $data = [
                 'title'=>'People case',
                 'peoples' => $peoples,

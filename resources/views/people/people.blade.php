@@ -53,9 +53,7 @@
                         <td>{{$item->crime_case}}</td>
                         <td>{{$item->crim_date}}</td>
                         <td>{{$item->subject_crim}}</td>
-{{--                        <td><a href="{{url('ariza/arizafile/'.$item->id)}}">عریضه</a></td>--}}
-{{--                       <td><button id="showPdfBtn" class="btn btn-primary btn-sm">PDF</button></td>--}}
-                        <td>  <button id="togglePdfBtn" type="button" data-toggile="modal" data-bs-target="#mymodal" class="btn btn-primary">Show PDF</button> </td>
+                        <td><a href="{{url('ariza/arizafile/'.$item->id)}}">عریضه</a></td>
                         <td><a href="{{url('crime/info/'.$item->id)}}">توضیحات</a></td>
                         <td><a href="{{url('suspect_list/'.$item->id)}}">لیست مظنونین</a></td>
                         <td>
@@ -89,18 +87,4 @@
             </div>
         </nav>
     </div>
-    <script>
-        document.getElementById('togglePdfBtn').addEventListener('click', function() {
-            var pdfContainer = document.getElementById('pdfContainer');
-            var button = document.getElementById('togglePdfBtn');
-
-            if (pdfContainer.style.display === 'none') {
-                pdfContainer.style.display = 'block';
-                button.textContent = 'Hide PDF';
-            } else {
-                pdfContainer.style.display = 'none';
-                button.textContent = 'Show PDF';
-            }
-        });
-    </script>
 @endsection

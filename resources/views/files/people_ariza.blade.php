@@ -3,7 +3,8 @@
     <div class="container-fluid">
         @foreach($ariza as $item)
         <div class="row">
-            <img src="{{asset('ariza-of-compleint/'. $item->ariza)}}" width="150px" height="200px" alt="">
+            <embed src="{{asset('ariza-of-compleint/'. $item->ariza)}}" type="application/pdf" width="100%" height="300px">
+
         </div>
         @endforeach
     </div>

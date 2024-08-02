@@ -13,7 +13,7 @@
             <div class="card-content">
                 <table class="table  mb-0">
                     <thead>
-                    <tr>
+                    <tr class="active">
                         <th>{{__('Picture')}}</th>
                         <th>{{__('Name')}}</th>
                         <th>{{__('Father_name')}}</th>

@@ -16,9 +16,9 @@ Profile Details
                         {{Auth::user()->name}}
                     </div>
 
-                    <div class="profile_links">
-                        <ul>
-                            <li><a href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> تغیر فاسورد</a></li>
+                    <div class="link">
+                        <ul class="">
+                            <li class="ul-item"><a class="" href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> تغیر فاسورد</a></li>
                         </ul>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ Profile Details
                         yup
                     </div>
                 @endif
-                <div class="personal_information">
+                <div class="container-fluid">
                     <i class="fa fa-edit ml-auto" onclick="editForm()"></i>
                     <div class="personal_information_single">
                         <div>Uesr ID:</div>
