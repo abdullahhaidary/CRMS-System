@@ -19,6 +19,7 @@
                     <th>{{__('Phone_number')}}</th>
                     <th>{{__('Main_address')}}</th>
                     <th>{{__('Current_address')}}</th>
+                    <th>{{__('Status')}}</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -32,11 +33,17 @@
                         <td>{{$suspect->phone}}</td>
                         <td>{{$suspect->actual_address}}</td>
                         <td>{{$suspect->current_address}}</td>
+                        @if($suspect->isCriminal==0)
+                                <td style="color: #ffc604;">مظنون</td>
+                        @elseif($suspect->isCriminal==1)
+                        <td  style="color: #02f602;">فرد عادی</td>
+                            @elseif($suspect->isCriminal==2)
+                                <td  style="color: red;">مجریم</td>
+                        @endif
                         <th>
                             @can('super_admin')
                                 <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">تصحیح</a>
                                 <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">حذف</a>
-                               <a class="btn btn-secondary btn-sm" href="{{url('/un_suspect/list/'.$suspect->id)}}">انتقال به غیر مظنون</a>
                         </th>
                         @endcan
                     </tr>

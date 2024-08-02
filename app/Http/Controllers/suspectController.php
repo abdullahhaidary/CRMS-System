@@ -12,14 +12,13 @@ class suspectController extends Controller
 {
     public function index($id){
 
-        $suspects=suspectmodel::where('isCriminal', '=',1)
-            ->where('suspect.crime_record_id','=',$id)
+        $suspects=suspectmodel::where('suspect.crime_record_id','=',$id)
             ->paginate('5');
         return view('suspect.index',compact('suspects','id'));
     }
     public function all_list()
     {
-        $suspects=suspectmodel::where('isCriminal', '=', 1)->paginate('6');
+        $suspects=suspectmodel::paginate('8');
         return view('suspect.all_list', compact('suspects'));
     }
 
@@ -39,7 +38,7 @@ public function store(Request $request ,$id)
     $save->tazcira_number=$request->tazkera_number;
     $save->actual_address=$request->main_address;
     $save->current_address=$request->current_address;
-    $save->isCriminal=1;
+    $save->isCriminal=0;
 $save->save();
 return redirect(url('/suspect_list/'.$id));
 
@@ -93,18 +92,7 @@ public function destroy($id)
 
     // Redirect or return a response
     return redirect()->back()->with('success', 'دیتا په موافقیت ذخیره شوه !');
-}
-public function Remove_from_suspect($id)
-{
-    $data=suspectmodel::where('suspect.id','=',$id)
-        ->where('isCriminal', '=',1)
-        ->get();
-    if ($data){
-        return view('suspect.un_suspect_edit',compact('data'));
-    }
-    else{
-        return redirect()->back();
-    }
+
 }
 
 
