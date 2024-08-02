@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+
     <style>
         body{
             font-family: Arial, sans-serif;
@@ -62,20 +57,29 @@
             text-decoration: underline;
         }
         .form-select{
-            background-color: #ffffff
+            background-color: #ffffff;
             padding: 10px;
-            border-radius: 5px
-            width: 400px
-            margin-bottom: 10px
+            border-radius: 5px;
+            width: 400px;
+            margin-bottom: 10px;
         }
         .form-option-list{
-            font-size: 16px
-            padding: 8px
+            font-size: 16px;
+            padding: 8px;
         }
     </style>
-        @livewireStyle
-        @livewireScript
-</head>
+        @section('styles')
+            @livewireStyles
+        @endsection
+    @section('content')
+        @livewire('RegisterForm')
+
+    @endsection
+        @section('scripts')
+            @livewireScripts
+            <script src="//unpkg.com/alpinejs" defer></script>
+        @endsection
+
 <body dir="rtl">
 <div class="register-container">
     <img src="{{asset('images/register.png')}}" alt="Logo">
@@ -83,9 +87,6 @@
     @livewire('register-form',['provinces' => $data])
     <p> لیست تمام ادمین های در سیستم.  <a href="{{route('province_liat')}}">اینجا کلیک کنید </a></p>
 
-
-    </div>
-    </body>
-</html>
+</div>
 
 

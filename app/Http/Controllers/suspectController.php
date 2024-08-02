@@ -81,7 +81,7 @@ public function update(Request $request, string $id)
     $criminal->save();
 
     // Redirect or return a response
-    return back()->with('success', 'تغیرات په موافقیت انجام شد!');
+    return redirect()->back()->with('success', 'تغیرات په موافقیت انجام شد!');
 }
 public function destroy($id)
 {
@@ -91,7 +91,7 @@ public function destroy($id)
     $resource->delete();
 
     // Redirect or return a response
-    return redirect()->back()->with('success', 'دیتا په موافقیت ذخیره شوه !');
+    return redirect()->back()->with('success', 'دیتا په موافقیت دیلیت شوه !');
 
 }
 

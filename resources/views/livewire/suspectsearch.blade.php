@@ -1,9 +1,11 @@
+
+
 <div class="container-fluid mt-5">
     <div class="row justify-content-center">
         <div class="col-12 col-md-12 col-lg-12">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h2 class="text-center mb-4">{{__('Search_records')}}</h2>
+                    <h2 class="text-center mb-4">{{__('Suspect_list')}}</h2>
                     <form wire:submit.prevent="render">
                         <div class="form-row row">
 
@@ -60,11 +62,9 @@
                             </table>
                         </div>
                     </section>
-
                     <div class="mt-4">
                         {{ $suspects->links() }}
                     </div>
-
                 </div>
             </div>
         </div>
