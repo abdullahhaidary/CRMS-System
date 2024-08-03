@@ -26,7 +26,7 @@
         </select>
 
 
-        <select class="form-select" name="district" wire:model.live="selectedDistrict" wire:key="{{ $selectedProvince }} wire:model="selectedDistrict">
+        <select class="form-select" name="district" wire:model.live="selectedDistrict" wire:key="{{ $selectedProvince }}" wire:model="selectedDistrict">
             <option class="form-option-list" value="">انتیخاب والسوالی یا حوزه</option>
             @foreach($districts as $district)
                 <option class="form-option-list" value="{{ $district->id }}">{{ $district->name }}</option>

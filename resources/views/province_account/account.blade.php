@@ -68,17 +68,6 @@
             padding: 8px;
         }
     </style>
-        @section('styles')
-            @livewireStyles
-        @endsection
-    @section('content')
-        @livewire('RegisterForm')
-
-    @endsection
-        @section('scripts')
-            @livewireScripts
-            <script src="//unpkg.com/alpinejs" defer></script>
-        @endsection
 
 <body dir="rtl">
 <div class="register-container">

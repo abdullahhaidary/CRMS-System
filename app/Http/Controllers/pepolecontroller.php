@@ -163,7 +163,7 @@ class pepolecontroller extends Controller
         $resource->delete();
 
         // Redirect or return a response
-        return redirect()->route('people')->with('success', 'Resource deleted successfully.');
+        return redirect()->back()->with('success', 'ریکارد به موافقیت حذف شود.');
     }
     public function moreShow($id)
     {

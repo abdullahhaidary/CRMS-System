@@ -34,8 +34,8 @@ public function store(Request $request ,$id)
     $save->name=$request->suspect_name;
     $save->last_name=$request->last_name;
     $save->father_name=$request->father_name;
-    $save->phone=$request->phone;
-    $save->tazcira_number=$request->tazkera_number;
+    $save->phone=$request->phone_number;
+    $save->tazcira_number=$request->tazcira_number;
     $save->actual_address=$request->main_address;
     $save->current_address=$request->current_address;
     $save->isCriminal=0;
