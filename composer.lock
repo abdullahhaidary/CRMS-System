@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "842b27e3b6d4ab40d405ba3e1fee0a12",
+    "content-hash": "b716b02b11aaf7e73d07454c2a8337f5",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -67,6 +67,10 @@
                 "laravel",
                 "pdf"
             ],
+            "support": {
+                "issues": "https://github.com/barryvdh/laravel-dompdf/issues",
+                "source": "https://github.com/barryvdh/laravel-dompdf/tree/v2.2.0"
+            },
             "funding": [
                 {
                     "url": "https://fruitcake.nl",
