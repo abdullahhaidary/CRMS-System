@@ -63,7 +63,7 @@
         </div>
         <h1>{{__('Additional_information_of_a_criminal')}}</h1>
     </div>
-    <div class="row details-card">
+    <div class="row ">
         <div class="col-lg-4 col-md-6 mb-4">
 {{--            <img src="{{asset('criminal/'.$item->photo)}}" alt="Profile Picture" class="img-fluid">--}}
             <embed src="{{asset('criminal/'.$item->photo)}}" type="application/pdf" width="100%" height="300px">
