@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('marital_status');
             $table->string('family_members');
             $table->string('photo');
-
+            $table->string('Created_by');
             $table->timestamps();
 
             $table->foreign('suspect_id')->references('id')->on('suspect')->onDelete('cascade');

@@ -8,6 +8,7 @@ use App\Models\CriminalPicture;
 use App\Models\suspectmodel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use function Laravel\Prompts\select;
@@ -89,6 +90,7 @@ class criminalcontroller extends Controller
         $save->family_members= $request->familymember;
         $save->suspect_id=$request->suspect;
         $save->case_id=$request->case;
+        $save->Created_by=Auth::user()->name;
         if (!empty($request->photo)) {
             $exe = $request->file('photo')->getClientOriginalExtension();
 //            dd($exe);

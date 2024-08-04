@@ -30,6 +30,7 @@
                                     <th>{{__('Main_address')}}</th>
                                     <th>{{__('Current_address')}}</th>
                                     <th>{{__('Status')}}</th>
+                                    <th>{{__('by')}}</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -44,6 +45,7 @@
                                         <td>{{$suspect->phone}}</td>
                                         <td>{{$suspect->actual_address}}</td>
                                         <td>{{$suspect->current_address}}</td>
+                                        <td>{{$suspect->Created_by}}</td>
                                         @if($suspect->isCriminal==0)
                                             <td style="color: #ffc604;">مظنون</td>
                                         @elseif($suspect->isCriminal==1)

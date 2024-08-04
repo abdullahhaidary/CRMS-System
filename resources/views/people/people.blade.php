@@ -32,8 +32,9 @@
                     <th>آدرس</th>
                     <th> ادرس فعلی</th>
                     <th> case</th>
-                    <th>تاریخ شکایت</th>
                     <th>موضوع شکایت</th>
+                    <th>تاریخ شکایت</th>
+                    <th>توسط</th>
                     <th>عریضه</th>
                     <th>توضیحات</th>
                     <th>دیدن مظنونین</th>
@@ -54,6 +55,7 @@
                         <td>{{$item->crime_case}}</td>
                         <td>{{$item->crim_date}}</td>
                         <td>{{$item->subject_crim}}</td>
+                        <td>{{$item->Created_by}}</td>
                         <td><a href="{{url('ariza/arizafile/'.$item->id)}}">عریضه</a></td>
                         <td><a href="{{url('crime/info/'.$item->id)}}">توضیحات</a></td>
                         <td><a href="{{url('suspect_list/'.$item->id)}}">لیست مظنونین</a></td>

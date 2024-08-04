@@ -19,6 +19,7 @@
                         <th>{{__('Father_name')}}</th>
                         <th>{{__('Current_address')}}</th>
                         <th>{{__('Phone_number')}}</th>
+                        <th>{{__('Create_by')}}</th>
 
                     </tr>
                     </thead>
@@ -37,6 +38,7 @@
                                 <td class="text-bold-500">{{ $item->father_name }}</td>
                                 <td>{{ $item->current_address }}</td>
                                 <td>{{ $item->phone}}</td>
+                                <td>{{ $item->Created_by}}</td>
                                 <td class="m-0 p-0">
 
                                     <a href="{{ url('/criminal/all/' . $item->id) }}" class="btn btn-primary btn-sm">{{__('Full_info')}}</a>

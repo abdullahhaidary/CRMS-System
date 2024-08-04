@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FingerprintModel;
 use App\Models\suspectmodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -39,6 +40,7 @@ public function store(Request $request ,$id)
     $save->actual_address=$request->main_address;
     $save->current_address=$request->current_address;
     $save->isCriminal=0;
+    $save->Created_by=Auth::user()->name;
 $save->save();
 return redirect(url('/suspect_list/'.$id));
 

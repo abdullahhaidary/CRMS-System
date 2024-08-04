@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('subject_crim');
             $table->string('crim_date');
             $table->string('user_id');
+            $table->string('Created_by');
             $table->timestamps();
         });
     }

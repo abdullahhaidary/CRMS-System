@@ -22,6 +22,7 @@
                     <th> case</th>
                     <th>تاریخ شکایت</th>
                     <th>موضوع شکایت</th>
+                    <th> توسط</th>
                     <th> عمل</th>
                 </tr>
                 </thead>
@@ -39,6 +40,7 @@
                         <td>{{$item->crime_case}}</td>
                         <td>{{$item->crim_date}}</td>
                         <td>{{$item->subject_crim}}</td>
+                        <td>{{$item->Created_by}}</td>
                         <td style="width: 110px">
                             @can('super_admin')
                                 <a href="{{url('people/edit/'.$item->id)}}"><i class="bi bi-pencil" style="color:#4b4cff;"></i></a>
