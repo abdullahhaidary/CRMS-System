@@ -52,15 +52,16 @@
     @if($data)
 <div class="container">
     @foreach($data as $item)
-    <div class="text-center page-heading">
+    <div class="text-center ">
         <div class="nav text-right">
             @can('super_admin')
             <a class="link-item mx-2 btn btn-light-info" href="{{url('criminal/edit/'.$item->id)}}">{{__('Edit')}}</a>
             <a class="link-item btn btn-light-danger"  type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">{{__('Delete')}}</a>
             @endcan
                 <a class="link-item mx-2 btn btn-light-dark" href="{{route('crimnal')}}">{{__('View_list')}}</a>
-                <a class="link-item btn btn-outline-dark" href="{{url('criminal/picture/show/'.$item->id)}}">تصویر های مجریم</a>
+                <a class="link-item btn btn-outline-dark" href="{{url('criminal/picture/show/'.$item->id)}}">{{__('Pictures_a_criminal')}}</a>
         </div>
+        <!-- معلومات مکمل یک مجرم -->
         <h1>{{__('Additional_information_of_a_criminal')}}</h1>
     </div>
     <div class="row ">
@@ -151,6 +152,7 @@
             </div>
         </div>
     </div>
+    <!-- strat of finger part -->
     <div class="row details-card mt-4">
         <div class="col-lg-12">
             <h4 class="section-title">دست راست</h4>
@@ -226,6 +228,8 @@
             </div>
         </div>
     </div>
+    <!-- end fingar part -->
+      <!-- start modal  -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -247,7 +251,7 @@
                 </div>
             </div>
         </div>
-
+<!-- end modal -->
     @endforeach
     </div>
 

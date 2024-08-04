@@ -7,6 +7,7 @@
     <section class="section p-2">
         <div class="card">
             <div class="card-header">
+                <!-- جدول تمام مجرمین در سیستم -->
                 <h3 class="card-title text-center">{{__('Table_all_criminals_in_system')}}</h3>
                 @include('massage')
             </div>

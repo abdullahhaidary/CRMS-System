@@ -1,6 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading text-center">
+        <!-- فورم ایجاد مجرم جدید -->
         <h3>{{__('New_criminal_creation_form')}}</h3>
     </div>
     <!-- criminalcontroller from start -->
