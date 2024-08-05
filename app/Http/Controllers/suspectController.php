@@ -48,7 +48,7 @@ return redirect(url('/suspect_list/'.$id));
     public function edit($id)
     {
         $data=suspectmodel::where('suspect.id', '=', $id)->get();
-        return view('suspect.edit',compact('data','id'));
+        return redirect()->route('all_list');
     }
 public function update(Request $request, string $id)
 {

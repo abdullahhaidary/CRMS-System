@@ -6,7 +6,7 @@ if (!function_exists('trim_to_words')) {
     {
         $words = explode(' ', $text);
         if (count($words) > $limit) {
-            return implode(' ', array_slice($words, 0, $limit)) . '...';
+            return implode(' ', array_slice($words, 4, $limit)) . '...';
         }
         return $text;
     }
@@ -179,7 +179,7 @@ if (!function_exists('trim_to_words')) {
                                                 <p class=" mb-0">{{$criminal->case->crime_type}}</p>
                                             </td>
                                             <td class="col-auto">
-                                                <p class=" mb-0"> {{trim_to_words($criminal->case->description)}}</p>
+                                                <p class=" mb-0"> {{$criminal->case->description}}</p>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -192,6 +192,31 @@ if (!function_exists('trim_to_words')) {
                     </div>
                 </div>
             </div>
+            <table class="table">
+                <thead>
+                    <td>شماره</td>
+                    <td>ولایت</td>
+                    <td>تعداد شکایات امروز</td>
+                    <td>تعداد شکایات ماه گذشته</td>
+                    <td>تعداد قضیه های ثبت شده امروز</td>
+                    <td>تعداد قضیه های ثبت شده ماه گذشته</td>
+                    <td></td>
+                </thead>
+                @foreach($total_provinces as $province)
+                <tr>
+                    <td>{{$province->id}}</td>
+                    <td>{{$province->name}}</td>
+                    {{-- <td>{{$province->}}</td> --}}
+                    {{-- <td>{{$province->}}</td> --}}
+                    {{-- <td>{{$province->}}</td> --}}
+                    {{-- <td>{{$province->}}</td> --}}
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @endforeach
+            </table>
         </section>
     </div>
 {{--    @can('admin')--}}

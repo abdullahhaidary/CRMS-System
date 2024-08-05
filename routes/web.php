@@ -10,6 +10,7 @@ use App\Models\casemodel;
 use App\Models\criminal;
 use App\Models\FingerprintModel;
 use App\Models\People;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
@@ -23,8 +24,9 @@ Route::middleware(['auth'])->get('/',function(){
     $total_crime_record = People::all()->count();
     $total_criminal_record = criminal::all()->count();
     $total_cases_record = casemodel::all()->count();
+    $total_provinces = Province::all();
     $three_criminals = Criminal::with('case')->orderBy('created_at', 'desc')->take(3)->get();
-    return view('layout.home',compact('total_crime_record','total_criminal_record','total_cases_record','three_criminals'));
+    return view('layout.home',compact('total_crime_record','total_criminal_record','total_cases_record','three_criminals','total_provinces'));
 })->name('home');
 
 
