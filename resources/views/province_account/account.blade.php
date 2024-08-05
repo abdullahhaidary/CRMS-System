@@ -68,14 +68,14 @@
             padding: 8px;
         }
     </style>
-
+@livewireStyles()
 <body dir="rtl">
 <div class="register-container">
     <img src="{{asset('images/register.png')}}" alt="Logo">
     <h2>Register</h2>
     @livewire('register-form',['provinces' => $data])
     <p> لیست تمام ادمین های در سیستم.  <a href="{{route('province_liat')}}">اینجا کلیک کنید </a></p>
-
 </div>
+@livewireScripts()
 
 
