@@ -17,9 +17,13 @@
                             </div>
                         </div>
                         <div class="form-row row">
-                            <div class="form-group col-md-10">
+                            <div class="form-group col-md-5">
                                 <label for="searchLastName">{{__('Last_name')}}</label>
                                 <input type="text" class="form-control" id="searchLastName" wire:model.lazy="last_name" placeholder="{{__('Enter_last_name')}}">
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="searchAddress">{{__('Tazkira_number')}}</label>
+                                <input type="number" class="form-control" id="searchAddress" wire:model.lazy="tazkira_number" placeholder="{{__('Enter_address')}}">
                             </div>
                             {{-- <div class="form-group col-md-5">
                                 <label for="searchID">{{__('ID')}}</label>
@@ -30,7 +34,7 @@
                         <div class="form-row row">
                             <div class="form-group col-md-5">
                                 <label for="searchPhone">{{__('Phone_number')}}</label>
-                                <input type="text" class="form-control" id="searchPhone" wire:model.lazy="phone" placeholder="{{__('Enter_phone_number')}}">
+                                <input type="number" class="form-control" id="searchPhone" wire:model.lazy="phone" placeholder="{{__('Enter_phone_number')}}">
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="searchEmail">{{__('Email')}}</label>
@@ -48,36 +52,49 @@
                             </div>
                         </div>
                     </form>
-                    <table class="table mt-4">
-                        <thead>
+                    <div class="container-fluid">
+                        <table class="table mt-4">
+                            <thead>
                             <tr>
                                 <th>{{__('ID')}}</th>
                                 <th>{{__('Name')}}</th>
-                                <th>{{__('Last_Name')}}</th>
-                                <th>{{__('Phone')}}</th>
-                                <th>{{__('Actual_Address')}}</th>
-                                <th>{{__('Current_Address')}}</th>
-                                <th>{{__('Father_Name')}}</th>
-                                <th>{{__('Is_Criminal')}}</th>
-                                <th>{{__('Created_At')}}</th>
+                                <th>{{__('Last_name')}}</th>
+                                <th>{{__('Father_name')}}</th>
+                                <th>{{__('Phone_number')}}</th>
+                                <th>{{__('Main_address')}}</th>
+                                <th>{{__('Current_address')}}</th>
+                                <th>{{__('Status')}}</th>
+                                <th>{{__('Create_date')}}</th>
                             </tr>
-                        </thead>
-                        <tbody id="criminal">
+                            </thead>
+                            <tbody id="criminal">
                             @foreach($criminals as $criminal)
                                 <tr>
                                     <td>{{ $criminal->id }}</td>
                                     <td>{{ $criminal->criminal_name }}</td>
                                     <td>{{ $criminal->last_name }}</td>
+                                    <td>{{ $criminal->father_name }}</td>
                                     <td>{{ $criminal->phone }}</td>
                                     <td>{{ $criminal->actual_address }}</td>
                                     <td>{{ $criminal->current_address }}</td>
-                                    <td>{{ $criminal->father_name }}</td>
-                                    <td>{{ $criminal->isCriminal ? 'Yes' : 'No' }}</td>
+                                    @if($criminal->isCriminal==0)
+                                        <td style="color: #ffc604;">مظنون</td>
+                                    @elseif($criminal->isCriminal==1)
+                                        <td  style="color: #02f602;">فرد عادی</td>
+                                    @elseif($criminal->isCriminal==2)
+                                        <td  style="color: red;">مجریم</td>
+                                    @endif
                                     <td>{{ $criminal->created_at }}</td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="mt-4">
+                        {{ $criminals->links() }}
+                    </div>
+
                 </div>
             </div>
         </div>

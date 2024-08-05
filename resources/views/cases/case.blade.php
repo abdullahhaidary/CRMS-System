@@ -2,6 +2,7 @@
 @section('content')
     <div class="container mt-5">
         <h2>{{__('Cases_of_a_persons_history')}}</h2>
+        <h2>this is wrong </h2>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">

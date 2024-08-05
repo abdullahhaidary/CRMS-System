@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="{{@asset('dist2/css/app-dark.rtl.css')}}">
     <link rel="stylesheet" href="{{@asset('dist2/css/app.rtl.css')}}">
     <link rel="stylesheet" href="{{@asset('dist2/css/iconly.css')}}">
-
     <link rel="stylesheet" href="{{@asset('dist2/css/style.css')}}">
-
     <link rel="shortcut icon" href="{{@asset('./dist2/css/svg/favicon.svg')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{@asset('dist2/css/bootstrap-icons.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/font-awsome.css')}}">
@@ -70,7 +68,7 @@
                 <ul class="menu">
                     <li class="sidebar-title font-extrabold" style="user-select: none;" >
                         <div class="logo">
-                            <h4><a href="{{route('home')}}">{{Auth::user()->name}}</a></h4>
+                            <h4><a href="{{route('home')}}">{{ucfirst(strtolower(Auth::user()->name))}}</a></h4>
                         </div>
                     </li>
 
@@ -94,16 +92,13 @@
                                 <a href="{{route('crimnal')}}" class="submenu-link ">{{__('crime_part')}}</a>
                             </li>
                             <li class="submenu-item  ">
-                                <a href="component-alert.html" class="submenu-link">اسناد ها</a>
-                            </li>
-                            <li class="submenu-item  ">
                                 <a href="{{route('all_list')}}" class="submenu-link"> لیست مظنون عمومی</a>
                             </li>
                             <li class="submenu-item  ">
                                 <a href="{{route('list_people')}}" class="submenu-link"> لیست شکایت کنندها </a>
                             </li>
-                            <li class="submenu-item  ">
-                                <a href="component-badge.html" class="submenu-link">زندان</a>
+                            <li class="submenu-item ">
+                                <a href="{{route('list_cases')}}" class="submenu-link">قضیه ها</a>
                             </li>
                         </ul>
                     </li>
@@ -123,7 +118,7 @@
                                         </a>
                                     </li>
                                     <li
-                                        class="sidebar-item  {{ Route::currentRouteName() == 'register' ? 'active' : '' }} ">
+                                        class="sidebar-item  {{ Route::currentRouteName() == 'province_account' ? 'active' : '' }} ">
                                         <a href="{{route('province_account')}}" class='sidebar-link'>
                                             <i class="bi bi-people-fill"></i>
                                             <span>Account province</span>
@@ -132,32 +127,53 @@
                             </ul>
                         </li>
                         @endcan
-                    <li
-                        class="sidebar-item   {{ Route::currentRouteName() == 'search' ? 'active' : '' }}">
-                        <a href="{{route('search')}}" class='sidebar-link'>
-                            <i class="bi bi-search"></i>
-                            <span>{{__('public_search')}}</span>
-                        </a>
-                    </li>
-                    <li
-                            class="sidebar-item {{ Route::currentRouteName() == 'people' ? 'active' : '' }}">
-                            <a href="{{route('people')}}" class='sidebar-link '>
-                                <i class="bi-file-earmark-text"></i>
-                                <span>{{__('save_compelint')}}</span>
+                        <li
+                            class="sidebar-item has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-search"></i>
+                                <span>{{__('Search')}}</span>
                             </a>
+                            <ul class="submenu {{ Route::currentRouteName() == 'crimnal' ? 'active' : '' }}">
+                                <li
+                                    class="sidebar-item   {{ Route::currentRouteName() == 'search' ? 'active' : '' }}">
+                                    <a href="{{route('search')}}" class='sidebar-link'>
+                                        <span>{{__('public_search')}}</span>
+                                    </a>
+                                </li>
+                                <li
+                                    class="sidebar-item {{ Route::currentRouteName() == 'bio_search' ? 'active' : '' }} ">
+                                    <a href="{{route('bio_search')}}" class='sidebar-link '>
+                                        <span>{{__('biemitrec_search')}} </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li
+                            class="sidebar-item has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-clipboard-check"></i>
+                                <span>{{__('complint_part')}}</span>
+                            </a>
+                            <ul class="submenu {{ Route::currentRouteName() == 'crimnal' ? 'active' : '' }}">
+                                <li
+                                    class="sidebar-item  {{ Route::currentRouteName() == 'people' ? 'active' : '' }} ">
+                                    <a href="{{route('people')}}" class='sidebar-link'>
+                                        <span>{{__('complinte_list')}} </span>
+                                    </a>
+                                </li>
+                                <li
+                                    class="sidebar-item  {{ Route::currentRouteName() == 'register' ? 'active' : '' }} ">
+                                    <a href="{{route('people_form')}}" class='sidebar-link'>
+                                        <span>{{__('save_complent')}} </span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     <li
                         class="sidebar-item   {{ Route::currentRouteName() == 'department' ? 'active' : '' }}">
                         <a href="{{route('department')}}" class='sidebar-link'>
                             <i class="bi bi-building"></i>
                             <span>{{__('department')}} </span>
-                        </a>
-                    </li>
-                    <li
-                        class="sidebar-item {{ Route::currentRouteName() == 'bio_search' ? 'active' : '' }} ">
-                        <a href="{{route('bio_search')}}" class='sidebar-link '>
-                            <i class="bi bi-search"></i>
-                            <span>{{__('biemitrec_search')}} </span>
                         </a>
                     </li>
                     @endif
@@ -207,13 +223,7 @@
 
 <script src="{{@asset('dist2/js/component/dark.js')}}"></script>
 <script src="{{@asset('dist2/static/component/perfect-scrollbar.min.js')}}"></script>
-
-
 <script src="{{@asset('dist2/js/app.js')}}"></script>
-
-
-
-<!-- Need: Apexcharts -->
 <script src="{{@asset('dist2/js/apexcharts.min.js')}}"></script>
 <script src="{{@asset('dist2/js/dashboard.js')}}"></script>
 @yield('scripts')

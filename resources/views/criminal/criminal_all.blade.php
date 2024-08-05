@@ -52,18 +52,19 @@
     @if($data)
 <div class="container">
     @foreach($data as $item)
-    <div class="text-center page-heading">
+    <div class="text-center ">
         <div class="nav text-right">
             @can('super_admin')
             <a class="link-item mx-2 btn btn-light-info" href="{{url('criminal/edit/'.$item->id)}}">{{__('Edit')}}</a>
-            <a class="link-item btn btn-light-danger" href="{{url('criminal/delete/'.$item->id)}}">{{__('Delete')}}</a>
+            <a class="link-item btn btn-light-danger"  type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">{{__('Delete')}}</a>
             @endcan
                 <a class="link-item mx-2 btn btn-light-dark" href="{{route('crimnal')}}">{{__('View_list')}}</a>
-                <a class="link-item btn btn-outline-dark" href="{{url('criminal/picture/show/'.$item->id)}}">تصویر های مجریم</a>
+                <a class="link-item btn btn-outline-dark" href="{{url('criminal/picture/show/'.$item->id)}}">{{__('Pictures_a_criminal')}}</a>
         </div>
+        <!-- معلومات مکمل یک مجرم -->
         <h1>{{__('Additional_information_of_a_criminal')}}</h1>
     </div>
-    <div class="row details-card">
+    <div class="row ">
         <div class="col-lg-4 col-md-6 mb-4">
 {{--            <img src="{{asset('criminal/'.$item->photo)}}" alt="Profile Picture" class="img-fluid">--}}
             <embed src="{{asset('criminal/'.$item->photo)}}" type="application/pdf" width="100%" height="300px">
@@ -151,6 +152,7 @@
             </div>
         </div>
     </div>
+    <!-- strat of finger part -->
     <div class="row details-card mt-4">
         <div class="col-lg-12">
             <h4 class="section-title">دست راست</h4>
@@ -226,6 +228,30 @@
             </div>
         </div>
     </div>
+    <!-- end fingar part -->
+      <!-- start modal  -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">{{__('Confirm_delete')}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {{__('Delete_description')}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
+                        <form id="deleteForm" action="{{url('criminal/delete/'.$item->id)}}" method="get" style="display:inline;">
+                            @csrf
+                            <input type="hidden" name="id" id="deleteId" value="">
+                            <button type="submit" class="btn btn-danger">{{__('Delete')}}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- end modal -->
     @endforeach
     </div>
 

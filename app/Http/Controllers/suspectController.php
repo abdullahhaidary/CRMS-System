@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FingerprintModel;
 use App\Models\suspectmodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -12,14 +13,13 @@ class suspectController extends Controller
 {
     public function index($id){
 
-        $suspects=suspectmodel::where('isCriminal', '=',1)
-            ->where('suspect.crime_record_id','=',$id)
+        $suspects=suspectmodel::where('suspect.crime_record_id','=',$id)
             ->paginate('5');
         return view('suspect.index',compact('suspects','id'));
     }
     public function all_list()
     {
-        $suspects=suspectmodel::where('isCriminal', '=', 1)->paginate('6');
+        $suspects=suspectmodel::paginate('8');
         return view('suspect.all_list', compact('suspects'));
     }
 
@@ -35,11 +35,12 @@ public function store(Request $request ,$id)
     $save->name=$request->suspect_name;
     $save->last_name=$request->last_name;
     $save->father_name=$request->father_name;
-    $save->phone=$request->phone;
-    $save->tazcira_number=$request->tazkera_number;
+    $save->phone=$request->phone_number;
+    $save->tazcira_number=$request->tazcira_number;
     $save->actual_address=$request->main_address;
     $save->current_address=$request->current_address;
-    $save->isCriminal=1;
+    $save->isCriminal=0;
+    $save->Created_by=Auth::user()->name;
 $save->save();
 return redirect(url('/suspect_list/'.$id));
 
@@ -76,13 +77,13 @@ public function update(Request $request, string $id)
     $criminal->phone = $request->input('phone_number');
     $criminal->actual_address = $request->input('main_address');
     $criminal->current_address = $request->input('current_address');
-
+    $criminal->isCriminal = $request->input('Is_crime');
 
     // Update other fields as necessary
     $criminal->save();
 
     // Redirect or return a response
-    return redirect(url('/suspect_list/'.$id))->with('success', 'تغیرات په موافقیت انجام شد!');
+    return redirect()->back()->with('success', 'تغیرات په موافقیت انجام شد!');
 }
 public function destroy($id)
 {
@@ -92,19 +93,8 @@ public function destroy($id)
     $resource->delete();
 
     // Redirect or return a response
-    return redirect()->back()->with('success', 'دیتا په موافقیت ذخیره شوه !');
-}
-public function Remove_from_suspect($id)
-{
-    $data=suspectmodel::where('suspect.id','=',$id)
-        ->where('isCriminal', '=',1)
-        ->get();
-    if ($data){
-        return view('suspect.un_suspect_edit',compact('data'));
-    }
-    else{
-        return redirect()->back();
-    }
+    return redirect()->back()->with('success', 'دیتا په موافقیت دیلیت شوه !');
+
 }
 
 

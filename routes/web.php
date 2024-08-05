@@ -111,7 +111,7 @@ Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, '
 Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update');
 Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete');
 Route::get('/people/all/{id}', [\App\Http\Controllers\pepolecontroller::class, 'moreShow'])->name('people_all');
-
+Route::get('/generate-pdf/{id}', [\App\Http\Controllers\pepolecontroller::class, 'generatePDF'])->name('pdf');
 
 //url province people
 Route::get('/province/people', [\App\Http\Controllers\provinceComplintcontroller::class, 'index'])->name('province_list');
@@ -159,6 +159,7 @@ Route::post('/department form', [\App\Http\Controllers\departmentContoller::clas
 
 //ulr cases
 Route::get('/case/{id}', [\App\Http\Controllers\casecontroller::class, 'index'])->name('case');
+Route::get('case/all/list', [\App\Http\Controllers\casecontroller::class, 'list'])->name('list_cases');
 Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'create'])->name('case-from');
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
 Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');
@@ -167,7 +168,6 @@ Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add
 Route::get('/province/case/{id}', [\App\Http\Controllers\province_case_controller::class, 'index'])->name('case');
 Route::get('province/case/form/{id}', [\App\Http\Controllers\province_case_controller::class, 'create'])->name('case-from');
 Route::post('/province/case/form', [\App\Http\Controllers\province_case_controller::class, 'store'])->name('case_store');
-
 
 
 // url province account
@@ -185,7 +185,6 @@ Route::post('province/suspect/form/save/{id}', [\App\Http\Controllers\province_s
 Route::get('province/suspect/edit/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'edit'])->name('suspect_edit');
 Route::post('/province/suspect/update/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'update'])->name('suspect_update');
 Route::get('province/suspect/delete/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'destroy'])->name('suspect_delete');
-
 
 //url evidence
 

@@ -17,7 +17,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="first-name-column" class="form-label"
-                                            >نوم</label
+                                            >{{__('Name')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -33,7 +33,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last-name-column" class="form-label"
-                                            >تخلص </label
+                                            >{{__('Last_Name')}} </label
                                             >
                                             <input
                                                 type="text"
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="city-column" class="form-label">پلار نوم</label>
+                                            <label for="city-column" class="form-label">{{__('Father_name')}}</label>
                                             <input
                                                 type="text"
                                                 id="city-column"
@@ -64,7 +64,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="country-floating" class="form-label"
-                                            >تلفن</label
+                                            >{{__('Phone_number')}}</label
                                             >
                                             <input
                                                 type="number"
@@ -80,7 +80,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="company-column" class="form-label"
-                                            >ایمیل آدرس</label
+                                            >{{__('Email')}}</label
                                             >
                                             <input
                                                 type="email"
@@ -96,7 +96,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > آدرس اصلی</label
+                                            > {{__('Main_address')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -112,7 +112,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="curent-address" class="form-label"
-                                            > آدرس فعلی</label
+                                            >  {{__('Current_address')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -128,22 +128,22 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >تصویر</label
+                                            >{{__('Letter')}}</label
                                             >
                                             <input type="file" class="form-control" id="inputGroupFile01" name="photo">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
-                                        >جنسیت </label>
+                                        >{{__('Gender')}} </label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="gender" id="disabledSelect">
                                                 @if($value->gender==1)
-                                                <option  value="1">نر</option>
-                                                <option value="0">زن</option
+                                                <option selected value="1">{{__('Male')}}</option>
+                                                <option value="0">{{__('Female')}}</option
                                                 @elseif($value->gender==0)
-                                                    <option value="1">نر</option>
-                                                <option  value="0">زن</option>
+                                                    <option value="1">{{__('Male')}}</option>
+                                                <option selected value="0">{{__('Female')}}</option>
                                                 @endif
                                                 >
                                             </select>
@@ -152,7 +152,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >  تاریخ تولد</label
+                                            >{{__('Date_of_birth')}}</label
                                             >
                                             <input
                                                 type="date"
@@ -168,7 +168,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            >  تاریخ جرم</label
+                                            >{{__('Date_crime')}}</label
                                             >
                                             <input
                                                 type="date"
@@ -184,7 +184,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > عضو فامیل</label
+                                            >{{__('Family_member')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -200,7 +200,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > وظیفه</label
+                                            > {{__('Job')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -229,7 +229,7 @@
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <label for="email-id-column mandatory" class="form-label"
-                                        >cas </label>
+                                        >{{__('Case')}} </label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="case"  id="disabledSelect">
                                             @foreach($case as $items)
@@ -245,7 +245,7 @@
                                     <div class="col-md-12 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
-                                            > توضیحات</label>
+                                            > {{__('Description')}}</label>
                                             <textarea
                                                 name="discription"
                                                       id="discription"
@@ -259,13 +259,13 @@
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
-                                            Submit
+                                            {{__('Save')}}
                                         </button>
                                         <a
                                             href="{{url('/criminal/all/'.$value->id)}}"
                                             class="btn btn-light-secondary me-1 mb-1"
                                         >
-                                            Reset
+                                            {{__('Reset')}}
                                         </a>
                                     </div>
                                     @endforeach

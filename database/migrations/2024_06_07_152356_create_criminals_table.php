@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('criminals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('suspect_id');
+            $table->unsignedBigInteger('suspect_id')->nullable();
             $table->unsignedBigInteger('case_id');
-            $table->string('criminal_name');
-            $table->string('last_name');
-            $table->string('father_name');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('current_address');
-            $table->string('actual_address');
+            $table->string('criminal_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('father_name')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('current_address')->nullable();
+            $table->string('actual_address')->nullable();
             $table->date('arrest_date');
             $table->date('date_of_birth');
             $table->string('gender');
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('marital_status');
             $table->string('family_members');
             $table->string('photo');
-
+            $table->string('Created_by');
             $table->timestamps();
 
             $table->foreign('suspect_id')->references('id')->on('suspect')->onDelete('cascade');

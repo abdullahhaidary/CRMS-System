@@ -18,8 +18,8 @@ class AuthController extends Controller
 
 
     public function login_page(){
-//        dd(hash::make(123456));
-        if(Auth::user() && Auth::user()->action==1){
+//        dd(Auth::user());
+        if(Auth::user() and Auth::user()->action===1){
             return redirect('/');
         }
         return view('profile.login');
@@ -38,7 +38,8 @@ class AuthController extends Controller
 
 
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         // $users = User::all();
 
         // foreach ($users as $user) {
@@ -51,19 +52,18 @@ class AuthController extends Controller
             'password' => 'required|min:2',
         ]);
         // test message added for another commit
+        if (Auth::attempt($credentials)) {
+            if (Auth::user()->picture == null and Auth::user()->action==1) {
+                return view('profile.profile-suggestion');
+            } else {
+                return redirect()->to('/');
+            }
 
-    if (Auth::attempt($credentials)) {
-        if (Auth::user()->picture == null && Auth::user()->action==1) {
-            return view('profile.profile-suggestion');
-        }else{
-            return redirect()->to('/');
+        } else {
+            return back()->withErrors(['email' => 'Invalid credentials']);
+
         }
-
-    }else {
-        return back()->withErrors(['email' => 'Invalid credentials']);
     }
-    }
-
     public function register(Request $request){
 //        dd($request->all());
         $validate = $request->validate([

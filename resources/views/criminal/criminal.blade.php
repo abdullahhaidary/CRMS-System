@@ -7,18 +7,20 @@
     <section class="section p-2">
         <div class="card">
             <div class="card-header">
+                <!-- جدول تمام مجرمین در سیستم -->
                 <h3 class="card-title text-center">{{__('Table_all_criminals_in_system')}}</h3>
                 @include('massage')
             </div>
             <div class="card-content">
                 <table class="table  mb-0">
                     <thead>
-                    <tr>
+                    <tr class="active">
                         <th>{{__('Picture')}}</th>
                         <th>{{__('Name')}}</th>
                         <th>{{__('Father_name')}}</th>
                         <th>{{__('Current_address')}}</th>
                         <th>{{__('Phone_number')}}</th>
+                        <th>{{__('Create_by')}}</th>
 
                     </tr>
                     </thead>
@@ -37,6 +39,7 @@
                                 <td class="text-bold-500">{{ $item->father_name }}</td>
                                 <td>{{ $item->current_address }}</td>
                                 <td>{{ $item->phone}}</td>
+                                <td>{{ $item->Created_by}}</td>
                                 <td class="m-0 p-0">
 
                                     <a href="{{ url('/criminal/all/' . $item->id) }}" class="btn btn-primary btn-sm">{{__('Full_info')}}</a>
@@ -50,7 +53,6 @@
             </div>
         </div>
     </section>
-
     <!--  Inverse table end -->
     <div class="mt-3">
         <nav aria-label="Page navigation example">

@@ -13,7 +13,7 @@
                     <th>{{__('Picture')}}</th>
                     <th>{{__('Name')}}</th>
                     <th>{{__('Email')}}</th>
-                    <th>{{__('Positio')}}</th>
+                    <th>{{__('Position')}}</th>
                     <th>{{__('Action')}}</th>
                     <th>{{__('Date_of_Registration')}}</th>
                     <th>ACTION</th>
@@ -26,15 +26,19 @@
                         <td><img src="{{Storage::url('profiles/'.$item->picture)}}" width="40px" height="40px" style="border-radius: 50%" alt=""></td>
                         <td class="text-bold-500">{{$item->name}}</td>
                         <td class="text-bold-500">{{$item->email}}</td>
-{{--                        <td></td>--}}
-                        <td>{{$item->type}}
+                        @if($item->type==1)
+                            <td>Super Admin</td>
+                        @elseif($item->type==2)
+                            <td>Admin</td>
+                        @elseif($item->type==3)
+                            <td>Moder</td>
+                        @endif}
                         <td>{{$item->action==1 ? 'active' : 'Un Active'}}</td>
                         <td>{{$item->created_at}}</td>
                         @can('super_admin')
                         <td><a href="{{url('/admin/edit/'. $item->id)}}"><i class="bi bi-pencil"></i>
                             </a>
                             @endcan
-{{--                            <a href="criminal-view.html" class="btn btn-info">view</a>--}}
                         </td>
                     </tr>
 
@@ -48,5 +52,4 @@
             </div>
         </div>
     </section>
-    <!--  Inverse table end -->
 @endsection

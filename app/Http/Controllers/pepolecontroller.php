@@ -6,6 +6,7 @@ use App\Models\casemodel;
 use App\Models\people;
 use App\Models\crime_register_record_information;
 use App\Models\suspectmodel;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -33,6 +34,7 @@ class pepolecontroller extends Controller
     }
     public function store(Request $request)
     {
+//        dd($request->all());
         $save= new people();
 
         if (!empty($request->ariza_file)) {
@@ -59,6 +61,7 @@ class pepolecontroller extends Controller
         $save->	subject_crim=$request->creime_subject;
         $save->	crim_date=$request->crime_date;
         $save->user_id=Auth::user()->id;
+        $save->Created_by=Auth::user()->name;
 
 
 //dd($savedPeople->id);
@@ -161,7 +164,7 @@ class pepolecontroller extends Controller
         $resource->delete();
 
         // Redirect or return a response
-        return redirect()->route('people')->with('success', 'Resource deleted successfully.');
+        return redirect()->back()->with('success', 'ریکارد به موافقیت حذف شود.');
     }
     public function moreShow($id)
     {
@@ -173,6 +176,34 @@ class pepolecontroller extends Controller
             ->get();
         $cases=casemodel::where('crime_record_id', '=', $id)->get();
 
+//        $data = compact('peoples', 'suspects', 'cases', 'info');
+//
+//$pdf = PDF::loadView('people.all_about_people', $data);
+//
+//return $pdf->download('complaint-details.pdf');
+//
         return view('people.all_about_people', compact('peoples', 'info', 'suspects', 'cases'));
     }
+        public function generatePDF(Request $request, $id)
+        {
+            $peoples=people::where('id','=',$id)->get();
+            $info=crime_register_record_information::where('people_id', '=',$id)->get();
+            $suspects=suspectmodel::where('crime_record_id', '=', $id)
+                ->where('isCriminal', '=', 1)
+                ->get();
+            $cases=casemodel::where('crime_record_id', '=', $id)->get();
+            $data = [
+                'title'=>'People case',
+                'peoples' => $peoples,
+                'suspects' => $suspects,
+                'cases' => $cases,
+                'info' => $info
+            ];
+
+            $pdf = PDF::loadView('people.all_about_people', $data);
+            return $pdf->download('report.pdf');
+
+        }
+
+
 }
