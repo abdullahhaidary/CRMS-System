@@ -194,28 +194,32 @@ if (!function_exists('trim_to_words')) {
             </div>
             <table class="table">
                 <thead>
-                    <td>شماره</td>
-                    <td>ولایت</td>
-                    <td>تعداد شکایات امروز</td>
-                    <td>تعداد شکایات ماه گذشته</td>
-                    <td>تعداد قضیه های ثبت شده امروز</td>
-                    <td>تعداد قضیه های ثبت شده ماه گذشته</td>
-                    <td></td>
+                   <tr class="">
+                       <th>شماره</th>
+                       <th>ولایت</th>
+                       <th>تعداد شکایات امروز</th>
+                       <th>تعداد شکایات ماه گذشته</th>
+                       <th>تعداد قضیه های ثبت شده امروز</th>
+                       <th>تعداد قضیه های ثبت شده ماه گذشته</th>
+                       <th></th>
+                   </tr>
                 </thead>
-                @foreach($total_provinces as $province)
+{{--                @foreach($total_provinces as $province)--}}
                 <tr>
-                    <td>{{$province->id}}</td>
-                    <td>{{$province->name}}</td>
-                    {{-- <td>{{$province->}}</td> --}}
-                    {{-- <td>{{$province->}}</td> --}}
-                    {{-- <td>{{$province->}}</td> --}}
-                    {{-- <td>{{$province->}}</td> --}}
+{{--                    <td>{{$province->id}}</td>--}}
+{{--                    <td>{{$province->name}}</td>--}}
+                    <td>شماره</td>
+                    <td>کابل</td>
+                     <td>{{$complaintsToday}}</td>
+                     <td>{{$complaintsLastMonth}}</td>
+                     <td>{{$casesToday}}</td>
+                     <td>{{$casesLastMonth}}</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
-                @endforeach
+{{--                @endforeach--}}
             </table>
         </section>
     </div>
