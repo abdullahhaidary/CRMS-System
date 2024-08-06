@@ -119,6 +119,7 @@
   "database_statistics": "احصایه دیتابیس",
   "department": "دیپارمنت",
   "district": "والسوالی",
+  "is_suspect_available": "ایا مظنون موجود است؟",
   "list_of_complint_people": "لیست تمام افراد شکایت کننده ها",
   "logout": "خروج",
   "logout_description": "آیا شما مطین هستن که از سیستم خارج شوین",
@@ -133,6 +134,7 @@
   "public_search": "جسنجو عمومی",
   "save_compelint": "ثبت شکایت",
   "save_complent": "ثبت شکایت",
+  "suspect_search": "جستجوی مظنون",
   "user_setting": "د تنظیمات کاربر",
   "users": "کاربر"
 }

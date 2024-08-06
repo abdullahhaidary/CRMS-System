@@ -229,3 +229,8 @@ Route::get('/find_person_from_fingerprint', function (Request $request) {
 Route::fallback(function(){
     return view('errors.403');
 });
+
+
+Route::get('/criminal-livewire',function(){
+    return view('criminal_livewire');
+});
