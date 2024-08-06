@@ -19,6 +19,7 @@ class provincecontroller extends Controller
     {
         $data=DB::table('users')
             ->join('province_account','province_account.user_id', '=', 'users.id')
+//            ->join('districts','districts.province_id', '=', 'province_account.district')
             ->select('users.*', 'province_account.province')
             ->paginate('5');
         return view('province_account.index', compact('data'))->with('success', "کاربر به موافقیت راجستر شو !");

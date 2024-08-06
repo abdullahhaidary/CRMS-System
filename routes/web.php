@@ -3,6 +3,7 @@
 use App\Http\Controllers\suspectController;
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\SetLocale;
+use App\Models\provinceaccount;
 use App\Models\suspectmodel;
 //use Illuminate\Support\Carbon;
 use Carbon\Carbon;
@@ -37,7 +38,14 @@ Route::middleware(['auth'])->get('/',function(){
     $three_criminals = Criminal::with('case')->orderBy('created_at', 'desc')->take(3)->get();
     $total_provinces = Province::all();
 
-    $complaintsToday = people::whereDate('created_at', $today)->count();
+//    $user_id=provinceaccount::where();
+//    $complaintsToday = people::whereDate('created_at', $today)->count();
+    $complaintsToday=DB::table('people')
+//        ->join('province_account', 'province_account.user_id','=','people.user_id')
+   ->where('people.user_id','=',)
+        ->whereDate('created_at', $today)->count();
+//    dd($complaintsToday);
+
     $complaintsLastMonth = people::whereMonth('created_at', $lastMonthNumber)
         ->whereYear('created_at', $lastMonthYear)
         ->count();
