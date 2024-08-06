@@ -100,14 +100,14 @@ Route::fallback(function(){
 
 
 // admin Route
-<<<<<<< HEAD
+
 //Route::group(['middleware'=>'can:super_admin','auth'],function (){
 
 //    Route::middleware([isAdmin::class])->get('crimnal-list',[\App\Http\Controllers\adminconroller::class, 'index'])->name('crimnal');
 //});
-=======
+
 // Route::group(['middleware'=>'can:super_admin', 'can:admin','auth'],function (){
->>>>>>> dd927d6 (waris)
+
 
 //Route::prefix('admin')->group(function () {
 
@@ -162,11 +162,11 @@ Route::get('/province/people/delete/{id}', [\App\Http\Controllers\provinceCompli
     Route::get('/un_suspect/list/{id}', [suspectController::class, 'Remove_from_suspect'])->name('Un_suspect_list');
 
 // end of middleware
-<<<<<<< HEAD
+
 //});
-=======
+
 // });
->>>>>>> dd927d6 (waris)
+
 
 //url province crime record information
 Route::get('province/crime/info/{id}', [\App\Http\Controllers\province_crime_info_controller::class, 'index'])->name('province_crime_info');
