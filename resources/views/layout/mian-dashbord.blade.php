@@ -19,10 +19,10 @@
 <div id="app">
     <div id="sidebar">
         <div class="sidebar-wrapper active">
-                <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="d-flex justify-content-between align-items-center mt-2 mb-0">
                     <div class="theme-toggle d-flex  gap-4 align-items-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-                             role="img" class="iconify iconify--system-uicons" width="20" height="20"
+                             role="img" class="iconify iconify--system-uicons" width="20" height="15"
                              preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
                             <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
                                stroke-linejoin="round">
@@ -60,19 +60,16 @@
                             </path>
                         </svg>
                     </div>
-                    <div class="sidebar-toggler  x">
-                        <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                    </div>
                 </div>
             <div class="sidebar-menu">
                 <ul class="menu">
-                    <li class="sidebar-title font-extrabold" style="user-select: none;" >
+                    <li class="sidebar-title mt-0 mb-1" style="user-select: none; margin-top: -10px" >
                         <div class="logo">
                             <h5><a href="{{route('home')}}">{{ucfirst(strtolower(Auth::user()->name))}}</a></h5>
                         </div>
                     </li>
 
-                    <li class="sidebar-title font-extrabold" style="user-select: none;" >{{__('management_system')}} </li>
+                    <li class="sidebar-title mt-2 mb-3" style="user-select: none;" >{{__('management_system')}} </li>
                     <li
                         class="sidebar-item {{ request()->is('/') ? 'active' : '' }}">
                         <a href="{{url('/')}}" class='sidebar-link'>
@@ -201,7 +198,7 @@
                         </a>
                     </li>
                     <li
-                        class="sidebar-item">
+                        class="sidebar-item mb-0">
                         <a href="" class="sidebar-link "  data-bs-toggle="modal" data-bs-target="#logoutModal">
                           <button class="btn"  style="background-color: #6c3b3b; color: #ffffff">{{__('logout')}}</button>
                         </a>

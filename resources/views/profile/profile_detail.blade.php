@@ -51,7 +51,13 @@ Profile Details
                     </div>
                     <div class="personal_information_single">
                         <div>{{__('Type')}}:</div>
-                        <div>{{ Auth::user()->type }}</div>
+                        @if(Auth::user()->type==1)
+                        <div>Super Admin</div>
+                        @elseif(Auth::user()->type==2)
+                            <div> Admin</div>
+                        @elseif(Auth::user()->type==3)
+                            <div> Moder</div>
+                        @endif
                     </div>
                     <div class="personal_information_single">
                         <div>{{__('Action')}}:</div>
