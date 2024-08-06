@@ -24,14 +24,14 @@ Profile Details
 
                     <div class="link">
                         <ul class="">
-                            <li class="ul-item"><a class="" href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> تغیر فاسورد</a></li>
+                            <li class="ul-item"><a class="" href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> {{__('password_change')}} </a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="information">
 
-                <h3 class="header ">Personal Information</h3>
+                <h3 class="header ">{{__('Personal Information')}}</h3>
                 @if(session()->has('success'))
                     <div class="alert alert-success" style="background-color: #22ec8f; height: 30px; align-content: center;">
                         {{session('success')}}
@@ -41,27 +41,27 @@ Profile Details
                 <div class="container-fluid">
                     <i class="fa fa-edit ml-auto" onclick="editForm()"></i>
                     <div class="personal_information_single">
-                        <div>Uesr ID:</div>
+                        <div>{{__('User ID')}}:</div>
                         <div>{{Auth::user()->id}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>Name:</div>
+                        <div>{{__('Name')}}:</div>
                         <div>{{Auth::user()->name}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>Email:</div>
+                        <div>{{__('Email')}}:</div>
                         <div>{{Auth::user()->email}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>Type:</div>
+                        <div>{{__('Type')}}:</div>
                         <div>{{ Auth::user()->type }}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>ACTION:</div>
+                        <div>{{__('Action')}}:</div>
                         <div>{{Auth::user()->action==1 ? 'Active' : 'InActive'}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>Date Created:</div>
+                        <div>{{__('Date Created')}}:</div>
                         <div>{{ Auth::user()->created_at ? \Carbon\carbon::parse(Auth::user()->created_at)->format('Y-m-d') : 'An Error Occured' }}</div>
                     </div>
                 </div>
