@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('current_address')->nullable();
             $table->string('actual_address')->nullable();
             $table->date('arrest_date');
-            $table->date('date_of_birth');
+            $table->date('date_of_birth')->null();
             $table->string('gender');
             $table->string('job');
             $table->string('marital_status');

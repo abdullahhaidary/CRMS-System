@@ -120,10 +120,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">{{ __('Save') }}</button>
-                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">{{ __('Reset') }}</button>
-                                        </div>
+
 
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
@@ -143,6 +140,7 @@
                                                 <input type="number" id="password-column" class="form-control" wire:model="familymember" placeholder="{{ __('Enter_family_members') }}" />
                                             </div>
                                         </div>
+
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Description') }}</label>
@@ -150,13 +148,24 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
+                                            <div class="form-group mandatory">
+                                                <label for="password-column" class="form-label">{{ __('arrest_date_label') }}</label>
+                                                <input type="date"class="form-control" wire:model="arrest_date" placeholder="{{ __('arrest_date_placeholder') }}" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="photo">{{ __('Photo') }}</label>
                                                 <input type="file" id="photo" class="form-control" wire:model="photo" />
+
                                                 @if ($photo)
                                                     <img src="{{ $photo->temporaryUrl() }}" width="100" height="100" />
                                                 @endif
                                             </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">{{ __('Save') }}</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">{{ __('Reset') }}</button>
                                         </div>
                                 </div>
                             </form>
