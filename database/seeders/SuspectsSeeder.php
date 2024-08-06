@@ -26,8 +26,9 @@ class SuspectsSeeder extends Seeder
                 'father_name' => 'حسین',
                 'Created_by'=>1,
                 'isCriminal' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'Created_by'=>'admin',
+
+
             ],
             [
                 'crime_record_id' => 2,
@@ -40,8 +41,8 @@ class SuspectsSeeder extends Seeder
                 'actual_address' => 'مشهد، خیابان امام رضا',
                 'father_name' => 'محمد',
                 'isCriminal' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'Created_by'=>'admin',
+
             ],
             [
                 'crime_record_id' => 3,
@@ -54,8 +55,7 @@ class SuspectsSeeder extends Seeder
                 'actual_address' => 'شیراز، خیابان زند',
                 'father_name' => 'سید',
                 'isCriminal' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'Created_by'=>'admin',
             ],
             [
                 'crime_record_id' => 4,
@@ -68,8 +68,8 @@ class SuspectsSeeder extends Seeder
                 'actual_address' => 'اصفهان، خیابان حافظ',
                 'father_name' => 'حسن',
                 'isCriminal' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'Created_by'=>'admin',
+
             ],
             [
                 'crime_record_id' => 5,
@@ -82,8 +82,8 @@ class SuspectsSeeder extends Seeder
                 'actual_address' => 'کرج، خیابان آزادی',
                 'father_name' => 'سلیمان',
                 'isCriminal' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'Created_by'=>'admin',
+
             ],
             [
                 'crime_record_id' => 6,
@@ -96,8 +96,9 @@ class SuspectsSeeder extends Seeder
                 'actual_address' => 'تبریز، خیابان استاد شهریار',
                 'father_name' => 'علی',
                 'isCriminal' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'Created_by'=>'admin',
+
+
             ],
             [
                 'crime_record_id' => 7,
@@ -110,8 +111,7 @@ class SuspectsSeeder extends Seeder
                 'actual_address' => 'تهران، خیابان فرشته',
                 'father_name' => 'محمد',
                 'isCriminal' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'Created_by'=>'admin',
             ],
             [
                 'crime_record_id' => 8,
@@ -124,8 +124,8 @@ class SuspectsSeeder extends Seeder
                 'actual_address' => 'کرج، خیابان شهیدان',
                 'father_name' => 'رضا',
                 'isCriminal' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'Created_by'=>'admin',
+
             ],
             [
                 'crime_record_id' => 9,
@@ -138,8 +138,9 @@ class SuspectsSeeder extends Seeder
                 'actual_address' => 'اصفهان، خیابان آزادی',
                 'father_name' => 'سعید',
                 'isCriminal' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'Created_by'=>'admin',
+
+
             ],
             [
                 'crime_record_id' => 10,
@@ -152,8 +153,9 @@ class SuspectsSeeder extends Seeder
                 'actual_address' => 'تبریز، خیابان آزادی',
                 'father_name' => 'حسین',
                 'isCriminal' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'Created_by'=>'admin',
+
+
             ],
             // [
             //     'crime_record_id' => 11,

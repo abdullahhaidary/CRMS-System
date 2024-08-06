@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('actual_address')->nullable();
             $table->string('current_address')->nullable();
             $table->string('father_name')->nullable();
-            $table->integer('isCriminal');
-            $table->integer('Created_by');
+            $table->integer('isCriminal')->default(0);
+            $table->string('Created_by')->nullable();
             $table->timestamps();
 
             $table->foreign('crime_record_id')->references('id')->on('crime_register_record_information')->onDelete('cascade');
