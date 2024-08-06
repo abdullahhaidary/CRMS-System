@@ -2,14 +2,6 @@
 @section('content')
     <div class="page-heading">
         <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
-{{--        <a href="{{route('people_all')}}" class="btn btn-outline-primary btn-light"> ثبت شواهد  </a>--}}
-{{--        <select class="btn btn-outline-primary btn-light ml-5">--}}
-{{--            <option>انتقال قضیه به ارګان مربوط</option>--}}
-{{--            @foreach($data as $items)--}}
-{{--            <a href=""> <option value="{{$items->id}}">{{$items->name. " ". $items->last_name}}</option></a>--}}
-{{--            @endforeach--}}
-{{--        </select>--}}
-
     </div>
 
     <div class="page-heading text-center">

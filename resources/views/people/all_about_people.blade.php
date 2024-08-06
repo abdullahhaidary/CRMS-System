@@ -116,7 +116,8 @@
 <body>
 <div class="container">
     <div class="text-center mb-4">
-        <h1>Complaint Details</h1>
+        <!--  صفحه PDF یک شکایت -->
+        <h1>{{__('Complaint_details')}}</h1>
     </div>
     @foreach($peoples as $item)
         <div class="mb-4">

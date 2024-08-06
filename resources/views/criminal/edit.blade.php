@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading text-center">
-        <h3>فورم ایجاد مجریم جدید</h3>
+        <h3>{{__('Criminal_changes_form')}}</h3>
     </div>
     <!-- criminalcontroller from start -->
     <section id="multiple-column-form">
@@ -23,7 +23,6 @@
                                                 type="text"
                                                 id="first-name-column"
                                                 class="form-control"
-                                                placeholder="نوم"
                                                 name="name"
                                                 value="{{$value->criminal_name}}"
                                                 data-parsley-required="true"
@@ -33,13 +32,12 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last-name-column" class="form-label"
-                                            >{{__('Last_Name')}} </label
+                                            >{{__('Last_name')}} </label
                                             >
                                             <input
                                                 type="text"
                                                 id="last-name-column"
                                                 class="form-control"
-                                                placeholder="تخلص"
                                                 name="lname"
                                                 value="{{$value->last_name}}"
                                                 data-parsley-required="true"
@@ -53,7 +51,6 @@
                                                 type="text"
                                                 id="city-column"
                                                 class="form-control"
-                                                placeholder="پلار نوم"
                                                 name="father_name"
                                                 value="{{$value->father_name}}"
                                                 data-parsley-restricted-city="Jakarta"
@@ -72,7 +69,6 @@
                                                 class="form-control"
                                                 name="phone"
                                                 value="{{$value->phone}}"
-                                                placeholder="شماره تماس"
                                                 data-parsley-required="true"
                                             />
                                         </div>
@@ -88,7 +84,6 @@
                                                 class="form-control"
                                                 name="email"
                                                 value="{{$value->email}}"
-                                                placeholder="ایمیل ادرس"
                                                 data-parsley-required="true"
                                             />
                                         </div>

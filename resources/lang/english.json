@@ -16,7 +16,9 @@
   "Choose File": "Choose File",
   "Coming_back": "Coming Back",
   "Complainants_name": "Complainant's Name",
+  "Complaint_changes_form": "Complaint Changes Form",
   "Complaint_date": "Complaint Date",
+  "Complaint_details": "Complaint Details",
   "Complaint_name": "Complaint name",
   "Complaint_subject": "Complaint Subject",
   "Complete": "Complete",
@@ -30,7 +32,11 @@
   "Crime_subject": "Crime Subject",
   "Crime_type": "Crime Type",
   "Criminal": "Criminal",
+<<<<<<< HEAD
   "Criminal_part": "Criminal Part",
+=======
+  "Criminal_changes_form": "Criminal Changes form",
+>>>>>>> dd927d6 (waris)
   "Current_address": "Current address",
   "Dashboard": "Dashboard",
   "Date Created": "Date Created",
@@ -74,11 +80,11 @@
   "History_of_crime": "History Of Crime",
   "ID": "ID",
   "ID_number": "ID Number",
-  "Is_Criminal": " Criminal",
   "Job": "Job",
   "Language": "Lang",
   "Last_name": "Last name",
   "Letter": "Letter",
+  "List_pictutes_of_criminal": "List Pictures of a Criminal",
   "Main_address": "Main address",
   "Male": "Male",
   "Marital_status": "Marital Status",
@@ -98,6 +104,7 @@
   "Phone_number": "Phone number",
   "Photo": "Photo",
   "Picture": "Picture",
+  "Pictures_a_criminal": "Pictures of a criminal",
   "Position": "Position",
   "Reset": "Reset",
   "Return": "Return",
@@ -126,9 +133,12 @@
   "View_information_in_suspect_table": "View information in the suspect table",
   "View_list": "View list",
   "admin_part": "Admin part",
+<<<<<<< HEAD
   "arrest_date_label": "Arrest Date",
   "arrest_date_placeholder": "Enter Arrest Date",
   "by": "Add by",
+=======
+>>>>>>> dd927d6 (waris)
   "complint_part": "Complint Part",
   "complinte_list": "Complent List",
   "complit_profile": "Complete Your Profile",
