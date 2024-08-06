@@ -1,10 +1,11 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="container mt-5">
-        <h2 class="text-center mb-3">لیست تمام قضیه ها</h2>
-        <div class="table-responsive">
+        <!-- لست تمام قضیه ها -->
+        <h2 class="text-center mb-3">{{__('List_all_cases')}}</h2>
+        <div >
             <table class="table table-bordered table-striped">
-                <thead class="thead-dark">
+                <thead >
                 <tr class="" style="background-color: rgba(136,180,156,0.28)">
                     <th scope="col">#</th>
                     <th scope="col">{{__('Crime_type')}}</th>
