@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\criminal;
+use App\Models\suspectmodel;
 use Livewire\Component;
 use Livewire\WithPagination;
 class SearchRecords extends Component
@@ -46,8 +47,7 @@ class SearchRecords extends Component
         }
 
         if ($this->address) {
-            $query->where('actual_address', 'like', '%' . $this->address . '%')
-                  ->orWhere('current_address', 'like', '%' . $this->address . '%');
+            $query->where('actual_address', 'like', '%' . $this->address . '%')->orWhere('current_address', 'like', '%' . $this->address . '%');
         }
 
         if ($this->dob) {
@@ -56,12 +56,51 @@ class SearchRecords extends Component
 
         $criminals = $query->paginate(5);
 
-        return view('livewire.search-records', compact('criminals'));
+        // Check if there are no results in the criminal search
+        if ($criminals->isEmpty()) {
+            $suspectQuery = suspectmodel::query();
 
+            if ($this->name) {
+                $suspectQuery->where('name', 'like', '%' . $this->name . '%');
+            }
+
+            if ($this->father_name) {
+                $suspectQuery->where('father_name', 'like', '%' . $this->father_name . '%');
+            }
+
+            if ($this->last_name) {
+                $suspectQuery->where('last_name', 'like', '%' . $this->last_name . '%');
+            }
+
+            if ($this->id) {
+                $suspectQuery->where('id', $this->id);
+            }
+
+            if ($this->phone) {
+                $suspectQuery->where('phone', 'like', '%' . $this->phone . '%');
+            }
+
+            if ($this->email) {
+                $suspectQuery->where('email', 'like', '%' . $this->email . '%');
+            }
+
+            if ($this->address) {
+                $suspectQuery->where('address', 'like', '%' . $this->address . '%');
+            }
+
+            if ($this->dob) {
+                $suspectQuery->whereDate('dob', $this->dob);
+            }
+
+            $suspects = $suspectQuery->paginate(5);
+        }
+
+        return view('livewire.search-records', [
+        'criminals' => $criminals,
+        'suspects' => $suspects ?? [],]);
     }
     public function updated($propertyName)
     {
         $this->render();
     }
-
 }
