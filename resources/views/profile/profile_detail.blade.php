@@ -9,7 +9,7 @@ Profile Details
             <div class="menu" style="height: 500px">
                 <div class="profile_img" style="width: 250px">
                     <div class="upper_profile">
-                        <img src="{{ Storage::url('profiles/'. Auth::user()->picture) }}" alt="">
+                        <img src="{{asset('storage/profiles/'.Auth::user()->picture)}}" alt="">
                         <div class="plus" onclick="openProfileImageDialog()">+</div>
                     </div>
                     <div class="d-flex justify-content-center" style="font-size:25pt;">
@@ -24,6 +24,7 @@ Profile Details
                 </div>
             </div>
             <div class="information">
+
                 <h3 class="header ">Personal Information</h3>
                 @if(session()->has('success'))
                     <div class="alert alert-success" style="background-color: #22ec8f; height: 30px; align-content: center;">

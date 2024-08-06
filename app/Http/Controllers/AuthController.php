@@ -248,7 +248,7 @@ class AuthController extends Controller
         $data=DB::table('users')
             ->select('users.*')
             ->where('id', '=', auth::user()->id)
-            ->get();
+            ->first();
         return view('profile.profile_detail', compact('data'));
 
     }
