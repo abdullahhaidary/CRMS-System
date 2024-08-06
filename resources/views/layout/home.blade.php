@@ -31,7 +31,7 @@ if (!function_exists('trim_to_words')) {
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">مجموعه شکایات</h6>
+                                        <h6 class="text-muted font-semibold">{{__('Total_complint')}}</h6>
                                         <h6 class="font-extrabold mb-0">{{$total_crime_record}}</h6>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@ if (!function_exists('trim_to_words')) {
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">مجموعه مجرمین</h6>
+                                        <h6 class="text-muted font-semibold">{{__('Total_criminal')}}</h6>
                                         <h6 class="font-extrabold mb-0">{{$total_criminal_record}}</h6>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@ if (!function_exists('trim_to_words')) {
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">دوسیه زیر فروسیس</h6>
+                                        <h6 class="text-muted font-semibold">{{__('Total_case')}}</h6>
                                         <h6 class="font-extrabold mb-0">{{$total_cases_record}}</h6>
                                     </div>
                                 </div>

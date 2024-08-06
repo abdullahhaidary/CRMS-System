@@ -13,7 +13,7 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <label for="isSuspectAvailable">{{ __('is_suspect_available') }}</label>
-                                        <select class="form-control" id="isSuspectAvailable" wire:model.live="isSuspectAvailable">
+                                        <select class="form-control" id="isSuspectAvailable" wire:model.live="isSuspectAvailable" required>
                                             <option value="0">نه</option>
                                             <option value="1">هو</option>
                                         </select>
@@ -22,7 +22,8 @@
                                         <div class="form-group" style="position: relative;">
                                             <label for="search">{{ __('suspect_search') }}</label>
                                             <input type="text" class="form-control" id="search"
-                                                placeholder="Search for suspect..." wire:model.live="search">
+                                                placeholder="Search for suspect..." wire:model.live="search"
+                                            required>
                                         </div>
 
                                         @if (!empty($suspects))
@@ -36,7 +37,7 @@
                                         @endif
 
                                         <div class="form-group">
-                                            <input hidden type="text" class="form-control" id="selected-suspect" wire:model="selectedSuspect" readonly>
+                                            <input hidden type="text" class="form-control" id="selected-suspect" wire:model="selectedSuspect" readonly required>
                                         </div>
 
                                         <style>
@@ -62,49 +63,49 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="first-name-column" class="form-label">{{ __('Name') }}</label>
-                                                <input type="text" id="first-name-column" class="form-control" placeholder="{{ __('Enter_your_name') }}" wire:model="name" />
+                                                <input type="text" id="first-name-column" class="form-control" placeholder="{{ __('Enter_your_name') }}" wire:model="name" required />
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="last-name-column" class="form-label">{{ __('Last_name') }}</label>
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="{{ __('Enter_last_name') }}" wire:model="lname" />
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="{{ __('Enter_last_name') }}" wire:model="lname" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="city-column" class="form-label">{{ __('Father_name') }}</label>
-                                                <input type="text" id="city-column" class="form-control" placeholder="{{ __('Enter_father_name') }}" wire:model="father_name" />
+                                                <input type="text" id="city-column" class="form-control" placeholder="{{ __('Enter_father_name') }}" wire:model="father_name" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="country-floating" class="form-label">{{ __('Phone_number') }}</label>
-                                                <input type="number" id="country-floating" class="form-control" wire:model="phone" placeholder="{{ __('Enter_phone_number') }}" />
+                                                <input type="number" id="country-floating" class="form-control" wire:model="phone" placeholder="{{ __('Enter_phone_number') }}" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="company-column" class="form-label">{{ __('Email') }}</label>
-                                                <input type="email" id="company-column" class="form-control" wire:model="email" placeholder="{{ __('Enter_email_address') }}" />
+                                                <input type="email" id="company-column" class="form-control" wire:model="email" placeholder="{{ __('Enter_email_address') }}" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="email-id-column" class="form-label">{{ __('Current_address') }}</label>
-                                                <input type="text" id="email-id-column" class="form-control" wire:model="current_address" placeholder="{{ __('Enter_current_address') }}" />
+                                                <input type="text" id="email-id-column" class="form-control" wire:model="current_address" placeholder="{{ __('Enter_current_address') }}" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="email-id-column" class="form-label">{{ __('Actual_address') }}</label>
-                                                <input type="text" id="email-id-column" class="form-control" wire:model="actual_address" placeholder="{{ __('Enter_actual_address') }}" />
+                                                <input type="text" id="email-id-column" class="form-control" wire:model="actual_address" placeholder="{{ __('Enter_actual_address') }}" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Date_of_birth') }}</label>
-                                                <input type="date" id="password-column" class="form-control" wire:model="dateofbirth" placeholder="{{ __('Enter_date_of_birth') }}" />
+                                                <input type="date" id="password-column" class="form-control" wire:model="dateofbirth" placeholder="{{ __('Enter_date_of_birth') }}" required/>
                                             </div>
                                         </div>
 
@@ -112,7 +113,7 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Gender') }}</label>
-                                                <select class="form-control" id="gender" wire:model="gender">
+                                                <select class="form-control" id="gender" wire:model="gender" required>
                                                     <option value="1">{{ __('Male') }}</option>
                                                     <option value="0">{{ __('Female') }}</option>
                                                 </select>

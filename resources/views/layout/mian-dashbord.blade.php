@@ -68,7 +68,7 @@
                 <ul class="menu">
                     <li class="sidebar-title font-extrabold" style="user-select: none;" >
                         <div class="logo">
-                            <h4><a href="{{route('home')}}">{{ucfirst(strtolower(Auth::user()->name))}}</a></h4>
+                            <h5><a href="{{route('home')}}">{{ucfirst(strtolower(Auth::user()->name))}}</a></h5>
                         </div>
                     </li>
 
@@ -92,13 +92,13 @@
                                 <a href="{{route('crimnal')}}" class="submenu-link ">{{__('crime_part')}}</a>
                             </li>
                             <li class="submenu-item  {{ Route::currentRouteName() == 'all_list' ? 'active' : '' }}">
-                                <a href="{{route('all_list')}}" class="submenu-link"> لیست مظنون عمومی</a>
+                                <a href="{{route('all_list')}}" class="submenu-link"> {{__('All_suspect_list')}}</a>
                             </li>
                             <li class="submenu-item  {{ Route::currentRouteName() == 'list_people' ? 'active' : '' }} ">
-                                <a href="{{route('list_people')}}" class="submenu-link"> لیست شکایت کنندها </a>
+                                <a href="{{route('list_people')}}" class="submenu-link"> {{__('All_complaint_list')}} </a>
                             </li>
                             <li class="submenu-item  {{ Route::currentRouteName() == 'list_cases' ? 'active' : '' }}">
-                                <a href="{{route('list_cases')}}" class="submenu-link">قضیه ها</a>
+                                <a href="{{route('list_cases')}}" class="submenu-link">{{__('Cases')}}</a>
                             </li>
                         </ul>
                     </li>
