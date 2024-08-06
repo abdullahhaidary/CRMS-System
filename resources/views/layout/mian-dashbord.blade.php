@@ -249,10 +249,8 @@
 <script src="{{@asset('dist2/js/app.js')}}"></script>
 <script src="{{@asset('dist2/js/apexcharts.min.js')}}"></script>
 <script src="{{@asset('dist2/js/dashboard.js')}}"></script>
-<script>
-{{--    @yield('scripts')--}}
+   @yield('scripts')
     @stack('scripts')
-</script>
 </body>
 </html>
 
