@@ -97,10 +97,6 @@
                 <span class="details-label">{{__('Case_number')}}: </span>
                 <span class="details-value">{{$item->case_number}}</span>
             </div>
-            <div class="details-item"><a href="{{url('suspect_list/'.$item->suspect_id)}}">
-                <span class="details-label">{{__('View_information_in_suspect_table')}}: </span>
-                <span class="details-value">{{$item->name}}</span></a>
-            </div>
         </div>
         <div class="col-lg-8 col-md-6">
             <h4 class="section-title">{{__('Personal_information')}}</h4>
@@ -138,12 +134,9 @@
                 <span class="details-label">{{__('History_of_crime')}}:</span>
                 <span class="details-value">{{$item->arrest_date}}</span>
             </div>
+
             <div class="details-item">
-                <span class="details-label">Created At:</span>
-                <span class="details-value">{{$item->created_at}}</span>
-            </div>
-            <div class="details-item">
-                <span class="details-label">Updated At:</span>
+                <span class="details-label">{{__('Updated_At')}}:</span>
                 <span class="details-value">{{$item->updated_at}}</span>
             </div>
             <div class="details-item">

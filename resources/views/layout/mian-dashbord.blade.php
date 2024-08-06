@@ -91,13 +91,13 @@
                             <li class="submenu-item  {{ Route::currentRouteName() == 'crimnal' ? 'active' : '' }}">
                                 <a href="{{route('crimnal')}}" class="submenu-link ">{{__('crime_part')}}</a>
                             </li>
-                            <li class="submenu-item  ">
+                            <li class="submenu-item  {{ Route::currentRouteName() == 'all_list' ? 'active' : '' }}">
                                 <a href="{{route('all_list')}}" class="submenu-link"> لیست مظنون عمومی</a>
                             </li>
-                            <li class="submenu-item  ">
+                            <li class="submenu-item  {{ Route::currentRouteName() == 'list_people' ? 'active' : '' }} ">
                                 <a href="{{route('list_people')}}" class="submenu-link"> لیست شکایت کنندها </a>
                             </li>
-                            <li class="submenu-item ">
+                            <li class="submenu-item  {{ Route::currentRouteName() == 'list_cases' ? 'active' : '' }}">
                                 <a href="{{route('list_cases')}}" class="submenu-link">قضیه ها</a>
                             </li>
                         </ul>
@@ -121,7 +121,7 @@
                                         class="sidebar-item  {{ Route::currentRouteName() == 'province_account' ? 'active' : '' }} ">
                                         <a href="{{route('province_account')}}" class='sidebar-link'>
                                             <i class="bi bi-people-fill"></i>
-                                            <span>Account province</span>
+                                            <span>{{__('province_account')}}</span>
                                         </a>
                                     </li>
                             </ul>

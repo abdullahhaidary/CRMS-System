@@ -1,4 +1,5 @@
-
+@include('layout.mian-dashbord')
+@section('content')
     <style>
         body{
             font-family: Arial, sans-serif;
@@ -10,19 +11,19 @@
             margin: 0;
         }
 
-.register-container {
-                    background-color: #ffffff;
-                    padding: 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                    text-align: center;
-                    width: 400px; /* Set a fixed width for the container */
-            }
+        .register-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px; /* Set a fixed width for the container */
+        }
 
         img {
-                    width: 100px;
-                    margin-bottom: 15px;
-            }
+            width: 100px;
+            margin-bottom: 15px;
+        }
 
         form {
             display: flex;
@@ -68,14 +69,16 @@
             padding: 8px;
         }
     </style>
-@livewireStyles()
-<body dir="rtl">
-<div class="register-container">
-    <img src="{{asset('images/register.png')}}" alt="Logo">
-    <h2>Register</h2>
-    @livewire('register-form',['provinces' => $data])
-    <p> لیست تمام ادمین های در سیستم.  <a href="{{route('province_liat')}}">اینجا کلیک کنید </a></p>
-</div>
-@livewireScripts()
+    @livewireStyles()
+    <body dir="rtl">
+    <div class="register-container">
+        <img src="{{asset('images/register.png')}}" alt="Logo">
+        <h2>Register</h2>
+        @livewire('register-form',['provinces' => $data])
+        <p> لیست تمام ادمین های در سیستم.  <a href="{{route('province_liat')}}">اینجا کلیک کنید </a></p>
+    </div>
+    @livewireScripts()
 
 
+
+@endsection
