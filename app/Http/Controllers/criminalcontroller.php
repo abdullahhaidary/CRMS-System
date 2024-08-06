@@ -123,8 +123,8 @@ class criminalcontroller extends Controller
 //            ->where('cases.id', '=', $id)
             ->get();
         $criminal=DB::table('criminals')
-            ->join('suspect', 'suspect.id', '=', 'criminals.suspect_id')
-            ->join('cases','cases.id','=', 'criminals.case_id')
+            ->leftjoin('suspect', 'suspect.id', '=', 'criminals.suspect_id')
+            ->leftjoin('cases','cases.id','=', 'criminals.case_id')
             ->select('criminals.*', 'suspect.name', 'cases.case_number')
             ->where('criminals.id','=', $id)
         ->get();
