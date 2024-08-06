@@ -62,8 +62,8 @@
                         <td>
                             @can('super_admin')
                             <a href="{{url('people/edit/'.$item->id)}}"><i class="bi bi-pencil" style="color:#4b4cff;"></i></a>
-                            <a href="" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
-                                <a href="{{url('people/all/'. $item->id)}}" class="p-2"><i class="bi bi-chevron-down" style="color: red"></i></a>
+                            <a href="{{url('people/delete/'. $item->id)}}" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"  onclick="setDeleteAction({{ $item->id }})" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
+                                <a href="{{url('people/all/'. $item->id)}}" type="button" class="p-2"><i class="bi bi-chevron-down" style="color: red"></i></a>
 
                                 <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->
                             @endcan
@@ -71,6 +71,28 @@
                     </tr>
                     <div class="modal fade" id="mymodal">
                         <iframe id="pdfIframe" src="{{asset('ariza-of-compleint/'. $item->ariza)}}" style="width: 100%" frameborder="0"></iframe>
+                    </div>
+
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel">{{__('Confirm_delete')}}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {{__('Delete_description')}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
+                                    <form id="deleteForm" action="{{url('/people/delete/'.$item->id)}}" method="get" style="display:inline;">
+                                        @csrf
+                                        <input type="hidden" name="id" id="deleteId" value="">
+                                        <button type="submit" class="btn btn-danger">{{__('Delete')}}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 @endforeach
                 </tbody>
@@ -80,28 +102,6 @@
     </section>
     <body>
     </body>
-
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">{{__('Confirm_delete')}}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    {{__('Delete_description')}}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
-                    <form id="deleteForm" action="{{url('people/delete/'. $item->id)}}" method="get" style="display:inline;">
-                        @csrf
-                        <input type="hidden" name="id" id="deleteId" value="">
-                        <button type="submit" class="btn btn-danger">{{__('Delete')}}</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!--  Inverse table end -->
     <div class="mt-3">
@@ -113,4 +113,13 @@
             </div>
         </nav>
     </div>
+
+@endsection
+
+@push('scripts')
+
+    @endpush
+@section('scripts')
+
+
 @endsection

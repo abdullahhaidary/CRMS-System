@@ -87,6 +87,7 @@ public function update(Request $request, string $id)
 }
 public function destroy($id)
 {
+
     $resource = suspectmodel::findOrFail($id);
 
     // Delete the resource

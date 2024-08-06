@@ -102,7 +102,7 @@ Profile Details
                     <div class="dialog-content">
                         <span class="close-btn" onclick="closeProfileImageDialog()">&times;</span>
                         <h3>Update Profile Image</h3>
-                        <img src="{{ asset('storage/profiles/' . Auth::user()->picture) }}" alt="Profile Image" id="current-profile-image">
+                        <img src="{{asset('storage/profiles/' . Auth::user()->picture) }}" alt="Profile Image" id="current-profile-image">
                         <label for="profile-image-upload" class="upload-btn">Choose Image</label>
 
                         <button type="submit" class="save-btn">Save</button>

@@ -59,39 +59,39 @@
 {{--                                                    Delete Item--}}
 {{--                                                </button>--}}
                                                 <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">تصحیح</a>
-                                                <a class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal">حذف</a>
+                                                <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">حذف</a>
                                         </th>
                                         @endcan
                                     </tr>
+                                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel">{{__('Confirm_delete')}}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{__('Delete_description')}}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
+                                                    <form id="deleteForm" action="" method="get" style="display:inline;">
+                                                        @csrf
+                                                        {{--                                        @method('get')--}}
+                                                        <input type="hidden" name="id" id="deleteId" value="">
+                                                        <button type="submit" class="btn btn-danger">{{__('Delete')}}</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </section>
                     <!-- Delete Confirmation Modal -->
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModalLabel">{{__('Confirm_delete')}}</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    {{__('Delete_description')}}
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
-                                    <form id="deleteForm" action="{{url('/suspect/delete/'.$suspect->id)}}" method="get" style="display:inline;">
-                                        @csrf
-{{--                                        @method('get')--}}
-                                        <input type="hidden" name="id" id="deleteId" value="">
-                                        <button type="submit" class="btn btn-danger">{{__('Delete')}}</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="mt-4">
                         {{ $suspects->links() }}
                     </div>

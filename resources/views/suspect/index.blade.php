@@ -37,7 +37,7 @@
                     <th><a class="btn btn-sm btn-primary" href="{{url('finger_print_add/'.$suspect->id)}}">{{__('Fingerprint')}}</a>
                         @can('super_admin')
                         <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">{{__('Edit')}}</a>
-                        <a class="btn btn-danger btn-sm"  type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" href="">{{__('Delete')}}</a></th>
+                        <a class="btn btn-danger btn-sm"  href="{{url('/suspect/delete/'.$suspect->id)}}">{{__('Delete')}}</a></th>
                     @endcan
                 </tr>
 
@@ -53,7 +53,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
-                                <form id="deleteForm" action="{{url('/suspect/delete/'.$suspect->id)}}" method="get" style="display:inline;">
+                                <form id="deleteForm" action="" method="get" style="display:inline;">
                                     @csrf
                                     <input type="hidden" name="id" id="deleteId" value="">
                                     <button type="submit" class="btn btn-danger">{{__('Delete')}}</button>
