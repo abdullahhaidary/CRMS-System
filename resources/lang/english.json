@@ -117,6 +117,7 @@
   "database_statistics": "Database Statistics",
   "department": "Department",
   "district": "District",
+  "is_suspect_available": "Is suspect Available?",
   "list_of_complint_people": "List Of all the Complint people",
   "logout": "Logout",
   "management_system": "Management System",
@@ -130,6 +131,7 @@
   "public_search": "public Search",
   "save_compelint": "Complint part",
   "save_complent": "Save Complent",
+  "suspect_search": "Suspect Search",
   "user_setting": "User setting",
   "users": "Users"
 }
