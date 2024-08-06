@@ -28,7 +28,7 @@
                     <td>
                     @can('super_admin')
                             <a href="{{url('crime/info/edit/'.$item->id)}}" class="p-2 ml-1"><i class="bi bi-pencil"></i></a>
-                            <a href=""  type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
+                            <a href="{{url('crime/info/delete/'.$item->id)}}" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
                         @endcan
                     </td>
                 </tr>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
-                                <form id="deleteForm" action="{{url('crime/info/delete/'.$item->id)}}" method="get" style="display:inline;">
+                                <form id="deleteForm" action="" method="get" style="display:inline;">
                                     @csrf
                                     <input type="hidden" name="id" id="deleteId" value="">
                                     <button type="submit" class="btn btn-danger">{{__('Delete')}}</button>

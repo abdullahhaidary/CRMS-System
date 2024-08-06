@@ -63,7 +63,7 @@ class provinceComplintcontroller extends Controller
         $save->	subject_crim=$request->creime_subject;
         $save->	crim_date=$request->crime_date;
         $save->user_id=Auth::user()->id;
-
+        $save->Created_by=Auth::user()->name;
 
 //dd($savedPeople->id);
         $save->save();
@@ -87,6 +87,7 @@ class provinceComplintcontroller extends Controller
         $suspect->actual_address=$request->main_address;
         $suspect->current_address=$request->current_address;
         $suspect->tazcira_number=$request->tazkera_number;
+        $save->Created_by=Auth::user()->name;
         $suspect->save();
 //        }
         return redirect(route('province_list'))->with('success',"د شکایت کونکی معلومات ذخیره شول اوس معلومات اضافی داخل کړی");

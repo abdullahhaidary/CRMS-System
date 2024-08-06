@@ -191,7 +191,7 @@ class AuthController extends Controller
                     $user->picture = $image_name;     // Update the user's profile picture attribute
 
                     // Store the image in the 'public/profiles' directory
-                    $image->storeAs('profiles', $image_name);
+                    $image->move('storage/profiles', $image_name);
                 }
                 $user->save();
             }else{

@@ -179,10 +179,17 @@
                     @endif
                     @can('moder')
                         <li
-                            class="sidebar-item {{ Route::currentRouteName() == 'profile_info' ? 'active' : '' }} ">
+                            class="sidebar-item {{ Route::currentRouteName() == 'province_list' ? 'active' : '' }} ">
                             <a href="{{route('province_list')}}" class='sidebar-link'>
                                 <i class="bi bi-person-fill"></i>
                                 <span> ثبت شکایت </span>
+                            </a>
+                        </li>
+                        <li
+                            class="sidebar-item {{ Route::currentRouteName() == 'province_criminal' ? 'active' : '' }} ">
+                            <a href="{{route('province_criminal')}}" class='sidebar-link'>
+                                <i class="bi bi-emoji-sunglasses"></i>
+                                <span>{{__('Criminal_part')}} </span>
                             </a>
                         </li>
                     @endcan
@@ -195,13 +202,8 @@
                     </li>
                     <li
                         class="sidebar-item">
-                        <a href="" class='sidebar-link'>
-{{--                            <i class="bi bi-door-open"></i>--}}
-                        <form action="{{route('logout')}}" method="post">
-                            @csrf
-        <button class="btn " style="background-color: #6c3b3b; color: #ffffff" type="submit">{{__('logout')}}</button>
-    </form>
-{{--0765470099--}}
+                        <a href="" class="sidebar-link "  data-bs-toggle="modal" data-bs-target="#logoutModal">
+                          <button class="btn"  style="background-color: #6c3b3b; color: #ffffff">{{__('logout')}}</button>
                         </a>
                     </li>
                 </ul>
@@ -209,6 +211,28 @@
             </div>
         </div>
     </div>
+    <!-- start modal  -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">{{__('Confirm_delete')}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{__('logout_description')}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
+                    <form action="{{route('logout')}}" method="post">
+                                                @csrf
+                            <button class="btn " style="background-color: #6c3b3b; color: #ffffff" type="submit">{{__('logout')}}</button>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end modal -->
     <div id="main">
         <header class="mb-3">
             <a href="#" class="burger-btn d-block d-xl-none">
@@ -226,7 +250,10 @@
 <script src="{{@asset('dist2/js/app.js')}}"></script>
 <script src="{{@asset('dist2/js/apexcharts.min.js')}}"></script>
 <script src="{{@asset('dist2/js/dashboard.js')}}"></script>
-@yield('scripts')
+<script>
+{{--    @yield('scripts')--}}
+    @stack('scripts')
+</script>
 </body>
 </html>
 

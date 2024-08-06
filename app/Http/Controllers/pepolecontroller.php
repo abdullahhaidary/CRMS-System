@@ -159,7 +159,6 @@ class pepolecontroller extends Controller
 //        dd($id);
         // Find the resource by ID
         $resource = people::findOrFail($id);
-
         // Delete the resource
         $resource->delete();
 

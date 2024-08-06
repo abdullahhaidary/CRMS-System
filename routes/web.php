@@ -78,7 +78,7 @@ Route::fallback(function(){
 
 
 // admin Route
-Route::group(['middleware'=>'can:super_admin','auth'],function (){
+//Route::group(['middleware'=>'can:super_admin','auth'],function (){
 
 //    Route::middleware([isAdmin::class])->get('crimnal-list',[\App\Http\Controllers\adminconroller::class, 'index'])->name('crimnal');
 //});
@@ -136,7 +136,7 @@ Route::get('/province/people/delete/{id}', [\App\Http\Controllers\provinceCompli
     Route::get('/un_suspect/list/{id}', [suspectController::class, 'Remove_from_suspect'])->name('Un_suspect_list');
 
 // end of middleware
-});
+//});
 
 //url province crime record information
 Route::get('province/crime/info/{id}', [\App\Http\Controllers\province_crime_info_controller::class, 'index'])->name('province_crime_info');
@@ -188,6 +188,9 @@ Route::get('province/suspect/edit/{id}', [\App\Http\Controllers\province_suspect
 Route::post('/province/suspect/update/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'update'])->name('suspect_update');
 Route::get('province/suspect/delete/{id}', [\App\Http\Controllers\province_suspect_controller::class, 'destroy'])->name('suspect_delete');
 
+
+//url province criminal
+Route::get('province/criminal', [\App\Http\Controllers\provice_criminal::class, 'index'])->name('province_criminal');
 //url evidence
 
 Route::post('/search_fingerprint', function(Request $request){

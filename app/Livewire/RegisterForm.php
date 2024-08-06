@@ -54,7 +54,7 @@ class RegisterForm extends Component
         $provinceAccount->district = $this->selectedDistrict;
         $provinceAccount->save();
 
-        session()->flash('success', 'نوی یوزر په موفقیت ذخیره شو!');
+//        session()->flash('success', 'نوی یوزر په موفقیت ذخیره شو!');
     }
 
     public function render()

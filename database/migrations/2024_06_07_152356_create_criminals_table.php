@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('family_members');
             $table->string('photo');
             $table->string('Created_by');
+            $table->string('user_id')->nullable();
             $table->timestamps();
 
             $table->foreign('suspect_id')->references('id')->on('suspect')->onDelete('cascade');
