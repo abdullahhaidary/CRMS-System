@@ -9,9 +9,11 @@ use App\Models\suspectmodel;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
 class CriminalRegister extends Component
 {
+    use WithFileUploads;
     public $isSuspectAvailable = 0; // Initialize as integer (0 for No, 1 for Yes)
     public $name;
     public $fatherName;
@@ -21,6 +23,7 @@ class CriminalRegister extends Component
     public $email;
     public $current_address;
     public $actual_address;
+    public $arrest_date;
     public $dateofbirth;
     public $gender;
     public $job;
@@ -71,11 +74,17 @@ class CriminalRegister extends Component
     }
     public function submit()
     {
-        $this->validate();
-
         $save = new criminal();
         $save->suspect_id = $this->suspect;
-        $save->case_id = $this->case;
+        $save->case_id = 1 ;
+        $save->gender = "Male";
+        $save->job = $this->job;
+        $save->marital_status = $this->marital_status;
+        $save->family_members = $this->familymember;
+        $save->created_by = Auth::user()->name;
+
+        $save->arrest_date = Carbon::parse($this->arrest_date)->format('Y-m-d H:i:s');
+        if($this->isSuspectAvailable==0){
         $save->criminal_name = $this->name;
         $save->last_name = $this->lname;
         $save->father_name = $this->father_name;
@@ -83,21 +92,14 @@ class CriminalRegister extends Component
         $save->email = $this->email;
         $save->current_address = $this->current_address;
         $save->actual_address = $this->actual_address;
-        $save->arrest_date = Carbon::parse($this->arrest_date)->format('Y-m-d H:i:s');
         $save->date_of_birth = Carbon::parse($this->dateofbirth)->format('Y-m-d H:i:s');
-        $save->gender = $this->gender;
-        $save->job = $this->job;
-        $save->marital_status = $this->marital_status;
-        $save->family_members = $this->familymember;
-        $save->suspect_id = $this->suspect;
-        $save->case_id = $this->case;
-        $save->created_by = Auth::user()->name;
+    }
 
         if (!empty($this->photo)) {
             $exe = $this->photo->getClientOriginalExtension();
             $rename = Str::random(20);
             $filename = $rename . '.' . $exe;
-            $this->photo->storeAs('criminal', $filename);
+            $this->photo->storeAs('public/criminal', $filename);
             $save->photo = $filename;
         }
 
