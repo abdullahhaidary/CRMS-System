@@ -1,8 +1,14 @@
 @extends('profile.template')
+
 @section('title')
 Profile Details
 @endsection
 @section('main')
+<style>
+    .container-fluid i{
+        cursor:pointer;
+    }
+</style>
     @extends('layout.mian-dashbord')
     @section('content')
         <div class="wrapper h-auto">
