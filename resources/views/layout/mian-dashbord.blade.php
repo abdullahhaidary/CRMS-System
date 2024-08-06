@@ -133,7 +133,7 @@
                                 <i class="bi bi-search"></i>
                                 <span>{{__('Search')}}</span>
                             </a>
-                            <ul class="submenu {{ Route::currentRouteName() == 'crimnal' ? 'active' : '' }}">
+                            <ul class="submenu">
                                 <li
                                     class="sidebar-item   {{ Route::currentRouteName() == 'search' ? 'active' : '' }}">
                                     <a href="{{route('search')}}" class='sidebar-link'>

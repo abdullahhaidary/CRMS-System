@@ -1,5 +1,4 @@
-@include('layout.mian-dashbord')
-@section('content')
+
     <style>
         body{
             font-family: Arial, sans-serif;
@@ -78,7 +77,3 @@
         <p> لیست تمام ادمین های در سیستم.  <a href="{{route('province_liat')}}">اینجا کلیک کنید </a></p>
     </div>
     @livewireScripts()
-
-
-
-@endsection

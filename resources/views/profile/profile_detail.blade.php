@@ -11,6 +11,9 @@ Profile Details
 </style>
     @extends('layout.mian-dashbord')
     @section('content')
+        <div class="">
+            @include('massage')
+        </div>
         <div class="wrapper h-auto">
             <div class="menu" style="height: 500px">
                 <div class="profile_img" style="width: 250px">
@@ -32,12 +35,6 @@ Profile Details
             <div class="information">
 
                 <h3 class="header ">{{__('Personal Information')}}</h3>
-                @if(session()->has('success'))
-                    <div class="alert alert-success" style="background-color: #22ec8f; height: 30px; align-content: center;">
-                        {{session('success')}}
-                        yup
-                    </div>
-                @endif
                 <div class="container-fluid">
                     <i class="fa fa-edit ml-auto" onclick="editForm()"></i>
                     <div class="personal_information_single">

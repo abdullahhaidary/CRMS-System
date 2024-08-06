@@ -9,7 +9,7 @@
 
                             <div class="form-group col-md-5">
                                 <label for="searchName">{{__('Name')}}</label>
-                                <input type="text" class="form-control" id="searchName" wire:model.live="name" placeholder="{{__('Enter_the_name')}}">
+                                <input type="text" class="form-control" id="searchName" wire:model.live="name" placeholder="{{__('Enter_your_name')}}">
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="searchFatherName">{{__('Father_name')}}</label>
