@@ -6,6 +6,8 @@ use App\Http\Middleware\SetLocale;
 use App\Models\suspectmodel;
 //use Illuminate\Support\Carbon;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Models\casemodel;
@@ -32,7 +34,9 @@ Route::middleware(['auth'])->get('/',function(){
     $total_crime_record = People::all()->count();
     $total_criminal_record = criminal::all()->count();
     $total_cases_record = casemodel::all()->count();
+    $three_criminals = Criminal::with('case')->orderBy('created_at', 'desc')->take(3)->get();
     $total_provinces = Province::all();
+
     $complaintsToday = people::whereDate('created_at', $today)->count();
     $complaintsLastMonth = people::whereMonth('created_at', $lastMonthNumber)
         ->whereYear('created_at', $lastMonthYear)
@@ -41,9 +45,10 @@ Route::middleware(['auth'])->get('/',function(){
     $casesLastMonth = CaseModel::whereMonth('created_at', $lastMonthNumber)
         ->whereYear('created_at', $lastMonthYear)
         ->count();
-    $three_criminals = Criminal::with('case')->orderBy('created_at', 'desc')->take(3)->get();
+
     return view('layout.home',compact('total_crime_record','total_criminal_record',
-        'total_cases_record','three_criminals','total_provinces', 'complaintsToday','complaintsLastMonth','casesToday', 'casesLastMonth'));
+        'total_cases_record','three_criminals','total_provinces', 'complaintsToday','complaintsLastMonth',
+        'casesToday', 'casesLastMonth' ));
 })->name('home');
 
 

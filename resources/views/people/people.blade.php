@@ -62,9 +62,8 @@
                         <td>
                             @can('super_admin')
                             <a href="{{url('people/edit/'.$item->id)}}"><i class="bi bi-pencil" style="color:#4b4cff;"></i></a>
-                            <a href="{{url('people/delete/'. $item->id)}}" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"  onclick="setDeleteAction({{ $item->id }})" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
-                                <a href="{{url('people/all/'. $item->id)}}" type="button" class="p-2"><i class="bi bi-chevron-down" style="color: red"></i></a>
-
+                            <a href="{{url('people/delete/'. $item->id)}}" type="button" data-bs-toggle="modal" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
+                             <a href="{{url('people/all/'. $item->id)}}" type="button" class="p-2"><i class="bi bi-chevron-down" style="color: red"></i></a>
                                 <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->
                             @endcan
                         </td>
@@ -120,6 +119,20 @@
 
     @endpush
 @section('scripts')
+<script>
+    var deleteUrl = '';
 
+    function showDeleteModal(url) {
+        deleteUrl = url; // Store the URL for deletion
+        var myModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        myModal.show(); // Show the modal
+    }
+
+    document.getElementById('confirmDeleteButton').addEventListener('click', function() {
+        if (deleteUrl) {
+            window.location.href = deleteUrl; // Redirect to the delete route
+        }
+    });
+</script>
 
 @endsection
