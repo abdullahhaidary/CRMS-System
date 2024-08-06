@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="{{@asset('dist2/css/app-dark.rtl.css')}}">
     <link rel="stylesheet" href="{{@asset('dist2/css/app.rtl.css')}}">
-    <link rel="stylesheet" href="{{@asset('dist2/css/iconly.css')}}">
+    {{-- <link rel="stylesheet" href="{{@asset('dist2/css/iconly.css')}}"> --}}
     <link rel="stylesheet" href="{{@asset('dist2/css/style.css')}}">
     <link rel="shortcut icon" href="{{@asset('./dist2/css/svg/favicon.svg')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{@asset('dist2/css/bootstrap-icons.css')}}">

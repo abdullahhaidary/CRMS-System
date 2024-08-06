@@ -1,5 +1,3 @@
-<!-- resources/views/livewire/criminal-form.blade.php -->
-
 <div>
     <div class="page-heading text-center">
         <h3>{{ __('New_criminal_creation_form') }}</h3>
@@ -20,6 +18,7 @@
                                             <option value="1">هو</option>
                                         </select>
                                     </div>
+                                    {{$isSuspectAvailable}}
                                     @if ($isSuspectAvailable)
                                         <div class="form-group" style="position: relative;">
                                             <label for="search">{{ __('suspect_search') }}</label>

@@ -7,7 +7,7 @@
 @font-face {
   font-display: block;
   font-family: "bootstrap-icons";
-  src: url("Iconly---Bold.woff") format("woff2"),
+  /* src: url("Iconly---Bold.woff") format("woff2"), */
 url("fonts/bootstrap-icons.woff") format("woff");
 }
 

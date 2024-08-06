@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 class CriminalRegister extends Component
 {
     use WithFileUploads;
-    public $isSuspectAvailable = 0; // Initialize as integer (0 for No, 1 for Yes)
+    public $isSuspectAvailable = 1; // Initialize as integer (0 for No, 1 for Yes)
     public $name;
     public $fatherName;
     public $lname;
@@ -56,13 +56,7 @@ class CriminalRegister extends Component
 
     public function render()
     {
-        // $suspects = suspectmodel::query()
-        //     ->when($this->search, function($query) {
-        //         $query->where('name', 'like', '%' . $this->search . '%')
-        //               ->orWhere('father_name', 'like', '%' . $this->search . '%')
-        //               ->orWhere('id', 'like', '%' . $this->search . '%');
-        //     })
-        //     ->get();
+
         $case = casemodel::all();
         return view('livewire.criminal-register',
         ['isSuspectAvailable'=>$this->isSuspectAvailable,
