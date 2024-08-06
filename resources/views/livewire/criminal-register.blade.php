@@ -18,7 +18,6 @@
                                             <option value="1">هو</option>
                                         </select>
                                     </div>
-                                    {{$isSuspectAvailable}}
                                     @if ($isSuspectAvailable)
                                         <div class="form-group" style="position: relative;">
                                             <label for="search">{{ __('suspect_search') }}</label>
