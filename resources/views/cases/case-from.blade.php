@@ -10,7 +10,7 @@
     <section id="multiple-column-form">
         <div class="row match-height">
             <div class="col-12">
-                <div class="card" style="background-color: #edf0f3">
+                <div class="card" >
                     <div class="card-content">
                         <div class="card-body">
                             <form class="form" method="post" action="{{route('case-store')}}" enctype="multipart/form-data" data-parsley-validate>
