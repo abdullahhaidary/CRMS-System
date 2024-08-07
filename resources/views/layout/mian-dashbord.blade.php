@@ -159,7 +159,7 @@
                                     </a>
                                 </li>
                                 <li
-                                    class="sidebar-item  {{ Route::currentRouteName() == 'register' ? 'active' : '' }} ">
+                                    class="sidebar-item  {{ Route::currentRouteName() == 'people_form' ? 'active' : '' }} ">
                                     <a href="{{route('people_form')}}" class='sidebar-link'>
                                         <span>{{__('save_complent')}} </span>
                                     </a>
