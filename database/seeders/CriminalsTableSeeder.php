@@ -34,12 +34,8 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '3',
                 'photo' => 'path/to/photo1.jpg',
-<<<<<<< HEAD
-                'Created_by'=>'admin',
-=======
                 'Created_by' => 'admin',
 
->>>>>>> dd927d6 (waris)
             ],
             [
                 'suspect_id' => 2,
@@ -59,11 +55,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'مجرد',
                 'family_members' => '2',
                 'photo' => 'path/to/photo2.jpg',
-<<<<<<< HEAD
-                'Created_by'=>'admin',
-=======
                 'Created_by' => 'admin',
->>>>>>> dd927d6 (waris)
             ],
             [
                 'suspect_id' => 3,
@@ -83,11 +75,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '4',
                 'photo' => 'path/to/photo3.jpg',
-<<<<<<< HEAD
-                'Created_by'=>'admin',
-=======
                 'Created_by' => 'admin',
->>>>>>> dd927d6 (waris)
             ],
             [
                 'suspect_id' => 4,
@@ -107,11 +95,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '5',
                 'photo' => 'path/to/photo4.jpg',
-<<<<<<< HEAD
-                'Created_by'=>'admin',
-=======
                 'Created_by' => 'admin',
->>>>>>> dd927d6 (waris)
             ],
             [
                 'suspect_id' => 5,
@@ -131,11 +115,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'مجرد',
                 'family_members' => '2',
                 'photo' => 'path/to/photo5.jpg',
-<<<<<<< HEAD
-                'Created_by'=>'admin',
-=======
                 'Created_by' => 'admin',
->>>>>>> dd927d6 (waris)
             ],
             [
                 'suspect_id' => 6,
@@ -155,11 +135,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '4',
                 'photo' => 'path/to/photo6.jpg',
-<<<<<<< HEAD
-                'Created_by'=>'admin',
-=======
                 'Created_by' => 'admin',
->>>>>>> dd927d6 (waris)
             ],
             [
                 'suspect_id' => 7,
@@ -179,11 +155,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '3',
                 'photo' => 'path/to/photo7.jpg',
-<<<<<<< HEAD
-                'Created_by'=>'admin',
-=======
                 'Created_by' => 'admin',
->>>>>>> dd927d6 (waris)
             ],
             [
                 'suspect_id' => 8,
@@ -203,11 +175,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'مجرد',
                 'family_members' => '1',
                 'photo' => 'path/to/photo8.jpg',
-<<<<<<< HEAD
-                'Created_by'=>'admin',
-=======
                 'Created_by' => 'admin',
->>>>>>> dd927d6 (waris)
             ],
             [
                 'suspect_id' => 9,
@@ -227,11 +195,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '2',
                 'photo' => 'path/to/photo9.jpg',
-<<<<<<< HEAD
-                'Created_by'=>'admin',
-=======
                 'Created_by' => 'admin',
->>>>>>> dd927d6 (waris)
             ],
             [
                 'suspect_id' => 10,
@@ -251,11 +215,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'مجرد',
                 'family_members' => '4',
                 'photo' => 'path/to/photo10.jpg',
-<<<<<<< HEAD
-                'Created_by'=>'admin',
-=======
                 'Created_by' => 'admin',
->>>>>>> dd927d6 (waris)
             ],
             // [
             //     'suspect_id' => 11,
