@@ -56,9 +56,9 @@ use Illuminate\Support\Str;
 //            ->select('crime_register_record_information.*')
 //            ->where('crime_register_record_information.id','=',$id)
 //            ->get();
-        $data=\App\Models\crime_register_record_information::where('crime_register_record_information.people_id','=',$id)->paginate(5);
+        $data=\App\Models\crime_register_record_information::where('crime_register_record_information.people_id','=',$id)->first();
 
-        return view('province.crime_info_record.edit',compact('data'));
+        return view('province.crime_info_record.edit',compact('data','id'));
     }
 
     /**

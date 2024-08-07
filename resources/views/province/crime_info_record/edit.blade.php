@@ -9,10 +9,9 @@
         <div class="row match-height">
             <div class="col-12">
                 <div class="card">
-                    @foreach($data as $item)
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form" method="post" action="{{url('province/crime/info/update/'.$item->id)}}" data-parsley-validate>
+                                <form class="form" method="post" action="{{url('province/crime/info/update/'.$data->id)}}" data-parsley-validate>
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12 col-12">
@@ -20,7 +19,7 @@
                                                 <label for="email-id-column" class="form-label"
                                                 > توضیحات</label
                                                 >
-                                                <textarea name="description" id="discription" class="form-control"></textarea>
+                                                <textarea name="description" id="discription" class="form-control">{{$data->description}}</textarea>
                                             </div>
                                         </div>
 
@@ -42,7 +41,6 @@
                         </div>
                 </div>
             </div>
-            @endforeach
         </div>
     </section>
 @endsection

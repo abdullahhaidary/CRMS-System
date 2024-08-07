@@ -258,7 +258,7 @@
                                         <div class="form-group">
                                             <label for="city-column" class="form-label"> نمبر تذکره</label>
                                             <input
-                                                type="number"
+                                                type="text"
                                                 id="city-column"
                                                 class="form-control"
                                                 placeholder=" نمبر تذکره"
