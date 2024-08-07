@@ -1,4 +1,8 @@
 @extends('layout.mian-dashbord')
+
+@section('styles')
+@livewireStyles()
+@endsection
 @section('content')
     <div class="page-heading">
         <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light">
@@ -67,9 +71,9 @@
                                     Actions
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item bg-primary" href="{{url('people/edit/'.$item->id)}}">Edit</a></li>
-                                    <li><a class="dropdown-item bg-danger" href="{{url('people/delete/'. $item->id)}}">Delete</a></li>
-                                    <li><a class="dropdown-item bg-info" href="{{url('people/all/'. $item->id)}}">View</a></li>
+                                    <li><a class="dropdown-item bg-light-info" href="{{url('people/edit/'.$item->id)}}">Edit</a></li>
+                                    <li><a class="dropdown-item bg-light-danger" href="{{url('people/delete/'. $item->id)}}">Delete</a></li>
+                                    <li><a class="dropdown-item bg-light-success" href="{{url('people/all/'. $item->id)}}">View</a></li>
                                 </ul>
                             </div>
                         </td>
@@ -121,24 +125,7 @@
 
 @endsection
 
-@push('scripts')
 
-    @endpush
 @section('scripts')
-<script>
-    var deleteUrl = '';
-
-    function showDeleteModal(url) {
-        deleteUrl = url; // Store the URL for deletion
-        var myModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-        myModal.show(); // Show the modal
-    }
-
-    document.getElementById('confirmDeleteButton').addEventListener('click', function() {
-        if (deleteUrl) {
-            window.location.href = deleteUrl; // Redirect to the delete route
-        }
-    });
-</script>
-
+@livewireScripts()
 @endsection
