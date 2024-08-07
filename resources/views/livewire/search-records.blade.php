@@ -79,19 +79,29 @@
                                         <td>{{ $criminal->phone }}</td>
                                         <td>{{ $criminal->actual_address }}</td>
                                         <td>{{ $criminal->current_address }}</td>
-                                        @if($criminal->isCriminal==0)
-                                            <td style="color: #ffc604;">مظنون</td>
-                                        @elseif($criminal->isCriminal==1)
-                                            <td  style="color: #02f602;">فرد عادی</td>
-                                        @elseif($criminal->isCriminal==2)
-                                            <td  style="color: red;">مجریم</td>
-                                        @endif
+                                        <td  style="color: red;">مجریم</td>
                                         <td>{{ $criminal->created_at }}</td>
                                     </tr>
                                 @endforeach
                             @elseif (!empty($suspects))
                             @foreach($suspects as $suspect)
-                                {{$suspect}}
+                                    <tr>
+                                        <td>{{ $suspect->id }}</td>
+                                        <td>{{ $suspect->name }}</td>
+                                        <td>{{ $suspect->last_name }}</td>
+                                        <td>{{ $suspect->father_name }}</td>
+                                        <td>{{ $suspect->phone }}</td>
+                                        <td>{{ $suspect->actual_address }}</td>
+                                        <td>{{ $suspect->current_address }}</td>
+                                        @if($suspect->isCriminal==0)
+                                            <td style="color: #ffc604;">مظنون</td>
+                                        @elseif($suspect->isCriminal==1)
+                                            <td  style="color: #02f602;">فرد عادی</td>
+                                        @elseif($suspect->isCriminal==2)
+                                            <td  style="color: red;">مجریم</td>
+                                        @endif
+                                        <td>{{ $suspect->created_at }}</td>
+                                    </tr>
                             @endforeach
 
                             @else
