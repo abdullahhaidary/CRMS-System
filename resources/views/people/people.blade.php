@@ -67,9 +67,9 @@
                                     Actions
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item bg-light-info" href="{{url('people/edit/'.$item->id)}}">Edit</a></li>
-                                    <li><a class="dropdown-item bg-light-danger" href="{{url('people/delete/'. $item->id)}}">Delete</a></li>
-                                    <li><a class="dropdown-item bg-light-success" href="{{url('people/all/'. $item->id)}}">View</a></li>
+                                    <li><a class="dropdown-item bg-primary" href="{{url('people/edit/'.$item->id)}}">Edit</a></li>
+                                    <li><a class="dropdown-item bg-danger" href="{{url('people/delete/'. $item->id)}}">Delete</a></li>
+                                    <li><a class="dropdown-item bg-info" href="{{url('people/all/'. $item->id)}}">View</a></li>
                                 </ul>
                             </div>
                         </td>
