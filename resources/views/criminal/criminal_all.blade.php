@@ -122,7 +122,7 @@
                 <span class="details-value">{{$item->current_address}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Family_member')}}:</span>
+                <span class="details-label">{{__('Family_members')}}:</span>
                 <span class="details-value">{{$item->family_members}}</span>
             </div>
             <h4 class="section-title mt-4">{{__('Crime_profile')}}</h4>
@@ -140,7 +140,7 @@
                 <span class="details-value">{{$item->updated_at}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Discription')}}:</span>
+                <span class="details-label">{{__('Description')}}:</span>
                 <span class="details-value">{{$item->marital_status}}</span>
             </div>
         </div>

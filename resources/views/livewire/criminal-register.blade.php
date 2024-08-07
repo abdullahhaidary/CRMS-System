@@ -22,7 +22,7 @@
                                         <div class="form-group" style="position: relative;">
                                             <label for="search">{{ __('suspect_search') }}</label>
                                             <input type="text" class="form-control" id="search"
-                                                placeholder="Search for suspect..." wire:model.live="search"
+                                                placeholder="{{__('Search_for_suspect')}}" wire:model.live="search"
                                             required>
                                         </div>
 
@@ -98,8 +98,8 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
-                                                <label for="email-id-column" class="form-label">{{ __('Actual_address') }}</label>
-                                                <input type="text" id="email-id-column" class="form-control" wire:model="actual_address" placeholder="{{ __('Enter_actual_address') }}" required/>
+                                                <label for="email-id-column" class="form-label">{{ __('Main_address') }}</label>
+                                                <input type="text" id="email-id-column" class="form-control" wire:model="actual_address" placeholder="{{ __('Enter_main_address') }}" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
@@ -154,7 +154,7 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="photo">{{ __('Photo') }}</label>
+                                                <label for="photo">{{ __('Picture') }}</label>
                                                 <input type="file" id="photo" class="form-control" wire:model="photo" />
 
                                                 @if ($photo)

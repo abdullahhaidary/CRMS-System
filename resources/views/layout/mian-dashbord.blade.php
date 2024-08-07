@@ -68,7 +68,7 @@
                 </div>
             <div class="sidebar-menu">
                 <ul class="menu">
-                    <li class="sidebar-title mt-0 mb-1" style="user-select: none; margin-top: -10px" >
+                    <li class="sidebar-title mt-0 mb-3" style="user-select: none; margin-top: -10px" >
                         <div class="logo">
                             <h5><a href="{{route('home')}}">{{ucfirst(strtolower(Auth::user()->name))}}</a></h5>
                         </div>

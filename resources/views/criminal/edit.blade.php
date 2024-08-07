@@ -15,7 +15,7 @@
                                 @csrf()
                                 <div class="row">
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="first-name-column" class="form-label"
                                             >{{__('Name')}}</label
                                             >
@@ -29,7 +29,7 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12 ">
                                         <div class="form-group">
                                             <label for="last-name-column" class="form-label"
                                             >{{__('Last_name')}} </label
@@ -44,7 +44,7 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12 ">
                                         <div class="form-group">
                                             <label for="city-column" class="form-label">{{__('Father_name')}}</label>
                                             <input
@@ -73,7 +73,7 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-6 col-12 ">
                                         <div class="form-group">
                                             <label for="company-column" class="form-label"
                                             >{{__('Email')}}</label
@@ -89,7 +89,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
                                             > {{__('Main_address')}}</label
                                             >
@@ -105,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="curent-address" class="form-label"
                                             >  {{__('Current_address')}}</label
                                             >
@@ -121,7 +121,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
                                             >{{__('Letter')}}</label
                                             >
@@ -150,7 +150,7 @@
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
                                             >{{__('Date_of_birth')}}</label
                                             >
@@ -166,7 +166,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
                                             >{{__('Date_crime')}}</label
                                             >
@@ -182,9 +182,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
-                                            >{{__('Family_member')}}</label
+                                            >{{__('Family_members')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -198,7 +198,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
                                             > {{__('Job')}}</label
                                             >
@@ -214,7 +214,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
-                                        <label for="email-id-column mandatory" class="form-label"
+                                        <label for="email-id-column " class="form-label"
                                         >مظنون</label>
                                         <fieldset class="form-group">
                                             <select class="form-select"  name="suspect" id="disabledSelect">
@@ -228,7 +228,7 @@
                                         </fieldset>
                                     </div>
                                     <div class="col-md-6 mb-4">
-                                        <label for="email-id-column mandatory" class="form-label"
+                                        <label for="email-id-column " class="form-label"
                                         >{{__('Case')}} </label>
                                         <fieldset class="form-group">
                                             <select class="form-select" name="case"  id="disabledSelect">
@@ -243,7 +243,7 @@
                                         </fieldset>
                                     </div>
                                     <div class="col-md-12 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
                                             > {{__('Description')}}</label>
                                             <textarea
