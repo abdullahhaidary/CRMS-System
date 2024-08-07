@@ -3,9 +3,12 @@
 use App\Http\Controllers\suspectController;
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\SetLocale;
+use App\Models\provinceaccount;
 use App\Models\suspectmodel;
 //use Illuminate\Support\Carbon;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Models\casemodel;
@@ -32,8 +35,17 @@ Route::middleware(['auth'])->get('/',function(){
     $total_crime_record = People::all()->count();
     $total_criminal_record = criminal::all()->count();
     $total_cases_record = casemodel::all()->count();
+    $three_criminals = Criminal::with('case')->orderBy('created_at', 'desc')->take(3)->get();
     $total_provinces = Province::all();
-    $complaintsToday = people::whereDate('created_at', $today)->count();
+
+//    $user_id=provinceaccount::where();
+//    $complaintsToday = people::whereDate('created_at', $today)->count();
+    $complaintsToday=DB::table('people')
+//        ->join('province_account', 'province_account.user_id','=','people.user_id')
+   ->where('people.user_id','=',)
+        ->whereDate('created_at', $today)->count();
+//    dd($complaintsToday);
+
     $complaintsLastMonth = people::whereMonth('created_at', $lastMonthNumber)
         ->whereYear('created_at', $lastMonthYear)
         ->count();
@@ -41,9 +53,10 @@ Route::middleware(['auth'])->get('/',function(){
     $casesLastMonth = CaseModel::whereMonth('created_at', $lastMonthNumber)
         ->whereYear('created_at', $lastMonthYear)
         ->count();
-    $three_criminals = Criminal::with('case')->orderBy('created_at', 'desc')->take(3)->get();
+
     return view('layout.home',compact('total_crime_record','total_criminal_record',
-        'total_cases_record','three_criminals','total_provinces', 'complaintsToday','complaintsLastMonth','casesToday', 'casesLastMonth'));
+        'total_cases_record','three_criminals','total_provinces', 'complaintsToday','complaintsLastMonth',
+        'casesToday', 'casesLastMonth' ));
 })->name('home');
 
 
@@ -95,10 +108,14 @@ Route::fallback(function(){
 
 
 // admin Route
+
 //Route::group(['middleware'=>'can:super_admin','auth'],function (){
 
 //    Route::middleware([isAdmin::class])->get('crimnal-list',[\App\Http\Controllers\adminconroller::class, 'index'])->name('crimnal');
 //});
+
+// Route::group(['middleware'=>'can:super_admin', 'can:admin','auth'],function (){
+
 
 //Route::prefix('admin')->group(function () {
 
@@ -153,7 +170,11 @@ Route::get('/province/people/delete/{id}', [\App\Http\Controllers\provinceCompli
     Route::get('/un_suspect/list/{id}', [suspectController::class, 'Remove_from_suspect'])->name('Un_suspect_list');
 
 // end of middleware
+
 //});
+
+// });
+
 
 //url province crime record information
 Route::get('province/crime/info/{id}', [\App\Http\Controllers\province_crime_info_controller::class, 'index'])->name('province_crime_info');

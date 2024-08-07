@@ -31,7 +31,7 @@ if (!function_exists('trim_to_words')) {
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">مجموعه شکایات</h6>
+                                        <h6 class="text-muted font-semibold">{{__('Total_complint')}}</h6>
                                         <h6 class="font-extrabold mb-0">{{$total_crime_record}}</h6>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@ if (!function_exists('trim_to_words')) {
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">مجموعه مجرمین</h6>
+                                        <h6 class="text-muted font-semibold">{{__('Total_criminal')}}</h6>
                                         <h6 class="font-extrabold mb-0">{{$total_criminal_record}}</h6>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@ if (!function_exists('trim_to_words')) {
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">دوسیه زیر فروسیس</h6>
+                                        <h6 class="text-muted font-semibold">{{__('Total_case')}}</h6>
                                         <h6 class="font-extrabold mb-0">{{$total_cases_record}}</h6>
                                     </div>
                                 </div>
@@ -172,7 +172,7 @@ if (!function_exists('trim_to_words')) {
                                                     <div class="avatar avatar-md">
                                                         <img src="{{asset('dist2/img/RK.jpg')}}">
                                                     </div>
-                                                    <p class="font-bold ms-3 mb-0">{{$criminal->criminal_name}}</p>
+                                                    <p class="font-bold ms-3 mb-0">{{$criminal->criminal_name. " ". $criminal->last_name}}</p>
                                                 </div>
                                             </td>
                                             <td class="col-3">
@@ -204,12 +204,10 @@ if (!function_exists('trim_to_words')) {
                        <th></th>
                    </tr>
                 </thead>
-{{--                @foreach($total_provinces as $province)--}}
+                @foreach($total_provinces as $province)
                 <tr>
-{{--                    <td>{{$province->id}}</td>--}}
-{{--                    <td>{{$province->name}}</td>--}}
-                    <td>شماره</td>
-                    <td>کابل</td>
+                    <td>{{$province->id}}</td>
+                    <td>{{$province->name}}</td>
                      <td>{{$complaintsToday}}</td>
                      <td>{{$complaintsLastMonth}}</td>
                      <td>{{$casesToday}}</td>
@@ -217,9 +215,8 @@ if (!function_exists('trim_to_words')) {
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
                 </tr>
-{{--                @endforeach--}}
+                @endforeach
             </table>
         </section>
     </div>

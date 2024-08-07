@@ -2,14 +2,6 @@
 @section('content')
     <div class="page-heading">
         <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
-{{--        <a href="{{route('people_all')}}" class="btn btn-outline-primary btn-light"> ثبت شواهد  </a>--}}
-{{--        <select class="btn btn-outline-primary btn-light ml-5">--}}
-{{--            <option>انتقال قضیه به ارګان مربوط</option>--}}
-{{--            @foreach($data as $items)--}}
-{{--            <a href=""> <option value="{{$items->id}}">{{$items->name. " ". $items->last_name}}</option></a>--}}
-{{--            @endforeach--}}
-{{--        </select>--}}
-
     </div>
 
     <div class="page-heading text-center">
@@ -26,7 +18,6 @@
                     <th>#</th>
                     <th>نوم</th>
                     <th> پلار نوم</th>
-                    <th>ایمیل</th>
                     <th> شماره تماس</th>
                     <th> نمبر تذکره</th>
                     <th>آدرس</th>
@@ -35,9 +26,7 @@
                     <th>موضوع شکایت</th>
                     <th>تاریخ شکایت</th>
                     <th>توسط</th>
-                    <th>عریضه</th>
-                    <th>توضیحات</th>
-                    <th>دیدن مظنونین</th>
+                    <th>معلومات</th>
                     <th>ACTION</th>
                 </tr>
                 </thead>
@@ -47,7 +36,7 @@
                         <td>{{$item->id}}</td>
                         <td class="text-bold-500">{{$item->name." ". $item->last_name}}</td>
                         <td>{{$item->father_name}}</td>
-                        <td>{{$item->email}}</td>
+{{--                        <td>{{$item->email}}</td>--}}
                         <td>{{$item->phone}}</td>
                         <td>{{$item->tazkira_number}} </td>
                         <td>{{$item->actual_address}}</td>
@@ -56,17 +45,29 @@
                         <td>{{$item->crim_date}}</td>
                         <td>{{$item->subject_crim}}</td>
                         <td>{{$item->Created_by}}</td>
-                        <td><a href="{{url('ariza/arizafile/'.$item->id)}}">عریضه</a></td>
-                        <td><a href="{{url('crime/info/'.$item->id)}}">توضیحات</a></td>
-                        <td><a href="{{url('suspect_list/'.$item->id)}}">لیست مظنونین</a></td>
                         <td>
-                            @can('super_admin')
-                            <a href="{{url('people/edit/'.$item->id)}}"><i class="bi bi-pencil" style="color:#4b4cff;"></i></a>
-                            <a href="{{url('people/delete/'. $item->id)}}" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"  onclick="setDeleteAction({{ $item->id }})" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
-                                <a href="{{url('people/all/'. $item->id)}}" type="button" class="p-2"><i class="bi bi-chevron-down" style="color: red"></i></a>
-
-                                <!-- <a href="criminal-view.html" class="btn btn-info btn-light">view</a> -->
-                            @endcan
+                            <div class="dropdown">
+                                <a class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    معلومات
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item " href="{{url('ariza/arizafile/'.$item->id)}}"><span class="">عریضه</span></a></li>
+                                    <li><a class="dropdown-item " href="{{url('crime/info/'.$item->id)}}">توضیحات</a></li>
+                                    <li><a class="dropdown-item " href="{{url('suspect_list/'.$item->id)}}">لیست مظنونین</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-light-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item bg-light-info" href="{{url('people/edit/'.$item->id)}}">Edit</a></li>
+                                    <li><a class="dropdown-item bg-light-danger" href="{{url('people/delete/'. $item->id)}}">Delete</a></li>
+                                    <li><a class="dropdown-item bg-light-success" href="{{url('people/all/'. $item->id)}}">View</a></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                     <div class="modal fade" id="mymodal">
@@ -120,6 +121,20 @@
 
     @endpush
 @section('scripts')
+<script>
+    var deleteUrl = '';
 
+    function showDeleteModal(url) {
+        deleteUrl = url; // Store the URL for deletion
+        var myModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        myModal.show(); // Show the modal
+    }
+
+    document.getElementById('confirmDeleteButton').addEventListener('click', function() {
+        if (deleteUrl) {
+            window.location.href = deleteUrl; // Redirect to the delete route
+        }
+    });
+</script>
 
 @endsection

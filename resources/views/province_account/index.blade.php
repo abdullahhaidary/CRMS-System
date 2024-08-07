@@ -11,7 +11,7 @@
                 <tr>
                     <th>{{__('ID')}}</th>
                     <th>{{__('Picture')}}</th>
-                    <th>{{__('name')}}</th>
+                    <th>{{__('Name')}}</th>
                     <th>{{__('Email')}}</th>
                     <th>{{__('province')}}</th>
                     <th>{{__('district')}}</th>
@@ -30,8 +30,14 @@
                         <td class="text-bold-500">{{$item->email}}</td>
                         <td class="text-bold-500">{{$item->province}}</td>
                         <td class="text-bold-500"></td>
-                        <td>{{$item->type}}
-                        <td>{{$item->action}} @if($item->action==1 ? 'Active' :'Unactive') @endif</td>
+                        @if($item->type==1)
+                            <td>Super Admin</td>
+                        @elseif($item->type==2)
+                            <td> Admin</td>
+                        @elseif($item->type==3)
+                            <td> Moder</td>
+                        @endif
+                        <td>{{$item->action==1 ? 'Active' : 'Unactive'}}</td>
                         <td>{{$item->created_at}}</td>
                         @can('super_admin')
                             <td><a href="{{url('/admin/edit/'. $item->id)}}"><i class="bi bi-pencil"></i>

@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading text-center">
-        <h3>فورم ثبت شکایت جدید</h3>
+    <h3 class="mb-2">فورم ثبت مضنون</h3>
     </div>
     <!-- criminal from start -->
     <section id="multiple-column-form">
@@ -13,7 +13,6 @@
                             <form class="form" method="post" action="{{url('/suspect/form/save/'.$id)}}" enctype="multipart/form-data" data-parsley-validate>
                                 @csrf
                                 <div class="row">
-                                    <h3 class="mb-2">فورم ثبت مضنون</h3>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group mandatory">
                                             <label for="email-id-column" class="form-label"
