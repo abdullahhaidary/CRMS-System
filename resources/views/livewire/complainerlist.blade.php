@@ -78,46 +78,48 @@
                                         {{__('Action')}}
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        @can('super_admin')
                                         <li><a class="dropdown-item bg-light-info"
                                                 href="{{ url('people/edit/' . $item->id) }}">{{__('Edit')}}</a></li>
                                         <li><a class="dropdown-item bg-light-danger"
-                                                href="{{ url('people/delete/' . $item->id) }}">{{__('Delete')}}</a></li>
+                                               data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}" >{{__('Delete')}}</a></li>
+                                        @endcan
                                         <li><a class="dropdown-item bg-light-success"
                                                 href="{{ url('people/all/' . $item->id) }}">{{__('View')}}</a></li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
-                        <div class="modal fade" id="mymodal">
-                            <iframe id="pdfIframe" src="{{ asset('ariza-of-compleint/' . $item->ariza) }}"
-                                style="width: 100%" frameborder="0"></iframe>
-                        </div>
 
-                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">{{ __('Confirm_delete') }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <h5 class="modal-title" id="deleteModalLabel">{{__('Confirm_delete')}}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        {{ __('Delete_description') }}
+                                        {{__('Delete_description')}}
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                                        <form id="deleteForm" action="{{ url('/people/delete/' . $item->id) }}"
-                                            method="get" style="display:inline;">
-                                            @csrf
-                                            <input type="hidden" name="id" id="deleteId" value="">
-                                            <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
-                                        </form>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
+                                        <button type="button" class="btn btn-danger" wire:click="deleteSuspect" data-bs-dismiss="modal">{{__('Delete')}}</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const deleteModal = document.getElementById('deleteModal');
+                                deleteModal.addEventListener('show.bs.modal', function (event) {
+                                    const button = event.relatedTarget;
+                                    const id = button.getAttribute('data-id');
+                                    const form = deleteModal.querySelector('#deleteForm');
+                                    form.action = `{{url('people/delete/')}}/${id}`;
+                                    form.querySelector('#deleteId').value = id;
+                                });
+                            })
+                        </script>
                     @endforeach
                 </tbody>
             </table>

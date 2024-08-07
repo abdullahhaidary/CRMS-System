@@ -11,8 +11,8 @@
                     <th scope="col">{{__('Name')}}</th>
                     <th scope="col">{{__('Description')}}</th>
                     <th scope="col">{{__('Case')}}</th>
-                    <th scope="col">تاریخ ثبت</th>
-                    <th>ثبت فنگر</th>
+                    <th scope="col">{{__('Create_date')}}</th>
+                    <th>{{__('Action')}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,12 +23,11 @@
                     <td style="width: 50%">{{$item->description}}</td>
                     <td><a href="{{url('case/form/'.$item->id)}}">{{__('Case')}}</a></td>
                     <td>{{$item->created_at}}</td>
-                    <td></td>
 {{--                     <td><a href="{{route('finger_print_add')}}"></a></td>--}}
                     <td>
                     @can('super_admin')
                             <a href="{{url('crime/info/edit/'.$item->id)}}" class="p-2 ml-1"><i class="bi bi-pencil"></i></a>
-                            <a href="{{url('crime/info/delete/'.$item->id)}}" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
+                            <a data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}" href="" class="p-2"><i class="bi bi-trash" style="color: red"></i></a>
                         @endcan
                     </td>
                 </tr>
@@ -54,7 +53,18 @@
                         </div>
                     </div>
                 </div>
-
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const deleteModal = document.getElementById('deleteModal');
+                        deleteModal.addEventListener('show.bs.modal', function (event) {
+                            const button = event.relatedTarget;
+                            const id = button.getAttribute('data-id');
+                            const form = deleteModal.querySelector('#deleteForm');
+                            form.action = `{{url('crime/info/delete/')}}/${id}`;
+                            form.querySelector('#deleteId').value = id;
+                        });
+                    });
+                </script>
                 @endforeach
                 </tbody>
             </table>

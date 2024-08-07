@@ -37,7 +37,7 @@
                     <th><a class="btn btn-sm btn-primary" href="{{url('finger_print_add/'.$suspect->id)}}">{{__('Fingerprint')}}</a>
                         @can('super_admin')
                         <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">{{__('Edit')}}</a>
-                        <a class="btn btn-danger btn-sm"  href="{{url('/suspect/delete/'.$suspect->id)}}">{{__('Delete')}}</a></th>
+                        <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$suspect->id}}" href="">{{__('Delete')}}</a></th>
                     @endcan
                 </tr>
 
@@ -62,14 +62,21 @@
                         </div>
                     </div>
                 </div>
-
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const deleteModal = document.getElementById('deleteModal');
+                        deleteModal.addEventListener('show.bs.modal', function (event) {
+                            const button = event.relatedTarget;
+                            const id = button.getAttribute('data-id');
+                            const form = deleteModal.querySelector('#deleteForm');
+                            form.action = `{{url('/suspect/delete/')}}/${id}`;
+                            form.querySelector('#deleteId').value = id;
+                        });
+                    });
+                </script>
             @endforeach
             </tbody>
         </table>
-        <div class="page-heading mt-5 text-end">
-            <a href="{{route('people')}}" class="btn btn-outline-primary btn-light"> رفتن صفحه افراد  </a>
-
-        </div>
     </div>
     <div class="mt-3">
         <nav aria-label="Page navigation example">

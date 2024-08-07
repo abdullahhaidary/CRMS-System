@@ -61,9 +61,11 @@
                                     {{__('Action')}}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @can('super_admin')
                                     <li><a class="dropdown-item bg-primary " href="{{url('people/edit/'.$item->id)}}">{{__('Edit')}}</a></li>
                                     <li><a class="dropdown-item bg-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}">{{__('Delete')}}</a></li>
-                                    <li><a class="dropdown-item bg-info" href="{{url('people/all/'. $item->id)}}">{{__('View')}}</a></li>
+                                    @endcan
+                                        <li><a class="dropdown-item bg-info" href="{{url('people/all/'. $item->id)}}">{{__('View')}}</a></li>
                                 </ul>
                             </div>
                         </td>
