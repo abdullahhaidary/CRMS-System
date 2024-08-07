@@ -41,8 +41,8 @@
                         <td>{{$item->actual_address}}</td>
                         <td>{{$item->current_address}}</td>
                         <td>{{$item->crime_case}}</td>
-                        <td>{{$item->crim_date}}</td>
                         <td>{{$item->subject_crim}}</td>
+                        <td>{{$item->crim_date}}</td>
                         <td>{{$item->Created_by}}</td>
                         <td>
                             <div class="dropdown">
@@ -62,8 +62,8 @@
                                     {{__('Action')}}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item bg-primary" href="{{url('people/edit/'.$item->id)}}">{{__('Edit')}}</a></li>
-                                    <li><a class="dropdown-item bg-danger" href="{{url('people/delete/'. $item->id)}}">{{__('Delete')}}</a></li>
+                                    <li><a class="dropdown-item bg-primary " href="{{url('people/edit/'.$item->id)}}">{{__('Edit')}}</a></li>
+                                    <li><a class="dropdown-item bg-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}">{{__('Delete')}}</a></li>
                                     <li><a class="dropdown-item bg-info" href="{{url('people/all/'. $item->id)}}">{{__('View')}}</a></li>
                                 </ul>
                             </div>
@@ -94,6 +94,18 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const deleteModal = document.getElementById('deleteModal');
+                            deleteModal.addEventListener('show.bs.modal', function (event) {
+                                const button = event.relatedTarget;
+                                const id = button.getAttribute('data-id');
+                                const form = deleteModal.querySelector('#deleteForm');
+                                form.action = `{{url('people/delete/')}}/${id}`;
+                                form.querySelector('#deleteId').value = id;
+                            });
+                        })
+                    </script>
                 @endforeach
                 </tbody>
             </table>

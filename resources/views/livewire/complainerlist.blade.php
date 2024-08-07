@@ -26,18 +26,18 @@
 
                     <tr class="table-active">
                         <th>#</th>
-                        <th>نوم</th>
-                        <th> پلار نوم</th>
-                        <th> شماره تماس</th>
-                        <th> نمبر تذکره</th>
-                        <th>آدرس</th>
-                        <th> ادرس فعلی</th>
-                        <th> case</th>
-                        <th>موضوع شکایت</th>
-                        <th>تاریخ شکایت</th>
-                        <th>توسط</th>
-                        <th>معلومات</th>
-                        <th>ACTION</th>
+                        <th>{{__('Name')}}</th>
+                        <th>{{__('Father_name')}}</th>
+                        <th>{{__('Phone_number')}}</th>
+                        <th>{{__('Tazkira_number')}}</th>
+                        <th>{{__('Main_address')}}</th>
+                        <th>{{__('Current_address')}}</th>
+                        <th>{{__('Case')}}</th>
+                        <th>{{__('Complaint_date')}}</th>
+                        <th>{{__('Crime_subject')}}</th>
+                        <th>{{__('By')}}</th>
+                        <th>{{__('Information')}}</th>
+                        <th>{{__('Action')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,17 +58,16 @@
                                 <div class="dropdown">
                                     <a class=" dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        معلومات
+                                        {{__('Information')}}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li><a class="dropdown-item "
                                                 href="{{ url('ariza/arizafile/' . $item->id) }}"><span
-                                                    class="">عریضه</span></a></li>
+                                                    class="">{{__('Ariza')}}</span></a></li>
                                         <li><a class="dropdown-item "
-                                                href="{{ url('crime/info/' . $item->id) }}">توضیحات</a></li>
+                                                href="{{ url('crime/info/' . $item->id) }}">{{__('Description')}}</a></li>
                                         <li><a class="dropdown-item "
-                                                href="{{ url('suspect_list/' . $item->id) }}">لیست
-                                                مظنونین</a></li>
+                                                href="{{ url('suspect_list/' . $item->id) }}">{{__('Suspect_list')}}</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -76,15 +75,15 @@
                                 <div class="dropdown">
                                     <button class="btn btn-light-secondary btn-sm dropdown-toggle" type="button"
                                         id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Actions
+                                        {{__('Action')}}
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li><a class="dropdown-item bg-light-info"
-                                                href="{{ url('people/edit/' . $item->id) }}">Edit</a></li>
+                                                href="{{ url('people/edit/' . $item->id) }}">{{__('Edit')}}</a></li>
                                         <li><a class="dropdown-item bg-light-danger"
-                                                href="{{ url('people/delete/' . $item->id) }}">Delete</a></li>
+                                                href="{{ url('people/delete/' . $item->id) }}">{{__('Delete')}}</a></li>
                                         <li><a class="dropdown-item bg-light-success"
-                                                href="{{ url('people/all/' . $item->id) }}">View</a></li>
+                                                href="{{ url('people/all/' . $item->id) }}">{{__('View')}}</a></li>
                                     </ul>
                                 </div>
                             </td>

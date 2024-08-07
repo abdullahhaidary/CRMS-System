@@ -184,10 +184,10 @@
         </div>
     </div>
 
-    <div class="row details-card mt-4">
+    <div class="row  card mt-4">
         <div class="col-lg-12">
             <h4 class="section-title">فینګر دست چپ</h4>
-            <div class="row">
+            <div class="row ">
                 <div class="col-lg-2 col-md-4 col-6 mb-3">
                     <div class="fingerprint">
                         <img src="https://via.placeholder.com/100" alt="Fingerprint 1">
