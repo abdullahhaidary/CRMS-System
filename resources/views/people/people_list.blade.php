@@ -1,8 +1,6 @@
 @extends('layout.mian-dashbord')
 @section('content')
-    <div class="page-heading">
-        <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
-    </div>
+{{--   --}}
 
     <div class="page-heading text-center">
         <h3>{{__('list_of_complint_people')}}</h3>
