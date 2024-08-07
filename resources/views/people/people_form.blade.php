@@ -1,6 +1,8 @@
 @extends('layout.mian-dashbord')
 @section('content')
 <div class="page-heading text-center">
+
+<!-- فورم ثبت شکایت جدید -->
     <h3>{{__('New_complaint_registration_form')}}</h3>
 </div>
 <!-- criminal from start -->
@@ -22,7 +24,7 @@
                                             type="text"
                                             id="first-name-column"
                                             class="form-control"
-                                            placeholder="{{__('Enter_the_name')}}"
+                                            placeholder="{{__('Enter_the_name')}} "
                                             name="name"
                                             data-parsley-required="true"
                                             required
