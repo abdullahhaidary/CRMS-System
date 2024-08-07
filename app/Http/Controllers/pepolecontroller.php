@@ -20,8 +20,7 @@ class pepolecontroller extends Controller
     public function index()
     {
 
-        $data=people::paginate(5);
-        return view('people.people', compact('data'));
+        return view('people.people');
     }
     public function people_list()
     {

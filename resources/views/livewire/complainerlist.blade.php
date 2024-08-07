@@ -11,7 +11,14 @@
         <h3>{{ __('list_of_complint_people') }}</h3>
     </div>
     @include('massage')
-    <!--  Inverse table start -->
+    <form wire:submit.prevent="search">
+        <div class="form-row row">
+            <div class="form-group col-md-5">
+                <label for="searchName">{{__('Search')}}</label>
+                <input type="text" class="form-control" id="searchName" wire:model.live="searchInput" placeholder="{{__('Search')}}...">
+            </div>
+        </div>
+    </form>
     <section class="section">
         <div class="table-responsive">
             <table class="table table-hover mb-0">
@@ -59,7 +66,8 @@
                                                     class="">عریضه</span></a></li>
                                         <li><a class="dropdown-item "
                                                 href="{{ url('crime/info/' . $item->id) }}">توضیحات</a></li>
-                                        <li><a class="dropdown-item " href="{{ url('suspect_list/' . $item->id) }}">لیست
+                                        <li><a class="dropdown-item "
+                                                href="{{ url('suspect_list/' . $item->id) }}">لیست
                                                 مظنونین</a></li>
                                     </ul>
                                 </div>
