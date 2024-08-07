@@ -1,7 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading text-center">
-        <h3>فورم ثبت شکایت جدید</h3>
+        <h3>{{__('save_compelint')}}</h3>
     </div>
     <!-- criminal from start -->
     <section id="multiple-column-form">
@@ -123,7 +123,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
-                                            ثبت شکایت
+                                            {{__('save_compelint')}}
                                         </button>
                                         <a href="{{route('province_list')}}"
                                            type="reset"

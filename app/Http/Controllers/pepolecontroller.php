@@ -83,6 +83,9 @@ class pepolecontroller extends Controller
         $suspect->name=$request->suspect_name;
         $suspect->last_name=$request->last_name;
         $suspect->phone=$request->phone_number;
+        $suspect->isCriminal=1;
+        $suspect->Created_by=Auth::user()->id;
+
         $suspect->actual_address=$request->main_address;
         $suspect->current_address=$request->current_address;
          $suspect->tazcira_number=$request->tazkera_number;

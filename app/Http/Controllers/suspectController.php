@@ -39,8 +39,8 @@ public function store(Request $request ,$id)
     $save->tazcira_number=$request->tazcira_number;
     $save->actual_address=$request->main_address;
     $save->current_address=$request->current_address;
-    $save->isCriminal=0;
-    $save->Created_by=Auth::user()->name;
+    $save->isCriminal=1;
+    $save->Created_by=Auth::user()->id;
 $save->save();
 return redirect(url('/suspect_list/'.$id));
 

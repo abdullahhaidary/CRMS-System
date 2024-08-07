@@ -216,7 +216,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
-                                            ثبت شکایت
+                                            {{__('save_compelint')}}
                                         </button>
                                         <a href="{{route('people')}}"
                                            type="reset"

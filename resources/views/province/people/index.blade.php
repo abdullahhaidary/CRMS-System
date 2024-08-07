@@ -1,11 +1,11 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading">
-        <a href="{{route('province_from')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
+        <a href="{{route('province_from')}}" class="btn btn-outline-primary btn-light"> {{__('save_compelint')}} </a>
     </div>
     <div class="page-heading text-center">
         <h3>جدول تمام افراد شکایت کننده ها</h3>
-        @include('massage')
+                @include('massage')
     </div>
     <!--  Inverse table start -->
     <section class="section">

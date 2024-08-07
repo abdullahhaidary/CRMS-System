@@ -122,6 +122,7 @@
   "View_information_in_suspect_table": "د مظنون په جدول کی معلومات لیدل",
   "View_list": "د لیست لیدل",
   "admin_part": "ادمین برخه",
+  "application_header": "د مجرمینو د ثبت د مدیریت سیستم",
   "biemitrec_search": "پلټنه د بایومترک په اساس",
   "complint_part": "شکایت برخه",
   "complinte_list": "د شکایاتو لیست",
@@ -141,7 +142,7 @@
   "province": "ولایت",
   "province_account_list": "د ولایتی او والسوالی اکونټونو مکمل لیست",
   "public_search": "عمومی پلټنه",
-  "save_compelint": "د شکایت ذخیره برخه",
+  "save_compelint": "د شکایت ثبتول",
   "save_complent": "د شکایت ذخیزه",
   "user_setting": "د کارونکي تنظیمات",
   "users": "کاربر"

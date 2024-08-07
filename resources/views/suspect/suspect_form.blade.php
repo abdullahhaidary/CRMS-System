@@ -77,7 +77,7 @@
                                         <div class="form-group">
                                             <label for="city-column" class="form-label"> نمبر تذکره</label>
                                             <input
-                                                type="number"
+                                                type="text"
                                                 id="city-column"
                                                 class="form-control"
                                                 placeholder=" نمبر تذکره"
@@ -122,7 +122,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">
-                                            ثبت شکایت
+                                            {{__('save_compelint')}}
                                         </button>
                                         <a href="{{route('people')}}"
                                            type="reset"

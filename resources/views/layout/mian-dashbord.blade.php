@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criminal Manegment system</title>
+    <title>{{__('application_header')}}</title>
 
-    <link rel="stylesheet" href="{{@asset('dist2/css/app-dark.rtl.css')}}">
-    <link rel="stylesheet" href="{{@asset('dist2/css/app.rtl.css')}}">
-    {{-- <link rel="stylesheet" href="{{@asset('dist2/css/iconly.css')}}"> --}}
+
+    @if(App::getLocale() === 'english')
+        <link rel="stylesheet" href="{{ asset('dist2/css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('dist2/css/app-dark.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('dist2/css/app.rtl.css') }}">
+        <link rel="stylesheet" href="{{ asset('dist2/css/app-dark.rtl.css') }}">
+    @endif
     <link rel="stylesheet" href="{{@asset('dist2/css/style.css')}}">
     <link rel="shortcut icon" href="{{@asset('./dist2/css/svg/favicon.svg')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{@asset('dist2/css/bootstrap-icons.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/font-awsome.css')}}">
     @yield('styles')
 </head>
-<body dir="rtl">
+<body  dir="{{ App::getLocale() === 'english' ? 'ltr' : 'rtl' }}">
 <script src="{{@asset('dist2/js/initTheme.js')}}"></script>
 <div id="app">
     <div id="sidebar">
@@ -69,7 +74,7 @@
                         </div>
                     </li>
 
-                    <li class="sidebar-title mt-2 mb-3" style="user-select: none;" >{{__('management_system')}} </li>
+                    {{-- <li class="sidebar-title mt-2 mb-3" style="user-select: none;" >{{__('management_system')}} </li> --}}
                     <li
                         class="sidebar-item {{ request()->is('/') ? 'active' : '' }}">
                         <a href="{{url('/')}}" class='sidebar-link'>
@@ -179,7 +184,7 @@
                             class="sidebar-item {{ Route::currentRouteName() == 'province_list' ? 'active' : '' }} ">
                             <a href="{{route('province_list')}}" class='sidebar-link'>
                                 <i class="bi bi-person-fill"></i>
-                                <span> ثبت شکایت </span>
+                                <span>{{__('save_compelint')}} </span>
                             </a>
                         </li>
                         <li
