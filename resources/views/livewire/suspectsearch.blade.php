@@ -3,6 +3,7 @@
         <div class="col-12 col-md-12 col-lg-12">
             <div class="card shadow-sm">
                 <div class="card-body">
+                    <!-- لست مظنونین -->
                     <h2 class="text-center mb-4">{{__('Suspect_list')}}</h2>
                     @include('massage')
                     <form wire:submit.prevent="search">

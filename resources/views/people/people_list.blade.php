@@ -3,6 +3,7 @@
 {{--   --}}
 
     <div class="page-heading text-center">
+        <!-- لیست تمام افراد شکایت کننده -->
         <h3>{{__('list_of_complint_people')}}</h3>
     </div>
     @include('massage')
@@ -21,8 +22,8 @@
                     <th>{{__('Main_address')}}</th>
                     <th>{{__('Current_address')}}</th>
                     <th> {{__('Case')}}</th>
-                    <th>{{__('Complaint_subject')}}</th>
                     <th>{{__('Complaint_date')}}</th>
+                    <th>{{__('Complaint_subject')}}</th>
                     <th>{{__('By')}}</th>
                     <th>{{__('Information')}}</th>
                     <th>{{__('Action')}}</th>
