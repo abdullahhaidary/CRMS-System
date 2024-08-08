@@ -233,6 +233,7 @@
                         </div>
                     </div>
                 @endforeach
+                <br>
             @endforeach
             <h2 class="text-center">لیست معلومات یک مظنون</h2>
             @foreach($suspects as $suspect)
@@ -274,6 +275,14 @@
                 </div>
             </div>
                 @endforeach
+            <br>
+            <hr>
+            <br>
+            <div class="section">
+                <div class="info-row">
+                    <p  class=""> محل امضا    .............................</p>
+                </div>
+            </div>
         </div>
     </div>
     </div>
