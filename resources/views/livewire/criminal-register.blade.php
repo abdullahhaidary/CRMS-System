@@ -154,7 +154,7 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="photo">{{ __('Picture') }}</label>
+                                                <label for="photo">{{ __('Ariza') }}</label>
                                                 <input type="file" id="photo" class="form-control" wire:model="photo" />
 
                                                 @if ($photo)
