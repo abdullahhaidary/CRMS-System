@@ -111,6 +111,72 @@
             background-color: #fff;
             border: 1px solid #ccc;
         }
+
+        @font-face {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            color: #333;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .info-row p {
+            margin: 0;
+            flex: 1;
+            border-bottom: 1px solid #ccc;
+            padding: 5px 10px;
+            box-sizing: border-box;
+        }
+
+        .info-row p:first-child {
+            border-right: 1px solid #ccc;
+        }
+
+        .list-group {
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .list-group-item {
+            display: block;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+        }
     </style>
     <script src="{{asset('dist/js/jquery .js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
@@ -221,43 +287,43 @@
             </div>
         </div>
         <div id="content-to-download2" dir="rtl">
+            <h1>جزئیات شکایت</h1>
+
             @foreach($peoples as $item)
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">معلومات شکایت کننده</h5>
-                            </div>
-                            <div class="card-body">
-                                <p><strong>#: </strong>{{$item->id}}</p>
-                                <p><strong>{{__('Name')}}: </strong>{{$item->name . " ". $item->last_name}}</p>
-                                <p><strong>{{__('Father_name')}}: </strong>{{ $item->father_name}}</p>
-                                <p><strong>{{__('Email')}}: </strong>{{ $item->email}}</p>
-                                <p><strong>{{__('Phone_number')}}: </strong>{{ $item->phone}}</p>
-                                <p><strong>{{__('Tazkera_number')}}: </strong>{{ $item->tazkira_number}}</p>
-                                <p><strong>{{__('Main_address')}}: </strong>{{ $item->actual_address}}</p>
-                                <p><strong>{{__('Current_address')}}: </strong>{{ $item->current_address}}</p>
-                                <p><strong>{{__('Case')}}: </strong>{{ $item->crime_case}}</p>
-                                <p><strong>{{__('Crime_subject')}}: </strong>{{ $item->subject_crim}}</p>
-                                <p><strong>{{__('Crime_date')}}: </strong>{{ $item->crim_date}}</p>
-                                <p><strong>{{__('Create_date')}}: </strong> {{$item->created_at}}</p>
-                            </div>
-                        </div>
+                <div class="section">
+                    <h2>معلومات شکایت کننده</h2>
+                    <div class="info-row">
+                        <p>#: {{$item->id}}</p>
+                        <p>{{__('Name')}}: {{$item->name}}</p>
+                        <p>{{__('Last_name')}}: {{$item->last_name}}</p>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">شواهد</h5>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item">Photographs</li>
-                                    <li class="list-group-item">Witness Statements</li>
-                                    <li class="list-group-item">Video Footage</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="info-row">
+                        <p>{{__('Father_name')}}: {{$item->father_name}}</p>
+                        <p>{{__('Email')}}: {{$item->email}}</p>
+                        <p>{{__('Phone_number')}}: {{$item->phone}}</p>
                     </div>
+                    <div class="info-row">
+                        <p>{{__('Tazkera_number')}}: {{$item->tazkira_number}}</p>
+                        <p>{{__('Main_address')}}: {{$item->actual_address}}</p>
+                        <p>{{__('Current_address')}}: {{$item->current_address}}</p>
+                    </div>
+                    <div class="info-row">
+                        <p>{{__('Case')}}: {{$item->crime_case}}</p>
+                        <p>{{__('Crime_subject')}}: {{$item->subject_crim}}</p>
+                        <p>{{__('Crime_date')}}: {{$item->crim_date}}</p>
+                    </div>
+                    <div class="info-row">
+                        <p>{{__('Create_date')}}: {{$item->created_at}}</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>شواهد</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item">Photographs</li>
+                        <li class="list-group-item">Witness Statements</li>
+                        <li class="list-group-item">Video Footage</li>
+                    </ul>
                 </div>
             @endforeach
         </div>
