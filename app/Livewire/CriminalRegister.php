@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\casemodel;
 use App\Models\criminal;
 use App\Models\CriminalPicture;
+use App\Models\FingerprintModel;
 use App\Models\suspectmodel;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,6 @@ class CriminalRegister extends Component
             ->toArray();
     }
 
-
     public function selectSuspect($suspectId)
     {
         $this->selectedSuspect = $suspectId;
@@ -56,38 +56,35 @@ class CriminalRegister extends Component
 
     public function render()
     {
-
         $case = casemodel::all();
-        return view('livewire.criminal-register',
-        ['isSuspectAvailable'=>$this->isSuspectAvailable,
-        'case'=>$case,
-        // 'suspects' => $suspects
-
-        ]
-    );
+        return view('livewire.criminal-register', [
+            'isSuspectAvailable' => $this->isSuspectAvailable,
+            'case' => $case,
+            // 'suspects' => $suspects
+        ]);
     }
     public function submit()
     {
         $save = new criminal();
-        $save->suspect_id = $this->suspect;
-        $save->case_id = 1 ;
-        $save->gender = "Male";
+        $save->suspect_id = $this->selectedSuspect;
+        $save->case_id = 1;
+        $save->gender = 'Male';
         $save->job = $this->job;
         $save->marital_status = $this->marital_status;
         $save->family_members = $this->familymember;
         $save->created_by = Auth::user()->name;
 
         $save->arrest_date = Carbon::parse($this->arrest_date)->format('Y-m-d H:i:s');
-        if($this->isSuspectAvailable==0){
-        $save->criminal_name = $this->name;
-        $save->last_name = $this->lname;
-        $save->father_name = $this->father_name;
-        $save->phone = $this->phone;
-        $save->email = $this->email;
-        $save->current_address = $this->current_address;
-        $save->actual_address = $this->actual_address;
-        $save->date_of_birth = Carbon::parse($this->dateofbirth)->format('Y-m-d H:i:s');
-    }
+        if ($this->isSuspectAvailable == 0) {
+            $save->criminal_name = $this->name;
+            $save->last_name = $this->lname;
+            $save->father_name = $this->father_name;
+            $save->phone = $this->phone;
+            $save->email = $this->email;
+            $save->current_address = $this->current_address;
+            $save->actual_address = $this->actual_address;
+            $save->date_of_birth = Carbon::parse($this->dateofbirth)->format('Y-m-d H:i:s');
+        }
 
         if (!empty($this->photo)) {
             $exe = $this->photo->getClientOriginalExtension();
@@ -105,6 +102,17 @@ class CriminalRegister extends Component
         $criminal_picture->save();
 
         $id = $save->id;
-        return redirect()->route('criminal_picture', compact('id'))->with('success', "مجریم ادد شو اوس عکس اضافه کړی!");
+        if ($this->isSuspectAvailable == 0) {
+            return redirect(url('/criminal/addfinger/' . $id));
+        } else {
+            $suspect_id=$this->selectedSuspect;
+            $fingerprint = FingerprintModel::where('suspect_id', $this->selectedSuspect)->get();
+
+            if ($fingerprint->isNotEmpty()) {
+                return redirect()->route('criminal_picture', compact('id'))->with('success', 'مجریم ادد شو اوس عکس اضافه کړی!');
+            } else {
+                return redirect(url('/finger_print_add/'.$suspect_id));
+            }
+        }
     }
 }

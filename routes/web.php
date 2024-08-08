@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\criminalcontroller;
 use App\Models\casemodel;
 use App\Models\criminal;
 use App\Models\FingerprintModel;
@@ -95,6 +96,7 @@ Route::post('/profile-info-edit',[AuthController::class,'profile_info_edit'])->m
 Route::get('/profile', [AuthController::class, 'profile_info'])->middleware('auth')->name('profile_info');
 
 
+
 Route::post('/reset-password',[AuthController::class,'forget_password'])->middleware('guest')->name('password.update');
 Route::post('logout',[AuthController::class,'logout'])->name('logout');
 Route::post('profile-complete',[AuthController::class,'complete_profile'])->name('profile.complete');
@@ -130,6 +132,8 @@ Route::fallback(function(){
     Route::get('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::class, 'picture'])->name('criminal_picture');
     Route::post('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::class,'picture_save'])->name('picture_save');
  Route::get('criminal/picture/show/{id}', [\App\Http\Controllers\criminalcontroller::class, 'show_picture'])->name('show_picture');
+ Route::post('/fingerprints_store_criminal',[criminalcontroller::class,'store_finger_print'])->name('store_finger_print_criminal');
+Route::get('/criminal/addfinger/{id}', [criminalcontroller::class,'finger_print_add'])->name('criminal_finger_add_page');
 
 
     //url user

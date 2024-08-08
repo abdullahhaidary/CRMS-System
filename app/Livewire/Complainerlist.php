@@ -21,13 +21,14 @@ class Complainerlist extends Component
         $query = People::query();
 
         if ($this->searchInput) {
-            $query->where('name', 'like', '%' . $this->paginationTheme . '%')
-                ->orWhere('last_name', 'like', '%' . $this->paginationTheme . '%');
-                // ->orWhere('father_name', 'like', '%' . $this->paginationTheme . '%')
-                // ->orWhere('phone', 'like', '%' . $this->paginationTheme . '%')
-                // ->orWhere('tazkira_number', 'like', '%' . $this->paginationTheme . '%')
-                // ->orWhere('actual_address', 'like', '%' . $this->paginationTheme . '%')
-                // ->orWhere('current_address', 'like', '%' . $this->paginationTheme . '%');
+            // dd($this->searchInput);
+            $query->where('name', 'like', '%' . $this->searchInput . '%')
+                ->orWhere('last_name', 'like', '%' . $this->searchInput . '%')
+                ->orWhere('father_name', 'like', '%' . $this->searchInput . '%')
+                ->orWhere('phone', 'like', '%' . $this->searchInput . '%')
+                ->orWhere('tazkira_number', 'like', '%' . $this->searchInput . '%')
+                ->orWhere('actual_address', 'like', '%' . $this->paginationTheme . '%')
+                ->orWhere('current_address', 'like', '%' . $this->searchInput . '%');
         }
         $data = $query->paginate(10);
 
