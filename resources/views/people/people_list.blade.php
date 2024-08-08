@@ -8,7 +8,7 @@
     </div>
     @include('massage')
     <!--  Inverse table start -->
-    <section class="section">
+    <section class="section ">
         <div class="table-responsive">
             <table class="table table-hover mb-0">
                 <thead>
@@ -22,8 +22,8 @@
                     <th>{{__('Main_address')}}</th>
                     <th>{{__('Current_address')}}</th>
                     <th> {{__('Case')}}</th>
-                    <th>{{__('Complaint_date')}}</th>
                     <th>{{__('Complaint_subject')}}</th>
+                    <th>{{__('Complaint_date')}}</th>
                     <th>{{__('By')}}</th>
                     <th>{{__('Information')}}</th>
                     <th>{{__('Action')}}</th>
@@ -43,6 +43,7 @@
                         <td>{{$item->subject_crim}}</td>
                         <td>{{$item->crim_date}}</td>
                         <td>{{$item->Created_by}}</td>
+                        
                         <td>
                             <div class="dropdown">
                                 <a class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">

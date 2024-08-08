@@ -19,7 +19,7 @@
                                         </select>
                                     </div>
                                     @if ($isSuspectAvailable)
-                                        <div class="form-group" style="position: relative;">
+                                        <div class="form-group">
                                             <label for="search">{{ __('suspect_search') }}</label>
                                             <input type="text" class="form-control" id="search"
                                                 placeholder="{{__('Search_for_suspect')}}" wire:model.live="search"
