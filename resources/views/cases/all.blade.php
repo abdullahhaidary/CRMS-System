@@ -22,7 +22,7 @@
                     <tr>
                         <th scope="row">{{$item->id}}</th>
                         <td>{{$item->crime_type}}</td>
-                        <td>{{$item->status}}</td>
+                        <td>{{$item->status==1 ? 'درحال برسی' : 'محاکمه شده'}}</td>
                         <td>{{$item->crime_location}}</td>
                         <td>{{$item->case_number}}</td>
                         <td style="width: 95px">{{$item->start_date}}</td>
