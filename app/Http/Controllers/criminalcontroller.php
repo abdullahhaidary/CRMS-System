@@ -75,24 +75,35 @@ class criminalcontroller extends Controller
 
     public function inset(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'lname' => 'required|string|max:255',
-        //     'father_name' => 'required|string|max:255',
-        //     'phone' => 'required|string|max:15',
-        //     'email' => 'required|email|max:255',
-        //     'current_address' => 'required|string|max:255',
-        //     'actual_address' => 'required|string|max:255',
-        //     'dateofbirth' => 'required|date',
-        //     'gender' => 'required|in:1,0',
-        //     'job' => 'required|string|max:255',
-        //     'marital_status' => 'required|in:مجرد,متاهل',
-        //     'familymember' => 'required|string|max:255',
-        //     'discription' => 'required|string',
-        //     'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        // ]);
-        //        dd($request->all());
+
+       $validatedData=  $request->validate([
+             'name' => 'required|string|max:255',
+             'lname' => 'required|string|max:255',
+             'father_name' => 'required|string|max:255',
+             'phone' => 'required|string|max:15',
+             'email' => 'required|email|max:255',
+             'current_address' => 'required|string|max:255',
+             'actual_address' => 'required|string|max:255',
+             'dateofbirth' => 'required|date',
+             'gender' => 'required|in:1,0',
+             'job' => 'required|string|max:255',
+             'marital_status' => 'required|in:مجرد,متاهل',
+             'familymember' => 'required|string|max:255',
+             'discription' => 'required|string',
+             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+         ]);
+
         $save = new criminal();
+
+        if (!empty($request->photo)) {
+            $exe = $request->file('photo')->getClientOriginalExtension();
+            //            dd($exe);
+            $file = $request->file('photo');
+            $rename = str::random(20);
+            $filename = $rename . '.' . $exe;
+            $file->move('criminal/', $filename);
+            $save->photo = $filename;
+        }
         $save->suspect_id = $request->suspect;
         $save->case_id = $request->case;
         $save->criminal_name = $request->name;
@@ -109,17 +120,9 @@ class criminalcontroller extends Controller
         $save->marital_status = $request->discription;
         $save->family_members = $request->familymember;
         $save->suspect_id = $request->suspect;
-        $save->case_id = $request->case;
+//        $save->case_id = $request->case;
         $save->Created_by = Auth::user()->name;
-        if (!empty($request->photo)) {
-            $exe = $request->file('photo')->getClientOriginalExtension();
-            //            dd($exe);
-            $file = $request->file('photo');
-            $rename = str::random(20);
-            $filename = $rename . '.' . $exe;
-            $file->move('criminal/', $filename);
-            $save->photo = $filename;
-        }
+
         $save->save();
 
         $criminal_picture = new CriminalPicture();
@@ -128,7 +131,7 @@ class criminalcontroller extends Controller
         $criminal_picture->save();
 
         $id = $save->id;
-        //        return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
+//                return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
         return redirect()->route('criminal_picture', compact('id'))->with('success', 'مجریم ادد شو اوس عکس اضافه کړی!');
     }
     public function edit($id)

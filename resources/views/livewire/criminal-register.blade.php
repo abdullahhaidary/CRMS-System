@@ -63,13 +63,13 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="first-name-column" class="form-label">{{ __('Name') }}</label>
-                                                <input type="text" id="first-name-column" class="form-control" placeholder="{{ __('Enter_your_name') }}" wire:model="name" required />
+                                                <input type="text" id="first-name-column" class="form-control" placeholder="{{ __('Enter_your_name') }}" wire:model="name" />
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="last-name-column" class="form-label">{{ __('Last_name') }}</label>
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="{{ __('Enter_last_name') }}" wire:model="lname" required/>
+                                                <input type="text" id="last-name-column" class="form-control" placeholder="{{ __('Enter_last_name') }}" wire:model="lname" />
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
@@ -124,19 +124,19 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Job') }}</label>
-                                                <input type="text" id="password-column" class="form-control" wire:model="job" placeholder="{{ __('Enter_job') }}" />
+                                                <input type="text" id="password-column" class="form-control" wire:model="job" placeholder="{{ __('Enter_job') }}" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Marital_status') }}</label>
-                                                <input type="text" id="password-column" class="form-control" wire:model="marital_status" placeholder="{{ __('Enter_marital_status') }}" />
+                                                <input type="text" id="password-column" class="form-control" wire:model="marital_status" placeholder="{{ __('Enter_marital_status') }}" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Family_members') }}</label>
-                                                <input type="number" id="password-column" class="form-control" wire:model="familymember" placeholder="{{ __('Enter_family_members') }}" />
+                                                <input type="number" id="password-column" class="form-control" wire:model="familymember" placeholder="{{ __('Enter_family_members') }}" required/>
                                             </div>
                                         </div>
 
@@ -149,13 +149,13 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('arrest_date_label') }}</label>
-                                                <input type="date"class="form-control" wire:model="arrest_date" placeholder="{{ __('arrest_date_placeholder') }}" />
+                                                <input type="date"class="form-control" wire:model="arrest_date" placeholder="{{ __('arrest_date_placeholder') }}" required/>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="photo">{{ __('Ariza') }}</label>
-                                                <input type="file" id="photo" class="form-control" wire:model="photo" />
+                                                <input type="file" id="photo" class="form-control" wire:model="photo" required/>
 
                                                 @if ($photo)
                                                     <img src="{{ $photo->temporaryUrl() }}" width="100" height="100" />
