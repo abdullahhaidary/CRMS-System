@@ -50,7 +50,7 @@
         }
     </style>
     @if($data)
-<div class="container">
+<div class="container-fluid">
     @foreach($data as $item)
     <div class="text-center ">
         <div class="nav text-right">
@@ -58,89 +58,90 @@
             <a class="link-item mx-2 btn btn-light-info" href="{{url('criminal/edit/'.$item->id)}}">{{__('Edit')}}</a>
             <button type="button" class="link-item btn btn-light-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}">{{__('Delete')}}</button>
             @endcan
-                <a class="link-item mx-2 btn btn-light-dark" href="{{route('crimnal')}}">{{__('View_list')}}</a>
-                <a class="link-item btn btn-outline-dark" href="{{url('criminal/picture/show/'.$item->id)}}">{{__('Pictures_a_criminal')}}</a>
+                <a class="link-item mx-2 btn" href="{{route('crimnal')}}">{{__('View_list')}}</a>
+                <a class="link-item btn " href="{{url('criminal/picture/show/'.$item->id)}}">{{__('Pictures_a_criminal')}}</a>
         </div>
         <!-- معلومات مکمل یک مجرم -->
         <h1>{{__('Additional_information_of_a_criminal')}}</h1>
     </div>
     <div class="row ">
         <div class="col-lg-4 col-md-6 mb-4">
-            <embed src="{{asset('storage/criminal/'.$item->photo)}}" type="application/pdf" width="100%" height="300px">
+            <img src="{{asset('storage/criminal/'.$item->photo)}}" alt="" width="100%" height="300px">
+{{--            <image src="{{asset('storage/criminal/'.$item->photo)}}" type="application/pdf" width="100%" height="300px">--}}
 
             <div class="details-item">
-                <span class="details-label">{{__('Name')}}:</span>
-                <span class="details-value">{{$item->criminal_name}}</span>
+                <span class="">{{__('Name')}}:</span>
+                <span class="">{{$item->criminal_name}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Last_name')}}:</span>
-                <span class="details-value">{{$item->last_name}}</span>
+                <span>{{__('Last_name')}}:</span>
+                <span>{{$item->last_name}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Father_name')}}:</span>
-                <span class="details-value">{{$item->father_name}}</span>
+                <span>{{__('Father_name')}}:</span>
+                <span>{{$item->father_name}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Gender')}}:</span>
-                <span class="details-value">{{$item->gender==1 ?  'male' : 'female'}}</span>
+                <span>{{__('Gender')}}:</span>
+                <span>{{$item->gender==1 ?  'male' : 'female'}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Age')}}:</span>
-                <span class="details-value">{{$item->date_of_birth}}</span>
+                <span>{{__('Age')}}:</span>
+                <span>{{$item->date_of_birth}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Job')}}:</span>
-                <span class="details-value">{{$item->job}}</span>
+                <span>{{__('Job')}}:</span>
+                <span>{{$item->job}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Case_number')}}: </span>
-                <span class="details-value">{{$item->case_number}}</span>
+                <span>{{__('Case_number')}}: </span>
+                <span>{{$item->case_number}}</span>
             </div>
         </div>
         <div class="col-lg-8 col-md-6">
             <h4 class="section-title">{{__('Personal_information')}}</h4>
 
             <div class="details-item">
-                <span class="details-label">{{__('ID')}}:</span>
-                <span class="details-value">{{$item->id}}</span>
+                <span>{{__('ID')}}:</span>
+                <span>{{$item->id}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Email')}}:</span>
-                <span class="details-value">{{$item->email}}</span>
+                <span>{{__('Email')}}:</span>
+                <span>{{$item->email}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Contact_number')}}:</span>
-                <span class="details-value">{{$item->phone}}</span>
+                <span>{{__('Contact_number')}}:</span>
+                <span>{{$item->phone}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Main_address')}}:</span>
-                <span class="details-value">{{$item->actual_address}}</span>
+                <span>{{__('Main_address')}}:</span>
+                <span>{{$item->actual_address}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Current_address')}}:</span>
-                <span class="details-value">{{$item->current_address}}</span>
+                <span>{{__('Current_address')}}:</span>
+                <span>{{$item->current_address}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Family_members')}}:</span>
-                <span class="details-value">{{$item->family_members}}</span>
+                <span>{{__('Family_members')}}:</span>
+                <span>{{$item->family_members}}</span>
             </div>
             <h4 class="section-title mt-4">{{__('Crime_profile')}}</h4>
             <div class="details-item">
-                <span class="details-label">{{__('Date_of_Registration')}}:</span>
-                <span class="details-value">{{$item->created_at}}</span>
+                <span>{{__('Date_of_Registration')}}:</span>
+                <span>{{$item->created_at}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('History_of_crime')}}:</span>
-                <span class="details-value">{{$item->arrest_date}}</span>
+                <span>{{__('History_of_crime')}}:</span>
+                <span>{{$item->arrest_date}}</span>
             </div>
 
             <div class="details-item">
-                <span class="details-label">{{__('Updated_At')}}:</span>
-                <span class="details-value">{{$item->updated_at}}</span>
+                <span>{{__('Updated_At')}}:</span>
+                <span>{{$item->updated_at}}</span>
             </div>
             <div class="details-item">
-                <span class="details-label">{{__('Description')}}:</span>
-                <span class="details-value">{{$item->marital_status}}</span>
+                <span>{{__('Description')}}:</span>
+                <span>{{$item->marital_status}}</span>
             </div>
         </div>
     </div>
@@ -183,10 +184,10 @@
         </div>
     </div>
 
-    <div class="row details-card mt-4">
+    <div class="row  card mt-4">
         <div class="col-lg-12">
             <h4 class="section-title">فینګر دست چپ</h4>
-            <div class="row">
+            <div class="row ">
                 <div class="col-lg-2 col-md-4 col-6 mb-3">
                     <div class="fingerprint">
                         <img src="https://via.placeholder.com/100" alt="Fingerprint 1">

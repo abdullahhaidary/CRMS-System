@@ -7,7 +7,7 @@
                 <thead class="thead-dark">
                 <tr class="" style="background-color: rgba(136,180,156,0.28)">
                     <th scope="col">#</th>
-                    <th scope="col">{{__('Crime_type')}}</th>
+                    <th scope="col">{{__('Case_type')}}</th>
                     <th scope="col">{{__('Status')}}</th>
                     <th scope="col">{{__('Crime_location')}}</th>
                     <th scope="col">{{__('Case_number')}}</th>

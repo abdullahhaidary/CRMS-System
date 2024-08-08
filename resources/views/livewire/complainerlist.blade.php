@@ -26,18 +26,18 @@
 
                     <tr class="table-active">
                         <th>#</th>
-                        <th>نوم</th>
-                        <th> پلار نوم</th>
-                        <th> شماره تماس</th>
-                        <th> نمبر تذکره</th>
-                        <th>آدرس</th>
-                        <th> ادرس فعلی</th>
-                        <th> case</th>
-                        <th>موضوع شکایت</th>
-                        <th>تاریخ شکایت</th>
-                        <th>توسط</th>
-                        <th>معلومات</th>
-                        <th>ACTION</th>
+                        <th>{{__('Name')}}</th>
+                        <th>{{__('Father_name')}}</th>
+                        <th>{{__('Phone_number')}}</th>
+                        <th>{{__('Tazkira_number')}}</th>
+                        <th>{{__('Main_address')}}</th>
+                        <th>{{__('Current_address')}}</th>
+                        <th>{{__('Case')}}</th>
+                        <th>{{__('Complaint_date')}}</th>
+                        <th>{{__('Crime_subject')}}</th>
+                        <th>{{__('By')}}</th>
+                        <th>{{__('Information')}}</th>
+                        <th>{{__('Action')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,17 +58,16 @@
                                 <div class="dropdown">
                                     <a class=" dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        معلومات
+                                        {{__('Information')}}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li><a class="dropdown-item "
                                                 href="{{ url('ariza/arizafile/' . $item->id) }}"><span
-                                                    class="">عریضه</span></a></li>
+                                                    class="">{{__('Ariza')}}</span></a></li>
                                         <li><a class="dropdown-item "
-                                                href="{{ url('crime/info/' . $item->id) }}">توضیحات</a></li>
+                                                href="{{ url('crime/info/' . $item->id) }}">{{__('Description')}}</a></li>
                                         <li><a class="dropdown-item "
-                                                href="{{ url('suspect_list/' . $item->id) }}">لیست
-                                                مظنونین</a></li>
+                                                href="{{ url('suspect_list/' . $item->id) }}">{{__('Suspect_list')}}</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -76,49 +75,51 @@
                                 <div class="dropdown">
                                     <button class="btn btn-light-secondary btn-sm dropdown-toggle" type="button"
                                         id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Actions
+                                        {{__('Action')}}
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        @can('super_admin')
                                         <li><a class="dropdown-item bg-light-info"
-                                                href="{{ url('people/edit/' . $item->id) }}">Edit</a></li>
+                                                href="{{ url('people/edit/' . $item->id) }}">{{__('Edit')}}</a></li>
                                         <li><a class="dropdown-item bg-light-danger"
-                                                href="{{ url('people/delete/' . $item->id) }}">Delete</a></li>
+                                               data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}" >{{__('Delete')}}</a></li>
+                                        @endcan
                                         <li><a class="dropdown-item bg-light-success"
-                                                href="{{ url('people/all/' . $item->id) }}">View</a></li>
+                                                href="{{ url('people/all/' . $item->id) }}">{{__('View')}}</a></li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
-                        <div class="modal fade" id="mymodal">
-                            <iframe id="pdfIframe" src="{{ asset('ariza-of-compleint/' . $item->ariza) }}"
-                                style="width: 100%" frameborder="0"></iframe>
-                        </div>
 
-                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">{{ __('Confirm_delete') }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <h5 class="modal-title" id="deleteModalLabel">{{__('Confirm_delete')}}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        {{ __('Delete_description') }}
+                                        {{__('Delete_description')}}
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                                        <form id="deleteForm" action="{{ url('/people/delete/' . $item->id) }}"
-                                            method="get" style="display:inline;">
-                                            @csrf
-                                            <input type="hidden" name="id" id="deleteId" value="">
-                                            <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
-                                        </form>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
+                                        <button type="button" class="btn btn-danger" wire:click="deleteSuspect" data-bs-dismiss="modal">{{__('Delete')}}</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const deleteModal = document.getElementById('deleteModal');
+                                deleteModal.addEventListener('show.bs.modal', function (event) {
+                                    const button = event.relatedTarget;
+                                    const id = button.getAttribute('data-id');
+                                    const form = deleteModal.querySelector('#deleteForm');
+                                    form.action = `{{url('people/delete/')}}/${id}`;
+                                    form.querySelector('#deleteId').value = id;
+                                });
+                            })
+                        </script>
                     @endforeach
                 </tbody>
             </table>

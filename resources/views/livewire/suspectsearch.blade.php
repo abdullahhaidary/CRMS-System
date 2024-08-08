@@ -55,8 +55,8 @@
 {{--                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="setDeleteId(1)">--}}
 {{--                                                    Delete Item--}}
 {{--                                                </button>--}}
-                                                <a class="btn btn-info btn-sm" href="{{url('suspect/edit/'.$suspect->id)}}">تصحیح</a>
-                                                <a class="btn btn-danger btn-sm" href="{{url('/suspect/delete/'.$suspect->id)}}">حذف</a>
+                                                <a class="btn btn-info btn-sm" href="{{url('/suspect/edit/'.$suspect->id)}}">تصحیح</a>
+                                                <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$suspect->id}}" href="">حذف</a>
                                         </th>
                                         @endcan
                                     </tr>
@@ -78,6 +78,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            const deleteModal = document.getElementById('deleteModal');
+                                            deleteModal.addEventListener('show.bs.modal', function (event) {
+                                                const button = event.relatedTarget;
+                                                const id = button.getAttribute('data-id');
+                                                const form = deleteModal.querySelector('#deleteForm');
+                                                form.action = `{{url('/suspect/delete/')}}/${id}`;
+                                                form.querySelector('#deleteId').value = id;
+                                            });
+                                        })
+                                    </script>
                                 @endforeach
                                 </tbody>
                             </table>

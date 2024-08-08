@@ -1,10 +1,9 @@
 @extends('layout.mian-dashbord')
 @section('content')
-    <div class="page-heading">
-        <a href="{{route('people_form')}}" class="btn btn-outline-primary btn-light"> ثبت شکایت  </a>
-    </div>
+{{--   --}}
 
     <div class="page-heading text-center">
+        <!-- لیست تمام افراد شکایت کننده -->
         <h3>{{__('list_of_complint_people')}}</h3>
     </div>
     @include('massage')
@@ -23,8 +22,8 @@
                     <th>{{__('Main_address')}}</th>
                     <th>{{__('Current_address')}}</th>
                     <th> {{__('Case')}}</th>
-                    <th>{{__('Complaint_subject')}}</th>
                     <th>{{__('Complaint_date')}}</th>
+                    <th>{{__('Complaint_subject')}}</th>
                     <th>{{__('By')}}</th>
                     <th>{{__('Information')}}</th>
                     <th>{{__('Action')}}</th>
@@ -41,8 +40,8 @@
                         <td>{{$item->actual_address}}</td>
                         <td>{{$item->current_address}}</td>
                         <td>{{$item->crime_case}}</td>
-                        <td>{{$item->crim_date}}</td>
                         <td>{{$item->subject_crim}}</td>
+                        <td>{{$item->crim_date}}</td>
                         <td>{{$item->Created_by}}</td>
                         <td>
                             <div class="dropdown">
@@ -62,9 +61,11 @@
                                     {{__('Action')}}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item bg-primary" href="{{url('people/edit/'.$item->id)}}">{{__('Edit')}}</a></li>
-                                    <li><a class="dropdown-item bg-danger" href="{{url('people/delete/'. $item->id)}}">{{__('Delete')}}</a></li>
-                                    <li><a class="dropdown-item bg-info" href="{{url('people/all/'. $item->id)}}">{{__('View')}}</a></li>
+                                    @can('super_admin')
+                                    <li><a class="dropdown-item bg-primary " href="{{url('people/edit/'.$item->id)}}">{{__('Edit')}}</a></li>
+                                    <li><a class="dropdown-item bg-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}">{{__('Delete')}}</a></li>
+                                    @endcan
+                                        <li><a class="dropdown-item bg-info" href="{{url('people/all/'. $item->id)}}">{{__('View')}}</a></li>
                                 </ul>
                             </div>
                         </td>
@@ -94,6 +95,18 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const deleteModal = document.getElementById('deleteModal');
+                            deleteModal.addEventListener('show.bs.modal', function (event) {
+                                const button = event.relatedTarget;
+                                const id = button.getAttribute('data-id');
+                                const form = deleteModal.querySelector('#deleteForm');
+                                form.action = `{{url('people/delete/')}}/${id}`;
+                                form.querySelector('#deleteId').value = id;
+                            });
+                        })
+                    </script>
                 @endforeach
                 </tbody>
             </table>
