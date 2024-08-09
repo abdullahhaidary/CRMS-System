@@ -48,7 +48,7 @@ return redirect(url('/suspect_list/'.$id));
     public function edit($id)
     {
         $data=suspectmodel::where('suspect.id', '=', $id)->get();
-        return redirect()->route('all_list');
+        return view('suspect.edit', compact('data'));
     }
 public function update(Request $request, string $id)
 {
@@ -83,7 +83,7 @@ public function update(Request $request, string $id)
     $criminal->save();
 
     // Redirect or return a response
-    return redirect()->back()->with('success', 'تغیرات په موافقیت انجام شد!');
+    return redirect(route('all_list'))->with('success', 'تغیرات په موافقیت انجام شد!');
 }
 public function destroy($id)
 {

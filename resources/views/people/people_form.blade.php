@@ -27,8 +27,16 @@
                                             placeholder="{{__('Enter_the_name')}} "
                                             name="name"
                                             data-parsley-required="true"
-                                            required
                                         />
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -43,7 +51,7 @@
                                             placeholder="{{__('Enter_last_name')}}"
                                             name="lname"
                                             data-parsley-required="true"
-                                            required
+
                                         />
                                     </div>
                                 </div>

@@ -76,7 +76,7 @@
                                                 name="end_date"
                                                 placeholder="{{__('End_date')}}"
                                                 data-parsley-required="true"
-                                                required
+                                                
                                             />
                                         </div>
                                     </div>
@@ -85,15 +85,10 @@
                                             <label for="email-id-column" class="form-label"
                                             >{{__('Case_status')}}</label
                                             >
-                                            <input
-                                                type="text"
-                                                id="email-id-column"
-                                                class="form-control"
-                                                name="case_status"
-                                                placeholder="{{__('Case_status')}}"
-                                                data-parsley-required="true"
-                                                required
-                                            />
+                                            <select name="case_status" class="form-control" id="">
+                                                <option value="{{1}}">در حال برسی</option>
+                                                <option value="{{0}}">مکمل شده</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
