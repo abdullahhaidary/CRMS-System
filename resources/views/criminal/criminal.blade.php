@@ -35,10 +35,18 @@
 {{--                                @if($firstPicture)--}}
                                     <td><img src="{{asset('storage/criminal/'.$item->photo)}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
 {{--                                   --}}
+                                @if($item->suspect_id==null)
                                 <td class="text-bold-500">{{ $item->criminal_name . " ".$item->last_name}}</td>
                                 <td class="text-bold-500">{{ $item->father_name }}</td>
                                 <td>{{ $item->current_address }}</td>
                                 <td>{{ $item->phone}}</td>
+
+                                @else
+                                <td class="text-bold-500">{{ $item->suspect->name . " ".$item->suspect->last_name}}</td>
+                                <td class="text-bold-500">{{ $item->suspect->father_name }}</td>
+                                <td>{{ $item->suspect->current_address }}</td>
+                                <td>{{ $item->suspect->phone}}</td>
+                                @endif
                                 <td>{{ $item->Created_by}}</td>
                                 <td class="m-0 p-0">
 

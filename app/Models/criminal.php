@@ -19,4 +19,8 @@ class criminal extends Model
     public function case()  {
         return $this->belongsTo(casemodel::class);
     }
+
+    public function suspect(){
+        return $this->belongsTo(suspectmodel::class,'suspect_id');
+    }
 }

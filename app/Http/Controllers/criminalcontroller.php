@@ -18,7 +18,7 @@ class criminalcontroller extends Controller
 {
     public function index()
     {
-        $data = criminal::with('picture')->paginate('5');
+        $data = criminal::with(['picture','suspect'])->paginate('5');
         return view('criminal.criminal', compact('data'));
     }
     public function more($id)
