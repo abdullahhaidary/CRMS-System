@@ -63,6 +63,7 @@
     </style>
     <div class="register-container mt-1">
         <img src="{{asset('images/register.png')}}" alt="Logo">
+        <!-- فورم راجستر کاربر -->
         <h2>Register</h2>
         <form action="{{route('register')}}" method="POST">
             @csrf()

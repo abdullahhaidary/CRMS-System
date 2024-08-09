@@ -76,7 +76,7 @@
                                                 name="end_date"
                                                 placeholder="{{__('End_date')}}"
                                                 data-parsley-required="true"
-                                                required
+                                                
                                             />
                                         </div>
                                     </div>
