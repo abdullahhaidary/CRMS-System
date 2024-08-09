@@ -61,8 +61,6 @@ class pepolecontroller extends Controller
             $file->move('ariza-of-compleint/', $filename);
             $save->ariza = $filename;
         }
-        //dd($request->address);
-        //        $save->id=4;
         $save->name = $request->name;
         $save->last_name = $request->lname;
         $save->father_name = $request->fname;
@@ -71,14 +69,11 @@ class pepolecontroller extends Controller
         $save->actual_address = $request->address;
         $save->current_address = $request->curent_address;
         $save->crime_case = $request->crime_case;
-        //        $save->ariza_file=$request->name;
         $save->tazkira_number = $request->tazcira_number;
         $save->subject_crim = $request->creime_subject;
         $save->crim_date = $request->crime_date;
         $save->user_id = Auth::user()->id;
         $save->Created_by = Auth::user()->name;
-
-        //dd($savedPeople->id);
         $save->save();
 
         $savedPeople = People::where('name', $save->name)
@@ -119,7 +114,8 @@ class pepolecontroller extends Controller
     }
     public function edit($id)
     {
-        $data = DB::table('people')->select('people.*')->where('people.id', '=', $id)->get();
+        $data = DB::table('people')->select('people.*')
+            ->where('people.id', '=', $id)->get();
         return view('people.edit', compact('data'));
     }
     public function update(Request $request, string $id)
@@ -143,14 +139,12 @@ class pepolecontroller extends Controller
         $criminal = people::findOrFail($id);
         if (!empty($request->ariza_file)) {
             $exe = $request->file('ariza_file')->getClientOriginalExtension();
-            //            dd($exe);
             $file = $request->file('ariza_file');
             $rename = str::random(20);
             $filename = $rename . '.' . $exe;
             $file->move('ariza_of_compleint/', $filename);
             $criminal->ariza = $filename;
         }
-        // Update the user's data suspect
         $criminal->name = $request->input('name');
         $criminal->last_name = $request->input('lname');
         $criminal->father_name = $request->input('fname');
@@ -163,7 +157,6 @@ class pepolecontroller extends Controller
         $criminal->subject_crim = $request->input('creime_subject');
         $criminal->crim_date = $request->input('crime_date');
 
-        // Update other fields as necessary
         $criminal->save();
 
         // Redirect or return a response

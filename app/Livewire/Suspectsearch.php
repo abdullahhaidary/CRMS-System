@@ -29,7 +29,6 @@ class Suspectsearch extends Component
                 ->orWhere('actual_address', 'like', '%' . $this->name . '%')
                 ->orWhere('current_address', 'like', '%' . $this->name . '%');
         }
-
         $suspects = $query->paginate(10);
 
         return view('livewire.suspectsearch', compact('suspects'));

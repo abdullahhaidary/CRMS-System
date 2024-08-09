@@ -94,9 +94,6 @@ Route::post('/profile_change',[AuthController::class,'profile_change'])->middlew
 Route::post('/profile-info-edit',[AuthController::class,'profile_info_edit'])->middleware('auth')->name('profile_info_edit');
 
 Route::get('/profile', [AuthController::class, 'profile_info'])->middleware('auth')->name('profile_info');
-
-
-
 Route::post('/reset-password',[AuthController::class,'forget_password'])->middleware('guest')->name('password.update');
 Route::post('logout',[AuthController::class,'logout'])->name('logout');
 Route::post('profile-complete',[AuthController::class,'complete_profile'])->name('profile.complete');
