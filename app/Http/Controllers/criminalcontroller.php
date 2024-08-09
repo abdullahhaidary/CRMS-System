@@ -136,17 +136,10 @@ class criminalcontroller extends Controller
     }
     public function edit($id)
     {
-        //        dd($id);
-        $data = DB::table('suspect')
-            ->select('suspect.*')
-            //            ->where('suspect.id', '=', $id)
-            ->get();
-        $case = DB::table('cases')
-            ->select('cases.*')
-            //            ->where('cases.id', '=', $id)
-            ->get();
-        $criminal = DB::table('criminals')->leftjoin('suspect', 'suspect.id', '=', 'criminals.suspect_id')->leftjoin('cases', 'cases.id', '=', 'criminals.case_id')->select('criminals.*', 'suspect.name', 'cases.case_number')->where('criminals.id', '=', $id)->get();
-        return view('criminal.edit', compact('case', 'data', 'criminal'));
+        $criminal = criminal::with(['case','picture','suspect'])->find($id);
+        $cases=casemodel::all();
+        $suspects = suspectmodel::all();
+        return view('criminal.edit', compact( 'criminal','cases','suspects'));
     }
     public function update(Request $request, string $id)
     {
