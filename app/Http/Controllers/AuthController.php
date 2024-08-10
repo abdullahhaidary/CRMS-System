@@ -149,7 +149,7 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken(); // Regenerate the CSRF token
 
-        return redirect()->route('login')->with('success', "You have been logged out."); // Redirect to login page with success message
+        return redirect(url('/')); // Redirect to login page with success message
     }
 
 
