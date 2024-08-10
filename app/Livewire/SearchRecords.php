@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\criminal;
 use App\Models\suspectmodel;
+use App\Models\People;
 use Livewire\Component;
 use Livewire\WithPagination;
 class SearchRecords extends Component
@@ -93,10 +94,36 @@ class SearchRecords extends Component
             }
 
             $suspects = $suspectQuery->paginate(5);
+
+        if ($suspects->isEmpty()){
+            $peopleQuery = People::query();
+
+            if ($this->name) {
+                $peopleQuery->where('name', 'like', '%' . $this->name . '%');
+            }
+
+            if ($this->father_name) {
+                $peopleQuery->where('father_name', 'like', '%' . $this->father_name . '%');
+            }
+
+            if ($this->last_name) {
+                $peopleQuery->where('last_name', 'like', '%' . $this->last_name . '%');
+            }
+
+            if ($this->id) {
+                $peopleQuery->where('id', $this->id);
+            }
+
+            if ($this->phone) {
+                $peopleQuery->where('phone', 'like', '%' . $this->phone . '%');
+            }
+                $peoples=$peopleQuery->paginate('5');
+        }
         }
 
         return view('livewire.search-records', [
-        'criminals' => $criminals,
+        'criminals' => $criminals ,
+//        'peoples' => $peoples,
         'suspects' => $suspects ?? [],]);
     }
     public function updated($propertyName)
