@@ -33,6 +33,10 @@
             </table>
         </div>
     </div>
-
+    <div class="mt-3">
+        <nav aria-label="Page navigation example">
+             {{$data->links()}}
+        </nav>
+    </div>
 @endsection
 
