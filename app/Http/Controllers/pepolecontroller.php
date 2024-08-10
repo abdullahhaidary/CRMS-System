@@ -192,9 +192,9 @@ class pepolecontroller extends Controller
     {
         $peoples = people::where('id', '=', $id)->get();
         $info = crime_register_record_information::where('people_id', '=', $id)->get();
-        $suspects = suspectmodel::where('crime_record_id', '=', $id)->where('isCriminal', '=', 1)->get();
+        $suspects = suspectmodel::where('crime_record_id', '=', $id)->get();
         $cases = casemodel::where('crime_record_id', '=', $id)->get();
-
+//dd($cases);
         $data = [
             'title' => 'People case',
             'peoples' => $peoples,
