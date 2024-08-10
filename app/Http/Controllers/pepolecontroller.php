@@ -33,22 +33,22 @@ class pepolecontroller extends Controller
     public function store(Request $request)
     {
         //        dd($request->all());
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'lname' => 'required|string|max:255',
-            'fname' => 'required|string|max:255',
-            'tazcira_number' => 'required|string|max:15',
-            'phone' => 'required|number|max:255',
-            'email' => 'required|email|max:255',
-            'address' => 'required|string|max:255',
-            'curent_address' => 'required|string|max:255',
-            'creime_subject' => 'required|date',
-            'crime_case' => 'required|max:255',
-            'crime_date' => 'required|date|max:255',
-            'ariza_file' => 'required|date|max:255',
-        ], [
-            'name.required' => 'Please enter your name.',
-        ]);
+//        $request->validate([
+//            'name' => 'required|string|max:255',
+//            'lname' => 'required|string|max:255',
+//            'fname' => 'required|string|max:255',
+//            'tazcira_number' => 'required|string|max:15',
+//            'phone' => 'required|number|max:255',
+//            'email' => 'required|email|max:255',
+//            'address' => 'required|string|max:255',
+//            'curent_address' => 'required|string|max:255',
+//            'creime_subject' => 'required|date',
+//            'crime_case' => 'required|max:255',
+//            'crime_date' => 'required|date|max:255',
+//            'ariza_file' => 'required|date|max:255',
+//        ], [
+//            'name.required' => 'Please enter your name.',
+//        ]);
 
         $save = new people();
 
@@ -95,7 +95,7 @@ class pepolecontroller extends Controller
         $suspect->name = $request->suspect_name;
         $suspect->last_name = $request->last_name;
         $suspect->phone = $request->phone_number;
-        $suspect->isCriminal = 1;
+        $suspect->isCriminal = 0;
         $suspect->Created_by = Auth::user()->id;
 
         $suspect->actual_address = $request->main_address;
