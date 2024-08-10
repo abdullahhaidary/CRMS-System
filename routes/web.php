@@ -91,16 +91,11 @@ Route::post('/profile-info-edit', [AuthController::class, 'profile_info_edit'])
     ->middleware('auth')
     ->name('profile_info_edit');
 
-Route::get('/profile', [AuthController::class, 'profile_info'])
-    ->middleware('auth')
-    ->name('profile_info');
-
-Route::post('/reset-password', [AuthController::class, 'forget_password'])
-    ->middleware('guest')
-    ->name('password.update');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('profile-complete', [AuthController::class, 'complete_profile'])->name('profile.complete');
-Route::get('change/password/{id}', function () {
+Route::get('/profile', [AuthController::class, 'profile_info'])->middleware('auth')->name('profile_info');
+Route::post('/reset-password',[AuthController::class,'forget_password'])->middleware('guest')->name('password.update');
+Route::post('logout',[AuthController::class,'logout'])->name('logout');
+Route::post('profile-complete',[AuthController::class,'complete_profile'])->name('profile.complete');
+Route::get('change/password/{id}', function (){
     return view('profile.change_password');
 });
 Route::post('password/change', [AuthController::class, 'update_password'])->name('change_password');

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('suspect_fingerprint', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('suspect_id')->nullable();
+            $table->unsignedBigInteger('criminal_id')->nullable();
             $table->longText('right_thumb')->nullable();
             $table->longText('right_index')->nullable();
             $table->longText('right_middle')->nullable();
@@ -27,6 +28,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('suspect_id')->references('id')->on('suspect')->onDelete('cascade');
+            $table->foreign('criminal_id')->references('id')->on('criminals')->onDelete('cascade');
+
         });
     }
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('case_number');
             $table->text('description');
             $table->date('start_date');
-            $table->date('end_date');
+            $table->date('end_date')->nullable();
             $table->string('status');
             $table->string('crime_type');
             $table->string('crime_location');

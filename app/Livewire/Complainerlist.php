@@ -30,7 +30,7 @@ class Complainerlist extends Component
                 ->orWhere('actual_address', 'like', '%' . $this->paginationTheme . '%')
                 ->orWhere('current_address', 'like', '%' . $this->searchInput . '%');
         }
-        $data = $query->paginate(10);
+        $data = $query->orderby('id', 'desc')->paginate(10);
 
         return view('livewire.complainerlist', ['data' => $data]);
     }

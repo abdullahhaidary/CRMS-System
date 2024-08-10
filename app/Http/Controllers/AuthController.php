@@ -14,30 +14,18 @@ use Carbon\carbon;
 use Illuminate\Support\Facades\Storage;
 class AuthController extends Controller
 {
-
-
-
     public function login_page(){
-//        dd(Auth::user());
         if(Auth::user() and Auth::user()->action===1){
             return redirect('/');
         }
         return view('profile.login');
     }
-
-
     public function register_page(){
         return view('profile.register');
     }
-
-
     public function forget_page(){
         return view('profile.forget');
     }
-
-
-
-
     public function login(Request $request)
     {
         // $users = User::all();
@@ -100,32 +88,21 @@ class AuthController extends Controller
     public function forget_token(string $token){
         return view('profile.reset', ['token' => $token]);
     }
-
-
-
-
-
-
     public function forget_password(Request $request){
          $request->validate([
         'token' => 'required',
         'email' => 'required|email',
         'password' => 'required|min:8|confirmed',
         ]);
-
     $status = Password::reset(
         $request->only('email', 'password', 'password_confirmation', 'token'),
         function (User $user, string $password) {
                 $user->forceFill([
                     'password' => Hash::make($password)
                 ])->setRememberToken(Str::random(60));
-
                 $user->save();
-
-                // event(new PasswordReset($user));
             }
         );
-
         return $status === Password::PASSWORD_RESET
                     ? redirect()->route('login')->with('status', __($status))
                     : back()->withErrors(['email' => [__($status)]]);

@@ -26,8 +26,8 @@
                                         <th>{{__('Phone_number')}}</th>
                                         <th>{{__('Main_address')}}</th>
                                         <th>{{__('Current_address')}}</th>
-                                        <th>{{__('Status')}}</th>
                                         <th>{{__('by')}}</th>
+                                        <th>{{__('Status')}}</th>
                                         <th></th>
                                     </tr>
                                 </thead>

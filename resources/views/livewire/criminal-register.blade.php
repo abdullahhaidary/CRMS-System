@@ -30,7 +30,7 @@
                                             <ul class="list-group" id="suspect-list">
                                                 @foreach ($suspects as $suspect)
                                                     <li class="list-group-item" wire:click="selectSuspect({{ $suspect['id'] }})">
-                                                        {{ $suspect['name'] }} - {{ $suspect['father_name'] }} - {{ $suspect['id'] }}
+                                                        {{ $suspect['name'] }} - {{ $suspect['last_name'] }}- {{ $suspect['father_name'] }} - {{ $suspect['id'] }}
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -158,7 +158,7 @@
                                                 <input type="file" id="photo" class="form-control" wire:model="photo" required/>
 
                                                 @if ($photo)
-                                                    <img src="{{ $photo->temporaryUrl() }}" width="100" height="100" />
+{{--                                                    <img src="{{ $photo->temporaryUrl() }}" width="100" height="100" />--}}
                                                 @endif
                                             </div>
                                         </div>

@@ -251,6 +251,7 @@
                         <div class="info-row">
                             <p>{{__('Main_address')}}: {{$suspect->actual_address}}</p>
                             <p>{{__('Current_address')}}: {{$suspect->actual_address}}</p>
+                            <p>{{__('Status')}}: {{$suspect->isCreminal==0 ? "مظنون" : "فرد عادی"}}</p>
                         </div>
                         <div class="info-row">
                             <hr>

@@ -1,6 +1,7 @@
 @extends('layout.mian-dashbord')
 @section('content')
     <div class="page-heading text-center">
+        <!-- جدول تمام یوزر های سیستم -->
         <h3>{{__('Table_of_all_system_users')}}</h3>
     </div>
     <!--  Inverse table start -->
@@ -16,7 +17,7 @@
                     <th>{{__('Position')}}</th>
                     <th>{{__('Action')}}</th>
                     <th>{{__('Date_of_Registration')}}</th>
-                    <th>ACTION</th>
+                    <th>{{__('Action')}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,7 +33,7 @@
                             <td>Admin</td>
                         @elseif($item->type==3)
                             <td>Moder</td>
-                        @endif}
+                        @endif
                         <td>{{$item->action==1 ? 'active' : 'Un Active'}}</td>
                         <td>{{$item->created_at}}</td>
                         @can('super_admin')

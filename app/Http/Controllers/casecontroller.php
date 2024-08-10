@@ -16,7 +16,7 @@ class casecontroller extends Controller
     public function index($id)
     {
 
-        $data=casemodel::where('crime_record_id', '=', $id)->paginate(3);
+        $data=casemodel::where('crime_record_id', '=', $id)->paginate(6);
         return view('cases.case', compact('data'));
     }
 
@@ -95,7 +95,7 @@ class casecontroller extends Controller
     }
     public function list()
     {
-        $data=casemodel::paginate('8');
+        $data=casemodel::orderby('id', 'desc')->paginate('8');
         return view('cases.all', compact('data'));
     }
 }
