@@ -16,7 +16,7 @@ class casecontroller extends Controller
     public function index($id)
     {
 
-        $data=casemodel::where('crime_record_id', '=', $id)->paginate(3);
+        $data=casemodel::where('crime_record_id', '=', $id)->paginate(6);
         return view('cases.case', compact('data'));
     }
 
