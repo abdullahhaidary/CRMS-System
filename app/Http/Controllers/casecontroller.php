@@ -95,7 +95,7 @@ class casecontroller extends Controller
     }
     public function list()
     {
-        $data=casemodel::paginate('8');
+        $data=casemodel::orderby('id', 'desc')->paginate('8');
         return view('cases.all', compact('data'));
     }
 }
