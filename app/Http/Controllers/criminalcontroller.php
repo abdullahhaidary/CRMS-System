@@ -230,7 +230,7 @@ class criminalcontroller extends Controller
             $file->move('criminal/', $filename);
             $criminal->photo = $filename;
         }
-        // Update the user's data suspect
+        // Update the user's data suspect-.-++++
         $criminal->suspect_id = $request->input('suspect');
         $criminal->case_id = $request->input('case');
         $criminal->criminal_name = $request->input('name');
