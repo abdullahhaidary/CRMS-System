@@ -77,7 +77,7 @@
             <input type="text" name="email" placeholder="Email" required>
 
                 <select class="form-select" name="postion" id="disabledSelect">
-                    <option class="form-option-list" value="0">انتیخاب پوزیشن</option>
+                    <option class="form-option-list" value="0">{{__('Position_selection')}}</option>
                     <option class="form-option-list" value="1">super admin</option>
                     <option class="form-option-list" value="2">admin</option>
                     <option class="form-option-list" value="3">moder</option>
@@ -89,6 +89,6 @@
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Register</button>
         </form>
-        <p class="mb-0"> لیست تمام ادمین های در سیستم.  <a href="{{route('user')}}">اینجا کلیک کنید </a></p>
+        <p class="mb-0"> {{__('List_all_user_in_system')}} <a href="{{route('user')}}">{{__('Click_here')}}</a></p>
     </div>
 @endsection
