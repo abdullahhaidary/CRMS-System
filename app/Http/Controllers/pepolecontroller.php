@@ -93,14 +93,14 @@ class pepolecontroller extends Controller
             ->first();
         $suspect->crime_record_id = $savedesc->id;
         $suspect->name = $request->suspect_name;
+        $suspect->father_name = $request->father_name;
         $suspect->last_name = $request->last_name;
         $suspect->phone = $request->phone_number;
-        $suspect->isCriminal = 0;
-        $suspect->Created_by = Auth::user()->id;
-
         $suspect->actual_address = $request->main_address;
         $suspect->current_address = $request->current_address;
         $suspect->tazcira_number = $request->tazkera_number;
+        $suspect->isCriminal = 0;
+        $suspect->Created_by = Auth::user()->id;
         $suspect->save();
         //        }
         return redirect(route('people'))->with('success', 'د شکایت کونکی معلومات ذخیره شول اوس معلومات اضافی داخل کړی');

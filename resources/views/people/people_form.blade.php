@@ -250,6 +250,21 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="suspect_last_name" class="form-label"
+                                        > {{__('Father_name')}}</label
+                                        >
+                                        <input
+                                            type="text"
+                                            id="email-id-column"
+                                            class="form-control"
+                                            name="father_name"
+                                            placeholder="{{__('Enter_father_name')}}"
+                                            data-parsley-required="true"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
                                     <div class="form-group ">
                                         <label for="email-id-column" class="form-label"
                                         >  {{__('Main_address')}}</label
