@@ -75,55 +75,112 @@ class criminalcontroller extends Controller
 
     public function inset(Request $request)
     {
+// Define custom validation messages
+        $messages = [
+            'name.string' => 'The criminal name must be a string.',
+            'name.max' => 'The criminal name may not be greater than 255 characters.',
 
-       $validatedData=  $request->validate([
-             'name' => 'required|string|max:255',
-             'lname' => 'required|string|max:255',
-             'father_name' => 'required|string|max:255',
-             'phone' => 'required|string|max:15',
-             'email' => 'required|email|max:255',
-             'current_address' => 'required|string|max:255',
-             'actual_address' => 'required|string|max:255',
-             'dateofbirth' => 'required|date',
-             'gender' => 'required|in:1,0',
-             'job' => 'required|string|max:255',
-             'marital_status' => 'required|in:مجرد,متاهل',
-             'familymember' => 'required|string|max:255',
-             'discription' => 'required|string',
-             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-         ]);
+            'lname.string' => 'The last name must be a string.',
+            'lname.max' => 'The last name may not be greater than 255 characters.',
 
-        $save = new criminal();
+            'father_name.string' => 'The father\'s name must be a string.',
+            'father_name.max' => 'The father\'s name may not be greater than 255 characters.',
 
-        if (!empty($request->photo)) {
-            $exe = $request->file('photo')->getClientOriginalExtension();
-            //            dd($exe);
+            'phone.string' => 'The phone number must be a string.',
+            'phone.max' => 'The phone number may not be greater than 15 characters.',
+
+            'email.email' => 'The email must be a valid email address.',
+            'email.max' => 'The email may not be greater than 255 characters.',
+
+            'current_address.string' => 'The current address must be a string.',
+            'current_address.max' => 'The current address may not be greater than 255 characters.',
+
+            'actual_address.string' => 'The actual address must be a string.',
+            'actual_address.max' => 'The actual address may not be greater than 255 characters.',
+
+            'dateofbirth.date' => 'The date of birth must be a valid date.',
+
+            'gender.required' => 'The gender field is required.',
+            'gender.in' => 'The gender must be either 1 or 0.',
+
+            'job.required' => 'The job field is required.',
+            'job.string' => 'The job must be a string.',
+            'job.max' => 'The job may not be greater than 255 characters.',
+
+            'marital_status.required' => 'The marital status field is required.',
+            'marital_status.in' => 'The marital status must be either مجرد or متاهل.',
+
+            'familymember.required' => 'The family member field is required.',
+            'familymember.string' => 'The family member must be a string.',
+            'familymember.max' => 'The family member may not be greater than 255 characters.',
+
+            'discription.required' => 'The description field is required.',
+            'discription.string' => 'The description must be a string.',
+
+            'photo.image' => 'The photo must be an image.',
+            'photo.mimes' => 'The photo must be a file of type: jpeg, png, jpg, gif, svg.',
+            'photo.max' => 'The photo may not be greater than 2048 kilobytes.',
+
+            'suspect.required' => 'The suspect field is required.',
+            'case.required' => 'The case field is required.',
+            'arrest_date.required' => 'The arrest date field is required.',
+            'arrest_date.date' => 'The arrest date must be a valid date.',
+        ];
+
+// Validate the request data
+        $validatedData = $request->validate([
+            'name' => 'string|max:255',
+            'lname' => 'string|max:255',
+            'father_name' => 'string|max:255',
+            'phone' => 'string|max:15',
+            'email' => 'email|max:255',
+            'current_address' => 'string|max:255',
+            'actual_address' => 'string|max:255',
+            'dateofbirth' => 'date',
+            'gender' => 'required|in:1,0',
+            'job' => 'required|string|max:255',
+            'marital_status' => 'required|in:مجرد,متاهل',
+            'familymember' => 'required|string|max:255',
+            'discription' => 'required|string',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'suspect' => 'required',
+            'case' => 'required',
+            'arrest_date' => 'required|date',
+        ], $messages);
+
+// Create a new Criminal record
+        $save = new Criminal();
+
+// Handle the photo file upload
+        if ($request->hasFile('photo')) {
             $file = $request->file('photo');
-            $rename = str::random(20);
-            $filename = $rename . '.' . $exe;
-            $file->move('criminal/', $filename);
+            $filename = Str::random(20) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('criminal'), $filename);
             $save->photo = $filename;
         }
-        $save->suspect_id = $request->suspect;
-        $save->case_id = $request->case;
-        $save->criminal_name = $request->name;
-        $save->last_name = $request->lname;
-        $save->father_name = $request->father_name;
-        $save->phone = $request->phone;
-        $save->email = $request->email;
-        $save->current_address = $request->current_address;
-        $save->actual_address = $request->address;
-        $save->arrest_date = Carbon::parse($request->arrest_date)->format('Y-m-d H:i:s');
-        $save->date_of_birth = Carbon::parse($request->dateofbirth)->format('Y-m-d H:i:s');
-        $save->gender = $request->gender;
-        $save->job = $request->job;
-        $save->marital_status = $request->discription;
-        $save->family_members = $request->familymember;
-        $save->suspect_id = $request->suspect;
-//        $save->case_id = $request->case;
+
+// Assign validated data to the model properties
+        $save->suspect_id = $validatedData['suspect'];
+        $save->case_id = $validatedData['case'];
+        $save->criminal_name = $validatedData['name'];
+        $save->last_name = $validatedData['lname'];
+        $save->father_name = $validatedData['father_name'];
+        $save->phone = $validatedData['phone'];
+        $save->email = $validatedData['email'];
+        $save->current_address = $validatedData['current_address'];
+        $save->actual_address = $validatedData['actual_address'];
+        $save->arrest_date = Carbon::parse($validatedData['arrest_date'])->format('Y-m-d H:i:s');
+        $save->date_of_birth = Carbon::parse($validatedData['dateofbirth'])->format('Y-m-d');
+        $save->gender = $validatedData['gender'];
+        $save->job = $validatedData['job'];
+        $save->marital_status = $validatedData['marital_status'];
+        $save->family_members = $validatedData['familymember'];
+        $save->discription = $validatedData['discription'];
         $save->Created_by = Auth::user()->name;
 
+// Save the model
         $save->save();
+
 
         $criminal_picture = new CriminalPicture();
         $criminal_picture->criminal_id = $save->id;

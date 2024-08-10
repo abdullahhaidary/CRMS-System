@@ -17,7 +17,7 @@
                                 @csrf
                                 <div class="row" >
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group">
+                                        <div class="form-group mandatory">
                                             <label for="last-name-column" class="form-label"
                                             >{{__('Case_number')}}</label
                                             >
@@ -28,8 +28,11 @@
                                                 placeholder="{{__('Case_number')}}"
                                                 name="case_number"
                                                 data-parsley-required="true"
-                                                required
+
                                             />
+                                            @error('case_number')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -44,8 +47,11 @@
                                                 name="crime_location"
                                                 placeholder="{{__('Crime_location')}}"
                                                 data-parsley-required="true"
-                                                required
+
                                             />
+                                            @error('crime_location')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -60,12 +66,15 @@
                                                 name="start_date"
                                                 placeholder="{{__('Start_date')}}"
                                                 data-parsley-required="true"
-                                                required
+
                                             />
+                                            @error('start_date')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
                                             >{{__('End_date')}}</label
                                             >
@@ -76,8 +85,11 @@
                                                 name="end_date"
                                                 placeholder="{{__('End_date')}}"
                                                 data-parsley-required="true"
-                                                 
+
                                             />
+                                            @error('end_date')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -87,8 +99,11 @@
                                             >
                                             <select name="case_status" class="form-control" id="">
                                                 <option value="{{1}}">در حال برسی</option>
-                                                <option value="{{0}}">مکمل شده</option>
+                                                <option value="{{0}}">محکمه شده</option>
                                             </select>
+                                            @error('case_status')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -103,8 +118,11 @@
                                                 name="crime_type"
                                                 placeholder="{{__('Crime_type')}}"
                                                 data-parsley-required="true"
-                                                required
+
                                             />
+                                            @error('crime_type')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -127,6 +145,9 @@
                                             >{{__('Description')}}</label
                                             >
                                             <textarea name="description" required id="discription" class="form-control"  data-parsley-required="true"></textarea>
+                                            @error('description')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 

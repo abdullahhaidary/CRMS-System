@@ -32,7 +32,7 @@
                             <td>Admin</td>
                         @elseif($item->type==3)
                             <td>Moder</td>
-                        @endif}
+                        @endif
                         <td>{{$item->action==1 ? 'active' : 'Un Active'}}</td>
                         <td>{{$item->created_at}}</td>
                         @can('super_admin')
@@ -41,7 +41,6 @@
                             @endcan
                         </td>
                     </tr>
-
                 @endforeach
                 </tbody>
             </table>

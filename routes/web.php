@@ -203,6 +203,9 @@ Route::get('/case/{id}', [\App\Http\Controllers\casecontroller::class, 'index'])
 Route::get('case/all/list', [\App\Http\Controllers\casecontroller::class, 'list'])->name('list_cases');
 Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'create'])->name('case-from');
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
+Route::get('case/edit/{id}', [\App\Http\Controllers\casecontroller::class, 'edit'])->name('case_edit');
+Route::post('case/update/{id}', [\App\Http\Controllers\casecontroller::class, 'update'])->name('case_update');
+Route::get('case/delete/{id}', [\App\Http\Controllers\casecontroller::class, 'destroy'])->name('case_delete');
 Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');
 
 //url province cases

@@ -63,49 +63,82 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="first-name-column" class="form-label">{{ __('Name') }}</label>
-                                                <input type="text" id="first-name-column" class="form-control" placeholder="{{ __('Enter_your_name') }}" wire:model="name" />
+                                                <input type="text" id="first-name-column" class="form-control"
+                                                       placeholder="{{ __('Enter_your_name') }}" wire:model="name" />
+                                                @error('name')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="last-name-column" class="form-label">{{ __('Last_name') }}</label>
-                                                <input type="text" id="last-name-column" class="form-control" placeholder="{{ __('Enter_last_name') }}" wire:model="lname" />
+                                                <input type="text" id="last-name-column" class="form-control"
+                                                       placeholder="{{ __('Enter_last_name') }}" wire:model="lname" />
+                                                @error('lname')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="city-column" class="form-label">{{ __('Father_name') }}</label>
-                                                <input type="text" id="city-column" class="form-control" placeholder="{{ __('Enter_father_name') }}" wire:model="father_name" required/>
+                                                <input type="text" id="city-column" class="form-control"
+                                                       placeholder="{{ __('Enter_father_name') }}" wire:model="father_name"/>
+                                                @error('father_name')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="country-floating" class="form-label">{{ __('Phone_number') }}</label>
-                                                <input type="number" id="country-floating" class="form-control" wire:model="phone" placeholder="{{ __('Enter_phone_number') }}" required/>
+                                                <input type="number" id="country-floating" class="form-control" wire:model="phone"
+                                                       placeholder="{{ __('Enter_phone_number') }}" />
+                                                @error('phone')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="company-column" class="form-label">{{ __('Email') }}</label>
-                                                <input type="email" id="company-column" class="form-control" wire:model="email" placeholder="{{ __('Enter_email_address') }}" required/>
+                                                <input type="email" id="company-column" class="form-control" wire:model="email"
+                                                       placeholder="{{ __('Enter_email_address') }}"
+                                                />
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="email-id-column" class="form-label">{{ __('Current_address') }}</label>
-                                                <input type="text" id="email-id-column" class="form-control" wire:model="current_address" placeholder="{{ __('Enter_current_address') }}" required/>
+                                                <input type="text" id="email-id-column" class="form-control" wire:model="current_address"
+                                                       placeholder="{{ __('Enter_current_address') }}" />
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="email-id-column" class="form-label">{{ __('Main_address') }}</label>
-                                                <input type="text" id="email-id-column" class="form-control" wire:model="actual_address" placeholder="{{ __('Enter_main_address') }}" required/>
+                                                <input type="text" id="email-id-column" class="form-control" wire:model="actual_address"
+                                                       placeholder="{{ __('Enter_main_address') }}" />
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Date_of_birth') }}</label>
-                                                <input type="date" id="password-column" class="form-control" wire:model="dateofbirth" placeholder="{{ __('Enter_date_of_birth') }}" required/>
+                                                <input type="date" id="password-column" class="form-control" wire:model="dateofbirth"
+                                                       placeholder="{{ __('Enter_date_of_birth') }}" />
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -113,10 +146,13 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Gender') }}</label>
-                                                <select class="form-control" id="gender" wire:model="gender" required>
+                                                <select class="form-control" id="gender" wire:model="gender" >
                                                     <option value="1">{{ __('Male') }}</option>
                                                     <option value="0">{{ __('Female') }}</option>
                                                 </select>
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -124,42 +160,62 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Job') }}</label>
-                                                <input type="text" id="password-column" class="form-control" wire:model="job" placeholder="{{ __('Enter_job') }}" required/>
+                                                <input type="text" id="password-column" class="form-control" wire:model="job"
+                                                       placeholder="{{ __('Enter_job') }}" />
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Marital_status') }}</label>
-                                                <input type="text" id="password-column" class="form-control" wire:model="marital_status" placeholder="{{ __('Enter_marital_status') }}" required/>
+                                                <input type="text" id="password-column" class="form-control" wire:model="marital_status"
+                                                       placeholder="{{ __('Enter_marital_status') }}" />
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Family_members') }}</label>
-                                                <input type="number" id="password-column" class="form-control" wire:model="familymember" placeholder="{{ __('Enter_family_members') }}" required/>
+                                                <input type="number" id="password-column" class="form-control" wire:model="familymember"
+                                                       placeholder="{{ __('Enter_family_members') }}" />
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Description') }}</label>
-                                                <textarea id="password-column" class="form-control" wire:model="discription" placeholder="{{ __('Enter_description') }}"></textarea>
+                                                <textarea id="password-column" class="form-control" wire:model="discription"
+                                                          placeholder="{{ __('Enter_description') }}"></textarea>
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('arrest_date_label') }}</label>
-                                                <input type="date"class="form-control" wire:model="arrest_date" placeholder="{{ __('arrest_date_placeholder') }}" required/>
+                                                <input type="date"class="form-control" wire:model="arrest_date"
+                                                       placeholder="{{ __('arrest_date_placeholder') }}" />
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="photo">{{ __('Ariza') }}</label>
-                                                <input type="file" id="photo" class="form-control" wire:model="photo" required/>
+                                                <label for="photo">{{ __('Maktob') }}</label>
+                                                <input type="file" id="photo" class="form-control" wire:model="photo" />
+                                                @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
 
-                                                @if ($photo)
-{{--                                                    <img src="{{ $photo->temporaryUrl() }}" width="100" height="100" />--}}
-                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-end">
