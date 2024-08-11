@@ -36,7 +36,9 @@ class CriminalRegister extends Component
     public $suspect;
     public $case;
     public $suspects = [];
+    public $cases = [];
     public $selectedSuspect;
+   public $selectedCase;
     public $search;
     public function updatedSearch()
     {
@@ -54,7 +56,23 @@ class CriminalRegister extends Component
         $this->search = suspectmodel::find($suspectId)->name;
         $this->suspects = [];
     }
-
+    public function updateCase()
+    {
+        $this->cases=casemodel::query()
+            ->where('case_number', 'like', '%' . $this->case . '%')
+            ->orWhere('status', 'like', '%' . $this->case . '%')
+            ->orWhere('crime_type', 'like', '%' . $this->case . '%')
+            ->orWhere('id', 'like', '%' . $this->case . '%')
+            ->orWhere('crime_location', 'like', '%' . $this->case . '%')
+            ->get()
+            ->toArray();
+    }
+public function selectCase($CaseId)
+{
+    $this->selectedCase= $CaseId;
+    $this->case= casemodel::find($CaseId)->name;
+    $this->cases=[];
+}
     public function render()
     {
         $case = casemodel::all();
@@ -77,7 +95,7 @@ class CriminalRegister extends Component
 
         $save->arrest_date = Carbon::parse($this->arrest_date)->format('Y-m-d H:i:s');
         if ($this->isSuspectAvailable == 0) {
-            $save->criminal_name = $this->name;
+            $save->name = $this->name;
             $save->last_name = $this->lname;
             $save->father_name = $this->father_name;
             $save->phone = $this->phone;

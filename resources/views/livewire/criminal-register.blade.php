@@ -141,7 +141,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-
                                         @endif
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
@@ -155,8 +154,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-
-
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Job') }}</label>
@@ -187,17 +184,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group mandatory">
-                                                <label for="password-column" class="form-label">{{ __('Description') }}</label>
-                                                <textarea id="password-column" class="form-control" wire:model="discription"
-                                                          placeholder="{{ __('Enter_description') }}"></textarea>
-                                                @error('description')
-                                                <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('arrest_date_label') }}</label>
@@ -208,6 +194,25 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group mandatory">
+                                            <label for="password-column" class="form-label">{{ __('Case') }}</label>
+                                            <input type="text" id="case" class="form-control"
+                                                   placeholder="{{ __('Search_case') }}" wire:model.live="case" required/>
+                                            @if (!empty($cases))
+                                                <ul class="list-group" id="suspect-list">
+                                                    @foreach ($cases as $case)
+                                                        <li class="list-group-item" wire:click="selectCase({{ $case['id'] }})">
+                                                            {{ $case['case_number'] }} - {{ $case['status'] }}- {{ $case['crime_type'] }} - {{ $case['id'] }}
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                            @error('arrest_date')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="photo">{{ __('Maktob') }}</label>
@@ -225,6 +230,16 @@
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group mandatory">
+                                            <label for="password-column" class="form-label">{{ __('Description') }}</label>
+                                            <textarea id="password-column" class="form-control" wire:model="discription"
+                                                      placeholder="{{ __('Enter_description') }}"></textarea>
+                                            @error('description')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                         <div class="col-12 d-flex justify-content-end">

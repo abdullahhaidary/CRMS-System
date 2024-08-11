@@ -168,7 +168,7 @@ class criminalcontroller extends Controller
         // Assign validated data to the model properties
         $save->suspect_id = $validatedData['suspect'];
         $save->case_id = $validatedData['case'];
-        $save->criminal_name = $validatedData['name'];
+        $save->name = $validatedData['name'];
         $save->last_name = $validatedData['lname'];
         $save->father_name = $validatedData['father_name'];
         $save->phone = $validatedData['phone'];
