@@ -232,7 +232,7 @@ class criminalcontroller extends Controller
             $file = $request->file('photo');
             $rename = str::random(20);
             $filename = $rename . '.' . $exe;
-            $file->move('criminal/', $filename);
+            $file->move(public_path('criminal'), $filename);
             $criminal->photo = $filename;
         }
         // Update the user's data suspect-.-++++
