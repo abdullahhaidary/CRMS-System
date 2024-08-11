@@ -31,7 +31,6 @@
                         @can('super_admin')
                             <td>
                                 <a href="{{url('case/edit/'.$item->id)}}" class="btn btn-sm btn-primary">{{'Edit'}}</a>
-                                <a href="{{url('case/delete/'.$item->id)}}" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}" class="btn btn-sm btn-danger">{{'Delete'}}</a>
                             </td>
                         @endcan
                     </tr>
