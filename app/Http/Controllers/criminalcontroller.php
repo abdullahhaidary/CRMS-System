@@ -334,9 +334,9 @@ class criminalcontroller extends Controller
     public function showCourtPage($criminalId)
     {
         $criminal = criminal::findOrFail($criminalId);
-        $court = Court::where('criminal_id', $criminalId)->latest()->first();
+        $courts = Court::where('criminal_id', $criminalId)->get();
 
-        return view('criminal.court_show', compact('criminal', 'court'));
+        return view('criminal.court_show', compact('criminal', 'courts'));
     }
     public function storeCourtRequest(Request $request, $criminalId)
     {
