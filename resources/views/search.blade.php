@@ -178,7 +178,6 @@
         });
     }
     function MatchFunction(first,second){
-        console.log('match is called');
                 $.ajax({
                     url: "https://localhost:8443/SGIMatchScore",
                     type: "POST",
@@ -198,6 +197,7 @@
                     }
                 });
     }
+
     function ErrorCodeToString(ErrorCode) {
         var Description;
         switch (ErrorCode) {
