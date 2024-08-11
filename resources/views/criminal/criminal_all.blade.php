@@ -68,7 +68,7 @@
     </div>
     <div class="row ">
         <div class="col-lg-4 col-md-6 mb-4">
-            <img src="{{asset('storage/criminal/'.$item->photo)}}" alt="" width="100%" height="300px">
+            <img src="{{asset('storage/criminal/'.$item->Picture)}}" alt="" width="100%" height="300px">
 {{--            <image src="{{asset('storage/criminal/'.$item->photo)}}" type="application/pdf" width="100%" height="300px">--}}
 
             <div class="details-item">

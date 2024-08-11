@@ -32,6 +32,7 @@ class CriminalRegister extends Component
     public $familymember;
     public $discription;
     public $photo;
+    public $picture;
     public $suspect;
     public $case;
     public $suspects = [];
@@ -92,6 +93,13 @@ class CriminalRegister extends Component
             $filename = $rename . '.' . $exe;
             $this->photo->storeAs('public/criminal', $filename);
             $save->photo = $filename;
+        }
+        if (!empty($this->picture)) {
+            $exe = $this->picture->getClientOriginalExtension();
+            $rename = Str::random(20);
+            $pic_name = $rename . '.' . $exe;
+            $this->picture->storeAs('public/criminal', $pic_name);
+            $save->picture = $pic_name;
         }
 
         $save->save();

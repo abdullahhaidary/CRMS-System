@@ -33,7 +33,7 @@
 //                                $firstPicture = (is_array($item->picture) && isset($item->picture[0])) ? $item->picture[0] : null;
 {{--                                @endphp--}}
 {{--                                @if($firstPicture)--}}
-                                    <td><img src="{{asset('storage/criminal/'.$item->photo)}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
+                                    <td><img src="{{asset('storage/criminal/'.$item->Picture)}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
 {{--                                   --}}
                                 @if($item->suspect_id==null)
                                 <td class="text-bold-500">{{ $item->criminal_name . " ".$item->last_name}}</td>

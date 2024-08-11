@@ -5,7 +5,7 @@ asd
     <div class="container">
         <div class="card">
             <div class="card-header text-white text-center">
-                <h2>{{ __('Suspect_information') }}</h2>
+                <h2>{{ __('Criminal_information') }}</h2>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -20,7 +20,7 @@ asd
                             <div class="col col-md-3 col-sm-12">
                                 <div class="mb-3">
                                     <div class="col-md-4 font-weight-bold">{{ __('ID_number') }}:</div>
-                                    <div class="col-md-8">{{ $item->tazcira_number }}</div>
+                                    <div class="col-md-8">{{ $item->last_name }}</div>
                                 </div>
                             </div>
                             <div class="col col-md-3 col-sm-12">

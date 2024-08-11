@@ -57,7 +57,7 @@ class criminalcontroller extends Controller
 
     public function finger_print_add($id)
     {
-        $data = DB::table('criminals')->select('criminals.*', 'suspect.*')->leftJoin('suspect', 'criminals.suspect_id', '=', 'suspect.id')->where('criminals.id', '=', $id)->get();
+        $data = DB::table('criminals')->select('criminals.*')->leftJoin('suspect', 'criminals.suspect_id', '=', 'suspect.id')->where('criminals.id', '=', $id)->get();
 
         return view('criminal.criminal_finger_add', compact('data'));
     }

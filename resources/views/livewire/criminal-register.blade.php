@@ -181,7 +181,7 @@
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Family_members') }}</label>
                                                 <input type="number" id="password-column" class="form-control" wire:model="familymember"
-                                                       placeholder="{{ __('Enter_family_members') }}" />
+                                                       placeholder="{{ __('Enter_family_members') }}" required/>
                                                 @error('email')
                                                 <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -211,13 +211,22 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="photo">{{ __('Maktob') }}</label>
-                                                <input type="file" id="photo" class="form-control" wire:model="photo" />
+                                                <input type="file" id="photo" class="form-control" wire:model="photo" required/>
                                                 @error('email')
                                                 <div class="text-danger">{{ $message }}</div>
                                                 @enderror
-
                                             </div>
                                         </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="photo">{{ __('Picture') }}</label>
+                                            <input type="file" id="picture" class="form-control" wire:model="picture" required/>
+                                            @error('email')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+
+                                        </div>
+                                    </div>
                                         <div class="col-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">{{ __('Save') }}</button>
                                             <button type="reset" class="btn btn-light-secondary me-1 mb-1">{{ __('Reset') }}</button>
