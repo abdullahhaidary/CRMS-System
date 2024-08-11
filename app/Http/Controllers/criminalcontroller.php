@@ -338,18 +338,19 @@ class criminalcontroller extends Controller
 
         return view('criminal.court_show', compact('criminal', 'courts'));
     }
+
     public function storeCourtRequest(Request $request, $criminalId)
     {
         $criminal = Criminal::findOrFail($criminalId);
 
         $arizaBefore = $request->file('ariza_before')->store('arizas');
 
-        $court = Court::create([
+        Court::create([
             'criminal_id' => $criminal->id,
             'ariza_before' => $arizaBefore,
         ]);
 
-        return redirect()->back()->with('success', 'Criminal sent to court.');
+        return redirect()->back()->with('success', __('criminal_sent_to_court'));
     }
 
     public function updateCourtResult(Request $request, $courtId)
@@ -361,8 +362,10 @@ class criminalcontroller extends Controller
         $court->update([
             'ariza_after' => $arizaAfter,
             'result' => $request->input('result'),
+            'date_till_in_jail' => $request->input('date_till_in_jail'),
+            'final_mahkama' => $request->has('final_mahkama') ? 1 : 0,
         ]);
 
-        return redirect()->back()->with('success', 'Court result updated.');
+        return redirect()->back()->with('success', __('court_result_updated'));
     }
 }

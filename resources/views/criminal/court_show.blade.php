@@ -4,6 +4,8 @@
 <div class="container">
     <h1>{{ $criminal->name }} - {{__('court_process')}}</h1>
 
+    <!-- Check if the last court is marked as the final court -->
+    @if($courts->isEmpty() || ($courts->isNotEmpty() && !$courts->last()->final_mahkama))
     <!-- Form to add a new court record -->
     <form action="{{ route('court.store', $criminal->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -13,6 +15,12 @@
         </div>
         <button type="submit" class="btn btn-primary">{{__('send_to_court')}}</button>
     </form>
+@else
+    <div class="alert alert-info">
+        {{__('final_mahkama_reached')}}
+    </div>
+@endif
+
 
     <hr>
 
@@ -25,6 +33,10 @@
                     <p><strong>{{__('result')}}:</strong> {{ $court->result }}</p>
                     <p><strong>{{__('ariza_before')}}:</strong> <a href="{{ asset('storage/' . $court->ariza_before) }}">{{__('download')}}</a></p>
                     <p><strong>{{__('ariza_after')}}:</strong> <a href="{{ asset('storage/' . $court->ariza_after) }}">{{__('download')}}</a></p>
+                    <p><strong>{{__('date_till_in_jail')}}:</strong> {{ $court->date_till_in_jail }}</p>
+                    @if($court->final_mahkama)
+                        <p><strong>{{__('final_mahkama')}}:</strong> {{__('yes')}}</p>
+                    @endif
                 @else
                     <form action="{{ route('court.update', $court->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -36,6 +48,14 @@
                         <div class="form-group">
                             <label for="result">{{__('result')}}</label>
                             <input type="text" name="result" id="result" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date_till_in_jail">{{__('date_till_in_jail')}}</label>
+                            <input type="date" name="date_till_in_jail" id="date_till_in_jail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="final_mahkama">{{__('final_mahkama')}}</label>
+                            <input type="checkbox" name="final_mahkama" id="final_mahkama">
                         </div>
                         <button type="submit" class="btn btn-primary">{{__('submit_court_result')}}</button>
                     </form>
