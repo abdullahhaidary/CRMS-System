@@ -76,11 +76,14 @@ public function selectCase($CaseId)
     public function render()
     {
         $case = casemodel::all();
+        $suspect = suspectmodel::all();
         return view('livewire.criminal-register', [
             'isSuspectAvailable' => $this->isSuspectAvailable,
             'case' => $case,
-            // 'suspects' => $suspects
+             'suspects' => $suspect,
         ]);
+
+
     }
     public function submit()
     {
