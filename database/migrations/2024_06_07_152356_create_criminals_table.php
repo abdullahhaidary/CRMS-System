@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('marital_status');
             $table->string('family_members');
             $table->string('photo');
+            $table->string('Picture');
             $table->string('Created_by');
             $table->string('user_id')->nullable();
             $table->timestamps();
