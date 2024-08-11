@@ -70,7 +70,7 @@ class casecontroller extends Controller
             'case_number' => 'required|string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'nullable',
-            'case_status' => 'required|string|in:open,closed,pending', // Adjust according to your options
+            'case_status' => 'required|string', // Adjust according to your options
             'crime_type' => 'required|string|max:255',
             'crime_location' => 'required|string|max:255',
             'description' => 'required|string',
