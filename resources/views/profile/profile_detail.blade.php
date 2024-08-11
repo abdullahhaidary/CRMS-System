@@ -21,7 +21,7 @@ Profile Details
                         <img src="{{asset('storage/profiles/'.Auth::user()->picture)}}" alt="">
                         <div class="plus" onclick="openProfileImageDialog()">+</div>
                     </div>
-                    <div class="d-flex justify-content-center" style="font-size:25pt;">
+                    <div class="d-flex justify-content-center" style="font-size:fs-4;">
                         {{Auth::user()->name}}
                     </div>
 
