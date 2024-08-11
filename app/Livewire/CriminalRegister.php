@@ -69,7 +69,7 @@ class CriminalRegister extends Component
         $save = new criminal();
         $save->suspect_id = $this->selectedSuspect;
         $save->case_id = 1;
-        $save->gender = 'Male';
+        $save->gender = $this->gender;
         $save->job = $this->job;
         $save->marital_status = $this->marital_status;
         $save->family_members = $this->familymember;
