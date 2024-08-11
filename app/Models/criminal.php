@@ -23,4 +23,7 @@ class criminal extends Model
     public function suspect(){
         return $this->belongsTo(suspectmodel::class,'suspect_id');
     }
+    public function courts(){
+        return $this->hasMany(Court::class);
+    }
 }

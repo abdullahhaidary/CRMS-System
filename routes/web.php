@@ -92,6 +92,14 @@ Route::get('criminal/picture/show/{id}', [\App\Http\Controllers\criminalcontroll
 Route::post('/fingerprints_store_criminal', [criminalcontroller::class, 'store_finger_print'])->name('store_finger_print_criminal');
 Route::get('/criminal/addfinger/{id}', [criminalcontroller::class, 'finger_print_add'])->name('criminal_finger_add_page');
 
+//court related
+Route::get('court/{criminalId}', [criminalcontroller::class, 'showCourtPage'])->name('court.show');
+Route::post('court/{criminalId}', [criminalcontroller::class, 'storeCourtRequest'])->name('court.store');
+Route::put('court/{courtId}', [criminalcontroller::class, 'updateCourtResult'])->name('court.update');
+
+
+
+
 //url user
 Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])
     ->name('user')
