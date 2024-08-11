@@ -14,6 +14,7 @@
                     <th scope="col">{{__('Start_date')}}</th>
                     <th scope="col">{{__('End_date')}}</th>
                     <th scope="col">{{__('Description')}}</th>
+                    <th scope="col">{{__('Action')}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,7 +28,25 @@
                         <td style="width: 95px">{{$item->start_date}}</td>
                         <td style="width: 95px">{{$item->end_date}}</td>
                         <td>{{$item->description}}</td>
+                        @can('super_admin')
+                            <td>
+                                <a href="{{url('case/edit/'.$item->id)}}" class="btn btn-sm btn-primary">{{'Edit'}}</a>
+                                <a href="{{url('case/delete/'.$item->id)}}" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}" class="btn btn-sm btn-danger">{{'Delete'}}</a>
+                            </td>
+                        @endcan
                     </tr>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const deleteModal = document.getElementById('deleteModal');
+                            deleteModal.addEventListener('show.bs.modal', function (event) {
+                                const button = event.relatedTarget;
+                                const id = button.getAttribute('data-id');
+                                const form = deleteModal.querySelector('#deleteForm');
+                                form.action = `{{url('/suspect/delete/')}}/${id}`;
+                                form.querySelector('#deleteId').value = id;
+                            });
+                        });
+                    </script>
                 @endforeach
                 </tbody>
             </table>

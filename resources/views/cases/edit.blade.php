@@ -1,8 +1,6 @@
 @extends('layout.mian-dashbord')
 @section('content')
-    <div class="">
-        <a class="btn btn-primary" href="{{url('case/'.$id)}}">{{__('Case')}}</a>
-    </div>
+
     <div class="page-heading text-center">
         <h3>{{__('New_case_registration_form')}}</h3>
     </div>
@@ -12,12 +10,13 @@
             <div class="col-12">
                 <div class="card" >
                     <div class="card-content">
+                        @foreach($case as $item)
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route('case-store')}}" enctype="multipart/form-data" data-parsley-validate>
+                            <form class="form" method="post" action="{{url('case/update/'.$item->id)}}" enctype="multipart/form-data" data-parsley-validate>
                                 @csrf
                                 <div class="row" >
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group">
                                             <label for="last-name-column" class="form-label"
                                             >{{__('Case_number')}}</label
                                             >
@@ -27,16 +26,14 @@
                                                 class="form-control"
                                                 placeholder="{{__('Case_number')}}"
                                                 name="case_number"
+                                                value="{{$item->case_number}}"
                                                 data-parsley-required="true"
-
+                                                required
                                             />
-                                            @error('case_number')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
                                             >{{__('Crime_location')}}</label
                                             >
@@ -47,11 +44,9 @@
                                                 name="crime_location"
                                                 placeholder="{{__('Crime_location')}}"
                                                 data-parsley-required="true"
-
+                                                value="{{$item->crime_location}}"
+                                                required
                                             />
-                                            @error('crime_location')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -66,11 +61,9 @@
                                                 name="start_date"
                                                 placeholder="{{__('Start_date')}}"
                                                 data-parsley-required="true"
-
+                                                required
+                                                value="{{$item->start_date}}"
                                             />
-                                            @error('start_date')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -85,29 +78,26 @@
                                                 name="end_date"
                                                 placeholder="{{__('End_date')}}"
                                                 data-parsley-required="true"
-
+                                                value="{{$item->end_date}}"
                                             />
-                                            @error('end_date')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
                                             >{{__('Case_status')}}</label
                                             >
                                             <select name="case_status" class="form-control" id="">
-                                                <option value="{{1}}">در حال برسی</option>
+                                                @if($item->crime_type==1)
+                                                <option selected value="{{1}}">در حال برسی</option>
+                                                @else
                                                 <option value="{{0}}">محکمه شده</option>
+                                                @endif
                                             </select>
-                                            @error('case_status')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group mandatory">
+                                        <div class="form-group ">
                                             <label for="email-id-column" class="form-label"
                                             >{{__('Crime_type')}}</label
                                             >
@@ -117,61 +107,54 @@
                                                 class="form-control"
                                                 name="crime_type"
                                                 placeholder="{{__('Crime_type')}}"
+                                                value="{{$item->crime_type}}"
                                                 data-parsley-required="true"
-
+                                                required
                                             />
-                                            @error('crime_type')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                            <input
-                                                type="hidden"
-                                                value="{{$id}}"
-                                                id="email-id-column"
-                                                class="form-control"
-                                                name="crime_record_id"
-                                                placeholder="crime name"
-                                                data-parsley-required="true"
+                                        <input
+                                            type="hidden"
+                                            value="{{$item->id}}"
+                                            id="email-id-column"
+                                            class="form-control"
+                                            name="crime_record_id"
+                                            placeholder="crime name"
+                                            data-parsley-required="true"
 
-                                            />
-                                        </div>
+                                        />
                                     </div>
-                                    <hr class="mt-0 mb-3">
-                                    <div class="col-md-12 col-12">
-                                        <div class="form-group mandatory">
-                                            <label for="email-id-column" class="form-label"
-                                            >{{__('Description')}}</label
-                                            >
-                                            <textarea name="description" required id="discription" class="form-control"  data-parsley-required="true"></textarea>
-                                            @error('description')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">
-                                        {{__('Save')}}
-                                        </button>
-                                        <a href=""
-                                           type="reset"
-                                           class="btn btn-light-secondary me-1 mb-1"
+                                <hr class="mt-0 mb-3">
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group ">
+                                        <label for="email-id-column" class="form-label"
+                                        >{{__('Description')}}</label
                                         >
-                                        {{__('Coming_back')}}
-                                        </a>
+                                        <textarea name="description" id="discription" class="form-control"></textarea>
                                     </div>
                                 </div>
-                            </form>
                         </div>
+                        @endforeach
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary me-1 mb-1">
+                                    {{__('Save')}}
+                                </button>
+                                <a href=""
+                                   type="reset"
+                                   class="btn btn-light-secondary me-1 mb-1"
+                                >
+                                    {{__('Coming_back')}}
+                                </a>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 

@@ -32,77 +32,144 @@ class pepolecontroller extends Controller
     }
     public function store(Request $request)
     {
-        //        dd($request->all());
-//        $request->validate([
-//            'name' => 'required|string|max:255',
-//            'lname' => 'required|string|max:255',
-//            'fname' => 'required|string|max:255',
-//            'tazcira_number' => 'required|string|max:15',
-//            'phone' => 'required|number|max:255',
-//            'email' => 'required|email|max:255',
-//            'address' => 'required|string|max:255',
-//            'curent_address' => 'required|string|max:255',
-//            'creime_subject' => 'required|date',
-//            'crime_case' => 'required|max:255',
-//            'crime_date' => 'required|date|max:255',
-//            'ariza_file' => 'required|date|max:255',
-//        ], [
-//            'name.required' => 'Please enter your name.',
-//        ]);
+        // Define validation rules
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'lname' => 'required|string|max:255',
+            'fname' => 'required|string|max:255',
+            'tazcira_number' => 'required|string|max:15',
+            'phone' => 'required|numeric',
+            'email' => 'required|email|max:255',
+            'address' => 'required|string|max:255',
+            'curent_address' => 'required|string|max:255',
+            'creime_subject' => 'required|string|max:255',
+            'crime_case' => 'required|string|max:255',
+            'crime_date' => 'required|date',
+            'ariza_file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+        ], [
+            'name.required' => 'Please enter your name.',
+            'lname.required' => 'Please enter your Last name.',
+            'phone.numeric' => 'The phone number must be a number.',
+            'email.email' => 'please enter email.',
+            'address.required' => 'please enter address.',
+            'curent_address.required' => 'please enter address.',
+            'crime_case.required' => 'please enter crime case.',
+            'tazcira_number.required' => 'please enter tazcera number.',
+            'ariza_file.mimes' => 'The file must be a PDF, DOC, or DOCX.',
+            'ariza_file.required' => 'The file must be a PDF, DOC, or DOCX.',
+            'ariza_file.max' => 'The file size must not exceed 2MB.',
+            'creime_subject.required' => 'please enter crime subject.',
+            'crime_date.required' => 'please enter crime date.',
 
-        $save = new people();
+        ]);
 
-        if (!empty($request->ariza_file)) {
-            $exe = $request->file('ariza_file')->getClientOriginalExtension();
-            //            dd($exe);
+        // Create a new instance of the model
+        $save = new People(); // Ensure this matches your model
+
+        // Handle file upload if present
+        if ($request->hasFile('ariza_file')) {
             $file = $request->file('ariza_file');
-            $rename = str::random(20);
-            $filename = $rename . '.' . $exe;
-            $file->move('ariza-of-compleint/', $filename);
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('ariza-of-compleint'), $filename);
             $save->ariza = $filename;
         }
-        $save->name = $request->name;
-        $save->last_name = $request->lname;
-        $save->father_name = $request->fname;
-        $save->email = $request->email;
-        $save->phone = $request->phone;
-        $save->actual_address = $request->address;
-        $save->current_address = $request->curent_address;
-        $save->crime_case = $request->crime_case;
-        $save->tazkira_number = $request->tazcira_number;
-        $save->subject_crim = $request->creime_subject;
-        $save->crim_date = $request->crime_date;
+
+        // Assign validated data to the model
+        $save->name = $validatedData['name'];
+        $save->last_name = $validatedData['lname'];
+        $save->father_name = $validatedData['fname'];
+        $save->email = $validatedData['email'];
+        $save->phone = $validatedData['phone'];
+        $save->actual_address = $validatedData['address'];
+        $save->current_address = $validatedData['curent_address'];
+        $save->crime_case = $validatedData['crime_case'];
+        $save->tazkira_number = $validatedData['tazcira_number'];
+        $save->subject_crim = $validatedData['creime_subject'];
+        $save->crim_date = $validatedData['crime_date'];
         $save->user_id = Auth::user()->id;
         $save->Created_by = Auth::user()->name;
+
+        // Save the model to the database
         $save->save();
 
         $savedPeople = People::where('name', $save->name)
             ->where('phone', $save->phone)
             ->first();
         //        dd($savedPeople);
+        $messages = [
+            'description.required' => 'The description field is required.',
+            'description.string' => 'The description must be a string.',
+            'description.max' => 'The description may not be greater than 255 characters.', // Adjust the max length if needed
+        ];
+
+        $validatedData = $request->validate([
+            'description' => 'required|string|max:255', // Adjust max length according to your needs
+        ], $messages);
 
         $description = new crime_register_record_information();
         $description->people_id = $savedPeople->id;
-        $description->description = $request->description;
+        $description->description = $validatedData['description']; // Use validated data
         $description->save();
 
-        //        if(false){
+        // Define custom validation messages
+        $messages = [
+            'suspect_name.string' => 'The suspect name must be a string.',
+            'suspect_name.max' => 'The suspect name may not be greater than 255 characters.',
+
+            'father_name.string' => 'The father\'s name must be a string.',
+            'father_name.max' => 'The father\'s name may not be greater than 255 characters.',
+
+            'last_name.string' => 'The last name must be a string.',
+            'last_name.max' => 'The last name may not be greater than 255 characters.',
+
+            'phone_number.numeric' => 'The phone number must be a number.',
+            'phone_number.max' => 'The phone number may not be greater than 15 characters.',
+
+            'main_address.string' => 'The main address must be a string.',
+            'main_address.max' => 'The main address may not be greater than 255 characters.',
+
+            'current_address.string' => 'The current address must be a string.',
+            'current_address.max' => 'The current address may not be greater than 255 characters.',
+
+            'tazkera_number.numeric' => 'The Tazkera number must be a number.',
+            'tazkera_number.max' => 'The Tazkera number may not be greater than 20 characters.',
+        ];
+
+// Validate the request data
+        $validatedData = $request->validate([
+            'suspect_name' => 'nullable|string|max:255',
+            'father_name' => 'nullable|string|max:255',
+            'last_name' => 'nullable|string|max:255',
+            'phone_number' => 'nullable|numeric|max:15',
+            'main_address' => 'nullable|string|max:255',
+            'current_address' => 'nullable|string|max:255',
+            'tazkera_number' => 'nullable|numeric|max:20',
+        ], $messages);
+
+// Save the validated data to the suspectmodel table
         $suspect = new suspectmodel();
+
         $savedesc = crime_register_record_information::where('people_id', $savedPeople->id)
             ->where('description', $description->description)
             ->first();
+
         $suspect->crime_record_id = $savedesc->id;
-        $suspect->name = $request->suspect_name;
-        $suspect->father_name = $request->father_name;
-        $suspect->last_name = $request->last_name;
-        $suspect->phone = $request->phone_number;
-        $suspect->actual_address = $request->main_address;
-        $suspect->current_address = $request->current_address;
-        $suspect->tazcira_number = $request->tazkera_number;
+        $suspect->name = $validatedData['suspect_name']; // Use validated data
+        $suspect->father_name = $validatedData['father_name'];
+        $suspect->last_name = $validatedData['last_name'];
+        $suspect->phone = $validatedData['phone_number'];
+        $suspect->actual_address = $validatedData['main_address'];
+        $suspect->current_address = $validatedData['current_address'];
+        $suspect->tazcira_number = $validatedData['tazkera_number'];
         $suspect->isCriminal = 0;
         $suspect->Created_by = Auth::user()->id;
+
         $suspect->save();
-        //        }
+
+
+
+
+
         return redirect(route('people'))->with('success', 'د شکایت کونکی معلومات ذخیره شول اوس معلومات اضافی داخل کړی');
 
         //        dd($request->all());

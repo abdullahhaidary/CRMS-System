@@ -42,7 +42,6 @@
                             @endcan
                         </td>
                     </tr>
-
                 @endforeach
                 </tbody>
             </table>

@@ -28,15 +28,9 @@
                                             name="name"
                                             data-parsley-required="true"
                                         />
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
+                                        @error('name')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -51,8 +45,10 @@
                                             placeholder="{{__('Enter_last_name')}}"
                                             name="lname"
                                             data-parsley-required="true"
-
                                         />
+                                        @error('lname')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -67,8 +63,11 @@
                                             placeholder="{{__('Enter_father_name')}}"
                                             name="fname"
                                             data-parsley-required="true"
-                                            required
+
                                         />
+                                        @error('fname')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -82,8 +81,11 @@
                                             name="tazcira_number"
                                             data-parsley-restricted-city="Jakarta"
                                             data-parsley-required="true"
-                                            required
+
                                         />
+                                        @error('tazcira_number')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -98,8 +100,11 @@
                                             name="phone"
                                             placeholder="{{__('Enter_phone_number')}}"
                                             data-parsley-required="true"
-                                            required
+
                                         />
+                                        @error('phone')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -114,8 +119,10 @@
                                             name="email"
                                             placeholder="{{__('Enter_email')}}"
                                             data-parsley-required="true"
-                                            required
                                         />
+                                        @error('email')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -130,8 +137,10 @@
                                             name="address"
                                             placeholder="{{__('Enter_address')}}"
                                             data-parsley-required="true"
-                                            required
                                         />
+                                        @error('address')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -146,8 +155,11 @@
                                             name="curent_address"
                                             placeholder="  {{__('Enter_address')}}"
                                             data-parsley-required="true"
-                                            required
+
                                         />
+                                        @error('curent_address')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -162,8 +174,10 @@
                                             name="creime_subject"
                                             placeholder=" {{__('Complaint_subject')}}"
                                             data-parsley-required="true"
-                                            required
                                         />
+                                        @error('creime_subject')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -178,8 +192,11 @@
                                             name="crime_case"
                                             placeholder="{{__('Case_type')}}"
                                             data-parsley-required="true"
-                                            required
+
                                         />
+                                        @error('crime_case')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -194,8 +211,10 @@
                                             name="crime_date"
                                             placeholder=" تاریخ شکایت"
                                             data-parsley-required="true"
-                                            required
                                         />
+                                        @error('crime_date')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -203,7 +222,10 @@
                                         <label for="email-id-column" class="form-label"
                                         >{{__('Petition')}}</label
                                         >
-                                        <input type="file" name="ariza_file" required class="form-control" id="inputGroupFile01">
+                                        <input type="file" name="ariza_file" class="form-control" id="inputGroupFile01">
+                                        @error('ariza_file')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -215,6 +237,9 @@
                                         > {{__('Description')}}</label
                                         >
                                         <textarea name="description" id="discription" class="form-control"></textarea>
+                                        @error('description')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <hr>
@@ -232,6 +257,9 @@
                                             placeholder="{{__('Enter_Suspect_nume')}}"
                                             data-parsley-required="true"
                                         />
+                                        @error('suspect_name')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -247,6 +275,9 @@
                                             placeholder="{{__('Enter_last_name')}}"
                                             data-parsley-required="true"
                                         />
+                                        @error('last_name')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -262,6 +293,9 @@
                                             placeholder="{{__('Enter_father_name')}}"
                                             data-parsley-required="true"
                                         />
+                                        @error('father_name')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -277,6 +311,9 @@
                                             placeholder=" {{__('Enter_address')}}"
                                             data-parsley-required="true"
                                         />
+                                        @error('main_address')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -291,6 +328,9 @@
                                             data-parsley-restricted-city="Jakarta"
                                             data-parsley-required="true"
                                         />
+                                        @error('tazkera_number')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -306,6 +346,9 @@
                                             placeholder="{{__('Enter_phone_number')}}"
                                             data-parsley-required="true"
                                         />
+                                        @error('phone_number')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -320,6 +363,9 @@
                                             name="current_address"
                                             placeholder="{{__('Enter_current_address')}}"
                                         >
+                                        @error('current_address')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
