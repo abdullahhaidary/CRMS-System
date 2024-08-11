@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\casemodel;
+use App\Models\Court;
 use App\Models\criminal;
 use App\Models\CriminalPicture;
 use App\Models\FingerprintModel;
@@ -18,7 +19,9 @@ class criminalcontroller extends Controller
 {
     public function index()
     {
-        $data = criminal::with(['picture','suspect'])->orderby('id', 'desc')->paginate('5');
+        $data = criminal::with(['picture', 'suspect'])
+            ->orderby('id', 'desc')
+            ->paginate('5');
         return view('criminal.criminal', compact('data'));
     }
     public function more($id)
@@ -75,7 +78,7 @@ class criminalcontroller extends Controller
 
     public function inset(Request $request)
     {
-// Define custom validation messages
+        // Define custom validation messages
         $messages = [
             'name.string' => 'The criminal name must be a string.',
             'name.max' => 'The criminal name may not be greater than 255 characters.',
@@ -127,31 +130,34 @@ class criminalcontroller extends Controller
             'arrest_date.date' => 'The arrest date must be a valid date.',
         ];
 
-// Validate the request data
-        $validatedData = $request->validate([
-            'name' => 'string|max:255',
-            'lname' => 'string|max:255',
-            'father_name' => 'string|max:255',
-            'phone' => 'string|max:15',
-            'email' => 'email|max:255',
-            'current_address' => 'string|max:255',
-            'actual_address' => 'string|max:255',
-            'dateofbirth' => 'date',
-            'gender' => 'required|in:1,0',
-            'job' => 'required|string|max:255',
-            'marital_status' => 'required|in:مجرد,متاهل',
-            'familymember' => 'required|string|max:255',
-            'discription' => 'required|string',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'suspect' => 'required',
-            'case' => 'required',
-            'arrest_date' => 'required|date',
-        ], $messages);
+        // Validate the request data
+        $validatedData = $request->validate(
+            [
+                'name' => 'string|max:255',
+                'lname' => 'string|max:255',
+                'father_name' => 'string|max:255',
+                'phone' => 'string|max:15',
+                'email' => 'email|max:255',
+                'current_address' => 'string|max:255',
+                'actual_address' => 'string|max:255',
+                'dateofbirth' => 'date',
+                'gender' => 'required|in:1,0',
+                'job' => 'required|string|max:255',
+                'marital_status' => 'required|in:مجرد,متاهل',
+                'familymember' => 'required|string|max:255',
+                'discription' => 'required|string',
+                'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'suspect' => 'required',
+                'case' => 'required',
+                'arrest_date' => 'required|date',
+            ],
+            $messages,
+        );
 
-// Create a new Criminal record
+        // Create a new Criminal record
         $save = new Criminal();
 
-// Handle the photo file upload
+        // Handle the photo file upload
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $filename = Str::random(20) . '.' . $file->getClientOriginalExtension();
@@ -159,7 +165,7 @@ class criminalcontroller extends Controller
             $save->photo = $filename;
         }
 
-// Assign validated data to the model properties
+        // Assign validated data to the model properties
         $save->suspect_id = $validatedData['suspect'];
         $save->case_id = $validatedData['case'];
         $save->criminal_name = $validatedData['name'];
@@ -178,9 +184,8 @@ class criminalcontroller extends Controller
         $save->discription = $validatedData['discription'];
         $save->Created_by = Auth::user()->name;
 
-// Save the model
+        // Save the model
         $save->save();
-
 
         $criminal_picture = new CriminalPicture();
         $criminal_picture->criminal_id = $save->id;
@@ -188,15 +193,15 @@ class criminalcontroller extends Controller
         $criminal_picture->save();
 
         $id = $save->id;
-//                return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
+        //                return redirect()->route('crimnal')->with('success', 'Criminal record created successfully.');
         return redirect()->route('criminal_picture', compact('id'))->with('success', 'مجریم ادد شو اوس عکس اضافه کړی!');
     }
     public function edit($id)
     {
-        $criminal = criminal::with(['case','picture','suspect'])->find($id);
-        $cases=casemodel::all();
+        $criminal = criminal::with(['case', 'picture', 'suspect'])->find($id);
+        $cases = casemodel::all();
         $suspects = suspectmodel::all();
-        return view('criminal.edit', compact( 'criminal','cases','suspects'));
+        return view('criminal.edit', compact('criminal', 'cases', 'suspects'));
     }
     public function update(Request $request, string $id)
     {
@@ -324,5 +329,40 @@ class criminalcontroller extends Controller
     {
         $pictures = CriminalPicture::where('criminal_id', '=', $id)->get();
         return view('criminal.picture_show', compact('pictures'));
+    }
+
+    public function showCourtPage($criminalId)
+    {
+        $criminal = criminal::findOrFail($criminalId);
+        $court = Court::where('criminal_id', $criminalId)->latest()->first();
+
+        return view('criminal.court_show', compact('criminal', 'court'));
+    }
+    public function storeCourtRequest(Request $request, $criminalId)
+    {
+        $criminal = Criminal::findOrFail($criminalId);
+
+        $arizaBefore = $request->file('ariza_before')->store('arizas');
+
+        $court = Court::create([
+            'criminal_id' => $criminal->id,
+            'ariza_before' => $arizaBefore,
+        ]);
+
+        return redirect()->back()->with('success', 'Criminal sent to court.');
+    }
+
+    public function updateCourtResult(Request $request, $courtId)
+    {
+        $court = Court::findOrFail($courtId);
+
+        $arizaAfter = $request->file('ariza_after')->store('arizas');
+
+        $court->update([
+            'ariza_after' => $arizaAfter,
+            'result' => $request->input('result'),
+        ]);
+
+        return redirect()->back()->with('success', 'Court result updated.');
     }
 }

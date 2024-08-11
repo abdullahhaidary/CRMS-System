@@ -179,7 +179,7 @@ if (!function_exists('trim_to_words')) {
                                                 <p class=" mb-0">{{$criminal->case->crime_type}}</p>
                                             </td>
                                             <td class="col-auto">
-                                                <p class=" mb-0"> {{$criminal->case->description}}</p>
+                                                <p class=" mb-0"> {{$criminal->case->description}} <a href="{{url('/criminal/all/'.$criminal->id)}}">معلومات بیشتر</a></p>
                                             </td>
                                         </tr>
                                         @endforeach

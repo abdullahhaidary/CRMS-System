@@ -230,11 +230,13 @@
                                     <label for="email-id-column " class="form-label">مظنون</label>
                                     <fieldset class="form-group">
                                         <select class="form-select" name="suspect" id="disabledSelect">
-                                            @foreach($suspects as $suspect)
-                                                @if ($criminal->suspect->id == $suspect->suspect_id)
-                                                    <option selected value="{{ $suspect->id }}">
-                                                        {{ $suspect->name }}</option>
-                                                @endif
+                                            @foreach ($suspects as $suspect)
+                                                @isset($criminal->suspect)
+                                                    @if ($criminal->suspect->id == $suspect->suspect_id)
+                                                        <option selected value="{{ $suspect->id }}">
+                                                            {{ $suspect->name }}</option>
+                                                    @endif
+                                                @endisset
                                                 <option value="{{ $suspect->id }}">{{ $suspect->name }}</option>
                                             @endforeach
                                         </select>
@@ -244,14 +246,28 @@
                                     <label for="email-id-column " class="form-label">{{ __('Case') }} </label>
                                     <fieldset class="form-group">
                                         <select class="form-select" name="case" id="disabledSelect">
+                                            @php
+                                                $criminalFound = false;
+                                            @endphp
+
                                             @foreach ($cases as $items)
                                                 @if ($items->id == $criminal->case_id)
+                                                    @php
+                                                        $criminalFound = true;
+                                                    @endphp
                                                     <option selected value="{{ $items->id }}">
-                                                        {{ $items->case_number }}</option>
+                                                        {{ $items->case_number }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $items->id }}">{{ $items->case_number }}
+                                                    </option>
                                                 @endif
-                                                <option value="{{ $items->id }}">{{ $items->case_number }}
-                                                </option>
                                             @endforeach
+
+                                            @if (!$criminalFound)
+                                                <option value="0" selected>{{__('please_select_a_suspect')}}</option>
+                                            @endif
+
                                         </select>
                                     </fieldset>
                                 </div>

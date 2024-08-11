@@ -56,6 +56,8 @@
         <div class="nav text-right">
             @can('super_admin')
             <a class="link-item mx-2 btn btn-light-info" href="{{url('criminal/edit/'.$item->id)}}">{{__('Edit')}}</a>
+            <a class="link-item mx-2 btn btn-light-info" href="{{url('court/'.$item->id)}}">{{__('see_courts')}}</a>
+            <a class="link-item mx-2 btn btn-light-info" href="{{url('criminal/edit/'.$item->id)}}">{{__('add_court')}}</a>
             <button type="button" class="link-item btn btn-light-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}">{{__('Delete')}}</button>
             @endcan
                 <a class="link-item mx-2 btn" href="{{route('crimnal')}}">{{__('View_list')}}</a>

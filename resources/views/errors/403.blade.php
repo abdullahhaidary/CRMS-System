@@ -23,7 +23,7 @@
         <div class="text-center">
             <h1 class="error-title">خطایی رخ داد!</h1>
             <p class="fs-5 text-gray-600">شما اجازه این کار را ندارید </p>
-            <a href="index.html" class="btn btn-lg btn-outline-primary mt-3">برگشت به صفحه قبلی</a>
+            <a href="{{route('home')}}" class="btn btn-lg btn-outline-primary mt-3">برگشت به صفحه قبلی</a>
         </div>
     </div>
 </div>

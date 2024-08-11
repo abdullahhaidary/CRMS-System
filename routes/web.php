@@ -25,35 +25,27 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\App;
 
-Route::middleware(['auth'])
-    ->get('/', function () {
-        $today = Carbon::today();
-        $lastMonth = Carbon::now()->subMonth();
-        $lastMonthNumber = $lastMonth->month;
-        $lastMonthYear = $lastMonth->year;
 
-        $total_crime_record = People::all()->count();
-        $total_criminal_record = criminal::all()->count();
-        $total_cases_record = casemodel::all()->count();
-        $three_criminals = Criminal::with('case')->orderBy('created_at', 'desc')->take(3)->get();
-        $total_provinces = Province::all();
+// login and register routes
+Route::get('/login', [AuthController::class, 'login_page'])->name('login');
+Route::get('register', [AuthController::class, 'register_page'])->name('register');
+Route::get('/forgot-password', [AuthController::class, 'forget_page'])->name('password.request');
+Route::post('/forgot-password', [AuthController::class, 'forget']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/profile', [AuthController::class, 'profile_info'])->middleware('auth')->name('profile_info');
+Route::post('/reset-password',[AuthController::class,'forget_password'])->middleware('guest')->name('password.update');
 
-        //    $user_id=provinceaccount::where();
-        //    $complaintsToday = people::whereDate('created_at', $today)->count();
-        $complaintsToday = DB::table('people')
-            //        ->join('province_account', 'province_account.user_id','=','people.user_id')
-            ->where('people.user_id', '=')
-            ->whereDate('created_at', $today)
-            ->count();
-        //    dd($complaintsToday);
+Route::post('logout',[AuthController::class,'logout'])->name('logout');
+Route::post('profile-complete',[AuthController::class,'complete_profile'])->name('profile.complete');
+Route::get('change/password/{id}', function (){
+    return view('profile.change_password');
+});
+Route::post('password/change', [AuthController::class, 'update_password'])->name('change_password');
 
-        $complaintsLastMonth = people::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->count();
-        $casesToday = casemodel::whereDate('created_at', $today)->count();
-        $casesLastMonth = CaseModel::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->count();
-
-        return view('layout.home', compact('total_crime_record', 'total_criminal_record', 'total_cases_record', 'three_criminals', 'total_provinces', 'complaintsToday', 'complaintsLastMonth', 'casesToday', 'casesLastMonth'));
-    })
-    ->name('home');
+//});
+//home route
+Route::get('/', [AuthController::class,'index'])->middleware('auth')->name('home');
 
 Route::get('language/{local}', function ($local) {
     app()->setLocale($local);
@@ -65,19 +57,14 @@ Route::get('language/{local}', function ($local) {
 
 //Route::group(['middleware'=>'auth'],function (){
 //url search
+Route::middleware(['auth'])->group(function () {
 Route::get('/search', function () {
     return view('search');
 })->name('bio_search');
 Route::get('search/search', [\App\Http\Controllers\searchcontroller::class, 'index'])->name('search');
 
 //url Auth
-Route::get('/login', [AuthController::class, 'login_page'])->name('login');
-Route::get('register', [AuthController::class, 'register_page'])->name('register');
-Route::get('/forgot-password', [AuthController::class, 'forget_page'])->name('password.request');
-Route::post('/forgot-password', [AuthController::class, 'forget']);
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
-//});
+
 Route::post('/forgot-password', [AuthController::class, 'forget'])
     ->middleware('guest')
     ->name('password.email');
@@ -91,17 +78,6 @@ Route::post('/profile-info-edit', [AuthController::class, 'profile_info_edit'])
     ->middleware('auth')
     ->name('profile_info_edit');
 
-Route::get('/profile', [AuthController::class, 'profile_info'])->middleware('auth')->name('profile_info');
-Route::post('/reset-password',[AuthController::class,'forget_password'])->middleware('guest')->name('password.update');
-Route::post('logout',[AuthController::class,'logout'])->name('logout');
-Route::post('profile-complete',[AuthController::class,'complete_profile'])->name('profile.complete');
-Route::get('change/password/{id}', function (){
-    return view('profile.change_password');
-});
-Route::post('password/change', [AuthController::class, 'update_password'])->name('change_password');
-Route::fallback(function () {
-    return view('massage');
-})->middleware('auth');
 
 Route::get('/crimnal-list', [\App\Http\Controllers\criminalcontroller::class, 'index'])->name('crimnal');
 Route::get('/criminal/all/{id}', [\App\Http\Controllers\criminalcontroller::class, 'more'])->name('criminal_all');
@@ -115,6 +91,14 @@ Route::post('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::
 Route::get('criminal/picture/show/{id}', [\App\Http\Controllers\criminalcontroller::class, 'show_picture'])->name('show_picture');
 Route::post('/fingerprints_store_criminal', [criminalcontroller::class, 'store_finger_print'])->name('store_finger_print_criminal');
 Route::get('/criminal/addfinger/{id}', [criminalcontroller::class, 'finger_print_add'])->name('criminal_finger_add_page');
+
+//court related
+Route::get('court/{criminalId}', [criminalcontroller::class, 'showCourtPage'])->name('court.show');
+Route::post('court/{criminalId}', [criminalcontroller::class, 'storeCourtRequest'])->name('court.store');
+Route::put('court/{courtId}', [criminalcontroller::class, 'updateCourtResult'])->name('court.update');
+
+
+
 
 //url user
 Route::get('/admin', [\App\Http\Controllers\admincontrol::class, 'index'])
@@ -234,10 +218,12 @@ Route::get('/find_person_from_fingerprint', function (Request $request) {
     return response()->json(['person' => $person]);
 })->name('findPersonFromFingerprint');
 
-Route::fallback(function () {
-    return view('errors.403');
-});
 
 Route::get('/criminal-livewire', function () {
     return view('criminal_livewire');
+});
+});
+
+Route::fallback(function () {
+    return view('errors.403');
 });
