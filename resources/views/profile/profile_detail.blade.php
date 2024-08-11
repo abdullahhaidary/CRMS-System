@@ -14,7 +14,7 @@ Profile Details
         <div class="">
             @include('massage')
         </div>
-        <div class="wrapper h-auto">
+        <div class="wrapper h-auto ">
             <div class="menu" style="height: 500px">
                 <div class="profile_img" style="width: 250px">
                     <div class="upper_profile">
@@ -27,7 +27,7 @@ Profile Details
 
                     <div class="link">
                         <ul class="">
-                            <li class="ul-item"><a class="" href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> {{__('password_change')}} </a></li>
+                            <li class="ul-item"><a class="" href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> {{__('Password_change')}} </a></li>
                         </ul>
                     </div>
                 </div>
