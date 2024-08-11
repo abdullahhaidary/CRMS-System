@@ -36,7 +36,7 @@
                                     <td><img src="{{asset('storage/criminal/'.$item->Picture)}}" style="height: 30px; width: 30px;" class="rounded-5" alt=""></td>
 {{--                                   --}}
                                 @if($item->suspect_id==null)
-                                <td class="text-bold-500">{{ $item->criminal_name . " ".$item->last_name}}</td>
+                                <td class="text-bold-500">{{ $item->name . " ".$item->last_name}}</td>
                                 <td class="text-bold-500">{{ $item->father_name }}</td>
                                 <td>{{ $item->current_address }}</td>
                                 <td>{{ $item->phone}}</td>

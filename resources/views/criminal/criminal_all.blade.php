@@ -159,7 +159,7 @@
             <a class="link-item mx-2 btn btn-info" href="{{url('court/'.$item->id)}}">{{__('see_courts')}}</a>
             <button type="button" class="link-item btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}">{{__('Delete')}}</button>
             @endcan
-                <a class="link-item mx-2 btn btn-dark " href="{{url('criminal/picture/show/'.$item->id)}}">{{__('Pictures_a_criminal')}}</a>
+                <a class="link-item mx-2 btn btn-light-dark " href="{{url('criminal/picture/show/'.$item->id)}}">{{__('Pictures_a_criminal')}}</a>
         </div>
     </div>
     <div class="row ">
@@ -169,7 +169,7 @@
 
             <div class="details-item mt-4">
                 <span class="fw-bold">{{__('Name')}}:</span>
-                <span class="">{{$item->criminal_name}}</span>
+                <span class="">{{$item->name}}</span>
             </div>
             <div class="details-item">
                 <span class="fw-bold">{{__('Last_name')}}:</span>
@@ -181,7 +181,7 @@
             </div>
             <div class="details-item">
                 <span class="fw-bold">{{__('Gender')}}:</span>
-                <span>{{$item->gender==1 ?  'male' : 'female'}}</span>
+                <span>{{$item->gender==0 ?  'مرد' : 'زن'}}</span>
             </div>
             <div class="details-item">
                 <span class="fw-bold">{{__('Age')}}:</span>

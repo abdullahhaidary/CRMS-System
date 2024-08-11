@@ -150,7 +150,7 @@
                                                     <option value="1">{{ __('Male') }}</option>
                                                     <option value="0">{{ __('Female') }}</option>
                                                 </select>
-                                                @error('email')
+                                                @error('gender')
                                                 <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -193,7 +193,7 @@
                                                 <label for="password-column" class="form-label">{{ __('Description') }}</label>
                                                 <textarea id="password-column" class="form-control" wire:model="discription"
                                                           placeholder="{{ __('Enter_description') }}"></textarea>
-                                                @error('email')
+                                                @error('description')
                                                 <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -201,9 +201,9 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('arrest_date_label') }}</label>
-                                                <input type="date"class="form-control" wire:model="arrest_date"
+                                                <input type="date" class="form-control" wire:model="arrest_date"
                                                        placeholder="{{ __('arrest_date_placeholder') }}" />
-                                                @error('email')
+                                                @error('arrest_date')
                                                 <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -212,7 +212,7 @@
                                             <div class="form-group">
                                                 <label for="photo">{{ __('Maktob') }}</label>
                                                 <input type="file" id="photo" class="form-control" wire:model="photo" required/>
-                                                @error('email')
+                                                @error('photo')
                                                 <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
