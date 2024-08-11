@@ -38,7 +38,7 @@ Profile Details
                 <div class="container-fluid">
                     <i class="fa fa-edit ml-auto" onclick="editForm()"></i>
                     <div class="personal_information_single">
-                        <div>{{__('User ID')}}:</div>
+                        <div>{{__('User_ID')}}:</div>
                         <div>{{Auth::user()->id}}</div>
                     </div>
                     <div class="personal_information_single">
@@ -64,7 +64,7 @@ Profile Details
                         <div>{{Auth::user()->action==1 ? 'Active' : 'InActive'}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>{{__('Date Created')}}:</div>
+                        <div>{{__('Create_date')}}:</div>
                         <div>{{ Auth::user()->created_at ? \Carbon\carbon::parse(Auth::user()->created_at)->format('Y-m-d') : 'An Error Occured' }}</div>
                     </div>
                 </div>
@@ -81,17 +81,18 @@ Profile Details
                     <div class="dialog-content" id="profile-edit-content">
                         <span class="close-btn" onclick="closeProfileDialog()">&times;</span>
                         <br><br>
-                        <h3 class="text-2xl mb-5">Edit Profile</h3>
+                        <!-- ایدیت یوزر -->
+                        <h3 class="text-2xl mb-5">{{__('Edit_profile')}}</h3>
                         <div class="form-group d-flex flex-column">
-                            <label for="name" style="text-align:start;">Name: </label>
+                            <label for="name" style="text-align:start;">{{__('Name')}}: </label>
                             <input type="text" value="{{Auth::user()->name}}" class="form" name="name" id="name">
                         </div>
                         <div class="form-group d-flex flex-column">
-                            <label for="Email" class="w-100 mb-1" style="text-align:start;">Email: </label>
+                            <label for="Email" class="w-100 mb-1" style="text-align:start;">{{__('Email')}}: </label>
                             <input type="email" value="{{Auth::user()->email}}" class="form" name="email" id="email">
                         </div>
                         <div class="form-group d-flex flex-column mb-5">
-                            <label for="dob" class="w-100 mb-1" style="text-align:start;">Date of Birth: </label>
+                            <label for="dob" class="w-100 mb-1" style="text-align:start;">{{__('Date_of_birth')}}: </label>
                             <input type="date" class="form" name="dob" id="dob" value="{{ Auth::user()->dob ? \Carbon\Carbon::parse(Auth::user()->dob)->format('Y-m-d') : '' }}">
                         </div>
 
