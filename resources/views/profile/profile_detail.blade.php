@@ -34,7 +34,7 @@ Profile Details
             </div>
             <div class="information">
 
-                <h3 class="header ">{{__('Personal Information')}}</h3>
+                <h3 class="header ">{{__('Personal_information')}}</h3>
                 <div class="container-fluid">
                     <i class="fa fa-edit ml-auto" onclick="editForm()"></i>
                     <div class="personal_information_single">
