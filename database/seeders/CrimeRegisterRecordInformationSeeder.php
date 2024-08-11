@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use Faker\Factory as Faker;
 class CrimeRegisterRecordInformationSeeder extends Seeder
 {
     /**
@@ -38,5 +38,22 @@ class CrimeRegisterRecordInformationSeeder extends Seeder
 
         DB::table('crime_register_record_information')->insert($data);
 
+        $faker = Faker::create('fa_IR'); // Using Persian locale
+
+        $peopleIds = DB::table('people')->pluck('id'); // Get existing people IDs
+
+        $records = [];
+        for ($i = 0; $i < 500; $i++) {
+            $records[] = [
+                'people_id' => $faker->randomElement($peopleIds),
+                'description' => $faker->text(200),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+        }
+
+        DB::table('crime_register_record_information')->insert($records);
+
     }
+
 }

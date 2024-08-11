@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('criminal_id')->nullable();
             $table->string('ariza_before')->nullable(); // File path for the ariza when going to court
             $table->string('ariza_after')->nullable(); // File path for the ariza when returning
-            $table->int('final_mahkama')->default(0);
+            $table->integer('final_mahkama')->default(0);
             $table->date('date_till_in_jail')->nullable();
             $table->foreign('criminal_id')->references('id')->on('criminals')->onDelete('cascade');
             $table->string('result')->nullable();

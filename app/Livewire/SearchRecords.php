@@ -117,13 +117,13 @@ class SearchRecords extends Component
             if ($this->phone) {
                 $peopleQuery->where('phone', 'like', '%' . $this->phone . '%');
             }
-                $peoples=$peopleQuery->paginate('5');
+            $peoples=$peopleQuery->paginate('5');
         }
-        }
+    }
 
         return view('livewire.search-records', [
         'criminals' => $criminals ,
-//        'peoples' => $peoples,
+        'peoples' => $peoples??[],
         'suspects' => $suspects ?? [],]);
     }
     public function updated($propertyName)

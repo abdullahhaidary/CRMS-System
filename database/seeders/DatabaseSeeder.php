@@ -24,7 +24,9 @@ class DatabaseSeeder extends Seeder
             SuspectsSeeder::class,
             CriminalsTableSeeder::class,
 
-        ]);
 
+        ]);
+    $this->call(PeopleTableSeeder::class);
+    $this->call(SuspectSeeder::class);
     }
 }
