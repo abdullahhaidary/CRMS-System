@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\casemodel;
+use App\Models\criminal;
 use App\Models\People;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +17,36 @@ use Carbon\carbon;
 use Illuminate\Support\Facades\Storage;
 class AuthController extends Controller
 {
+    public function index(){
+        $today = Carbon::today();
+        $lastMonth = Carbon::now()->subMonth();
+        $lastMonthNumber = $lastMonth->month;
+        $lastMonthYear = $lastMonth->year;
+
+        $total_crime_record = People::all()->count();
+        $total_criminal_record = criminal::all()->count();
+        $total_cases_record = casemodel::all()->count();
+        $three_criminals = Criminal::with('case')->orderBy('created_at', 'desc')->take(3)->get();
+        $total_provinces = Province::all();
+
+        //    $user_id=provinceaccount::where();
+        //    $complaintsToday = people::whereDate('created_at', $today)->count();
+        $complaintsToday = DB::table('people')
+            //        ->join('province_account', 'province_account.user_id','=','people.user_id')
+            ->where('people.user_id', '=')
+            ->whereDate('created_at', $today)
+            ->count();
+        //    dd($complaintsToday);
+
+        $complaintsLastMonth = people::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->count();
+        $casesToday = casemodel::whereDate('created_at', $today)->count();
+        $casesLastMonth = CaseModel::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->count();
+
+        return view('layout.home', compact('total_crime_record', 'total_criminal_record', 'total_cases_record', 'three_criminals', 'total_provinces', 'complaintsToday', 'complaintsLastMonth', 'casesToday', 'casesLastMonth'));
+    }
+
+
+
     public function login_page(){
         if(Auth::user() and Auth::user()->action===1){
             return redirect('/');
