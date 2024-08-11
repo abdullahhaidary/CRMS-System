@@ -88,11 +88,11 @@ Profile Details
                             <input type="text" value="{{Auth::user()->name}}" class="form" name="name" id="name">
                         </div>
                         <div class="form-group d-flex flex-column">
-                            <label for="Email" class="w-100 mb-1" style="text-align:start;">Email: </label>
+                            <label for="Email" class="w-100 mb-1" style="text-align:start;">{{__('Email')}}: </label>
                             <input type="email" value="{{Auth::user()->email}}" class="form" name="email" id="email">
                         </div>
                         <div class="form-group d-flex flex-column mb-5">
-                            <label for="dob" class="w-100 mb-1" style="text-align:start;">Date of Birth: </label>
+                            <label for="dob" class="w-100 mb-1" style="text-align:start;">{{__('Date_of_birth')}}: </label>
                             <input type="date" class="form" name="dob" id="dob" value="{{ Auth::user()->dob ? \Carbon\Carbon::parse(Auth::user()->dob)->format('Y-m-d') : '' }}">
                         </div>
 
