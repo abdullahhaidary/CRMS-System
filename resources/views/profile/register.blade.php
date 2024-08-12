@@ -1,5 +1,8 @@
 @extends('layout.mian-dashbord')
 @section('content')
+
+
+<!-- فورم راجستر کاربر -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -64,17 +67,17 @@
     <div class="register-container mt-1">
         <img src="{{asset('images/register.png')}}" alt="Logo">
         <!-- فورم راجستر کاربر -->
-        <h2>Register</h2>
+        <h2>{{__('Register')}}</h2>
         <form action="{{route('register')}}" method="POST">
             @csrf()
             @error('name')
                 <div style="color:red">{{$message}}</div>
             @enderror
-            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="name" placeholder="{{__('Full_name')}}..." required>
             @error('email')
                 <div style="color:red">{{$message}}</div>
             @enderror
-            <input type="text" name="email" placeholder="Email" required>
+            <input type="text" name="email" placeholder="{{__('Email')}}..." required>
 
                 <select class="form-select" name="postion" id="disabledSelect">
                     <option class="form-option-list" value="0">{{__('Position_selection')}}</option>
@@ -87,8 +90,8 @@
                 <div style="color:red">{{$message}}</div>
             @enderror
             <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Register</button>
+            <button type="submit">{{__('Register')}}</button>
         </form>
-        <p class="mb-0"> {{__('List_all_user_in_system')}} <a href="{{route('user')}}">{{__('Click_here')}}</a></p>
+        <p class="mb-0"> {{__('Table_of_all_system_users')}} <a href="{{route('user')}}">{{__('Click_here')}}</a></p>
     </div>
 @endsection

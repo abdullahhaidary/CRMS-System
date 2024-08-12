@@ -108,11 +108,13 @@
 </head>
 <body dir="rtl">
 <div class="profile-container">
-    <i class="fa fa-user-circle fa-3x"></i>
-    <h2>Complete Your Profile</h2>
-{{--    <div class="text-center">--}}
-{{--        <img src="{{ asset('images/profile_avatar.png') }}" onclick="triggerFileInput()" alt="Profile Picture" class="profile-image" id="profile-preview">--}}
-{{--    </div>--}}
+    <!-- <i class="fa fa-user-circle fa-3x"></i> -->
+
+    <!-- فورم تغییرات پسورد کاربر -->
+    <h2>{{__('Complete_your_profile')}}</h2>
+   <!-- <div class="text-center">
+        <img src="{{ asset('images/profile_avatar.png') }}" onclick="triggerFileInput()" alt="Profile Picture" class="profile-image" id="profile-preview">
+   </div> -->
     @include('massage')
     @if($errors->any())
         <div>
@@ -127,21 +129,21 @@
         <!-- Old Password -->
 {{--        <input type="file" id="profile-image" name="profile_image" accept="image/*" onchange="previewProfileImage(event)" required>--}}
         <div class="form-group">
-            <label for="old_password">پخوانی فاسورد:</label>
-            <input type="password" name="old_password" required class="form-control" id="old_password" placeholder="پخوانی فاسورد...">
+            <label for="old_password">{{__('olde_password')}}:</label>
+            <input type="password" name="old_password" required class="form-control" id="old_password" placeholder="{{__('olde_password')}}...">
         </div>
         <!-- New Password -->
         <div class="form-group">
-            <label for="new_password">نوی فاسورد:</label>
-            <input type="password" name="new_password" required class="form-control" id="new_password" placeholder="نوی فاسورد...">
-            <p class="text-danger">پاسورد باید له اتو عددونو کم نه وی!</p>
+            <label for="new_password">{{__('new_password')}}:</label>
+            <input type="password" name="new_password" required class="form-control" id="new_password" placeholder="{{__('new_password')}}...">
+            <p class="text-danger">{{__('Password_shoud_not_less_8')}}!</p>
         </div>
         <!-- Date of Birth -->
 {{--        <div class="form-group">--}}
 {{--            <label for="dob">Date of Birth:</label>--}}
 {{--            <input type="date" name="dob" id="dob" class="form-control" placeholder="Date of Birth" required>--}}
 {{--        </div>--}}
-        <button type="submit" class="btn btn-success">Complete</button>
+        <button type="submit" class="btn btn-success">{{__('Complete')}}</button>
     </form>
 </div>
 

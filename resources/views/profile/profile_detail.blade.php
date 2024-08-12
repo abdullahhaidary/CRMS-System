@@ -36,6 +36,7 @@ Profile Details
 
                 <h3 class="header ">{{__('Personal_information')}}</h3>
                 <div class="container-fluid">
+                    <!-- فورم ایدیت کاربر -->
                     <i class="fa fa-edit ml-auto" onclick="editForm()"></i>
                     <div class="personal_information_single">
                         <div>{{__('User_ID')}}:</div>
@@ -95,8 +96,9 @@ Profile Details
                             <label for="dob" class="w-100 mb-1" style="text-align:start;">{{__('Date_of_birth')}}: </label>
                             <input type="date" class="form" name="dob" id="dob" value="{{ Auth::user()->dob ? \Carbon\Carbon::parse(Auth::user()->dob)->format('Y-m-d') : '' }}">
                         </div>
+                        <!-- ثبت کردن ایدیت کاربر -->
 
-                        <button type="submit" class="save-btn">Save</button>
+                        <button type="submit" class="save-btn">{{__('Save')}}</button>
                     </div>
                 </div>
             </form>
