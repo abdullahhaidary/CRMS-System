@@ -15,7 +15,7 @@ var optionsProfileVisit = {
   plotOptions: {},
   series: [
     {
-      name: "sales",
+      name: "تعداد مجرمین",
       data: [9, 20, 30, 20, 10, 20, 30, 20, 10, 20, 30, 20],
     },
   ],

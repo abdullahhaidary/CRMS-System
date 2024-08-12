@@ -90,6 +90,7 @@ if (!function_exists('trim_to_words')) {
                         </div>
                     </div>
                 </div>
+@can('super_admin')
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -122,12 +123,26 @@ if (!function_exists('trim_to_words')) {
                                         {
                                             name: "Daily Criminal Records",
                                             data: counts,
+                                            name: "تعداد مجرمین",
+
                                         },
                                     ],
                                     colors: "#435ebe",
                                     xaxis: {
                                         categories: dates,
                                     },
+                                    tooltip: {
+                                        y: {
+                                            formatter: function (val) {
+                                                return val + " Records"; // Custom label
+                                            },
+                                            title: {
+                                                formatter: function (seriesName) {
+                                                    return "Criminal Records"; // Custom title for tooltip
+                                                }
+                                            }
+                                        }
+                                    }
                                 };
 
                                 var chartProfileVisit = new ApexCharts(
@@ -138,9 +153,12 @@ if (!function_exists('trim_to_words')) {
                                 chartProfileVisit.render();
                             </script>
 
+
                         </div>
                     </div>
+
                 </div>
+        @endcan
                 <div class="row">
                     <div class="col-12 col-xl-6 h-100">
                         <div class="card">
