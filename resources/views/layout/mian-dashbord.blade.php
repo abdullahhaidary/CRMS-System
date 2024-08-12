@@ -172,12 +172,18 @@
                             </ul>
                         </li>
                     <li
+{{--                        class="sidebar-item   {{ Route::currentRouteName() == 'department' ? 'active' : '' }}">--}}
+{{--                        <a href="{{route('department')}}" class='sidebar-link'>--}}
+{{--                            <i class="bi bi-building"></i>--}}
+{{--                            <span>{{__('department')}} </span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                         class="sidebar-item   {{ Route::currentRouteName() == 'department' ? 'active' : '' }}">
-                        <a href="{{route('department')}}" class='sidebar-link'>
+                        <a href="{{route('mian_case')}}" class='sidebar-link'>
                             <i class="bi bi-building"></i>
-                            <span>{{__('department')}} </span>
+                            <span>{{__('mian_case')}} </span>
                         </a>
-                    </li>
+                        </li>
                     @endif
                     @can('moder')
                         <li

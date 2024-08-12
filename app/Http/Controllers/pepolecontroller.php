@@ -134,8 +134,7 @@ class pepolecontroller extends Controller
             'tazkera_number.numeric' => 'The Tazkera number must be a number.',
             'tazkera_number.max' => 'The Tazkera number may not be greater than 20 characters.',
         ];
-
-// Validate the request data
+        // Validate the request data
         $validatedData = $request->validate([
             'suspect_name' => 'nullable|string',
             'father_name' => 'nullable|string',
@@ -145,14 +144,10 @@ class pepolecontroller extends Controller
             'current_address' => 'nullable|string',
             'tazkera_number' => 'nullable|numeric',
         ], $messages);
-
 // Save the validated data to the suspectmodel table
         $suspect = new suspectmodel();
-
         $savedesc = crime_register_record_information::where('people_id', $savedPeople->id)
-            ->where('description', $description->description)
-            ->first();
-
+            ->where('description', $description->description)->first();
         $suspect->crime_record_id = $savedesc->id;
         $suspect->name = $validatedData['suspect_name']; // Use validated data
         $suspect->father_name = $validatedData['father_name'];
@@ -163,12 +158,7 @@ class pepolecontroller extends Controller
         $suspect->tazcira_number = $validatedData['tazkera_number'];
         $suspect->isCriminal = 0;
         $suspect->Created_by = Auth::user()->id;
-
         $suspect->save();
-
-
-
-
 
         return redirect(route('people'))->with('success', 'د شکایت کونکی معلومات ذخیره شول اوس معلومات اضافی داخل کړی');
 

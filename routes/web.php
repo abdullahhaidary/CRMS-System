@@ -171,6 +171,7 @@ Route::get('/case/{id}', [\App\Http\Controllers\casecontroller::class, 'index'])
 Route::get('case/all/list', [\App\Http\Controllers\casecontroller::class, 'list'])->name('list_cases');
 Route::get('/case/form/{id}', [\App\Http\Controllers\casecontroller::class, 'create'])->name('case-from');
 Route::post('/case/form', [\App\Http\Controllers\casecontroller::class, 'store'])->name('case-store');
+Route::get('/case/create/main', [\App\Http\Controllers\casecontroller::class, 'case'])->name('mian_case');
 Route::get('/finger_print_add/{id}',[suspectController::class, 'finger_print_add'])->name('finger_print_add');
 
 //url province cases

@@ -28,6 +28,11 @@ class casecontroller extends Controller
 
         return view('cases.case-from',compact('id'));
     }
+    public function case()
+    {
+
+        return view('cases.mian_case');
+    }
 
     /**
      * Store a newly created resource in storage.
