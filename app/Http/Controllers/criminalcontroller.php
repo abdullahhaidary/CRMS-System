@@ -40,15 +40,42 @@ class criminalcontroller extends Controller
             ->leftJoin('cases', 'cases.id', '=', 'criminals.case_id')
             ->leftJoin('suspect', 'suspect.id', '=', 'criminals.suspect_id')
             //            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id' )
-            ->select('criminals.*', 'cases.case_number', 'suspect.*')
+            ->select('criminals.*', 'cases.case_number')
             ->where('criminals.id', '=', $id)
             ->get();
+//        $datas=criminal::where('criminals.id', '=', $id)->get();
+//        $datass = DB::table('criminals')
+//            ->leftJoin('cases', 'cases.id', '=', 'criminals.case_id')
+//            ->leftJoin('suspect', 'suspect.id', '=', 'criminals.suspect_id')
+//            //            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id' )
+//            ->select('criminals.*', 'cases.case_number', 'suspect.*')
+//            ->where('criminals.id', '=', $id)
+//            ->get();
+//                if ('criminals.suspect_id'==null){
+//                   $data=$datas;
+//                }
+//
+//                elseif('criminals.suspect_id'!=null){
+//                    $data=$datass;
+//                }
+
+
+
+//            ->select('suspect.*')
+//            ->where('suspect_id', '!=', null)
+//            ->get();
+
 
         if ($data) {
             return view('criminal.criminal_all', compact('data'));
         } else {
             return redirect()->back()->with('error', 'Not Found Data');
         }
+    }
+    public function maktob($id)
+    {
+$data=criminal::where('criminals.id', '=', $id)->get();
+return view('criminal.maktob', compact('data'));
     }
     public function add()
     {

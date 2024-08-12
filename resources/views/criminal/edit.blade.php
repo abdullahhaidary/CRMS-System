@@ -21,7 +21,7 @@
                                                 <label for="first-name-column"
                                                     class="form-label">{{ __('Name') }}</label>
                                                 <input type="text" id="first-name-column" class="form-control"
-                                                    name="name" value="{{ $criminal->criminal_name }}"
+                                                    name="name" value="{{ $criminal->name }}"
                                                     data-parsley-required="true" />
                                             </div>
                                         </div>

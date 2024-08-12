@@ -91,7 +91,7 @@ Route::post('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::
 Route::get('criminal/picture/show/{id}', [\App\Http\Controllers\criminalcontroller::class, 'show_picture'])->name('show_picture');
 Route::post('/fingerprints_store_criminal', [criminalcontroller::class, 'store_finger_print'])->name('store_finger_print_criminal');
 Route::get('/criminal/addfinger/{id}', [criminalcontroller::class, 'finger_print_add'])->name('criminal_finger_add_page');
-
+Route::get('criminal/maktob/{id}', [criminalcontroller::class, 'maktob'])->name('maktob');
 //court related
 Route::get('court/{criminalId}', [criminalcontroller::class, 'showCourtPage'])->name('court.show');
 Route::post('court/{criminalId}', [criminalcontroller::class, 'storeCourtRequest'])->name('court.store');
@@ -112,16 +112,16 @@ Route::post('admin/update/{id}', [\App\Http\Controllers\admincontrol::class, 'up
     ->middleware('auth');
 
 //url people
-Route::get('people/list', [\App\Http\Controllers\pepolecontroller::class, 'people_list'])->name('list_people')->middleware('auth');
-Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people')->middleware('auth');
-Route::get('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form')->middleware('auth');
-Route::post('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store')->middleware('auth');
-Route::get('/ariza/arizafile/{id}', [\App\Http\Controllers\pepolecontroller::class, 'ariza'])->name('artiza_file')->middleware('auth');
-Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, 'edit'])->name('people_edit')->middleware('auth');
-Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update')->middleware('auth');
-Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete')->middleware('auth');
-Route::get('/people/all/{id}', [\App\Http\Controllers\pepolecontroller::class, 'moreShow'])->name('people_all')->middleware('auth');
-Route::get('/generate-pdf/{id}', [\App\Http\Controllers\pepolecontroller::class, 'generatePDF'])->name('pdf')->middleware('auth');
+Route::get('people/list', [\App\Http\Controllers\pepolecontroller::class, 'people_list'])->name('list_people');
+Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people');
+Route::get('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form');
+Route::post('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store');
+Route::get('/ariza/arizafile/{id}', [\App\Http\Controllers\pepolecontroller::class, 'ariza'])->name('artiza_file');
+Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, 'edit'])->name('people_edit');
+Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update');
+Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete');
+Route::get('/people/all/{id}', [\App\Http\Controllers\pepolecontroller::class, 'moreShow'])->name('people_all');
+Route::get('/generate-pdf/{id}', [\App\Http\Controllers\pepolecontroller::class, 'generatePDF'])->name('pdf');
 
 //url province people
 Route::get('/province/people', [\App\Http\Controllers\provinceComplintcontroller::class, 'index'])->name('province_list');
