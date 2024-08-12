@@ -36,28 +36,28 @@ class criminalcontroller extends Controller
     public function more($id)
     {
         //        dd($id);
-        $data = DB::table('criminals')
+        $datas = DB::table('criminals')
+            ->leftJoin('cases', 'cases.id', '=', 'criminals.case_id')
+            ->leftJoin('suspect', 'suspect.id', '=', 'criminals.suspect_id')
+            //            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id' )
+            ->select('criminals.*', 'cases.case_number','suspect.*')
+            ->where('criminals.id', '=', $id)
+            ->get();
+//        $datas=criminal::where('criminals.id', '=', $id)->get();
+        $datass = DB::table('criminals')
             ->leftJoin('cases', 'cases.id', '=', 'criminals.case_id')
             ->leftJoin('suspect', 'suspect.id', '=', 'criminals.suspect_id')
             //            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id' )
             ->select('criminals.*', 'cases.case_number')
             ->where('criminals.id', '=', $id)
             ->get();
-//        $datas=criminal::where('criminals.id', '=', $id)->get();
-//        $datass = DB::table('criminals')
-//            ->leftJoin('cases', 'cases.id', '=', 'criminals.case_id')
-//            ->leftJoin('suspect', 'suspect.id', '=', 'criminals.suspect_id')
-//            //            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id' )
-//            ->select('criminals.*', 'cases.case_number', 'suspect.*')
-//            ->where('criminals.id', '=', $id)
-//            ->get();
-//                if ('criminals.suspect_id'==null){
-//                   $data=$datas;
-//                }
+                if ('criminals.suspect_id'==null){
+                   $data=$datas;
+                }
 //
-//                elseif('criminals.suspect_id'!=null){
-//                    $data=$datass;
-//                }
+                elseif('criminals.suspect_id'!=null){
+                    $data=$datass;
+                }
 
 
 
