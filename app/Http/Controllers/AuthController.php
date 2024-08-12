@@ -59,7 +59,6 @@ class AuthController extends Controller
             ->whereDate('created_at', $today)
             ->where('Created_by',Auth::user()->id)
             ->count();
-        //    dd($complaintsToday);
 
         $complaintsLastMonth = people::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->where('Created_by',Auth::user()->id)->count();
         $casesToday = casemodel::whereDate('created_at', $today)->where('Created_by',Auth::user()->id)->count();
@@ -85,7 +84,19 @@ class AuthController extends Controller
         $casesToday = casemodel::whereDate('created_at', $today)->count();
         $casesLastMonth = CaseModel::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->count();
     }
-    return view('layout.home', compact('total_crime_record', 'total_criminal_record', 'total_cases_record', 'three_criminals', 'total_provinces', 'complaintsToday', 'complaintsLastMonth', 'casesToday', 'casesLastMonth'));
+            //    dd($complaintsToday);
+$dailyCriminals = Criminal::selectRaw('DATE(created_at) as date, COUNT(*) as count')
+->where('Created_by', Auth::user()->id)
+->groupBy('date')
+->orderBy('date', 'asc')
+->get();
+
+// Prepare data for the chart
+$dates = $dailyCriminals->pluck('date')->map(function ($date) {
+return Carbon::parse($date)->format('M d'); // Format the date as "Month Day"
+});
+$counts = $dailyCriminals->pluck('count');
+    return view('layout.home', compact('total_crime_record', 'total_criminal_record', 'total_cases_record', 'three_criminals', 'total_provinces', 'complaintsToday', 'complaintsLastMonth', 'casesToday', 'casesLastMonth','dates', 'counts'));
 }
 
 

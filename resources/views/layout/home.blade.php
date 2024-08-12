@@ -99,6 +99,45 @@ if (!function_exists('trim_to_words')) {
                             <div class="card-body">
                                 <div id="chart-profile-visit"></div>
                             </div>
+                            <script>
+                                var dates = @json($dates);
+                                var counts = @json($counts);
+
+                                var optionsProfileVisit = {
+                                    annotations: {
+                                        position: "back",
+                                    },
+                                    dataLabels: {
+                                        enabled: false,
+                                    },
+                                    chart: {
+                                        type: "bar",
+                                        height: 300,
+                                    },
+                                    fill: {
+                                        opacity: 1,
+                                    },
+                                    plotOptions: {},
+                                    series: [
+                                        {
+                                            name: "Daily Criminal Records",
+                                            data: counts,
+                                        },
+                                    ],
+                                    colors: "#435ebe",
+                                    xaxis: {
+                                        categories: dates,
+                                    },
+                                };
+
+                                var chartProfileVisit = new ApexCharts(
+                                    document.querySelector("#chart-profile-visit"),
+                                    optionsProfileVisit
+                                );
+
+                                chartProfileVisit.render();
+                            </script>
+
                         </div>
                     </div>
                 </div>
