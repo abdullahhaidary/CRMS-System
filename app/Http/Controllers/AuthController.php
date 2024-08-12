@@ -6,6 +6,7 @@ use App\Models\casemodel;
 use App\Models\criminal;
 use App\Models\People;
 use App\Models\Province;
+use App\Models\provinceaccount;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +23,7 @@ class AuthController extends Controller
         $lastMonth = Carbon::now()->subMonth();
         $lastMonthNumber = $lastMonth->month;
         $lastMonthYear = $lastMonth->year;
+        if(Auth::user()->type==1){
 
         $total_crime_record = People::all()->count();
         $total_criminal_record = criminal::all()->count();
@@ -41,9 +43,50 @@ class AuthController extends Controller
         $complaintsLastMonth = people::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->count();
         $casesToday = casemodel::whereDate('created_at', $today)->count();
         $casesLastMonth = CaseModel::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->count();
+    }else if(Auth::user()->type==2){
+        $province_info = provinceaccount::where('user_id',Auth::user()->id)->first();
+        $total_crime_record = People::where('Created_by',Auth::user()->id)->count();
+        $total_criminal_record = criminal::where('Created_by',Auth::user()->id)->count();
+        $total_cases_record = casemodel::where('Created_by',Auth::user()->id)->count();
+        $three_criminals = Criminal::with('case')->where('Created_by',Auth::user()->id)->orderBy('created_at', 'desc')->take(3)->get();
+        $total_provinces = Province::where('id',$province_info->province)->get();
 
-        return view('layout.home', compact('total_crime_record', 'total_criminal_record', 'total_cases_record', 'three_criminals', 'total_provinces', 'complaintsToday', 'complaintsLastMonth', 'casesToday', 'casesLastMonth'));
+        //    $user_id=provinceaccount::where();
+        //    $complaintsToday = people::whereDate('created_at', $today)->count();
+        $complaintsToday = DB::table('people')
+            //        ->join('province_account', 'province_account.user_id','=','people.user_id')
+            ->where('people.user_id', '=')
+            ->whereDate('created_at', $today)
+            ->where('Created_by',Auth::user()->id)
+            ->count();
+        //    dd($complaintsToday);
+
+        $complaintsLastMonth = people::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->where('Created_by',Auth::user()->id)->count();
+        $casesToday = casemodel::whereDate('created_at', $today)->where('Created_by',Auth::user()->id)->count();
+        $casesLastMonth = CaseModel::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->where('Created_by',Auth::user()->id)->count();
+    }else if(Auth::user()->type==3){
+
+        $total_crime_record = People::all()->count();
+        $total_criminal_record = criminal::all()->count();
+        $total_cases_record = casemodel::all()->count();
+        $three_criminals = Criminal::with('case')->orderBy('created_at', 'desc')->take(3)->get();
+        $total_provinces = Province::all();
+
+        //    $user_id=provinceaccount::where();
+        //    $complaintsToday = people::whereDate('created_at', $today)->count();
+        $complaintsToday = DB::table('people')
+            //        ->join('province_account', 'province_account.user_id','=','people.user_id')
+            ->where('people.user_id', '=')
+            ->whereDate('created_at', $today)
+            ->count();
+        //    dd($complaintsToday);
+
+        $complaintsLastMonth = people::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->count();
+        $casesToday = casemodel::whereDate('created_at', $today)->count();
+        $casesLastMonth = CaseModel::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->count();
     }
+    return view('layout.home', compact('total_crime_record', 'total_criminal_record', 'total_cases_record', 'three_criminals', 'total_provinces', 'complaintsToday', 'complaintsLastMonth', 'casesToday', 'casesLastMonth'));
+}
 
 
 

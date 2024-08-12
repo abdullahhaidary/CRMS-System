@@ -2,11 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\casemodel;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use Faker\Factory as Faker;
+use App\Models\User;
 class CriminalsTableSeeder extends Seeder
 {
     /**
@@ -34,7 +36,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '3',
                 'photo' => 'path/to/photo1.jpg',
-                'Created_by' => 'admin',
+                'Created_by' => 1,
 
             ],
             [
@@ -55,7 +57,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'مجرد',
                 'family_members' => '2',
                 'photo' => 'path/to/photo2.jpg',
-                'Created_by' => 'admin',
+                'Created_by' => 1,
             ],
             [
                 'suspect_id' => 3,
@@ -75,7 +77,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '4',
                 'photo' => 'path/to/photo3.jpg',
-                'Created_by' => 'admin',
+                'Created_by' => 1,
             ],
             [
                 'suspect_id' => 4,
@@ -95,7 +97,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '5',
                 'photo' => 'path/to/photo4.jpg',
-                'Created_by' => 'admin',
+                'Created_by' => 1,
             ],
             [
                 'suspect_id' => 5,
@@ -115,7 +117,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'مجرد',
                 'family_members' => '2',
                 'photo' => 'path/to/photo5.jpg',
-                'Created_by' => 'admin',
+                'Created_by' => 1,
             ],
             [
                 'suspect_id' => 6,
@@ -135,7 +137,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '4',
                 'photo' => 'path/to/photo6.jpg',
-                'Created_by' => 'admin',
+                'Created_by' => 1,
             ],
             [
                 'suspect_id' => 7,
@@ -155,7 +157,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '3',
                 'photo' => 'path/to/photo7.jpg',
-                'Created_by' => 'admin',
+                'Created_by' => 1,
             ],
             [
                 'suspect_id' => 8,
@@ -175,7 +177,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'مجرد',
                 'family_members' => '1',
                 'photo' => 'path/to/photo8.jpg',
-                'Created_by' => 'admin',
+                'Created_by' => 1,
             ],
             [
                 'suspect_id' => 9,
@@ -195,7 +197,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'متأهل',
                 'family_members' => '2',
                 'photo' => 'path/to/photo9.jpg',
-                'Created_by' => 'admin',
+                'Created_by' => 1,
             ],
             [
                 'suspect_id' => 10,
@@ -215,7 +217,7 @@ class CriminalsTableSeeder extends Seeder
                 'marital_status' => 'مجرد',
                 'family_members' => '4',
                 'photo' => 'path/to/photo10.jpg',
-                'Created_by' => 'admin',
+                'Created_by' => 1,
             ],
             // [
             //     'suspect_id' => 11,
@@ -290,5 +292,37 @@ class CriminalsTableSeeder extends Seeder
             //     'photo' => 'path/to/photo14.jpg',
             // ],
         ]);
+        $faker = Faker::create('fa_IR'); // Using Persian locale
+
+        $criminals = [];
+        $users = User::pluck('id')->toArray(); // Get all user IDs
+        $cases = casemodel::pluck('id')->toArray();
+        for ($i = 0; $i < 640; $i++) { // Generate 100 fake records
+            $createdAt = $faker->dateTimeBetween('2016-01-01', '2024-12-31');
+            $criminals[] = [
+                'case_id' => $faker->randomElement($cases),
+                'criminal_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
+                'father_name' => $faker->firstName,
+                'phone' => $faker->phoneNumber,
+                'email' => $faker->unique()->safeEmail,
+                'current_address' => $faker->address,
+                'actual_address' => $faker->address,
+                'arrest_date' => $faker->date,
+                'date_of_birth' => $faker->date,
+                'gender' => $faker->randomElement(['male', 'female']),
+                'job' => $faker->jobTitle,
+                'marital_status' => $faker->randomElement(['single', 'married']),
+                'family_members' => $faker->randomDigitNotNull,
+                'photo' => $faker->imageUrl(),
+                'Picture' => $faker->imageUrl(),
+                'Created_by' => $faker->randomElement($users), // Randomly assign a user ID
+                'user_id' => $faker->randomElement($users), // Randomly assign a user ID
+                'created_at' => $createdAt,
+                'updated_at' => $createdAt,
+            ];
+        }
+
+        DB::table('criminals')->insert($criminals);
 }
 }

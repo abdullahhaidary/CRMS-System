@@ -53,7 +53,7 @@
                             <td>{{ $item->crime_case }}</td>
                             <td>{{ $item->crim_date }}</td>
                             <td>{{ $item->subject_crim }}</td>
-                            <td>{{ $item->Created_by }}</td>
+                            <td>{{ $item->user->name }}</td>
                             <td>
                                 <div class="dropdown">
                                     <a class=" dropdown-toggle" type="button" id="dropdownMenuButton"

@@ -7,6 +7,8 @@ use App\Models\suspectmodel;
 use App\Models\People;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
+
 class SearchRecords extends Component
 {
     use WithPagination;
@@ -54,8 +56,12 @@ class SearchRecords extends Component
         if ($this->dob) {
             $query->whereDate('dob', $this->dob);
         }
+        if(Auth::user()->type==2){
+            $criminals = $query->where('Created_by', Auth::user()->id)->paginate(5);
 
-        $criminals = $query->paginate(5);
+        }else{
+            $criminals = $query->paginate(5);
+        }
 
         // Check if there are no results in the criminal search
         if ($criminals->isEmpty()) {
@@ -93,7 +99,12 @@ class SearchRecords extends Component
                 $suspectQuery->whereDate('dob', $this->dob);
             }
 
-            $suspects = $suspectQuery->paginate(5);
+            if(Auth::user()->type==2){
+                $suspects = $suspectQuery->where('Created_by',Auth::user()->id)->paginate(5);
+
+            }else{
+                $suspects = $suspectQuery->paginate(5);
+            }
 
         if ($suspects->isEmpty()){
             $peopleQuery = People::query();
@@ -117,7 +128,12 @@ class SearchRecords extends Component
             if ($this->phone) {
                 $peopleQuery->where('phone', 'like', '%' . $this->phone . '%');
             }
+            if(Auth::user()->type==2){
+            $peoples=$peopleQuery->where('Created_by',Auth::user()->id)->paginate('5');
+
+            }else{
             $peoples=$peopleQuery->paginate('5');
+            }
         }
     }
 

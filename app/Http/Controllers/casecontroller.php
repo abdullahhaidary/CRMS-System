@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\casemodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use function Ramsey\Uuid\v1;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -84,6 +86,7 @@ class casecontroller extends Controller
         $save->end_date = $validatedData['end_date'];
         $save->status = $validatedData['case_status'];
         $save->crime_type = $validatedData['crime_type'];
+        $save->Created_by = Auth::user()->id;
         $save->crime_location = $validatedData['crime_location'];
         $save->description = $validatedData['description'];
         $save->save();

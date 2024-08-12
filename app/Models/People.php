@@ -35,5 +35,8 @@ class People extends Model
     {
         return $this->hasOne(crime_register_record_information::class, 'people_id');
     }
+    public function user(){
+        return $this->belongsTo(User::class,'Created_by');
+    }
 
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
@@ -16,6 +17,9 @@ class PeopleTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('fa_IR'); // Using Persian locale
+
+        // Retrieve all user IDs
+        $userIds = User::pluck('id')->toArray();
 
         $people = [];
         for ($i = 0; $i < 500; $i++) {
@@ -33,7 +37,7 @@ class PeopleTableSeeder extends Seeder
                 'subject_crim' => $faker->word,
                 'crim_date' => $faker->date,
                 'user_id' => $faker->randomNumber(),
-                'Created_by' => $faker->word,
+                'Created_by' => $faker->randomElement($userIds), // Assign a random user ID
                 'created_at' => now(),
                 'updated_at' => now(),
             ];

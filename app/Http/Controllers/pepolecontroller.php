@@ -23,7 +23,7 @@ class pepolecontroller extends Controller
     }
     public function people_list()
     {
-        $data = people::orderby('id', 'desc')->paginate('5');
+        $data = people::orderby('id', 'desc')->paginate('10');
         return view('people.people_list', compact('data'));
     }
     public function create()
