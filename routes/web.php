@@ -212,9 +212,16 @@ Route::get('/fetchFingerprint', function () {
 })->name('fetchFingerprint');
 
 Route::get('/find_person_from_fingerprint', function (Request $request) {
-    $fingerprintId = $request->query('id');
+    $fingerprintId = $request->query('suspect_id');
+    if ($request->query('criminal_id') !== null) {
+        $person = Criminal::where('id', $request->query('criminal_id'))->first();
+        $person->type = 'criminal';
+    } else {
+        $person = People::where('id', $fingerprintId)->first();
+        $person->type = 'people';
+    }
 
-    $person = suspectmodel::where('id', $fingerprintId)->first();
+
     return response()->json(['person' => $person]);
 })->name('findPersonFromFingerprint');
 

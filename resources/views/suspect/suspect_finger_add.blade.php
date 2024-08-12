@@ -44,12 +44,11 @@ asd
         @csrf
         <div class="form-group">
             <label hidden for="id">id</label>
-            <input hidden type="text" class="form-control" name="id" id="id">
+            <input hidden type="text" value="{{$id}}" class="form-control" name="id" id="id">
         </div>
         <div class="form-group">
             <label hidden  for="LeftThumb">Left Thumb</label>
             <input hidden  type="text" class="form-control" name="LeftThumb" id="LeftThumb">
-            <textarea  type="text" hidden class="form-control" name="Leftbmpbase64image" id="Leftbmpbase64image"></textarea>
         </div>
         <div class="form-group">
             <label hidden for="RightThumb">Right Thumb</label>
@@ -169,7 +168,6 @@ asd
             if (index == 1) {
                 console.log('added');
                 document.getElementById('LeftThumb').value = result.TemplateBase64;
-                document.getElementById('Leftbmpbase64image').value = result.BMPBase64;
                 document.getElementById('1').style.color = "green";
             } else if (index == 2) {
                 console.log('added');
