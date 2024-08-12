@@ -24,7 +24,7 @@
 <div id="app">
     <div id="sidebar">
         <div class="sidebar-wrapper active">
-                <div class="d-flex justify-content-between align-items-center mt-2 mb-0">
+                <div class="d-flex justify-content-between align-items-center mt-0 mb-0">
                     <div class="theme-toggle d-flex  gap-4 align-items-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
                              role="img" class="iconify iconify--system-uicons" width="20" height="15"
@@ -68,7 +68,7 @@
                 </div>
             <div class="sidebar-menu">
                 <ul class="menu">
-                    <li class="sidebar-title mt-0 mb-3" style="user-select: none; margin-top: -10px" >
+                    <li class="sidebar-title mt-0 mb-0" style="user-select: none; margin-top: -10px" >
                         <div class="logo">
                             <h5><a href="{{route('home')}}">{{ucfirst(strtolower(Auth::user()->name))}}</a></h5>
                         </div>
@@ -172,17 +172,18 @@
                             </ul>
                         </li>
                     <li
-{{--                        class="sidebar-item   {{ Route::currentRouteName() == 'department' ? 'active' : '' }}">--}}
-{{--                        <a href="{{route('department')}}" class='sidebar-link'>--}}
-{{--                            <i class="bi bi-building"></i>--}}
-{{--                            <span>{{__('department')}} </span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-                        class="sidebar-item   {{ Route::currentRouteName() == 'department' ? 'active' : '' }}">
+                        class="sidebar-item   {{ Route::currentRouteName() == 'mian_case' ? 'active' : '' }}">
                         <a href="{{route('mian_case')}}" class='sidebar-link'>
-                            <i class="bi bi-building"></i>
+                            <i class="bi bi-briefcase"></i>
                             <span>{{__('mian_case')}} </span>
                         </a>
+                        </li>
+                        <li
+                            class="sidebar-item   {{ Route::currentRouteName() == 'Report' ? 'active' : '' }}">
+                            <a href="{{route('Report')}}" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-text"></i>
+                                <span>{{__('Report')}} </span>
+                            </a>
                         </li>
                     @endif
                     @can('moder')

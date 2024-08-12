@@ -112,16 +112,16 @@ Route::post('admin/update/{id}', [\App\Http\Controllers\admincontrol::class, 'up
     ->middleware('auth');
 
 //url people
-Route::get('people/list', [\App\Http\Controllers\pepolecontroller::class, 'people_list'])->name('list_people');
-Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people');
-Route::get('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form');
-Route::post('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store');
-Route::get('/ariza/arizafile/{id}', [\App\Http\Controllers\pepolecontroller::class, 'ariza'])->name('artiza_file');
-Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, 'edit'])->name('people_edit');
-Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update');
-Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete');
-Route::get('/people/all/{id}', [\App\Http\Controllers\pepolecontroller::class, 'moreShow'])->name('people_all');
-Route::get('/generate-pdf/{id}', [\App\Http\Controllers\pepolecontroller::class, 'generatePDF'])->name('pdf');
+Route::get('people/list', [\App\Http\Controllers\pepolecontroller::class, 'people_list'])->name('list_people')->middleware('auth');
+Route::get('/people', [\App\Http\Controllers\pepolecontroller::class, 'index'])->name('people')->middleware('auth');
+Route::get('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'create'])->name('people_form')->middleware('auth');
+Route::post('/people_from', [\App\Http\Controllers\pepolecontroller::class, 'store'])->name('people-store')->middleware('auth');
+Route::get('/ariza/arizafile/{id}', [\App\Http\Controllers\pepolecontroller::class, 'ariza'])->name('artiza_file')->middleware('auth');
+Route::get('people/edit/{id}', [\App\Http\Controllers\pepolecontroller::class, 'edit'])->name('people_edit')->middleware('auth');
+Route::post('people/update/{id}', [\App\Http\Controllers\pepolecontroller::class, 'update'])->name('people_update')->middleware('auth');
+Route::get('people/delete/{id}', [\App\Http\Controllers\pepolecontroller::class, 'destroy'])->name('people-delete')->middleware('auth');
+Route::get('/people/all/{id}', [\App\Http\Controllers\pepolecontroller::class, 'moreShow'])->name('people_all')->middleware('auth');
+Route::get('/generate-pdf/{id}', [\App\Http\Controllers\pepolecontroller::class, 'generatePDF'])->name('pdf')->middleware('auth');
 
 //url province people
 Route::get('/province/people', [\App\Http\Controllers\provinceComplintcontroller::class, 'index'])->name('province_list');
@@ -195,6 +195,13 @@ Route::get('province/suspect/delete/{id}', [\App\Http\Controllers\province_suspe
 //url province criminal
 Route::get('province/criminal', [\App\Http\Controllers\provice_criminal::class, 'index'])->name('province_criminal');
 //url evidence
+
+ // url for Report
+    Route::get('Report/Report', [\App\Http\Controllers\Reportcontroller::class, 'index'])->name('Report');
+    //end url Report
+
+
+
 
 Route::post('/search_fingerprint', function (Request $request) {
     $searchFingerprint = $request->LeftThumb;
