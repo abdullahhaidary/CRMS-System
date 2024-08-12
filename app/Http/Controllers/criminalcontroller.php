@@ -19,9 +19,18 @@ class criminalcontroller extends Controller
 {
     public function index()
     {
-        $data = criminal::with(['picture', 'suspect'])
+        if(Auth::user()->type==2){
+            $data = criminal::with(['picture', 'suspect'])
             ->orderby('id', 'desc')
-            ->paginate('5');
+            ->where('Created_by',Auth::user()->id)
+            ->paginate('10');
+        }else{
+            $data = criminal::with(['picture', 'suspect'])
+            ->orderby('id', 'desc')
+            ->paginate('10');
+        }
+
+
         return view('criminal.criminal', compact('data'));
     }
     public function more($id)
@@ -182,7 +191,7 @@ class criminalcontroller extends Controller
         $save->marital_status = $validatedData['marital_status'];
         $save->family_members = $validatedData['familymember'];
         $save->discription = $validatedData['discription'];
-        $save->Created_by = Auth::user()->name;
+        $save->Created_by = Auth::user()->id;
 
         // Save the model
         $save->save();
@@ -232,7 +241,7 @@ class criminalcontroller extends Controller
             $file = $request->file('photo');
             $rename = str::random(20);
             $filename = $rename . '.' . $exe;
-            $file->move('criminal/', $filename);
+            $file->move(public_path('criminal'), $filename);
             $criminal->photo = $filename;
         }
         // Update the user's data suspect-.-++++

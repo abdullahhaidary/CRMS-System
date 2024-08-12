@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Province;
 
+
 class ProvinceSeeder extends Seeder
 {
     /**
@@ -50,7 +51,6 @@ class ProvinceSeeder extends Seeder
             ['name' => 'لوگر'],
             ['name' => 'فراه'],
         ];
-
 
         foreach ($provinces as $province) {
             Province::create($province);

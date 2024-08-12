@@ -65,8 +65,8 @@ if (!function_exists('trim_to_words')) {
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">زندانی ها</h6>
-                                        <h6 class="font-extrabold mb-0">80.000</h6>
+                                        <h6 class="text-muted font-semibold">{{__('total_suspect')}}</h6>
+                                        <h6 class="font-extrabold mb-0">{{$total_suspect}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -90,6 +90,7 @@ if (!function_exists('trim_to_words')) {
                         </div>
                     </div>
                 </div>
+@can('super_admin')
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -99,9 +100,65 @@ if (!function_exists('trim_to_words')) {
                             <div class="card-body">
                                 <div id="chart-profile-visit"></div>
                             </div>
+                            <script>
+                                var dates = @json($dates);
+                                var counts = @json($counts);
+
+                                var optionsProfileVisit = {
+                                    annotations: {
+                                        position: "back",
+                                    },
+                                    dataLabels: {
+                                        enabled: false,
+                                    },
+                                    chart: {
+                                        type: "bar",
+                                        height: 300,
+                                    },
+                                    fill: {
+                                        opacity: 1,
+                                    },
+                                    plotOptions: {},
+                                    series: [
+                                        {
+                                            name: "Daily Criminal Records",
+                                            data: counts,
+                                            name: "تعداد مجرمین",
+
+                                        },
+                                    ],
+                                    colors: "#435ebe",
+                                    xaxis: {
+                                        categories: dates,
+                                    },
+                                    tooltip: {
+                                        y: {
+                                            formatter: function (val) {
+                                                return val + " Records"; // Custom label
+                                            },
+                                            title: {
+                                                formatter: function (seriesName) {
+                                                    return "Criminal Records"; // Custom title for tooltip
+                                                }
+                                            }
+                                        }
+                                    }
+                                };
+
+                                var chartProfileVisit = new ApexCharts(
+                                    document.querySelector("#chart-profile-visit"),
+                                    optionsProfileVisit
+                                );
+
+                                chartProfileVisit.render();
+                            </script>
+
+
                         </div>
                     </div>
+
                 </div>
+        @endcan
                 <div class="row">
                     <div class="col-12 col-xl-6 h-100">
                         <div class="card">

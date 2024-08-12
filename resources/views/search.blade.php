@@ -31,7 +31,7 @@
     <main role="main" class="pb-3">
         <div class="row">
             <div class="col-md-10">
-                <p class="text-dark font-bold"> سرچ په اساس بایو مترک یک مضنون</p>
+                <p class="text-dark font-bold">سرچ په اساس بایو مترک یک مضنون</p>
                 <div class="row">
                     <div class="col-12 justify-content-between d-flex flex-row">
                         <div class="p-5 d-flex flex-column">
@@ -76,7 +76,6 @@
 <div class="card-body">
     <table class="table table-bordered">
         <thead>
-        <tr>
             <tr>
                 <th>آیدی</th>
                 <th>اسم</th>
@@ -85,14 +84,9 @@
                 <th>نمبر مبایل</th>
                 <th>آدرس اصلی</th>
                 <th>آدرس فعلی</th>
-                <th>نمبر تذکره</th>
-                <th>آیا مجرم است</th>
-                <th>تاریخ ایجاد</th>
             </tr>
-        </tr>
         </thead>
         <tbody id="criminal">
-
         </tbody>
     </table>
 </div>
@@ -100,102 +94,153 @@
 <script src="{{asset('dist/js/jquery .js')}}"></script>
 <script type="text/javascript">
     var secugen_lic = "";
-    let matched_response = "";
-    function fetch_and_search(){
-    let template_to_check = document.getElementById('LeftThumb').value;
-    $.ajax({
+    let selectedFinger = null;
+
+    function captureFP(index) {
+        if (selectedFinger !== null && selectedFinger !== index) {
+            document.getElementById(selectedFinger).style.color = "black";
+            document.getElementById(getFingerId(selectedFinger)).value = "";
+        }
+        CallSGIFPGetData(SuccessFunc, ErrorFunc, index);
+        selectedFinger = index;
+    }
+
+    function getFingerId(index) {
+        switch (index) {
+            case 1:
+                return 'LeftThumb';
+            case 2:
+                return 'LeftIndex';
+            case 3:
+                return 'RightThumb';
+            case 4:
+                return 'RightIndex';
+            default:
+                return null;
+        }
+    }
+    function getFingerDb(index) {
+        switch (index) {
+            case 1:
+                return 'left_thumb';
+            case 2:
+                return 'left_index';
+            case 3:
+                return 'right_thumb';
+            case 4:
+                return 'right_index';
+            default:
+                return null;
+        }
+    }
+    function fetch_and_search() {
+        let selectedTemplate = document.getElementById(getFingerId(selectedFinger)).value;
+
+        if (selectedTemplate === "") {
+            alert("Please select a fingerprint to match.");
+            return;
+        }
+
+        $.ajax({
             method: 'GET',
             url: '{{route('fetchFingerprint')}}',
             success: function(response) {
                 response.fingerprint.forEach(element => {
                     $.ajax({
-                    url: "https://localhost:8443/SGIMatchScore",
-                    type: "POST",
-                    data: {
-                        Template1: template_to_check,
-                        Template2: element.left_thumb,
-                    },
-                    success: function(response) {
-                        // Handle success
-                        // $("#result").html("Match Score: " + response);
-                        response = JSON.parse(response);
-                        console.log(response.MatchingScore)
-                        if(response.MatchingScore>120){
-                        $.ajax({
-                            method: 'GET',
-                            url: '{{ route('findPersonFromFingerprint') }}',
-                            data: { id: element.suspect_id },
-                            success: function(a) {
-                                person = a;
-                                console.log(a.person);
-                                $('#criminal').append(`
-                                    <tr>
-                                        <td>${a.person.id}</td>
-                                        <td>${a.person.criminal_name}</td>
-                                        <td>${a.person.last_name}</td>
-                                        <td>${a.person.father_name}</td>
-                                        <td>${a.person.phone}</td>
-                                        <td>${a.person.actual_address}</td>
-                                        <td>${a.person.current_address}</td>
-                                        <td>${a.person.tazcira_number}</td>
-                                        <td>${a.person.isCriminal ? 'Yes' : 'No'}</td>
-                                        <td>${a.person.created_at}</td>
-                                    </tr>
-                                `);
-
-                                return false;
-                            },
-                            error: function(xhr, status, error) {
-                                console.log(xhr, status, error);
+                        url: "https://localhost:8443/SGIMatchScore",
+                        type: "POST",
+                        data: {
+                            Template1: selectedTemplate,
+                            Template2: element[getFingerDb(selectedFinger).toLowerCase()],
+                        },
+                        success: function(response) {
+                            response = JSON.parse(response);
+                            if(response.MatchingScore > 120){
+                                $('#criminal').empty();
+                                $.ajax({
+                                    method: 'GET',
+                                    url: '{{ route('findPersonFromFingerprint') }}',
+                                    data: { suspect_id: element.suspect_id, criminal_id:element.criminal_id },
+                                    success: function(a) {
+                                        if (a.person.type === 'criminal') {
+                                            $('#criminal').append(`
+                                                <tr>
+                                                    <td>${a.person.id}</td>
+                                                    <td>${a.person.criminal_name}</td>
+                                                    <td>${a.person.last_name}</td>
+                                                    <td>${a.person.father_name}</td>
+                                                    <td>${a.person.phone}</td>
+                                                    <td>${a.person.actual_address}</td>
+                                                    <td>${a.person.current_address}</td>
+                                                    <td><a href='criminal/all/${a.person.id}'>معلومات مکمل</a></td>
+                                                </tr>
+                                            `);
+                                        } else if (a.person.type === 'people') {
+                                            $('#criminal').append(`
+                                                <tr>
+                                                    <td>${a.person.id}</td>
+                                                    <td>${a.person.name}</td>
+                                                    <td>${a.person.last_name}</td>
+                                                    <td>${a.person.father_name}</td>
+                                                    <td>${a.person.phone}</td>
+                                                    <td>${a.person.actual_address}</td>
+                                                    <td>${a.person.current_address}</td>
+                                                    <td>${a.person.tazcira_number}</td>
+                                                </tr>
+                                            `);
+                                        }
+                                    },
+                                    error: function(xhr, status, error) {
+                                        console.log(xhr, status, error);
+                                    }
+                                });
                             }
-                        });
-                    }
-                    },
-                    error: function(xhr, status, error) {
-                        console.log(xhr,status,error);
-                        // Handle error
-                    }
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(xhr, status, error);
+                        }
+                    });
                 });
-                });
-            }
-            });
-}
-
-
-    function findTheFullDetails(element) {
-        console.log('full detail called');
-        $.ajax({
-            method: 'GET',
-            url: '{{ route('findPersonFromFingerprint') }}',
-            data: { id: element.id },
-            success: function(response) {
-                console.log(response);
-                callback(response);
-            },
-            error: function(xhr, status, error) {
-                console.log(xhr, status, error);
             }
         });
     }
-    function MatchFunction(first,second){
-                $.ajax({
-                    url: "https://localhost:8443/SGIMatchScore",
-                    type: "POST",
-                    data: {
-                        Template1: first,
-                        Template2: second,
-                    },
-                    success: function(response) {
-                        // Handle success
-                        // $("#result").html("Match Score: " + response);
-                        console.log(response);
-                        return response;
-                    },
-                    error: function(xhr, status, error) {
-                        console.log(xhr,status,error);
-                        // Handle error
-                    }
-                });
+
+    function SuccessFunc(result, index) {
+        if (result.ErrorCode == 0) {
+            let fingerId = getFingerId(index);
+            document.getElementById(fingerId).value = result.TemplateBase64;
+            document.getElementById(index).style.color = "green";
+        } else {
+            alert("Fingerprint Capture Error Code:  " + result.ErrorCode + ".\nDescription:  " + ErrorCodeToString(result.ErrorCode) + ".");
+        }
+    }
+
+    function ErrorFunc(status) {
+        alert("Check if SGIBIOSRV is running; Status = " + status + ":");
+    }
+
+    function CallSGIFPGetData(successCall, failCall, index) {
+        var uri = "https://localhost:8443/SGIFPCapture";
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var fpobject = JSON.parse(xmlhttp.responseText);
+                successCall(fpobject, index);
+            } else if (xmlhttp.status == 404) {
+                failCall(xmlhttp.status)
+            }
+        }
+        var params = "Timeout=" + "10000";
+        params += "&Quality=" + "50";
+        params += "&licstr=" + encodeURIComponent(secugen_lic);
+        params += "&templateFormat=" + "ISO";
+        params += "&imageWSQRate=" + "0.75";
+        xmlhttp.open("POST", uri, true);
+        xmlhttp.send(params);
+
+        xmlhttp.onerror = function () {
+            failCall(xmlhttp.statusText);
+        }
     }
 
     function ErrorCodeToString(ErrorCode) {
@@ -229,77 +274,31 @@
                 Description = "Device Busy";
                 break;
             case 60:
-                Description = "Cannot get serial number of the device";
+                Description = "Capture Already Started";
                 break;
             case 61:
-                Description = "Unsupported device";
+                Description = "Invalid Parameter";
                 break;
             case 63:
-                Description = "SgiBioSrv didn't start; Try image capture again";
+                Description = "Finger is not detected";
+                break;
+            case 64:
+                Description = "Finger is not centered on the sensor";
+                break;
+            case 65:
+                Description = "Unknown error";
+                break;
+            case 66:
+                Description = "Finger is not placed correctly";
+                break;
+            case 67:
+                Description = "Finger scan failed";
                 break;
             default:
-                Description = "Unknown error code or Update code to reflect latest result";
+                Description = "Unknown error";
                 break;
         }
         return Description;
     }
-
-    function captureFP(index) {
-        CallSGIFPGetData(SuccessFunc, ErrorFunc, index);
-    }
-
-    function SuccessFunc(result, index) {
-        if (result.ErrorCode == 0) {
-            if (index == 1) {
-                console.log('added');
-                document.getElementById('LeftThumb').value = result.TemplateBase64;
-                document.getElementById('1').style.color = "green";
-            } else if (index == 2) {
-                console.log('added');
-                document.getElementById('LeftIndex').value = result.TemplateBase64;
-                document.getElementById('2').style.color = "green";
-            } else if (index == 3) {
-                console.log('added');
-                document.getElementById('RightThumb').value = result.TemplateBase64;
-                document.getElementById('3').style.color = "green";
-            } else if (index == 4) {
-                console.log('added');
-                document.getElementById('RightIndex').value = result.TemplateBase64;
-                document.getElementById('4').style.color = "green";
-            }
-        } else {
-            alert("Fingerprint Capture Error Code:  " + result.ErrorCode + ".\nDescription:  " + ErrorCodeToString(result.ErrorCode) + ".");
-        }
-    }
-
-    function ErrorFunc(status) {
-        alert("Check if SGIBIOSRV is running; Status = " + status + ":");
-    }
-
-    function CallSGIFPGetData(successCall, failCall, index) {
-        var uri = "https://localhost:8443/SGIFPCapture";
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var fpobject = JSON.parse(xmlhttp.responseText);
-                successCall(fpobject, index);
-            } else if (xmlhttp.status == 404) {
-                failCall(xmlhttp.status)
-            }
-        }
-        var params = "Timeout=" + "10000";
-        params += "&Quality=" + "50";
-        params += "&licstr=" + encodeURIComponent(secugen_lic);
-        params += "&templateFormat=" + "ISO";
-        params += "&imageWSQRate=" + "0.75";
-        xmlhttp.open("POST", uri, true);
-        xmlhttp.send(params);
-
-        xmlhttp.onerror = function () {
-            failCall(xmlhttp.statusText);
-        }
-    }
 </script>
-<script src="{{asset('dist/js/jquery .js')}}"></script>
-
 @endsection

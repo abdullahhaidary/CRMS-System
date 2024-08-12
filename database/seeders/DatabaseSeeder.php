@@ -20,11 +20,13 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PeopleSeeder::class,
             CrimeRegisterRecordInformationSeeder::class,
+            provinceAccount::class,
             CasesTableSeeder::class,
             SuspectsSeeder::class,
             CriminalsTableSeeder::class,
 
         ]);
-
+        $this->call(PeopleTableSeeder::class);
+        $this->call(SuspectSeeder::class);
     }
 }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->string('status');
             $table->string('crime_type');
+            $table->integer('Created_by')->nullable();
             $table->string('crime_location');
             $table->timestamps();
 

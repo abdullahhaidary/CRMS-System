@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>{{__('Login')}}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -113,6 +113,8 @@
 <body>
     <div class="login-container">
         <img src="{{asset('images/login.png')}}" alt="Logo">
+
+        <!-- فورم Login -->
         <h2>Login</h2>
         <form action="{{route('login')}}" method="POST">
             @csrf()
@@ -125,6 +127,7 @@
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
+        <!--  لینک  Forgot password -->
         <a href="{{route('password.request')}}">Forgot Password?</a>
 {{--        <p>Don't have an account? <a href="{{route('register')}}">Register here</a></p>--}}
     </div>

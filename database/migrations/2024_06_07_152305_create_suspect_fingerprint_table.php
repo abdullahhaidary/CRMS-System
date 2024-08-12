@@ -28,7 +28,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('suspect_id')->references('id')->on('suspect')->onDelete('cascade');
-            $table->foreign('criminal_id')->references('id')->on('criminals')->onDelete('cascade');
 
         });
     }

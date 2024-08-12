@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\People;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 class Complainerlist extends Component
 {
@@ -30,7 +31,13 @@ class Complainerlist extends Component
                 ->orWhere('actual_address', 'like', '%' . $this->paginationTheme . '%')
                 ->orWhere('current_address', 'like', '%' . $this->searchInput . '%');
         }
-        $data = $query->orderby('id', 'desc')->paginate(10);
+        if(Auth::user()->type==2){
+            $data = $query->with('user')->where('Created_by',Auth::user()->id)->orderby('id', 'desc')->paginate(10);
+
+        }else{
+            $data = $query->with('user')->orderby('id', 'desc')->paginate(10);
+
+        }
 
         return view('livewire.complainerlist', ['data' => $data]);
     }

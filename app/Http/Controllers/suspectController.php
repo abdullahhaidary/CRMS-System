@@ -102,13 +102,12 @@ public function destroy($id)
     public function finger_print_add($id){
         $data=DB::table('suspect')->select('suspect.*')->where('suspect.id','=', $id)->get();
         $suspect = suspectmodel::find($id)->first();
-        return view('suspect.suspect_finger_add',compact('suspect','data'));
+        return view('suspect.suspect_finger_add',compact('suspect','data','id'));
     }
 
     public function store_finger_print(Request $request){
         $fingerprints = new FingerprintModel();
         $fingerprints->suspect_id = $request->id;
-        $fingerprints->Leftbmpbase64image = $request->Leftbmpbase64image;
         $fingerprints->right_thumb = $request->RightThumb;
         $fingerprints->right_thumb = $request->RightThumb;
         $fingerprints->left_thumb = $request->LeftThumb;

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('suspect_id')->nullable();
             $table->unsignedBigInteger('case_id');
-            $table->string('name')->nullable();
+            $table->string('criminal_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('father_name')->nullable();
             $table->string('phone')->nullable();
@@ -28,8 +28,8 @@ return new class extends Migration
             $table->string('job');
             $table->string('marital_status');
             $table->string('family_members');
-            $table->string('photo');
-            $table->string('Picture');
+            $table->string('photo')->nullable();
+            $table->string('Picture')->nullable();
             $table->string('Created_by');
             $table->string('user_id')->nullable();
             $table->timestamps();

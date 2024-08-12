@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\casemodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class province_case_controller extends Controller
 {
@@ -49,6 +50,7 @@ class province_case_controller extends Controller
         $save->start_date= $request->start_date;
         $save->end_date= $request->end_date;
         $save->	status= $request->case_status;
+        $save->Created_by = Auth::user()->id;
         $save->	crime_type= $request->crime_type;
         $save->crime_location= $request->crime_location;
         $save->description= $request->description;

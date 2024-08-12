@@ -105,7 +105,7 @@
                             @endforeach
 
                             @else
-
+                                {{ $peoples }}
                             @endif
                             </tbody>
                         </table>
