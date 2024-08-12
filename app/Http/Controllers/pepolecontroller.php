@@ -34,15 +34,15 @@ class pepolecontroller extends Controller
     {
         // Define validation rules
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'lname' => 'required|string|max:255',
-            'fname' => 'required|string|max:255',
+            'name' => 'required|string|regex:/[^\d]+/|max:255',
+            'lname' => 'required|string|regex:/[^\d]+/|max:255',
+            'fname' => 'required|string|regex:/[^\d]+/|max:255',
             'tazcira_number' => 'required|string|max:15',
             'phone' => 'required|numeric',
             'email' => 'required|email|max:255',
-            'address' => 'required|string|max:255',
-            'curent_address' => 'required|string|max:255',
-            'creime_subject' => 'required|string|max:255',
+            'address' => 'required|string|regex:/[^\d]+/|max:255',
+            'curent_address' => 'required|string|regex:/[^\d]+/|max:255',
+            'creime_subject' => 'required|string|regex:/[^\d]+/|max:255',
             'crime_case' => 'required|string|max:255',
             'crime_date' => 'required|date',
             'ariza_file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
@@ -60,8 +60,14 @@ class pepolecontroller extends Controller
             'ariza_file.max' => 'The file size must not exceed 2MB.',
             'creime_subject.required' => 'please enter crime subject.',
             'crime_date.required' => 'please enter crime date.',
-
+            'name.regex' => 'The name must contain at least one non-numeric character.',
+            'lname.regex' => 'The last name must contain at least one non-numeric character.',
+            'fname.regex' => 'The first name must contain at least one non-numeric character.',
+            'address.regex' => 'The address must contain at least one non-numeric character.',
+            'curent_address.regex' => 'The current address must contain at least one non-numeric character.',
+            'creime_subject.regex' => 'The crime subject must contain at least one non-numeric character.',
         ]);
+
 
         // Create a new instance of the model
         $save = new People(); // Ensure this matches your model
