@@ -31,7 +31,7 @@ class criminalcontroller extends Controller
             ->leftJoin('cases', 'cases.id', '=', 'criminals.case_id')
             ->leftJoin('suspect', 'suspect.id', '=', 'criminals.suspect_id')
             //            ->join('criminal_pictures', 'criminal_pictures.criminal_id' ,'=', 'criminals.id' )
-            ->select('criminals.*', 'cases.case_number', 'suspect.name', 'suspect.last_name')
+            ->select('criminals.*', 'cases.case_number', 'suspect.*')
             ->where('criminals.id', '=', $id)
             ->get();
 
@@ -168,7 +168,7 @@ class criminalcontroller extends Controller
         // Assign validated data to the model properties
         $save->suspect_id = $validatedData['suspect'];
         $save->case_id = $validatedData['case'];
-        $save->criminal_name = $validatedData['name'];
+        $save->name = $validatedData['name'];
         $save->last_name = $validatedData['lname'];
         $save->father_name = $validatedData['father_name'];
         $save->phone = $validatedData['phone'];
@@ -232,7 +232,7 @@ class criminalcontroller extends Controller
             $file = $request->file('photo');
             $rename = str::random(20);
             $filename = $rename . '.' . $exe;
-            $file->move('criminal/', $filename);
+            $file->move(public_path('criminal'), $filename);
             $criminal->photo = $filename;
         }
         // Update the user's data suspect-.-++++

@@ -14,7 +14,7 @@ asd
                             <div class="col col-md-3 col-sm-12">
                                 <div class="mb-3">
                                     <div class="col-md-4 font-weight-bold">{{ __('Name') }}:</div>
-                                    <div class="col-md-8">{{ $item->criminal_name  }}</div>
+                                    <div class="col-md-8">{{ $item->name  }}</div>
                                 </div>
                             </div>
                             <div class="col col-md-3 col-sm-12">

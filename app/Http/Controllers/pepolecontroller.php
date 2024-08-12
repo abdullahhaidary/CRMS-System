@@ -137,13 +137,13 @@ class pepolecontroller extends Controller
 
 // Validate the request data
         $validatedData = $request->validate([
-            'suspect_name' => 'nullable|string|max:255',
-            'father_name' => 'nullable|string|max:255',
-            'last_name' => 'nullable|string|max:255',
-            'phone_number' => 'nullable|numeric|max:15',
-            'main_address' => 'nullable|string|max:255',
-            'current_address' => 'nullable|string|max:255',
-            'tazkera_number' => 'nullable|numeric|max:20',
+            'suspect_name' => 'nullable|string',
+            'father_name' => 'nullable|string',
+            'last_name' => 'nullable|string',
+            'phone_number' => 'nullable|numeric',
+            'main_address' => 'nullable|string',
+            'current_address' => 'nullable|string',
+            'tazkera_number' => 'nullable|numeric',
         ], $messages);
 
 // Save the validated data to the suspectmodel table

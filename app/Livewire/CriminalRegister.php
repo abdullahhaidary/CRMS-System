@@ -36,7 +36,9 @@ class CriminalRegister extends Component
     public $suspect;
     public $case;
     public $suspects = [];
+    public $cases = [];
     public $selectedSuspect;
+   public $selectedCase;
     public $search;
     public function updatedSearch()
     {
@@ -54,22 +56,41 @@ class CriminalRegister extends Component
         $this->search = suspectmodel::find($suspectId)->name;
         $this->suspects = [];
     }
-
+    public function updateCase()
+    {
+        $this->cases=casemodel::query()
+            ->where('case_number', 'like', '%' . $this->case . '%')
+            ->orWhere('status', 'like', '%' . $this->case . '%')
+            ->orWhere('crime_type', 'like', '%' . $this->case . '%')
+            ->orWhere('id', 'like', '%' . $this->case . '%')
+            ->orWhere('crime_location', 'like', '%' . $this->case . '%')
+            ->get()
+            ->toArray();
+    }
+public function selectCase($CaseId)
+{
+    $this->selectedCase= $CaseId;
+    $this->case= casemodel::find($CaseId)->name;
+    $this->cases=[];
+}
     public function render()
     {
         $case = casemodel::all();
+        $suspect = suspectmodel::all();
         return view('livewire.criminal-register', [
             'isSuspectAvailable' => $this->isSuspectAvailable,
             'case' => $case,
-            // 'suspects' => $suspects
+             'suspects' => $suspect,
         ]);
+
+
     }
     public function submit()
     {
         $save = new criminal();
         $save->suspect_id = $this->selectedSuspect;
         $save->case_id = 1;
-        $save->gender = 'Male';
+        $save->gender = $this->gender;
         $save->job = $this->job;
         $save->marital_status = $this->marital_status;
         $save->family_members = $this->familymember;
@@ -77,7 +98,7 @@ class CriminalRegister extends Component
 
         $save->arrest_date = Carbon::parse($this->arrest_date)->format('Y-m-d H:i:s');
         if ($this->isSuspectAvailable == 0) {
-            $save->criminal_name = $this->name;
+            $save->name = $this->name;
             $save->last_name = $this->lname;
             $save->father_name = $this->father_name;
             $save->phone = $this->phone;
