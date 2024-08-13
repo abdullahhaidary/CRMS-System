@@ -39,7 +39,7 @@ class pepolecontroller extends Controller
             'fname' => 'required|string|regex:/[^\d]+/|max:255',
             'tazcira_number' => 'required|string|max:15',
             'phone' => 'required|numeric',
-            'email' => 'required|email|max:255',
+            'email' => 'email|max:255',
             'address' => 'required|string|regex:/[^\d]+/|max:255',
             'curent_address' => 'required|string|regex:/[^\d]+/|max:255',
             'creime_subject' => 'required|string|regex:/[^\d]+/|max:255',

@@ -198,7 +198,7 @@
                                         <div class="form-group mandatory">
                                             <label for="password-column" class="form-label">{{ __('Case') }}</label>
                                             <input type="text" id="case" class="form-control"
-                                                   placeholder="{{ __('Search_case') }}" wire:model.live="case" required/>
+                                                   placeholder="{{ __('Search_case') }}" wire:model.live="casee" required/>
                                             @if (!empty($cases))
                                                 <ul class="list-group" id="suspect-list">
                                                     @foreach ($cases as $case)
