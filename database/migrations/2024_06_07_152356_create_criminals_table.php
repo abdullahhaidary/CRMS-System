@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('suspect_id')->nullable();
             $table->unsignedBigInteger('case_id');
-            $table->string('criminal_name')->nullable();
+            $table->string('name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('father_name')->nullable();
             $table->string('phone')->nullable();

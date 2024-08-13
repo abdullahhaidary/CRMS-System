@@ -163,7 +163,7 @@
                 <a class="link-item mx-2 btn btn-primary" href="{{url('criminal/maktob/'.$item->id)}}">مکتوب</a>
             @endcan
                 <a class="link-item mx-2 btn btn-primary " href="{{url('criminal/picture/show/'.$item->id)}}">{{__('Pictures_a_criminal')}}</a>
-                <a href="{{route('crimnal')}}" class=" btn-primary btn" style="margin-right: 360px">Back <i class="bi bi-arrow-left"></i> </a>
+{{--                <a href="{{route('crimnal')}}" class=" btn-primary btn" style="margin-right: 360px">Back <i class="bi bi-arrow-left"></i> </a>--}}
         </div>
     </div>
     <div class="row ">

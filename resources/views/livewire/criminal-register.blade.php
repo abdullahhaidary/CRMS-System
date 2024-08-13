@@ -167,8 +167,12 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group mandatory">
                                                 <label for="password-column" class="form-label">{{ __('Marital_status') }}</label>
-                                                <input type="text" id="password-column" class="form-control" wire:model="marital_status"
-                                                       placeholder="{{ __('Enter_marital_status') }}" />
+{{--                                                <input type="text" id="password-column" class="form-control" wire:model="marital_status"--}}
+{{--                                                       placeholder="{{ __('Enter_marital_status') }}" />--}}
+                                                <select class="form-control" id="gender" wire:model="marital_status" >
+                                                    <option value="مجرد">مجرد</option>
+                                                    <option value="متاهل">متاهل</option>
+                                                </select>
                                                 @error('email')
                                                 <div class="text-danger">{{ $message }}</div>
                                                 @enderror
