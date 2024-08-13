@@ -34,7 +34,7 @@ class CriminalRegister extends Component
     public $photo;
     public $picture;
     public $suspect;
-    public $case;
+    public $casee;
     public $suspects = [];
     public $cases = [];
     public $selectedSuspect;
@@ -58,19 +58,20 @@ class CriminalRegister extends Component
     }
     public function updateCase()
     {
+        dd($this->casee);
         $this->cases=casemodel::query()
-            ->where('case_number', 'like', '%' . $this->case . '%')
-            ->orWhere('status', 'like', '%' . $this->case . '%')
-            ->orWhere('crime_type', 'like', '%' . $this->case . '%')
-            ->orWhere('id', 'like', '%' . $this->case . '%')
-            ->orWhere('crime_location', 'like', '%' . $this->case . '%')
+            ->where('case_number', 'like', '%' . $this->casee . '%')
+            ->orWhere('status', 'like', '%' . $this->casee . '%')
+            ->orWhere('crime_type', 'like', '%' . $this->casee . '%')
+            ->orWhere('id', 'like', '%' . $this->casee . '%')
+            ->orWhere('crime_location', 'like', '%' . $this->casee . '%')
             ->get()
             ->toArray();
     }
 public function selectCase($CaseId)
 {
     $this->selectedCase= $CaseId;
-    $this->case= casemodel::find($CaseId)->name;
+    $this->casee = casemodel::find($CaseId)->case_number;  // Replace 'name' with the actual attribute
     $this->cases=[];
 }
     public function render()

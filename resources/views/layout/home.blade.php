@@ -101,7 +101,7 @@ if (!function_exists('trim_to_words')) {
                                 <div id="chart-profile-visit"></div>
                             </div>
                             <script>
-                                var dates = @json($dates);
+                                var dates = @json($monthlyCriminals);
                                 var counts = @json($counts);
 
                                 var optionsProfileVisit = {

@@ -99,18 +99,18 @@ class AuthController extends Controller
             $casesLastMonth = CaseModel::whereMonth('created_at', $lastMonthNumber)->whereYear('created_at', $lastMonthYear)->count();
         }
         //    dd($complaintsToday);
-        $dailyCriminals = Criminal::selectRaw('DATE(created_at) as date, COUNT(*) as count')
-            ->where('Created_by', Auth::user()->id)
-            ->groupBy('date')
-            ->orderBy('date', 'asc')
-            ->get();
+        $monthlyCriminals = Criminal::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, COUNT(*) as count')
+        ->groupBy('month')
+        ->orderBy('month', 'asc')
+        ->get();
 
-        // Prepare data for the chart
-        $dates = $dailyCriminals->pluck('date')->map(function ($date) {
-            return Carbon::parse($date)->format('M d'); // Format the date as "Month Day"
-        });
-        $counts = $dailyCriminals->pluck('count');
-        return view('layout.home', compact('total_crime_record', 'total_criminal_record', 'total_cases_record', 'three_criminals', 'total_provinces', 'complaintsToday', 'complaintsLastMonth', 'casesToday', 'casesLastMonth', 'dates', 'counts','total_suspect'));
+    // Prepare data for the chart
+    $months = $monthlyCriminals->pluck('month')->map(function ($month) {
+        return Carbon::parse($month . '-01')->format('M Y'); // Format the month as "Month Year"
+    });
+    $counts = $monthlyCriminals->pluck('count');
+
+        return view('layout.home', compact('total_crime_record', 'total_criminal_record', 'total_cases_record', 'three_criminals', 'total_provinces', 'complaintsToday', 'complaintsLastMonth', 'casesToday', 'casesLastMonth', 'monthlyCriminals', 'counts','total_suspect'));
     }
 
     public function login_page()
