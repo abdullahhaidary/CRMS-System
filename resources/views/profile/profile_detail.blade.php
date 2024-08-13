@@ -15,19 +15,20 @@ Profile Details
             @include('massage')
         </div>
         <div class="wrapper h-auto ">
-            <div class="menu" style="height: 500px">
+            <div class="menu" style="height: 450px">
                 <div class="profile_img" style="width: 250px">
                     <div class="upper_profile">
                         <img src="{{asset('storage/profiles/'.Auth::user()->picture)}}" alt="">
                         <div class="plus" onclick="openProfileImageDialog()">+</div>
                     </div>
-                    <div class="d-flex justify-content-center" style="font-size:fs-4;">
-                        {{Auth::user()->name}}
+                    <div class="text-center font-bold">
+                        <h1 class="display-4">{{Auth::user()->name}}</h1>
                     </div>
 
                     <div class="link">
                         <ul class="">
-                            <li class="ul-item"><a class="" href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> {{__('Password_change')}} </a></li>
+                            <li class="mt-5"><a class="btn btn-primary" href="{{url('change/password/'. \Illuminate\Support\Facades\Auth::user()->id)}}"> {{__('Password_change')}}
+                                    </a></li>
                         </ul>
                     </div>
                 </div>
@@ -37,21 +38,21 @@ Profile Details
                 <h3 class="header ">{{__('Personal_information')}}</h3>
                 <div class="container-fluid">
                     <!-- فورم ایدیت کاربر -->
-                    <i class="fa fa-edit ml-auto" onclick="editForm()"></i>
+                    <i class="fa fa-edit ml-auto" onclick="editForm()" style="color: #0c63e4"></i>
                     <div class="personal_information_single">
-                        <div>{{__('User_ID')}}:</div>
+                        <div class="font-bold">{{__('User_ID')}}:</div>
                         <div>{{Auth::user()->id}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>{{__('Name')}}:</div>
+                        <div class="font-bold">{{__('Name')}}:</div>
                         <div>{{Auth::user()->name}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>{{__('Email')}}:</div>
+                        <div class="font-bold">{{__('Email')}}:</div>
                         <div>{{Auth::user()->email}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>{{__('Type')}}:</div>
+                        <div class="font-bold">{{__('Type')}}:</div>
                         @if(Auth::user()->type==1)
                         <div>Super Admin</div>
                         @elseif(Auth::user()->type==2)
@@ -61,11 +62,11 @@ Profile Details
                         @endif
                     </div>
                     <div class="personal_information_single">
-                        <div>{{__('Action')}}:</div>
+                        <div class="font-bold">{{__('Action')}}:</div>
                         <div>{{Auth::user()->action==1 ? 'Active' : 'InActive'}}</div>
                     </div>
                     <div class="personal_information_single">
-                        <div>{{__('Create_date')}}:</div>
+                        <div class="font-bold">{{__('Create_date')}}:</div>
                         <div>{{ Auth::user()->created_at ? \Carbon\carbon::parse(Auth::user()->created_at)->format('Y-m-d') : 'An Error Occured' }}</div>
                     </div>
                 </div>

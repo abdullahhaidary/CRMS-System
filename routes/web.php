@@ -91,7 +91,7 @@ Route::post('criminal/picture/{id}', [\App\Http\Controllers\criminalcontroller::
 Route::get('criminal/picture/show/{id}', [\App\Http\Controllers\criminalcontroller::class, 'show_picture'])->name('show_picture');
 Route::post('/fingerprints_store_criminal', [criminalcontroller::class, 'store_finger_print'])->name('store_finger_print_criminal');
 Route::get('/criminal/addfinger/{id}', [criminalcontroller::class, 'finger_print_add'])->name('criminal_finger_add_page');
-
+Route::get('criminal/maktob/{id}', [criminalcontroller::class, 'maktob'])->name('maktob');
 //court related
 Route::get('court/{criminalId}', [criminalcontroller::class, 'showCourtPage'])->name('court.show');
 Route::post('court/{criminalId}', [criminalcontroller::class, 'storeCourtRequest'])->name('court.store');
@@ -195,6 +195,13 @@ Route::get('province/suspect/delete/{id}', [\App\Http\Controllers\province_suspe
 //url province criminal
 Route::get('province/criminal', [\App\Http\Controllers\provice_criminal::class, 'index'])->name('province_criminal');
 //url evidence
+
+ // url for Report
+    Route::get('Report/Report', [\App\Http\Controllers\Reportcontroller::class, 'index'])->name('Report');
+    //end url Report
+
+
+
 
 Route::post('/search_fingerprint', function (Request $request) {
     $searchFingerprint = $request->LeftThumb;

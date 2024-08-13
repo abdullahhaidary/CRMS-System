@@ -149,6 +149,8 @@
     </style>
     @if($data)
 <div class="container-fluid">
+    <div class=" ">
+    </div>
     @foreach($data as $item)
     <div class="text-center ">
         <!-- معلومات مکمل یک مجرم -->
@@ -156,10 +158,12 @@
         <div class="nav text-right mb-1">
             @can('super_admin')
             <a class="link-item mx-2 btn btn-primary" href="{{url('criminal/edit/'.$item->id)}}">{{__('Edit')}}</a>
-            <a class="link-item mx-2 btn btn-info" href="{{url('court/'.$item->id)}}">{{__('see_courts')}}</a>
-            <button type="button" class="link-item btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}">{{__('Delete')}}</button>
+                <button type="button" class="link-item btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$item->id}}">{{__('Delete')}}</button>
+                <a class="link-item mx-2 btn btn-primary" href="{{url('court/'.$item->id)}}">{{__('see_courts')}}</a>
+                <a class="link-item mx-2 btn btn-primary" href="{{url('criminal/maktob/'.$item->id)}}">مکتوب</a>
             @endcan
-                <a class="link-item mx-2 btn btn-light-dark " href="{{url('criminal/picture/show/'.$item->id)}}">{{__('Pictures_a_criminal')}}</a>
+                <a class="link-item mx-2 btn btn-primary " href="{{url('criminal/picture/show/'.$item->id)}}">{{__('Pictures_a_criminal')}}</a>
+                <a href="{{route('crimnal')}}" class=" btn-primary btn" style="margin-right: 360px">Back <i class="bi bi-arrow-left"></i> </a>
         </div>
     </div>
     <div class="row ">

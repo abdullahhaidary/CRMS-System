@@ -115,7 +115,7 @@ class AuthController extends Controller
 
     public function login_page()
     {
-        if (Auth::user() and Auth::user()->action === 1) {
+        if (Auth::user() and Auth::user()->action === 0) {
             return redirect('/');
         }
         return view('profile.login');
