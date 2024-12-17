@@ -1,6 +1,6 @@
 # Project Description
 
-Welcome to our project repository! This project is led by Abdullah Haidary, Abdul Wali Aryan, and Abdul Waris.
+Welcome to the CRMS(Criminal Record Management System) project repository! This project is led by Abdullah Haidary, Abdul Wali Aryan, and Abdul Waris.
 
 ## Overview
 
